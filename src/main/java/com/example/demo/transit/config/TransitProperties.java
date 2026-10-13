@@ -18,7 +18,15 @@ public class TransitProperties {
     private int maxRideLegsFallback = 5;
     private int alternativePaths = 3;
     private double walkRadiusMeters = 750;
+    /** Total walking allowed in one trip (first/last mile plus transfers). */
+    private double maxWalkMeters = 1500;
     private double walkSpeedKmh = 5;
+    /** Straight-line walking distances are multiplied by this when no street routing is available. */
+    private double walkDetourFactor = 1.25;
+    /** Use OSRM for station-to-station transfer walks too (only with a self-hosted OSRM: many requests at startup). */
+    private boolean osrmTransfers = false;
+    /** Maximum number of trip options returned. */
+    private int maxOptions = 5;
     private double servisSpeedKmh = 22;
     private double busSpeedKmh = 28;
     private double peakTimeMultiplier = 1.4;

@@ -27,7 +27,7 @@ describe('TripOptions', () => {
   it('renders fare, duration, transfers and legs of the selected option', () => {
     localStorage.setItem('sst.lang', 'en')
     const paths = [{
-      totalFare: 3500, totalDurationSeconds: 3223, walkingMeters: 0, transfers: 1,
+      totalFare: 3500, totalDurationSeconds: 3223, walkingMeters: 0, transfers: 1, labels: ['FASTEST', 'CHEAPEST'],
       legs: [
         { type: 'RIDE', routeName: 'Qatana - Somaria', vehicleType: 'SERVIS', routeStatus: 'CROWDED', fromName: 'Qatana', toName: 'Somaria', fare: 2000, durationSeconds: 2110, distanceMeters: 12894 },
         { type: 'WALK', fromName: 'Somaria', toName: 'Bridge', durationSeconds: 300, distanceMeters: 400 },
@@ -39,6 +39,8 @@ describe('TripOptions', () => {
     expect(screen.getByText(/1 transfer/)).toBeInTheDocument()
     expect(screen.getByText(/Take the servis/)).toBeInTheDocument()
     expect(screen.getByText('Crowded')).toBeInTheDocument()
+    expect(screen.getByText(/Fastest/)).toBeInTheDocument()
+    expect(screen.getByText(/Cheapest/)).toBeInTheDocument()
     expect(screen.getByText(/Walk 400 m to Bridge/)).toBeInTheDocument()
   })
 })

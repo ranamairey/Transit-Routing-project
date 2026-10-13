@@ -41,7 +41,11 @@ export default function TripOptions({ paths, selected, onSelect, onReport, peak,
               <div className="price">{formatFare(p.totalFare)} <small>{t('trips.approx')}</small></div>
               <div className="meta">◷ {formatDuration(p.totalDurationSeconds)} &nbsp;·&nbsp; ⇄ {p.transfers === 0 ? t('trips.noTransfer') : t('trips.transfers', { n: p.transfers })} &nbsp;·&nbsp; 🚶 {formatMeters(p.walkingMeters)}</div>
             </div>
-            <span className={`pill ${i === 0 ? '' : 'warn'}`}>{i === 0 ? t('trips.best') : t('trips.alternative')}</span>
+            <div className="pills">
+              {(p.labels && p.labels.length ? p.labels : ['ALTERNATIVE']).map((l) => (
+                <span key={l} className={`pill ${l === 'ALTERNATIVE' ? 'muted-pill' : l === 'FASTEST' ? '' : 'alt'}`}>{t(`trips.label.${l}`)}</span>
+              ))}
+            </div>
           </div>
           {selected === i && (
             <>

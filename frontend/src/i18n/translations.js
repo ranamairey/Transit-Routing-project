@@ -30,7 +30,7 @@ export const translations = {
       noGeo: 'المتصفح لا يدعم تحديد الموقع', geoFailed: 'تعذر تحديد الموقع، جرّب تثبيت دبوس على الخريطة',
     },
     trips: {
-      title: 'المسارات المقترحة', count: '{n} مسار', peakBadge: 'وقت ذروة · الأزمنة مع ازدحام', fastestFirst: 'الأسرع أولاً', approx: 'تقريباً', best: '✧ مسار مقترح', alternative: 'بديل', showOnMap: 'عرض على الخريطة', share: 'مشاركة المسار',
+      title: 'المسارات المقترحة', count: '{n} مسار', peakBadge: 'وقت ذروة · الأزمنة مع ازدحام', fastestFirst: 'مرتبة حسب الوقت', approx: 'تقريباً', best: '✧ مسار مقترح', alternative: 'بديل', label: { FASTEST: '⚡ الأسرع', FEWEST_TRANSFERS: '⇄ أقل تبديلاً', CHEAPEST: '💵 الأرخص', LEAST_WALKING: '🚶 أقل مشياً', ALTERNATIVE: 'بديل' }, showOnMap: 'عرض على الخريطة', share: 'مشاركة المسار',
       noTransfer: 'بدون تبديل', transfers: '{n} تبديل',
       walk: 'امشِ {dist} إلى {to}', ride: 'اركب {vehicle} «{route}»', fromTo: 'من {from} إلى {to}',
       report: '⚠ أبلغ عن حالة هذا الخط',
@@ -111,7 +111,7 @@ export const translations = {
       noGeo: 'This browser does not support geolocation', geoFailed: 'Could not get your location, try dropping a pin on the map',
     },
     trips: {
-      title: 'Suggested routes', count: '{n} route(s)', peakBadge: 'Peak hours · times include congestion', fastestFirst: 'Fastest first', approx: 'approx.', best: '✧ Recommended', alternative: 'Alternative', showOnMap: 'Show on map', share: 'Share route',
+      title: 'Suggested routes', count: '{n} route(s)', peakBadge: 'Peak hours · times include congestion', fastestFirst: 'Sorted by time', approx: 'approx.', best: '✧ Recommended', alternative: 'Alternative', label: { FASTEST: '⚡ Fastest', FEWEST_TRANSFERS: '⇄ Fewest transfers', CHEAPEST: '💵 Cheapest', LEAST_WALKING: '🚶 Least walking', ALTERNATIVE: 'Alternative' }, showOnMap: 'Show on map', share: 'Share route',
       noTransfer: 'No transfer', transfers: '{n} transfer(s)',
       walk: 'Walk {dist} to {to}', ride: 'Take the {vehicle} “{route}”', fromTo: 'From {from} to {to}',
       report: '⚠ Report this line',

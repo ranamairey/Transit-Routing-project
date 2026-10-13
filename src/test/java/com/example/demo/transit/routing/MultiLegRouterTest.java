@@ -81,4 +81,37 @@ class MultiLegRouterTest {
         assertEquals(200, copy.outgoing(1L).get(0).timeSeconds());
         assertTrue(graph.outgoing(2L).isEmpty());
     }
+
+    @Test
+    void objectivesPickDifferentTrips() {
+        // 1 -> 3 either directly on slow line 9 (1800 s) or via 2 on two fast lines (300 + 300 s).
+        SearchGraph graph = new SearchGraph();
+        graph.setFare(7L, new BigDecimal("40"));
+        graph.setFare(8L, new BigDecimal("40"));
+        graph.setFare(9L, new BigDecimal("50"));
+        graph.add(1L, Edge.ride(2L, 7L, 2000, 300));
+        graph.add(2L, Edge.ride(3L, 8L, 2000, 300));
+        graph.add(1L, Edge.ride(3L, 9L, 6000, 1800));
+
+        MultiLegRouter router = new MultiLegRouter();
+        FoundPath fastest = router.findPaths(graph, 1L, 3L, 4, 1, MultiLegRouter.Weights.FASTEST).get(0);
+        FoundPath fewest = router.findPaths(graph, 1L, 3L, 4, 1, MultiLegRouter.Weights.FEWEST_TRANSFERS).get(0);
+        FoundPath cheapest = router.findPaths(graph, 1L, 3L, 4, 1, MultiLegRouter.Weights.CHEAPEST).get(0);
+
+        assertEquals(2, fastest.rideLegs());
+        assertEquals(600, fastest.totalDurationSeconds());
+        assertEquals(1, fewest.rideLegs());
+        assertEquals(new BigDecimal("50"), cheapest.totalFare());
+        assertNotEquals(MultiLegRouter.signature(fastest), MultiLegRouter.signature(fewest));
+    }
+
+    @Test
+    void totalWalkingIsCapped() {
+        SearchGraph graph = new SearchGraph();
+        graph.add(1L, Edge.walk(2L, 900, 650));
+        graph.add(2L, Edge.walk(3L, 900, 650));
+
+        assertTrue(new MultiLegRouter(1500).findPaths(graph, 1L, 3L, 3, 1).isEmpty());
+        assertEquals(1, new MultiLegRouter(2000).findPaths(graph, 1L, 3L, 3, 1).size());
+    }
 }

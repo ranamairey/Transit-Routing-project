@@ -38,7 +38,7 @@ public class RoutingService {
     private final StationSearchService stationSearch;
     private final ReportService reportService;
     private final TransitProperties properties;
-    private final MultiLegRouter router = new MultiLegRouter();
+    private final MultiLegRouter router;
     private final Clock clock;
     private final WalkingRouter walkingRouter;
 
@@ -49,6 +49,7 @@ public class RoutingService {
                           Clock clock,
                           WalkingRouter walkingRouter) {
         this.walkingRouter = walkingRouter;
+        this.router = new MultiLegRouter(properties.getMaxWalkMeters());
         this.graphFactory = graphFactory;
         this.stationSearch = stationSearch;
         this.reportService = reportService;
@@ -99,19 +100,18 @@ public class RoutingService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "نقطة الانطلاق والوجهة متطابقتان");
         }
 
-        List<FoundPath> paths = router.findPaths(graph, originNode, destNode,
-                properties.getMaxRideLegs(), properties.getAlternativePaths());
+        List<FoundPath> paths = collectOptions(graph, originNode, destNode, properties.getMaxRideLegs());
         if (paths.isEmpty() && properties.getMaxRideLegsFallback() > properties.getMaxRideLegs()) {
-            paths = router.findPaths(graph, originNode, destNode,
-                    properties.getMaxRideLegsFallback(), properties.getAlternativePaths());
+            paths = collectOptions(graph, originNode, destNode, properties.getMaxRideLegsFallback());
         }
+        Map<FoundPath, List<String>> labels = label(paths);
 
         Map<Long, Station> stationByIndex = new java.util.HashMap<>(snapshot.stationByIndex());
-        stationByIndex.put(TransitGraphFactory.ORIGIN_NODE, virtualStation("نقطة الانطلاق", origin.point()));
-        stationByIndex.put(TransitGraphFactory.DEST_NODE, virtualStation("الوجهة", dest.point()));
+        stationByIndex.put(TransitGraphFactory.ORIGIN_NODE, virtualStation(origin.name(), origin.point()));
+        stationByIndex.put(TransitGraphFactory.DEST_NODE, virtualStation(dest.name(), dest.point()));
 
         List<RouteOptionDto> options = paths.stream()
-                .map(path -> toOption(path, stationByIndex, snapshot.routeByIndex(), now))
+                .map(path -> toOption(path, stationByIndex, snapshot.routeByIndex(), now, labels.getOrDefault(path, List.of())))
                 .toList();
         if (options.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "لم يُعثر على مسار بين النقطتين ضمن حدود المشي والتبديلات المسموحة");
@@ -137,7 +137,7 @@ public class RoutingService {
             if (station == null) {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "المحطة غير موجودة");
             }
-            return new Endpoint(GeoMath.toDto(station), station, station.getName());
+            return endpointFor(station, snapshot);
         }
         if (query != null && !query.isBlank()) {
             Station station = stationSearch.best(query, governorate);
@@ -145,8 +145,7 @@ public class RoutingService {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "لم يُعثر على الموقع: " + query);
             }
             // use the cached instance so the graph index lookup works
-            Station cached = snapshot.stationsById().get(station.getId());
-            return new Endpoint(GeoMath.toDto(cached), cached, cached.getName());
+            return endpointFor(snapshot.stationsById().get(station.getId()), snapshot);
         }
         if (pin != null && pin.lat() != null && pin.lng() != null) {
             return new Endpoint(pin, null, fallbackName);
@@ -154,7 +153,61 @@ public class RoutingService {
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "حدد نقطة البداية/الوجهة عبر GPS أو دبوس أو بحث نصي");
     }
 
-    private RouteOptionDto toOption(FoundPath path, Map<Long, Station> stations, Map<Long, Route> routes, Instant now) {
+    /**
+     * Searches with several objectives (fastest, fewest transfers, cheapest, least walking), merges the
+     * distinct trips, drops trips that are worse on every count than another one, and keeps the best few.
+     */
+    private List<FoundPath> collectOptions(SearchGraph graph, long origin, long dest, int maxLegs) {
+        Map<String, FoundPath> unique = new java.util.LinkedHashMap<>();
+        List<MultiLegRouter.Weights> objectives = List.of(MultiLegRouter.Weights.FASTEST, MultiLegRouter.Weights.FEWEST_TRANSFERS,
+                MultiLegRouter.Weights.CHEAPEST, MultiLegRouter.Weights.LEAST_WALKING);
+        for (MultiLegRouter.Weights w : objectives) {
+            int k = w == MultiLegRouter.Weights.FASTEST ? properties.getAlternativePaths() : 1;
+            for (FoundPath p : router.findPaths(graph, origin, dest, maxLegs, k, w)) {
+                unique.putIfAbsent(MultiLegRouter.signature(p), p);
+            }
+        }
+        List<FoundPath> all = new ArrayList<>(unique.values());
+        List<FoundPath> kept = all.stream().filter(p -> all.stream().noneMatch(q -> q != p && dominates(q, p))).toList();
+        List<FoundPath> sorted = new ArrayList<>(kept);
+        sorted.sort(java.util.Comparator.comparingInt(FoundPath::totalDurationSeconds));
+        return sorted.size() > properties.getMaxOptions() ? new ArrayList<>(sorted.subList(0, properties.getMaxOptions())) : sorted;
+    }
+
+    /** q is at least as good as p on time, transfers, fare and walking, and strictly better on one. */
+    private static boolean dominates(FoundPath q, FoundPath p) {
+        int t = Integer.compare(q.totalDurationSeconds(), p.totalDurationSeconds() - 60); // within a minute counts as equal time
+        boolean leTime = q.totalDurationSeconds() <= p.totalDurationSeconds() + 60;
+        boolean leLegs = q.rideLegs() <= p.rideLegs();
+        boolean leFare = q.totalFare().compareTo(p.totalFare()) <= 0;
+        boolean leWalk = q.walkingMeters() <= p.walkingMeters() + 50;
+        boolean better = t < 0 || q.rideLegs() < p.rideLegs() || q.totalFare().compareTo(p.totalFare()) < 0
+                || q.walkingMeters() < p.walkingMeters() - 50;
+        return leTime && leLegs && leFare && leWalk && better;
+    }
+
+    private static Map<FoundPath, List<String>> label(List<FoundPath> paths) {
+        Map<FoundPath, List<String>> labels = new java.util.HashMap<>();
+        if (paths.isEmpty()) {
+            return labels;
+        }
+        java.util.Comparator<FoundPath> byTime = java.util.Comparator.comparingInt(FoundPath::totalDurationSeconds);
+        java.util.function.BiConsumer<String, FoundPath> add = (l, p) -> labels.computeIfAbsent(p, x -> new ArrayList<>()).add(l);
+        add.accept("FASTEST", paths.stream().min(byTime).orElseThrow());
+        add.accept("FEWEST_TRANSFERS", paths.stream().min(java.util.Comparator.comparingInt(FoundPath::rideLegs).thenComparing(byTime)).orElseThrow());
+        add.accept("CHEAPEST", paths.stream().min(java.util.Comparator.comparing(FoundPath::totalFare).thenComparing(byTime)).orElseThrow());
+        add.accept("LEAST_WALKING", paths.stream().min(java.util.Comparator.comparingDouble(FoundPath::walkingMeters).thenComparing(byTime)).orElseThrow());
+        return labels;
+    }
+
+    /** A place no line serves (neighbourhood, landmark…) is routed as a free point: walk to the nearest lines. */
+    private static Endpoint endpointFor(Station station, NetworkSnapshot snapshot) {
+        return snapshot.onLine(station)
+                ? new Endpoint(GeoMath.toDto(station), station, station.getName())
+                : new Endpoint(GeoMath.toDto(station), null, station.getName());
+    }
+
+    private RouteOptionDto toOption(FoundPath path, Map<Long, Station> stations, Map<Long, Route> routes, Instant now, List<String> labels) {
         List<TripLegDto> legs = new ArrayList<>();
         for (Step step : mergeSteps(path.steps())) {
             boolean walk = step.routeId() == MultiLegRouter.WALK_ROUTE_ID;
@@ -181,7 +234,7 @@ public class RoutingService {
             ));
         }
         int transfers = Math.max(0, path.rideLegs() - 1);
-        return new RouteOptionDto(path.totalFare(), path.totalDurationSeconds(), path.walkingMeters(), transfers, legs);
+        return new RouteOptionDto(path.totalFare(), path.totalDurationSeconds(), path.walkingMeters(), transfers, legs, labels);
     }
 
     private List<Step> mergeSteps(List<Step> steps) {

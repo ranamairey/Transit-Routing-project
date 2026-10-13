@@ -26,28 +26,77 @@ public class MultiLegRouter {
 
     private static final double REUSED_ROUTE_PENALTY = 2.5;
 
+    /** Total walking allowed in one trip (first/last mile plus transfers). */
+    private final double maxWalkMeters;
+
+    public MultiLegRouter() {
+        this(Double.MAX_VALUE);
+    }
+
+    public MultiLegRouter(double maxWalkMeters) {
+        this.maxWalkMeters = maxWalkMeters;
+    }
+
+    /**
+     * What the search optimises. Costs are in "seconds": real travel time plus penalties.
+     * transferPenaltySeconds is added for every boarding after the first; walkFactor multiplies walking
+     * time; fareSecondsPerUnit converts each fare paid into equivalent seconds.
+     */
+    public record Weights(int transferPenaltySeconds, double walkFactor, double fareSecondsPerUnit) {
+        public static final Weights FASTEST = new Weights(TRANSFER_PENALTY_SECONDS, 1.0, 0);
+        public static final Weights FEWEST_TRANSFERS = new Weights(1800, 1.0, 0);
+        public static final Weights LEAST_WALKING = new Weights(300, 4.0, 0);
+        public static final Weights CHEAPEST = new Weights(240, 1.0, 120.0);
+    }
+
     public List<FoundPath> findPaths(SearchGraph graph, long originId, long destId, int maxRideLegs, int kPaths) {
+        return findPaths(graph, originId, destId, maxRideLegs, kPaths, Weights.FASTEST);
+    }
+
+    /** Up to kPaths distinct trips (by line sequence and transfer points), diversified by penalising lines already used. */
+    public List<FoundPath> findPaths(SearchGraph graph, long originId, long destId, int maxRideLegs, int kPaths, Weights weights) {
         List<FoundPath> results = new ArrayList<>();
+        java.util.Set<String> seen = new java.util.HashSet<>();
         Map<Long, Double> routePenalty = new HashMap<>();
 
-        for (int i = 0; i < kPaths; i++) {
-            FoundPath path = dijkstra(graph, originId, destId, maxRideLegs, routePenalty);
+        for (int attempt = 0; attempt < kPaths * 3 && results.size() < kPaths; attempt++) {
+            FoundPath path = dijkstra(graph, originId, destId, maxRideLegs, routePenalty, weights);
             if (path == null) {
                 break;
             }
-            boolean duplicate = results.stream().anyMatch(existing -> samePath(existing, path));
-            if (duplicate) {
-                break;
+            if (seen.add(signature(path))) {
+                results.add(path);
             }
-            results.add(path);
-            path.steps().stream()
-                    .map(Step::routeId)
-                    .filter(id -> id != WALK_ROUTE_ID)
-                    .distinct()
-                    .forEach(id -> routePenalty.merge(id, REUSED_ROUTE_PENALTY, (a, b) -> a * b));
+            java.util.List<Long> used = path.steps().stream().map(Step::routeId).filter(id -> id != WALK_ROUTE_ID).distinct().toList();
+            if (used.isEmpty()) {
+                break; // walking only; nothing to diversify
+            }
+            used.forEach(id -> routePenalty.merge(id, REUSED_ROUTE_PENALTY, (a, b) -> a * b));
         }
         results.sort(Comparator.comparingInt(FoundPath::totalDurationSeconds));
         return results;
+    }
+
+    /** Identity of a trip for de-duplication: the lines ridden and where each is boarded/left. */
+    public static String signature(FoundPath path) {
+        StringBuilder sb = new StringBuilder();
+        long current = -999;
+        long boardedAt = 0;
+        long lastTo = 0;
+        for (Step s : path.steps()) {
+            if (s.routeId() != current) {
+                if (current != -999 && current != WALK_ROUTE_ID) {
+                    sb.append(current).append('@').append(boardedAt).append('>').append(lastTo).append('|');
+                }
+                current = s.routeId();
+                boardedAt = s.fromStationId();
+            }
+            lastTo = s.toStationId();
+        }
+        if (current != WALK_ROUTE_ID) {
+            sb.append(current).append('@').append(boardedAt).append('>').append(lastTo);
+        }
+        return sb.length() == 0 ? "walk" : sb.toString();
     }
 
     private FoundPath dijkstra(
@@ -55,7 +104,8 @@ public class MultiLegRouter {
             long originId,
             long destId,
             int maxRideLegs,
-            Map<Long, Double> routePenalty
+            Map<Long, Double> routePenalty,
+            Weights weights
     ) {
         record Key(long stationId, long lastRouteId) {
         }
@@ -101,13 +151,19 @@ public class MultiLegRouter {
                         if (nextLegs > maxRideLegs) {
                             continue;
                         }
-                        nextFare = nextFare.add(graph.fareOf(edge.routeId()));
+                        BigDecimal fare = graph.fareOf(edge.routeId());
+                        nextFare = nextFare.add(fare);
+                        edgeCost += Math.round(fare.doubleValue() * weights.fareSecondsPerUnit());
                         if (nextLegs > 1) {
-                            edgeCost += TRANSFER_PENALTY_SECONDS;
+                            edgeCost += weights.transferPenaltySeconds();
                         }
                     }
                 } else {
                     nextWalk += edge.distanceMeters();
+                    if (nextWalk > maxWalkMeters) {
+                        continue;
+                    }
+                    edgeCost = Math.round(edgeCost * weights.walkFactor());
                 }
 
                 long nextRoute = ride ? edge.routeId() : WALK_ROUTE_ID;

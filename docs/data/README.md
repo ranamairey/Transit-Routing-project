@@ -1,3 +1,25 @@
+# Damascus / Rif Dimashq network dataset
+
+Two files:
+
+- `damascus-network.base.json`: the **hand-curated** network compiled from public sources (lines, termini, known stops, fares, sources and confidence for every entry). Edit this file to correct or add lines.
+- `damascus-network.json`: the **generated** file the app imports and seeds (also copied to `src/main/resources/data/`). Rebuild it with:
+
+```bash
+python3 tools/data/enrich_network.py            # uses cached downloads
+python3 tools/data/enrich_network.py --refresh  # re-downloads OSM places and road geometry
+```
+
+The generator adds three things to the curated base:
+
+1. **Searchable places**: every named neighbourhood, village, square, bus stop, garage, hospital, university and landmark in the area from OpenStreetMap (~640 places), so riders can search any destination. Places with no line are routed as free points (walk to the nearest line).
+2. **Road geometry**: every line follows real roads (OSRM driving route through its ordered stops; stop-to-stop routing where one-way streets force unrealistic detours). The 7 OpenStreetMap route relations are kept as drawn.
+3. **Boarding points (hail-and-ride)**: servis pick up and drop off anywhere on their road, so known places lying on a line's road are added to that line as intermediate stops in travel order (≤120 m for stops, ≤150 m for landmarks, ≤350 m for neighbourhood/village centres). Routes carry `inferredStops` with the number added.
+
+Lines are ridden in both directions unless a route is marked one-way.
+
+---
+
 # Damascus transit network import file
 
 `damascus-network.json` is a real-data seed for the backend's bulk network import. It was

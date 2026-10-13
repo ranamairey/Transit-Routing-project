@@ -56,3 +56,4 @@ admin-console/dist/
 ### Research scratch ###
 research_notes/
 deploy/osrm/data/
+tools/data/.cache/

@@ -58,7 +58,14 @@ public class TransitGraphFactory {
         if (straight < 30) {
             return straight;
         }
-        return walkingRouter.route(a, b, false).map(WalkingRouter.Walk::meters).filter(m -> m >= straight * 0.9).orElse(straight);
+        double estimate = straight * properties.getWalkDetourFactor(); // streets are never straight
+        return walkingRouter.route(a, b, false).map(WalkingRouter.Walk::meters).filter(m -> m >= straight * 0.9).orElse(estimate);
+    }
+
+    /** Transfer walks between stations: OSRM only when explicitly enabled (self-hosted OSRM), else the detour estimate. */
+    private double transferMeters(GeoPointDto a, GeoPointDto b) {
+        double straight = GeoMath.haversineMeters(a.lat(), a.lng(), b.lat(), b.lng());
+        return properties.isOsrmTransfers() ? walkingMeters(a, b) : (straight < 30 ? straight : straight * properties.getWalkDetourFactor());
     }
 
     public void invalidate() {
@@ -105,13 +112,18 @@ public class TransitGraphFactory {
             routeNext++;
         }
 
+        java.util.Set<String> onLine = new java.util.HashSet<>();
+        routes.forEach(r -> onLine.addAll(r.stationIds()));
+        List<Station> lineStations = stations.stream().filter(s -> onLine.contains(s.getId())).toList();
+
         SearchGraph graph = new SearchGraph();
         addRideEdges(graph, routes, stationsById, stationIndex, routeIndex);
-        addTransferWalks(graph, stations, stationIndex);
+        addTransferWalks(graph, lineStations, stationIndex);
 
         return new NetworkSnapshot(
                 graph,
                 Collections.unmodifiableList(stations),
+                Collections.unmodifiableList(lineStations),
                 Collections.unmodifiableList(routes),
                 Collections.unmodifiableMap(stationsById),
                 Collections.unmodifiableMap(stationIndex),
@@ -127,7 +139,7 @@ public class TransitGraphFactory {
      * station when none is in range so the search never fails for a slightly distant point.
      */
     public void connectEndpoint(SearchGraph graph, long nodeId, GeoPointDto point, NetworkSnapshot snapshot, boolean fromNode) {
-        List<Station> stations = snapshot.stations();
+        List<Station> stations = snapshot.lineStations();
         if (stations.isEmpty()) {
             return;
         }
@@ -219,8 +231,12 @@ public class TransitGraphFactory {
                 for (int j = i + 1; j < stops.size(); j++) {
                     double meters = prefix[j] - prefix[i];
                     int seconds = GeoMath.travelSeconds(meters, speed);
-                    graph.add(stationIndex.get(stops.get(i).getId()),
-                            Edge.ride(stationIndex.get(stops.get(j).getId()), rid, meters, seconds));
+                    long a = stationIndex.get(stops.get(i).getId());
+                    long b = stationIndex.get(stops.get(j).getId());
+                    graph.add(a, Edge.ride(b, rid, meters, seconds));
+                    if (!route.isOneWay()) {
+                        graph.add(b, Edge.ride(a, rid, meters, seconds)); // servis lines run back the same way
+                    }
                 }
             }
         }
@@ -238,7 +254,9 @@ public class TransitGraphFactory {
                 }
             }
         }
-        walkingRouter.prefetch(candidates);
+        if (properties.isOsrmTransfers()) {
+            walkingRouter.prefetch(candidates);
+        }
         for (int i = 0; i < stations.size(); i++) {
             for (int j = i + 1; j < stations.size(); j++) {
                 Station a = stations.get(i);
@@ -247,7 +265,7 @@ public class TransitGraphFactory {
                 if (straight > maxWalk) {
                     continue;
                 }
-                double meters = walkingMeters(GeoMath.toDto(a), GeoMath.toDto(b));
+                double meters = transferMeters(GeoMath.toDto(a), GeoMath.toDto(b));
                 if (meters > maxWalk * 1.5) {
                     continue;
                 }
@@ -263,6 +281,8 @@ public class TransitGraphFactory {
     public record NetworkSnapshot(
             SearchGraph graph,
             List<Station> stations,
+            /** Stations served by at least one line (the others are searchable places only). */
+            List<Station> lineStations,
             List<Route> routes,
             Map<String, Station> stationsById,
             Map<String, Long> stationIndex,
@@ -273,6 +293,10 @@ public class TransitGraphFactory {
     ) {
         public long index(Station station) {
             return stationIndex.get(station.getId());
+        }
+
+        public boolean onLine(Station station) {
+            return lineStations.stream().anyMatch(s -> s.getId().equals(station.getId()));
         }
     }
 }

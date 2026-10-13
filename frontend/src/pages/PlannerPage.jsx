@@ -26,6 +26,11 @@ export default function PlannerPage({ net }) {
   const stations = network?.stations || EMPTY
   const routes = network?.routes || EMPTY
   const routesById = useMemo(() => Object.fromEntries(routes.map((r) => [r.id, r])), [routes])
+  // places with no line (neighbourhoods, landmarks) are searchable but not drawn on the map
+  const lineStations = useMemo(() => {
+    const ids = new Set(routes.flatMap((r) => r.stationIds || []))
+    return stations.filter((s) => ids.has(s.id))
+  }, [routes, stations])
 
   const [origin, setOrigin] = useState(null)
   const [dest, setDest] = useState(null)
@@ -104,14 +109,14 @@ export default function PlannerPage({ net }) {
     }
     const points = [origin?.point, dest?.point].filter(Boolean)
     if (points.length === 0) return { visibleRoutes: routes, dimRoutes: true }
-    const nearIds = new Set(stations.filter((s) => points.some((p) => distMeters(p, s.location) <= NEAR_METERS)).map((s) => s.id))
+    const nearIds = new Set(lineStations.filter((s) => points.some((p) => distMeters(p, s.location) <= NEAR_METERS)).map((s) => s.id))
     return { visibleRoutes: routes.filter((r) => r.stationIds?.some((id) => nearIds.has(id))), dimRoutes: false }
-  }, [showAll, path, showRoute, routes, stations, origin, dest])
+  }, [showAll, path, showRoute, routes, lineStations, origin, dest])
   const visibleStations = useMemo(() => {
-    if (showAll || dimRoutes) return stations
+    if (showAll || dimRoutes) return lineStations
     const ids = new Set(visibleRoutes.flatMap((r) => r.stationIds || []))
     return stations.filter((s) => ids.has(s.id))
-  }, [showAll, dimRoutes, visibleRoutes, stations])
+  }, [showAll, dimRoutes, visibleRoutes, stations, lineStations])
   const legs = useMemo(() => (path && showRoute ? path.legs.map((l) => ({ ...l, path: legPath(l, routesById) })) : []), [path, routesById, showRoute])
   const fit = useMemo(() => {
     if (legs.length) return legs.flatMap((l) => l.path)

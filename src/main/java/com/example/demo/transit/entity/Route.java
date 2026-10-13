@@ -41,6 +41,9 @@ public class Route {
 
     private RouteStatus status = RouteStatus.NORMAL;
 
+    /** Lines run in both directions unless marked one-way (e.g. loop lines). */
+    private boolean oneWay = false;
+
     /** When the current status was set (auto-applied statuses expire after app.transit.status-ttl-hours). */
     private Instant statusUpdatedAt;
 
