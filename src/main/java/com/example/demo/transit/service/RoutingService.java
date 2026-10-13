@@ -205,8 +205,22 @@ public class RoutingService {
         if (from == null || to == null || !walkingRouter.enabled()) {
             return null;
         }
+        double straight = GeoMath.haversineMeters(from.getLatitude(), from.getLongitude(), to.getLatitude(), to.getLongitude());
+        if (straight < 30) {
+            return null;
+        }
         return walkingRouter.route(GeoMath.toDto(from), GeoMath.toDto(to), true)
-                .map(WalkingRouter.Walk::path).filter(p -> p.size() >= 2).orElse(null);
+                .map(WalkingRouter.Walk::path)
+                .filter(p -> p.size() >= 2 && pathLength(p) <= straight * 2.5 + 150) // reject snapping detours
+                .orElse(null);
+    }
+
+    private static double pathLength(List<GeoPointDto> path) {
+        double total = 0;
+        for (int i = 1; i < path.size(); i++) {
+            total += GeoMath.haversineMeters(path.get(i - 1).lat(), path.get(i - 1).lng(), path.get(i).lat(), path.get(i).lng());
+        }
+        return total;
     }
 
     private Station virtualStation(String name, GeoPointDto point) {

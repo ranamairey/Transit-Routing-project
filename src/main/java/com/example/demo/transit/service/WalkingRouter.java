@@ -20,6 +20,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 /**
  * Pedestrian routing through an OSRM server (foot profile) with an in-memory cache and a circuit
@@ -44,6 +47,7 @@ public class WalkingRouter {
             return size() > CACHE_SIZE;
         }
     });
+    private final ExecutorService pool = Executors.newFixedThreadPool(8, r -> { Thread t = new Thread(r, "osrm"); t.setDaemon(true); return t; });
     private volatile long circuitOpenUntil = 0;
     private volatile int failures = 0;
 
@@ -62,6 +66,22 @@ public class WalkingRouter {
 
     public boolean enabled() {
         return !baseUrl.isBlank();
+    }
+
+    /** Warms the cache for many pairs in parallel (graph build, endpoint connection). */
+    public void prefetch(List<GeoPointDto[]> pairs) {
+        if (!enabled() || pairs.isEmpty() || System.currentTimeMillis() < circuitOpenUntil) {
+            return;
+        }
+        List<Future<?>> futures = new ArrayList<>();
+        for (GeoPointDto[] pair : pairs) {
+            if (!cache.containsKey(key(pair[0], pair[1], false))) {
+                futures.add(pool.submit(() -> route(pair[0], pair[1], false)));
+            }
+        }
+        for (Future<?> f : futures) {
+            try { f.get(); } catch (Exception ignored) { /* individual failures already handled */ }
+        }
     }
 
     /** Real walking distance (and geometry when requested) between two points, or empty on any failure. */

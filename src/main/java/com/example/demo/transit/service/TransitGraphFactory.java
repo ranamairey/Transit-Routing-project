@@ -55,6 +55,9 @@ public class TransitGraphFactory {
     /** Walking distance between two points: OSRM when available, else straight line. */
     public double walkingMeters(GeoPointDto a, GeoPointDto b) {
         double straight = GeoMath.haversineMeters(a.lat(), a.lng(), b.lat(), b.lng());
+        if (straight < 30) {
+            return straight;
+        }
         return walkingRouter.route(a, b, false).map(WalkingRouter.Walk::meters).filter(m -> m >= straight * 0.9).orElse(straight);
     }
 
@@ -128,6 +131,13 @@ public class TransitGraphFactory {
         if (stations.isEmpty()) {
             return;
         }
+        List<GeoPointDto[]> candidates = new ArrayList<>();
+        for (Station station : stations) {
+            if (GeoMath.haversineMeters(point.lat(), point.lng(), station.getLatitude(), station.getLongitude()) <= properties.getWalkRadiusMeters()) {
+                candidates.add(new GeoPointDto[]{point, GeoMath.toDto(station)});
+            }
+        }
+        walkingRouter.prefetch(candidates);
         boolean connected = false;
         for (Station station : stations) {
             double straight = GeoMath.haversineMeters(point.lat(), point.lng(), station.getLatitude(), station.getLongitude());
@@ -218,6 +228,17 @@ public class TransitGraphFactory {
 
     private void addTransferWalks(SearchGraph graph, List<Station> stations, Map<String, Long> stationIndex) {
         double maxWalk = Math.max(properties.getWalkRadiusMeters(), 800.0);
+        List<GeoPointDto[]> candidates = new ArrayList<>();
+        for (int i = 0; i < stations.size(); i++) {
+            for (int j = i + 1; j < stations.size(); j++) {
+                Station a = stations.get(i);
+                Station b = stations.get(j);
+                if (GeoMath.haversineMeters(a.getLatitude(), a.getLongitude(), b.getLatitude(), b.getLongitude()) <= maxWalk) {
+                    candidates.add(new GeoPointDto[]{GeoMath.toDto(a), GeoMath.toDto(b)});
+                }
+            }
+        }
+        walkingRouter.prefetch(candidates);
         for (int i = 0; i < stations.size(); i++) {
             for (int j = i + 1; j < stations.size(); j++) {
                 Station a = stations.get(i);
