@@ -14,6 +14,13 @@
 	<artifactId>transit-routing</artifactId>
 	<version>0.1.0</version>
 	<name>Smart Syrian Transit Routing</name>
+	<description>Copyright (c) 2026 Tony Botros and Rana Almer'ey. All rights reserved.</description>
+	<licenses>
+		<license>
+			<name>Proprietary</name>
+			<comments>All rights reserved. See LICENSE.</comments>
+		</license>
+	</licenses>
 
 	<properties>
 		<java.version>17</java.version>

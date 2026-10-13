@@ -4,12 +4,13 @@ services:
   backend:
     build: .
     env_file: .env
+    # MONGO_URI, JWT_SECRET and SEED_ADMIN_PASSWORD are mandatory and intentionally have no defaults.
     environment:
       MONGO_DB: ${MONGO_DB:-syrian_transit}
       JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in .env}
       CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:8081,http://localhost:8082}
       SEED_ADMIN_EMAIL: ${SEED_ADMIN_EMAIL:-admin@demo.com}
-      SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD:-Admin#12345}
+      SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD:?set SEED_ADMIN_PASSWORD in .env}
     ports:
       - "8080:8080"
     restart: unless-stopped

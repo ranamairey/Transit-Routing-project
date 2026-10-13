@@ -18,25 +18,14 @@
 
 ### 1) Backend
 
+> **ملاحظة أمنية:** لا يحتوي المستودع على أي بيانات اتصال أو كلمات سر أو مفاتيح. الخادم **يرفض الإقلاع** ما لم تُعرَّف المتغيرات الثلاثة `MONGO_URI` و`JWT_SECRET` و`SEED_ADMIN_PASSWORD` في البيئة أو في ملف `.env` (المتجاهَل في git). قاعدة البيانات وبيانات الوصول مملوكة لأصحاب المشروع ولا تُشارك.
+
 ```bash
-cp .env.example .env        # ثم ضع MONGO_URI و MONGO_DB=syrian_transit
+cp .env.example .env        # ثم عبّئ MONGO_URI و JWT_SECRET و SEED_ADMIN_PASSWORD
 ./run.sh                    # يقرأ .env ويشغّل spring-boot:run على المنفذ 8080
 ```
 
-أو بدون السكربت:
-
-```bash
-MONGO_URI='mongodb+srv://<user>:<pass>@<cluster>/' MONGO_DB=syrian_transit ./mvnw spring-boot:run
-```
-
-عند أول تشغيل على قاعدة فارغة يُزرع تلقائياً (`DataSeeder`): شبكة تجريبية لدمشق وريفها (12 محطة، 7 خطوط) وحسابات:
-
-| الدور | البريد | كلمة السر |
-|---|---|---|
-| مشرف | `admin@demo.com` | `Admin#12345` |
-| مستخدم | `ahmad@demo.com` / `samer@demo.com` | `User#12345` |
-
-غيّر بيانات المشرف عبر `SEED_ADMIN_EMAIL` / `SEED_ADMIN_PASSWORD`، أو عطّل الزرع بـ `SEED_ENABLED=false`.
+عند أول تشغيل على قاعدة فارغة يُزرع تلقائياً (`DataSeeder`) حساب المشرف (`SEED_ADMIN_EMAIL` / `SEED_ADMIN_PASSWORD`) وشبكة تجريبية لدمشق وريفها (12 محطة، 7 خطوط). تُنشأ حسابات ركاب تجريبية فقط إذا عُرّف `SEED_USER_PASSWORD`. عطّل الزرع بـ `SEED_ENABLED=false`.
 
 ### 2) تطبيق الركاب (Rider app, PWA)
 
@@ -82,7 +71,7 @@ cd frontend && npm test      # rider app: Vitest
 ### 6) النشر بالحاويات (Docker)
 
 ```bash
-cp .env.example .env         # MONGO_URI, MONGO_DB, JWT_SECRET, CORS_ORIGINS
+cp .env.example .env         # MONGO_URI, JWT_SECRET, SEED_ADMIN_PASSWORD (إلزامية) + MONGO_DB, CORS_ORIGINS
 docker compose up -d --build # backend:8080 · web:8081 · admin:8082
 ```
 
@@ -215,8 +204,10 @@ POST /api/v1/routing/search
 
 | المفتاح | الافتراضي | الوصف |
 |---|---|---|
-| `MONGO_URI` / `MONGO_DB` | `mongodb://localhost:27017` / `syrian_transit` | الاتصال بقاعدة البيانات |
-| `JWT_SECRET` | قيمة تجريبية | غيّره في الإنتاج |
+| `MONGO_URI` / `MONGO_DB` | **إلزامي** / `syrian_transit` | الاتصال بقاعدة البيانات |
+| `JWT_SECRET` | **إلزامي** | سلسلة عشوائية طويلة (32+ حرفاً) |
+| `SEED_ADMIN_EMAIL` / `SEED_ADMIN_PASSWORD` | `admin@example.com` / **إلزامي** | حساب المشرف الأول |
+| `SEED_USER_PASSWORD` | غير معرّف | إن عُرّف تُنشأ حسابات ركاب تجريبية |
 | `CORS_ORIGINS` | `http://localhost:5173` | أصول الواجهة المسموح بها |
 | `app.transit.walk-radius-meters` | 750 | أقصى مسافة مشي للوصول لموقف |
 | `app.transit.max-ride-legs` / `alternative-paths` | 3 / 3 | حد الخطوط في الرحلة / عدد البدائل |
@@ -225,3 +216,13 @@ POST /api/v1/routing/search
 | `app.transit.alert-window-hours` / `status-ttl-hours` | 3 / 6 | نافذة التنبيهات / مدة بقاء الحالة الآلية |
 | `app.limits.login-attempts` / `login-window-minutes` | 10 / 15 | حد محاولات الدخول لكل بريد |
 | `app.limits.report-cooldown-minutes` / `reports-per-hour` | 10 / 20 | حدود البلاغات لكل مستخدم |
+
+---
+
+## الحقوق (Copyright)
+
+© 2026 **Tony Botros** و **Rana Almer'ey**. جميع الحقوق محفوظة.
+
+هذا المشروع وشيفرته المصدرية وتصميمه ووثائقه ملك لأصحابه. لا يجوز نسخه أو تعديله أو توزيعه أو تشغيله تجارياً أو استخدامه بأي شكل دون إذن كتابي مسبق من أصحاب الحقوق. انظر ملف [LICENSE](LICENSE).
+
+Copyright © 2026 Tony Botros and Rana Almer'ey. All rights reserved. See [LICENSE](LICENSE).

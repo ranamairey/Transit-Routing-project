@@ -55,8 +55,8 @@ public class DataSeeder implements CommandLineRunner {
                       TransitGraphInvalidator invalidator,
                       @Value("${app.seed.enabled:true}") boolean enabled,
                       @Value("${app.seed.admin-email:admin@demo.com}") String adminEmail,
-                      @Value("${app.seed.admin-password:Admin#12345}") String adminPassword,
-                      @Value("${app.seed.user-password:User#12345}") String userPassword) {
+                      @Value("${app.seed.admin-password:}") String adminPassword,
+                      @Value("${app.seed.user-password:}") String userPassword) {
         this.stationRepository = stationRepository;
         this.routeRepository = routeRepository;
         this.userRepository = userRepository;
@@ -74,8 +74,11 @@ public class DataSeeder implements CommandLineRunner {
         if (!enabled) {
             return;
         }
-        // Always make sure an admin account exists.
+        // Always make sure an admin account exists (password must come from the environment).
         if (!userRepository.existsByEmail(adminEmail.toLowerCase())) {
+            if (adminPassword == null || adminPassword.isBlank()) {
+                throw new IllegalStateException("SEED_ADMIN_PASSWORD is required to create the first admin account (or set SEED_ENABLED=false)");
+            }
             createUser("Admin User", adminEmail, adminPassword, Role.ROLE_ADMIN);
             log.info("Seeded admin account {}", adminEmail);
         }
@@ -83,9 +86,9 @@ public class DataSeeder implements CommandLineRunner {
             return;
         }
         log.info("Empty database: seeding demo network");
-
-        User user1 = createUser("Ahmad Ali", "ahmad@demo.com", userPassword, Role.ROLE_USER);
-        User user2 = createUser("Samer Omar", "samer@demo.com", userPassword, Role.ROLE_USER);
+        boolean demoUsers = userPassword != null && !userPassword.isBlank();
+        User user1 = demoUsers ? createUser("Ahmad Ali", "ahmad@demo.com", userPassword, Role.ROLE_USER) : null;
+        User user2 = demoUsers ? createUser("Samer Omar", "samer@demo.com", userPassword, Role.ROLE_USER) : null;
 
         // Hubs
         Station sPresidentBridge = station("جسر الرئيس", "الرئيس، تحت الجسر، الحافظ", StationKind.TRANSFER_HUB, "DAMASCUS", 33.5110, 36.2890);
@@ -118,8 +121,10 @@ public class DataSeeder implements CommandLineRunner {
         route("جسر الرئيس - المهاجرين", "R-MUH-01", VehicleType.SERVIS, "DAMASCUS", "800.00",
                 List.of(sPresidentBridge, sMuhajireen));
 
-        report(ReportType.CROWDING, user1.getEmail(), r1, sBaramkeh, null, "ازدحام شديد عند موقف البرامكة");
-        report(ReportType.FARE_CHANGE, user2.getEmail(), r4, sQatanaCenter, new BigDecimal("2500.00"), "تقاضي أجرة زائدة 2500 ل.س");
+        if (demoUsers) {
+            report(ReportType.CROWDING, user1.getEmail(), r1, sBaramkeh, null, "ازدحام شديد عند موقف البرامكة");
+            report(ReportType.FARE_CHANGE, user2.getEmail(), r4, sQatanaCenter, new BigDecimal("2500.00"), "تقاضي أجرة زائدة 2500 ل.س");
+        }
 
         invalidator.invalidate();
     }

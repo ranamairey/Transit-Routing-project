@@ -23,5 +23,7 @@
     "@vitejs/plugin-react": "^6.1.1",
     "oxlint": "^1.81.0",
     "vite": "^8.3.0"
-  }
+  },
+  "author": "Tony Botros, Rana Almer'ey",
+  "license": "UNLICENSED"
 }
