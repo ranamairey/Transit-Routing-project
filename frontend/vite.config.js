@@ -33,7 +33,7 @@ export default defineConfig({
         navigateFallbackDenylist: [/^\/api\//],
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/[abcd]\.basemaps\.cartocdn\.com\/.*/i,
+            urlPattern: /^https:\/\/([abc]\.tile\.openstreetmap\.org|api\.maptiler\.com|[abcd]\.basemaps\.cartocdn\.com|tiles\.stadiamaps\.com)\/.*/i,
             handler: 'CacheFirst',
             options: {
               cacheName: 'map-tiles',

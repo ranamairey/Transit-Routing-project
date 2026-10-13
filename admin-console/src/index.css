@@ -263,3 +263,7 @@ select { appearance: none; -webkit-appearance: none; padding-inline-end: 38px !i
 :root[data-theme="dark"] .bars .bar .track { background: #27304a; }
 :root[data-theme="dark"] .leaflet-container { background: #0f1424; }
 :root[data-theme="dark"] .toast { background: #e6e9f5; color: #0f1424; }
+
+/* basemap toning: calmer light tiles, inverted tiles for dark mode (no key needed) */
+.leaflet-tile-pane .tiles-light { filter: saturate(.7) contrast(.93) brightness(1.03); }
+.leaflet-tile-pane .tiles-dark { filter: invert(1) hue-rotate(180deg) saturate(.55) brightness(.82) contrast(.9); }

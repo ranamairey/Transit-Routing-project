@@ -5,10 +5,13 @@ import { useI18n } from '../i18n/I18nContext.jsx'
 
 export const DAMASCUS_CENTER = [33.5102, 36.2913]
 
-// CARTO Positron: near-monochrome base so stations and drawn lines are the focus; Dark Matter for dark mode.
+// Key-free OpenStreetMap tiles by default; set VITE_TILE_URL (and VITE_TILE_URL_DARK) to use MapTiler/CARTO/Stadia with your own key.
+const OSM = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 export const BASEMAPS = {
-  light: 'https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png',
-  dark: 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png',
+  light: import.meta.env.VITE_TILE_URL || OSM,
+  dark: import.meta.env.VITE_TILE_URL_DARK || import.meta.env.VITE_TILE_URL || OSM,
+  // when no dedicated dark tiles are configured, the light tiles are inverted with CSS (.map-dark)
+  cssDark: !import.meta.env.VITE_TILE_URL_DARK,
 }
 
 const pinIcon = (color) => L.divIcon({
@@ -49,7 +52,7 @@ export default function MapView({
   return (
     <MapContainer center={DAMASCUS_CENTER} zoom={12} scrollWheelZoom attributionControl={false} style={{ height: '100%', width: '100%' }}>
       {/* Attribution is shown in the sidebar instead of on the map (OSM requires a visible credit). */}
-      <TileLayer key={dark ? 'dark' : 'light'} url={dark ? BASEMAPS.dark : BASEMAPS.light} subdomains="abcd" maxZoom={19} />
+      <TileLayer key={dark ? 'dark' : 'light'} url={dark ? BASEMAPS.dark : BASEMAPS.light} maxZoom={19} className={dark && BASEMAPS.cssDark ? 'tiles-dark' : 'tiles-light'} />
       <ClickHandler onClick={onClick} />
       <FitBounds points={fit} />
 
