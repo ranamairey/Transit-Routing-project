@@ -2,20 +2,17 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Api } from '../api/client.js'
 import MapView from '../components/MapView.jsx'
+import { PageHead, Panel, Stat } from '../components/ui.jsx'
 import { useNetwork } from '../hooks.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
 
 function Bars({ data, labelFor }) {
   const entries = Object.entries(data || {})
   const max = Math.max(1, ...entries.map(([, v]) => v))
-  if (entries.length === 0) return <p className="muted">—</p>
-  return entries.map(([k, v]) => (
-    <div className="bar" key={k}>
-      <span style={{ minWidth: 130 }}>{labelFor(k)}</span>
-      <div className="track"><div className="fill" style={{ width: `${(v / max) * 100}%` }} /></div>
-      <b style={{ minWidth: 28, textAlign: 'end' }}>{v}</b>
-    </div>
-  ))
+  if (entries.length === 0) return <p className="muted" style={{ margin: 0 }}>—</p>
+  return <div className="bars">{entries.map(([k, v]) => (
+    <div className="bar" key={k}><span className="label">{labelFor(k)}</span><div className="track"><div className="fill" style={{ width: `${(v / max) * 100}%` }} /></div><b>{v}</b></div>
+  ))}</div>
 }
 
 export default function DashboardPage() {
@@ -31,47 +28,41 @@ export default function DashboardPage() {
       .catch((e) => setError(e.message))
   }, [])
 
-  const reportPins = recent.filter((r) => r.location).map((r) => ({
-    id: r.id, name: `${t(`reportTypes.${r.reportType}`)} — ${r.routeName}`, location: r.location, stationKind: 'HUB',
-  }))
-
   return (
     <div>
-      <h1 style={{ fontSize: '1.4rem' }}>{t('dash.title')}</h1>
+      <PageHead eyebrow={t('dash.eyebrow')} title={t('dash.title')} description={t('dash.desc')} />
       {error && <p className="error">{error}</p>}
-      {stats && (
-        <div className="kpis">
-          {[['stations', stats.stations], ['routes', stats.routes], ['users', stats.users], ['reports24', stats.reportsLast24h], ['pending', stats.reportsPending], ['reportsTotal', stats.reportsTotal]].map(([k, v]) => (
-            <div className="kpi" key={k}><div className="value">{v}</div><div className="label">{t(`dash.${k}`)}</div></div>
-          ))}
-        </div>
-      )}
+      <section className="stats">
+        <Stat label={t('dash.stations')} value={stats?.stations} detail={t('dash.inNetwork')} icon="♧" />
+        <Stat label={t('dash.routes')} value={stats?.routes} detail={t('dash.inNetwork')} icon="≋" tone="mint" />
+        <Stat label={t('dash.users')} value={stats?.users} detail={t('dash.registered')} icon="♙" tone="orange" />
+        <Stat label={t('dash.reports24')} value={stats?.reportsLast24h} detail={t('reports.last24')} icon="◫" />
+        <Stat label={t('dash.pending')} value={stats?.reportsPending} detail={t('dash.needReview')} icon="!" tone="red" />
+      </section>
       <div className="two">
-        <div className="card"><h2 style={{ fontSize: '1.05rem' }}>{t('dash.byType')}</h2><Bars data={stats?.reportsByTypeLast24h} labelFor={(k) => t(`reportTypes.${k}`)} /></div>
-        <div className="card"><h2 style={{ fontSize: '1.05rem' }}>{t('dash.byStatus')}</h2><Bars data={stats?.routesByStatus} labelFor={(k) => t(`routeStatus.${k}`)} /></div>
+        <Panel title={t('dash.byType')} body><Bars data={stats?.reportsByTypeLast24h} labelFor={(k) => t(`reportTypes.${k}`)} /></Panel>
+        <Panel title={t('dash.byStatus')} body><Bars data={stats?.routesByStatus} labelFor={(k) => t(`routeStatus.${k}`)} /></Panel>
       </div>
       <div className="two">
-        <div className="card">
-          <h2 style={{ fontSize: '1.05rem' }}>{t('dash.map')}</h2>
-          <div style={{ height: 380, borderRadius: 12, overflow: 'hidden' }}>
-            <MapView stations={stations} routes={routes} origin={reportPins[0]?.location} />
+        <Panel title={t('dash.map')} body>
+          <div className="map-box" style={{ height: 360 }}><MapView stations={stations} routes={routes} /></div>
+        </Panel>
+        <Panel title={t('dash.recent')} tools={<Link to="/reports" className="button secondary small">{t('dash.viewAll')} →</Link>}>
+          <div className="table-wrap">
+            <table>
+              <thead><tr><th>{t('reports.time')}</th><th>{t('reports.route')}</th><th>{t('reports.type')}</th><th>{t('common.status')}</th></tr></thead>
+              <tbody>
+                {recent.map((r) => (
+                  <tr key={r.id}>
+                    <td>{timeAgo(r.sentAt)}</td><td><span className="user-name">{r.routeName}</span></td><td>{t(`reportTypes.${r.reportType}`)}</td>
+                    <td>{r.applied ? <span className="badge-role applied">{t('reports.applied')}</span> : <span className="badge-role pending">{t('reports.pendingReview')}</span>}</td>
+                  </tr>
+                ))}
+                {recent.length === 0 && <tr><td colSpan={4} className="empty">{t('reports.noRecent')}</td></tr>}
+              </tbody>
+            </table>
           </div>
-        </div>
-        <div className="card">
-          <div className="row between"><h2 style={{ fontSize: '1.05rem' }}>{t('dash.recent')}</h2><Link to="/reports">{t('dash.viewAll')} →</Link></div>
-          <table>
-            <thead><tr><th>{t('reports.time')}</th><th>{t('reports.route')}</th><th>{t('reports.type')}</th><th>{t('common.status')}</th></tr></thead>
-            <tbody>
-              {recent.map((r) => (
-                <tr key={r.id}>
-                  <td>{timeAgo(r.sentAt)}</td><td>{r.routeName}</td><td>{t(`reportTypes.${r.reportType}`)}</td>
-                  <td>{r.applied ? <span className="badge FARE_UPDATED">{t('reports.applied')}</span> : <span className="badge">{t('reports.pendingReview')}</span>}</td>
-                </tr>
-              ))}
-              {recent.length === 0 && <tr><td colSpan={4} className="muted">{t('reports.noRecent')}</td></tr>}
-            </tbody>
-          </table>
-        </div>
+        </Panel>
       </div>
     </div>
   )

@@ -7,13 +7,18 @@ import './index.css'
 import App from './App.jsx'
 import { AuthProvider } from './context/AuthContext.jsx'
 import { I18nProvider } from './i18n/I18nContext.jsx'
+import { ConfirmProvider, ToastProvider } from './components/ui.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <I18nProvider>
         <AuthProvider>
-          <App />
+          <ToastProvider>
+            <ConfirmProvider>
+              <App />
+            </ConfirmProvider>
+          </ToastProvider>
         </AuthProvider>
       </I18nProvider>
     </BrowserRouter>

@@ -14,31 +14,28 @@ export default function LoginPage() {
   if (user && isAdmin) return <Navigate to="/" replace />
 
   const submit = async (e) => {
-    e.preventDefault()
-    setBusy(true); setError('')
-    try {
-      await login(email, password)
-      navigate('/', { replace: true })
-    } catch (err) {
-      setError(err.code === 'NOT_ADMIN' ? t('login.notAdmin') : err.message)
-    } finally {
-      setBusy(false)
-    }
+    e.preventDefault(); setBusy(true); setError('')
+    try { await login(email, password); navigate('/', { replace: true }) }
+    catch (err) { setError(err.code === 'NOT_ADMIN' ? t('login.notAdmin') : err.message) }
+    finally { setBusy(false) }
   }
 
   return (
-    <div className="page auth">
-      <div className="card">
-        <div className="row between">
-          <h1 style={{ fontSize: '1.3rem' }}>🛠 {t('login.title')}</h1>
-          <button className="secondary small" onClick={toggle}>🌐 {t('nav.lang')}</button>
-        </div>
-        <p className="muted">{t('login.hint')}</p>
+    <div className="login-wrap">
+      <div className="login-card">
+        <div className="brand"><div className="brand-mark">⌁</div><div><b>{t('brand.name')}</b><span>{t('brand.sub')}</span></div></div>
+        <p className="eyebrow">{t('login.title')}</p>
+        <p className="description" style={{ marginBottom: 22 }}>{t('login.hint')}</p>
         <form onSubmit={submit}>
-          <div className="field"><label>{t('login.email')}</label><input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} /></div>
-          <div className="field"><label>{t('login.password')}</label><input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} /></div>
-          {error && <p className="error">{error}</p>}
-          <button type="submit" disabled={busy} style={{ width: '100%' }}>{busy ? '…' : t('login.submit')}</button>
+          <label className="field-label" htmlFor="email">{t('login.email')}</label>
+          <input className="field" id="email" type="email" required autoComplete="username" value={email} onChange={(e) => setEmail(e.target.value)} dir="ltr" />
+          <label className="field-label" htmlFor="password">{t('login.password')}</label>
+          <input className="field" id="password" type="password" required autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          {error && <p className="error" style={{ marginTop: -8 }}>{error}</p>}
+          <div className="form-actions" style={{ justifyContent: 'space-between', alignItems: 'center' }}>
+            <button type="button" className="button secondary small" onClick={toggle}>🌐 {t('nav.lang')}</button>
+            <button type="submit" className="button" disabled={busy}>{busy ? '…' : t('login.submit')}</button>
+          </div>
         </form>
       </div>
     </div>
