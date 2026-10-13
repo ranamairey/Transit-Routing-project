@@ -34,6 +34,7 @@ public final class Messages {
         EN.put("لا يمكنك تغيير صلاحياتك الخاصة", "You cannot change your own role");
         EN.put("لا يمكنك حذف حسابك الخاص", "You cannot delete your own account");
         EN.put("لا يوجد مسار تبديلي ضمن نطاق المشي المحدد", "No route found within the walking range");
+        EN.put("لم يُعثر على مسار بين النقطتين ضمن حدود المشي والتبديلات المسموحة", "No route found between these points within the walking and transfer limits");
         EN.put("ليس لديك الصلاحيات الكافية لتنفيذ هذا الإجراء", "You do not have permission to perform this action");
         EN.put("نقطة الانطلاق والوجهة متطابقتان", "Origin and destination are the same");
         EN.put("يجب أن يبقى مشرف واحد على الأقل", "At least one admin must remain");

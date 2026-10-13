@@ -13,7 +13,9 @@ import java.util.List;
 @ConfigurationProperties(prefix = "app.transit")
 public class TransitProperties {
 
-    private int maxRideLegs = 3;
+    private int maxRideLegs = 4;
+    /** When no route exists within maxRideLegs, retry once with up to this many rides. */
+    private int maxRideLegsFallback = 5;
     private int alternativePaths = 3;
     private double walkRadiusMeters = 750;
     private double walkSpeedKmh = 5;

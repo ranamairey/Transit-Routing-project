@@ -101,6 +101,10 @@ public class RoutingService {
 
         List<FoundPath> paths = router.findPaths(graph, originNode, destNode,
                 properties.getMaxRideLegs(), properties.getAlternativePaths());
+        if (paths.isEmpty() && properties.getMaxRideLegsFallback() > properties.getMaxRideLegs()) {
+            paths = router.findPaths(graph, originNode, destNode,
+                    properties.getMaxRideLegsFallback(), properties.getAlternativePaths());
+        }
 
         Map<Long, Station> stationByIndex = new java.util.HashMap<>(snapshot.stationByIndex());
         stationByIndex.put(TransitGraphFactory.ORIGIN_NODE, virtualStation("نقطة الانطلاق", origin.point()));
@@ -110,7 +114,7 @@ public class RoutingService {
                 .map(path -> toOption(path, stationByIndex, snapshot.routeByIndex(), now))
                 .toList();
         if (options.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "لا يوجد مسار تبديلي ضمن نطاق المشي المحدد");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "لم يُعثر على مسار بين النقطتين ضمن حدود المشي والتبديلات المسموحة");
         }
 
         List<String> routeIds = options.stream()
