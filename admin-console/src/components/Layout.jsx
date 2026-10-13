@@ -16,7 +16,7 @@ const NAV = [
 
 export default function Layout() {
   const { user, logout } = useAuth()
-  const { t, toggle } = useI18n()
+  const { t, toggle, theme, cycleTheme } = useI18n()
   const location = useLocation()
   const navigate = useNavigate()
   const [health, setHealth] = useState(null)
@@ -68,6 +68,7 @@ export default function Layout() {
           <div className="me" style={{ fontSize: 9, color: '#667796', paddingTop: 0 }}>© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer" style={{ color: '#8898b7' }}>OpenStreetMap</a> contributors</div>
           <div className="bottom-actions">
             <button onClick={toggle}>🌐 {t('nav.lang')}</button>
+            <button onClick={cycleTheme} title={t('theme.title')}>{theme === 'dark' ? '🌙' : theme === 'light' ? '☀️' : '🌗'} {t(`theme.${theme}`)}</button>
             <button onClick={logout}>↪ {t('nav.logout')}</button>
           </div>
         </div>

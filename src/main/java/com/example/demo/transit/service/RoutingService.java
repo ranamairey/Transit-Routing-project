@@ -40,12 +40,15 @@ public class RoutingService {
     private final TransitProperties properties;
     private final MultiLegRouter router = new MultiLegRouter();
     private final Clock clock;
+    private final WalkingRouter walkingRouter;
 
     public RoutingService(TransitGraphFactory graphFactory,
                           StationSearchService stationSearch,
                           ReportService reportService,
                           TransitProperties properties,
-                          Clock clock) {
+                          Clock clock,
+                          WalkingRouter walkingRouter) {
+        this.walkingRouter = walkingRouter;
         this.graphFactory = graphFactory;
         this.stationSearch = stationSearch;
         this.reportService = reportService;
@@ -76,8 +79,9 @@ public class RoutingService {
         }
 
         // Direct walk when the two points are within walking distance of each other.
-        double direct = GeoMath.haversineMeters(origin.point().lat(), origin.point().lng(), dest.point().lat(), dest.point().lng());
-        if (originNode != destNode && direct <= properties.getWalkRadiusMeters()) {
+        double directStraight = GeoMath.haversineMeters(origin.point().lat(), origin.point().lng(), dest.point().lat(), dest.point().lng());
+        if (originNode != destNode && directStraight <= properties.getWalkRadiusMeters()) {
+            double direct = graphFactory.walkingMeters(origin.point(), dest.point());
             graph.add(originNode, Edge.walk(destNode, direct, GeoMath.travelSeconds(direct, properties.getWalkSpeedKmh())));
         }
 
@@ -168,7 +172,8 @@ public class RoutingService {
                     route != null ? graphFactory.effectiveStatus(route, now) : null,
                     route != null ? route.getCurrentFare() : null,
                     step.timeSeconds(),
-                    step.distanceMeters()
+                    step.distanceMeters(),
+                    walk ? walkPath(from, to) : null
             ));
         }
         int transfers = Math.max(0, path.rideLegs() - 1);
@@ -193,6 +198,15 @@ public class RoutingService {
             }
         }
         return merged;
+    }
+
+    /** Street geometry of a walking leg from OSRM (null when unavailable; the client draws a straight line). */
+    private List<GeoPointDto> walkPath(Station from, Station to) {
+        if (from == null || to == null || !walkingRouter.enabled()) {
+            return null;
+        }
+        return walkingRouter.route(GeoMath.toDto(from), GeoMath.toDto(to), true)
+                .map(WalkingRouter.Walk::path).filter(p -> p.size() >= 2).orElse(null);
     }
 
     private Station virtualStation(String name, GeoPointDto point) {

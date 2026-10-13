@@ -20,6 +20,7 @@ public class JsonAuthEntryPoint implements AuthenticationEntryPoint {
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding(StandardCharsets.UTF_8.name());
-        response.getWriter().write("{\"error\":\"هذه العملية تتطلب تسجيل الدخول\"}");
+        String message = com.example.demo.transit.web.Messages.translate("هذه العملية تتطلب تسجيل الدخول", request.getHeader("Accept-Language"));
+        response.getWriter().write("{\"error\":\"" + message.replace("\"", "'") + "\"}");
     }
 }

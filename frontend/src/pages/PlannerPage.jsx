@@ -21,7 +21,7 @@ const distMeters = (a, b) => {
 
 export default function PlannerPage({ net }) {
   const { network, offline, loading } = net
-  const { t, formatFare, formatDuration } = useI18n()
+  const { t, formatFare, formatDuration, dark } = useI18n()
   const notify = useToast()
   const stations = network?.stations || EMPTY
   const routes = network?.routes || EMPTY
@@ -155,7 +155,7 @@ export default function PlannerPage({ net }) {
       </aside>
 
       <section className="mapcard" aria-label={t('planner.mapTitle')}>
-        <MapView stations={visibleStations} routes={visibleRoutes} dimRoutes={dimRoutes} origin={origin?.point} destination={dest?.point} legs={legs} fit={fit}
+        <MapView dark={dark} stations={visibleStations} routes={visibleRoutes} dimRoutes={dimRoutes} origin={origin?.point} destination={dest?.point} legs={legs} fit={fit}
           onClick={onMapClick} onStationClick={onStationClick} zoomPosition="bottomright" />
         <div className="map-heading"><b>{t('planner.mapTitle')}</b><span>{t('planner.mapSub')}</span></div>
         {pinMode && <div className="map-pick">📍 {t('planner.pickOnMap', { what: t(pinMode === 'origin' ? 'planner.origin' : 'planner.destination') })}</div>}

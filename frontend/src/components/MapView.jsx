@@ -5,6 +5,12 @@ import { useI18n } from '../i18n/I18nContext.jsx'
 
 export const DAMASCUS_CENTER = [33.5102, 36.2913]
 
+// CARTO basemaps (free with attribution): calm colours so the transit lines stand out; dark variant for dark mode.
+export const BASEMAPS = {
+  light: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+  dark: 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png',
+}
+
 const pinIcon = (color) => L.divIcon({
   className: '',
   html: `<div style="width:22px;height:22px;border-radius:50% 50% 50% 0;background:${color};transform:rotate(-45deg);border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)"></div>`,
@@ -36,14 +42,14 @@ const LEG_COLORS = { SERVIS: '#1f5fb3', BUS: '#b3521f', WALK: '#4b5a52' }
  * pins and the legs of the selected trip.
  */
 export default function MapView({
-  stations = [], routes = [], origin, destination, legs = [], onClick, fit, onStationClick, highlightRouteId, drawing = [], zoomPosition, dimRoutes = false,
+  stations = [], routes = [], origin, destination, legs = [], onClick, fit, onStationClick, highlightRouteId, drawing = [], zoomPosition, dimRoutes = false, dark = false,
 }) {
   const { t } = useI18n()
   return (
     <MapContainer center={DAMASCUS_CENTER} zoom={12} scrollWheelZoom zoomControl={!zoomPosition} attributionControl={false} style={{ height: '100%', width: '100%' }}>
       {zoomPosition && <ZoomControl position={zoomPosition} />}
       {/* Attribution is shown in the app chrome instead of on the map (OSM requires a visible credit). */}
-      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      <TileLayer key={dark ? 'dark' : 'light'} url={dark ? BASEMAPS.dark : BASEMAPS.light} subdomains="abcd" maxZoom={19} />
       <ClickHandler onClick={onClick} />
       <FitBounds points={fit} />
 
@@ -98,6 +104,7 @@ export default function MapView({
 
 /** Picks the part of a route polyline that lies between two stops (for drawing a ride leg). */
 export function legPath(leg, routesById) {
+  if (leg.type === 'WALK' && Array.isArray(leg.path) && leg.path.length >= 2) return leg.path
   const route = leg.routeId ? routesById[leg.routeId] : null
   const line = route?.polyline || []
   if (leg.type === 'RIDE' && line.length >= 2 && leg.from && leg.to) {

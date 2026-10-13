@@ -7,7 +7,7 @@ const ADMIN_URL = import.meta.env.VITE_ADMIN_URL || ''
 
 export default function NavBar() {
   const { user, isAdmin, logout } = useAuth()
-  const { t, toggle } = useI18n()
+  const { t, toggle, theme, cycleTheme } = useI18n()
   const [about, setAbout] = useState(false)
   return (
     <header className="topbar">
@@ -17,6 +17,7 @@ export default function NavBar() {
         <button onClick={() => setAbout(true)}>{t('nav.about')}</button>
         {isAdmin && ADMIN_URL && <a href={ADMIN_URL} target="_blank" rel="noreferrer">{t('nav.admin')} ↗</a>}
         <button className="lang" onClick={toggle}>🌐 {t('nav.lang')}</button>
+        <button className="lang" onClick={cycleTheme} title={t('theme.title')}>{theme === 'dark' ? '🌙' : theme === 'light' ? '☀️' : '🌗'} {t(`theme.${theme}`)}</button>
         {user ? (
           <>
             <span className="user">{user.fullName}</span>

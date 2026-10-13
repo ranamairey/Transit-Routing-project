@@ -8,9 +8,10 @@ public record AuthResponse(
         String userId,
         String fullName,
         String email,
-        Role role
+        Role role,
+        boolean emailVerified
 ) {
-    public static AuthResponse bearer(String token, String userId, String fullName, String email, Role role) {
-        return new AuthResponse(token, "Bearer", userId, fullName, email, role);
+    public static AuthResponse bearer(String token, String userId, String fullName, String email, Role role, boolean emailVerified) {
+        return new AuthResponse(token, "Bearer", userId, fullName, email, role, emailVerified);
     }
 }

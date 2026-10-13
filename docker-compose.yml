@@ -11,6 +11,8 @@ services:
       CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:8081,http://localhost:8082}
       SEED_ADMIN_EMAIL: ${SEED_ADMIN_EMAIL:-admin@demo.com}
       SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD:?set SEED_ADMIN_PASSWORD in .env}
+      OSRM_URL: ${OSRM_URL:-}
+      PUBLIC_URL: ${PUBLIC_URL:-http://localhost:8081}
     ports:
       - "8080:8080"
     restart: unless-stopped
@@ -31,6 +33,18 @@ services:
     depends_on: [backend]
     ports:
       - "8082:80"
+    restart: unless-stopped
+
+  # Pedestrian routing (optional): prepare the graph once with deploy/osrm/prepare.sh, then
+  # docker compose --profile osrm up -d   and set OSRM_URL=http://osrm:5000 in .env
+  osrm:
+    image: osrm/osrm-backend:latest
+    profiles: ["osrm"]
+    command: osrm-routed --algorithm mld --max-table-size 500 /data/syria-latest.osrm
+    volumes:
+      - ./deploy/osrm/data:/data:ro
+    ports:
+      - "5000:5000"
     restart: unless-stopped
 
   caddy:

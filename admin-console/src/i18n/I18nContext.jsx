@@ -3,6 +3,8 @@ import { translations } from './translations.js'
 
 const I18nContext = createContext(null)
 const LANG_KEY = 'sst.admin.lang'
+const THEME_KEY = 'sst.admin.theme'
+const systemDark = () => window.matchMedia?.('(prefers-color-scheme: dark)').matches
 
 function lookup(dict, path) {
   return path.split('.').reduce((o, k) => (o && o[k] !== undefined ? o[k] : undefined), dict)
@@ -16,6 +18,18 @@ export function I18nProvider({ children }) {
     } catch { /* ignore */ }
     return navigator.language?.toLowerCase().startsWith('en') ? 'en' : 'ar'
   })
+
+  const [theme, setThemeState] = useState(() => { try { return localStorage.getItem(THEME_KEY) || 'auto' } catch { return 'auto' } })
+  const [sysDark, setSysDark] = useState(systemDark())
+  useEffect(() => {
+    const mq = window.matchMedia?.('(prefers-color-scheme: dark)')
+    const on = (e) => setSysDark(e.matches)
+    mq?.addEventListener?.('change', on)
+    return () => mq?.removeEventListener?.('change', on)
+  }, [])
+  const dark = theme === 'dark' || (theme === 'auto' && sysDark)
+  const setTheme = useCallback((next) => { setThemeState(next); try { localStorage.setItem(THEME_KEY, next) } catch { /* ignore */ } }, [])
+  useEffect(() => { document.documentElement.dataset.theme = dark ? 'dark' : 'light' }, [dark])
 
   const setLang = useCallback((next) => {
     setLangState(next)
@@ -40,7 +54,8 @@ export function I18nProvider({ children }) {
     }
     const locale = lang === 'ar' ? 'ar-SY' : 'en'
     return {
-      lang, dir: dict.dir, setLang, t, locale,
+      lang, dir: dict.dir, setLang, t, locale, theme, setTheme, dark,
+      cycleTheme: () => setTheme(theme === 'auto' ? 'dark' : theme === 'dark' ? 'light' : 'auto'),
       toggle: () => setLang(lang === 'ar' ? 'en' : 'ar'),
       formatDuration: (seconds) => {
         const m = Math.round(seconds / 60)
@@ -57,7 +72,7 @@ export function I18nProvider({ children }) {
         return t('units.agoDay', { n: Math.round(diff / 1440) })
       },
     }
-  }, [lang, dict, setLang])
+  }, [lang, dict, setLang, theme, setTheme, dark])
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>
 }

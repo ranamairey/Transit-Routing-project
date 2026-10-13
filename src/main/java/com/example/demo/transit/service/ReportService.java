@@ -16,6 +16,8 @@ import com.example.demo.transit.entity.Station;
 import com.example.demo.transit.repository.CrowdsourceReportRepository;
 import com.example.demo.transit.repository.RouteRepository;
 import com.example.demo.transit.repository.StationRepository;
+import com.example.demo.transit.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -48,6 +50,8 @@ public class ReportService {
     private final SecurityLimits limits;
     private final RateLimiter rateLimiter;
     private final Clock clock;
+    private final UserRepository userRepository;
+    private final boolean requireVerified;
 
     public ReportService(CrowdsourceReportRepository reportRepository,
                          RouteRepository routeRepository,
@@ -56,7 +60,11 @@ public class ReportService {
                          TransitProperties properties,
                          SecurityLimits limits,
                          RateLimiter rateLimiter,
-                         Clock clock) {
+                         Clock clock,
+                         UserRepository userRepository,
+                         @Value("${app.auth.require-verified-for-reports:false}") boolean requireVerified) {
+        this.userRepository = userRepository;
+        this.requireVerified = requireVerified;
         this.reportRepository = reportRepository;
         this.routeRepository = routeRepository;
         this.stationRepository = stationRepository;
@@ -71,6 +79,9 @@ public class ReportService {
 
     public ReportResponse submit(ReportRequest request) {
         String reporterId = currentUser();
+        if (requireVerified && userRepository.findByEmail(reporterId).map(u -> !u.isEmailVerified()).orElse(true)) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "يجب تأكيد البريد الإلكتروني قبل إرسال البلاغات");
+        }
 
         Route route = routeRepository.findById(request.routeId())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "الخط غير موجود"));

@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.transit.repository.UserRepository;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -47,6 +48,8 @@ class TransitApiIntegrationTest {
     MockMvc mvc;
     @Autowired
     ObjectMapper json;
+    @Autowired
+    UserRepository userRepository;
 
     String adminToken;
     String userToken;
@@ -221,6 +224,49 @@ class TransitApiIntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON).content("{\"status\":\"NORMAL\",\"currentFare\":2000}"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.status").value("NORMAL"));
+    }
+
+    @Test
+    @Order(8)
+    void englishMessagesPasswordResetAndEmailVerification() throws Exception {
+        // Accept-Language: en translates API errors.
+        mvc.perform(get("/api/v1/routes/does-not-exist").header("Accept-Language", "en-US"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.error").value("Line not found"));
+        mvc.perform(get("/api/v1/routes/does-not-exist"))
+                .andExpect(jsonPath("$.error").value("الخط غير موجود"));
+
+        // New rider: not verified until the emailed token is used.
+        mvc.perform(post("/api/v1/auth/register").contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"fullName\":\"Reset Tester\",\"email\":\"reset@demo.com\",\"password\":\"Reset#123\"}"))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.emailVerified").value(false));
+        String verifyToken = userRepository.findByEmail("reset@demo.com").orElseThrow().getVerificationToken();
+        assertTrue(verifyToken != null && verifyToken.length() > 20);
+        mvc.perform(post("/api/v1/auth/verify-email").contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"token\":\"" + verifyToken + "\"}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.emailVerified").value(true));
+        mvc.perform(post("/api/v1/auth/verify-email").contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"token\":\"" + verifyToken + "\"}"))
+                .andExpect(status().isBadRequest());
+
+        // Forgot password never reveals whether the email exists; the token lands in the user document.
+        mvc.perform(post("/api/v1/auth/forgot-password").contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"email\":\"nobody@demo.com\"}"))
+                .andExpect(status().isOk());
+        mvc.perform(post("/api/v1/auth/forgot-password").contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"email\":\"reset@demo.com\"}"))
+                .andExpect(status().isOk());
+        String resetToken = userRepository.findByEmail("reset@demo.com").orElseThrow().getResetToken();
+        mvc.perform(post("/api/v1/auth/reset-password").contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"token\":\"" + resetToken + "\",\"newPassword\":\"Newpass1\"}"))
+                .andExpect(status().isOk());
+        token("reset@demo.com", "Newpass1");
+        mvc.perform(post("/api/v1/auth/reset-password").contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"token\":\"" + resetToken + "\",\"newPassword\":\"Newpass2\"}"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error").value("رابط غير صالح أو منتهي الصلاحية"));
     }
 
     @Test

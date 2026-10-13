@@ -183,3 +183,28 @@ a { color: var(--green); text-decoration: none; }
 /* Any remaining native select: give the arrow room and a themed chevron */
 select { appearance: none; -webkit-appearance: none; padding-inline-end: 38px !important; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 8l5 5 5-5' stroke='%238893a5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-size: 14px; }
 [dir="rtl"] select { background-position: left 12px center; }
+
+/* ---------- dark mode (toggle in the top bar; "auto" follows the system) ---------- */
+:root[data-theme="dark"] {
+  --ink: #e6edf3; --muted: #9fb0bf; --line: #223140; --green: #2fc29b; --green-dark: #27a885; --green-soft: #113b33;
+  --bg: #0f1720; --nav: #0b1a2a; --shadow: 0 12px 32px rgba(0, 0, 0, .45);
+}
+:root[data-theme="dark"] body { background: var(--bg); color: var(--ink); }
+:root[data-theme="dark"] .topbar, :root[data-theme="dark"] .panel, :root[data-theme="dark"] .field, :root[data-theme="dark"] .result,
+:root[data-theme="dark"] .suggest ul, :root[data-theme="dark"] .modal, :root[data-theme="dark"] .map-heading, :root[data-theme="dark"] .map-tools button,
+:root[data-theme="dark"] .map-badge, :root[data-theme="dark"] .route-footer button, :root[data-theme="dark"] .sel-btn, :root[data-theme="dark"] .sel-menu { background: #16212d; color: var(--ink); border-color: var(--line); }
+:root[data-theme="dark"] .field input, :root[data-theme="dark"] .modal input, :root[data-theme="dark"] .modal select, :root[data-theme="dark"] .modal textarea, :root[data-theme="dark"] .auth .panel input { background: #0f1720; color: var(--ink); border-color: var(--line); }
+:root[data-theme="dark"] .nav button, :root[data-theme="dark"] .nav a { color: #b7c5d3; }
+:root[data-theme="dark"] .nav .lang { background: #223140; }
+:root[data-theme="dark"] .nav button.active, :root[data-theme="dark"] .nav a.active { background: var(--green-soft); color: var(--green); }
+:root[data-theme="dark"] .shortcuts button, :root[data-theme="dark"] .chips button { background: #113b33; color: #8fe0c6; border-color: #1f5a4c; }
+:root[data-theme="dark"] .field .picked { background: #113b33; border-color: #1f5a4c; }
+:root[data-theme="dark"] .route-footer { background: #121c27; }
+:root[data-theme="dark"] .alert { background: #2a2410; border-color: #5a4a14; } :root[data-theme="dark"] .alert p, :root[data-theme="dark"] .alert ul { color: #e3c76a; } :root[data-theme="dark"] .alert .symbol { background: #4a3d12; }
+:root[data-theme="dark"] .tag, :root[data-theme="dark"] .pill { background: var(--green-soft); color: var(--green); }
+:root[data-theme="dark"] .step-icon { background: #1c2a3a; } :root[data-theme="dark"] .step-icon.SERVIS { background: #113b33; }
+:root[data-theme="dark"] .mapcard { background: #0f1720; border-color: var(--line); }
+:root[data-theme="dark"] .leaflet-container { background: #0f1720; }
+:root[data-theme="dark"] .sel-opt.active { background: #1c2a3a; }
+:root[data-theme="dark"] .btn.secondary { background: #223140; color: var(--ink); }
+:root[data-theme="dark"] .toast { background: #e6edf3; color: #0f1720; }

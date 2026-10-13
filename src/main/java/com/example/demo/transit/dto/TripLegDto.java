@@ -17,6 +17,7 @@ public record TripLegDto(
         RouteStatus routeStatus,
         BigDecimal fare,
         int durationSeconds,
-        double distanceMeters
+        double distanceMeters,
+        java.util.List<GeoPointDto> path
 ) {
 }

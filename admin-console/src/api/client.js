@@ -1,5 +1,7 @@
 const BASE = (import.meta.env.VITE_API_BASE || '') + '/api/v1'
 const TOKEN_KEY = 'sst.admin.token'
+const LANG_KEY = 'sst.admin.lang'
+const currentLang = () => { try { return localStorage.getItem(LANG_KEY) || 'ar' } catch { return 'ar' } }
 
 export function getToken() {
   try { return localStorage.getItem(TOKEN_KEY) } catch { return null }
@@ -22,6 +24,7 @@ export async function api(path, { method = 'GET', body, headers = {} } = {}) {
     headers: {
       ...(body !== undefined ? { 'Content-Type': 'application/json' } : {}),
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      'Accept-Language': currentLang(),
       ...headers,
     },
     body: body !== undefined ? JSON.stringify(body) : undefined,

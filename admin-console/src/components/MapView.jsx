@@ -5,6 +5,12 @@ import { useI18n } from '../i18n/I18nContext.jsx'
 
 export const DAMASCUS_CENTER = [33.5102, 36.2913]
 
+// CARTO Positron: near-monochrome base so stations and drawn lines are the focus; Dark Matter for dark mode.
+export const BASEMAPS = {
+  light: 'https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png',
+  dark: 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png',
+}
+
 const pinIcon = (color) => L.divIcon({
   className: '',
   html: `<div style="width:22px;height:22px;border-radius:50% 50% 50% 0;background:${color};transform:rotate(-45deg);border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)"></div>`,
@@ -38,11 +44,12 @@ const LEG_COLORS = { SERVIS: '#1f5fb3', BUS: '#b3521f', WALK: '#4b5a52' }
 export default function MapView({
   stations = [], routes = [], origin, destination, legs = [], onClick, fit, onStationClick, highlightRouteId, drawing = [],
 }) {
+  const { dark } = useI18n()
   const { t } = useI18n()
   return (
     <MapContainer center={DAMASCUS_CENTER} zoom={12} scrollWheelZoom attributionControl={false} style={{ height: '100%', width: '100%' }}>
       {/* Attribution is shown in the sidebar instead of on the map (OSM requires a visible credit). */}
-      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      <TileLayer key={dark ? 'dark' : 'light'} url={dark ? BASEMAPS.dark : BASEMAPS.light} subdomains="abcd" maxZoom={19} />
       <ClickHandler onClick={onClick} />
       <FitBounds points={fit} />
 

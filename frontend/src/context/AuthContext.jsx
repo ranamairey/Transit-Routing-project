@@ -12,7 +12,7 @@ export function AuthProvider({ children }) {
   const persist = useCallback((auth) => {
     if (auth) {
       setToken(auth.token)
-      const profile = { userId: auth.userId, fullName: auth.fullName, email: auth.email, role: auth.role }
+      const profile = { userId: auth.userId, fullName: auth.fullName, email: auth.email, role: auth.role, emailVerified: auth.emailVerified }
       try { localStorage.setItem(USER_KEY, JSON.stringify(profile)) } catch { /* ignore */ }
       setUser(profile)
     } else {
@@ -34,6 +34,8 @@ export function AuthProvider({ children }) {
     login: async (email, password) => persist(await Api.login(email, password)),
     register: async (fullName, email, password) => persist(await Api.register(fullName, email, password)),
     logout: () => persist(null),
+    resetPassword: async (token, newPassword) => persist(await Api.resetPassword(token, newPassword)),
+    verifyEmail: async (token) => persist(await Api.verifyEmail(token)),
   }), [user, persist])
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

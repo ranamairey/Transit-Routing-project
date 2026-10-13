@@ -6,6 +6,9 @@ import { useI18n } from './i18n/I18nContext.jsx'
 import PlannerPage from './pages/PlannerPage.jsx'
 import LoginPage from './pages/LoginPage.jsx'
 import RegisterPage from './pages/RegisterPage.jsx'
+import ForgotPasswordPage from './pages/ForgotPasswordPage.jsx'
+import ResetPasswordPage from './pages/ResetPasswordPage.jsx'
+import VerifyEmailPage from './pages/VerifyEmailPage.jsx'
 
 /** Rider app: planner, login/register and reporting. Administration lives in the separate admin console. */
 export default function App() {
@@ -20,6 +23,9 @@ export default function App() {
         <Route path="/" element={<PlannerPage net={net} />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/forgot" element={<ForgotPasswordPage />} />
+        <Route path="/reset" element={<ResetPasswordPage />} />
+        <Route path="/verify" element={<VerifyEmailPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>

@@ -37,7 +37,7 @@ export default function LoginPage() {
           {error && <p className="error">{error}</p>}
           <button type="submit" className="primary" disabled={busy}>{busy ? '…' : t('auth.login')}</button>
         </form>
-        <p style={{ marginTop: '0.75rem' }}>{t('auth.noAccount')} <Link to="/register">{t('auth.createAccount')}</Link></p>
+        <p style={{ marginTop: '0.75rem' }}>{t('auth.noAccount')} <Link to="/register">{t('auth.createAccount')}</Link> · <Link to="/forgot">{t('auth.forgot')}</Link></p>
       </div>
     </div>
   )

@@ -8,6 +8,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.Instant;
+
 @Document("users")
 @Getter
 @Setter
@@ -26,4 +28,12 @@ public class User {
     private String password;
 
     private Role role = Role.ROLE_USER;
+
+    private boolean emailVerified = false;
+
+    private String verificationToken;
+
+    private String resetToken;
+
+    private Instant resetTokenExpiresAt;
 }

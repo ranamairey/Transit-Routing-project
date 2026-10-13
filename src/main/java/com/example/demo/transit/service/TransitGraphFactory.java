@@ -38,15 +38,24 @@ public class TransitGraphFactory {
     private final RouteRepository routeRepository;
     private final StationRepository stationRepository;
     private final TransitProperties properties;
+    private final WalkingRouter walkingRouter;
 
     private volatile NetworkSnapshot cached;
 
     public TransitGraphFactory(RouteRepository routeRepository,
                                StationRepository stationRepository,
-                               TransitProperties properties) {
+                               TransitProperties properties,
+                               WalkingRouter walkingRouter) {
         this.routeRepository = routeRepository;
         this.stationRepository = stationRepository;
         this.properties = properties;
+        this.walkingRouter = walkingRouter;
+    }
+
+    /** Walking distance between two points: OSRM when available, else straight line. */
+    public double walkingMeters(GeoPointDto a, GeoPointDto b) {
+        double straight = GeoMath.haversineMeters(a.lat(), a.lng(), b.lat(), b.lng());
+        return walkingRouter.route(a, b, false).map(WalkingRouter.Walk::meters).filter(m -> m >= straight * 0.9).orElse(straight);
     }
 
     public void invalidate() {
@@ -121,8 +130,12 @@ public class TransitGraphFactory {
         }
         boolean connected = false;
         for (Station station : stations) {
-            double meters = GeoMath.haversineMeters(point.lat(), point.lng(), station.getLatitude(), station.getLongitude());
-            if (meters <= properties.getWalkRadiusMeters()) {
+            double straight = GeoMath.haversineMeters(point.lat(), point.lng(), station.getLatitude(), station.getLongitude());
+            if (straight <= properties.getWalkRadiusMeters()) {
+                double meters = walkingMeters(point, GeoMath.toDto(station));
+                if (meters > properties.getWalkRadiusMeters() * 1.5) {
+                    continue; // reachable in a straight line only (river, highway...)
+                }
                 int seconds = GeoMath.travelSeconds(meters, properties.getWalkSpeedKmh());
                 addEdge(graph, nodeId, snapshot.index(station), meters, seconds, fromNode);
                 connected = true;
@@ -209,8 +222,12 @@ public class TransitGraphFactory {
             for (int j = i + 1; j < stations.size(); j++) {
                 Station a = stations.get(i);
                 Station b = stations.get(j);
-                double meters = GeoMath.haversineMeters(a.getLatitude(), a.getLongitude(), b.getLatitude(), b.getLongitude());
-                if (meters > maxWalk) {
+                double straight = GeoMath.haversineMeters(a.getLatitude(), a.getLongitude(), b.getLatitude(), b.getLongitude());
+                if (straight > maxWalk) {
+                    continue;
+                }
+                double meters = walkingMeters(GeoMath.toDto(a), GeoMath.toDto(b));
+                if (meters > maxWalk * 1.5) {
                     continue;
                 }
                 int seconds = GeoMath.travelSeconds(meters, properties.getWalkSpeedKmh());

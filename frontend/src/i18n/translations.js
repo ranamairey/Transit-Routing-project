@@ -5,6 +5,7 @@ export const translations = {
     appName: 'مواصلات سوريا الذكية',
     tagline: 'دليلك الأذكى للتنقل في دمشق',
     nav: { planner: 'مخطط الرحلات', about: 'عن المشروع', admin: 'لوحة الإدارة', login: 'تسجيل الدخول', logout: 'خروج', offline: 'غير متصل', lang: 'English' },
+    theme: { title: 'المظهر', auto: 'تلقائي', dark: 'داكن', light: 'فاتح' },
     about: { title: 'عن المشروع', body: 'نظام ملاحة ذكي لشبكة النقل العام في سوريا (سرافيس وباصات) يقترح أفضل مسار بين نقطتين بأقل تكلفة ووقت.', p1: 'بحث بالإحداثيات أو دبوس على الخريطة أو اسم المنطقة — بدون حساب.', p2: 'بلاغات تشاركية من الركاب تحدّث حالة الخطوط والتسعيرة تلقائياً.', p3: 'يعمل دون اتصال على الشبكة المحفوظة آخر مرة.', credit: 'بيانات الخريطة:' },
     offlineBanner: 'لا يوجد اتصال بالإنترنت — تعرض الخطوط المحفوظة، وستُزامن البلاغات عند عودة الشبكة',
     planner: {
@@ -51,6 +52,9 @@ export const translations = {
       login: 'دخول', register: 'تسجيل', registerTitle: 'إنشاء حساب',
       noAccount: 'ليس لديك حساب؟', createAccount: 'أنشئ حساباً', haveAccount: 'لديك حساب؟', signIn: 'سجّل الدخول',
       adminOnly: 'لوحة التحكم متاحة للمشرفين فقط.',
+      forgot: 'نسيت كلمة السر؟', forgotTitle: 'استعادة كلمة السر', forgotHint: 'أدخل بريدك وسنرسل لك رابطاً لإعادة التعيين إن كان الحساب موجوداً.', sendLink: 'إرسال الرابط', forgotSent: 'إذا كان البريد مسجلاً فستصلك رسالة خلال دقائق. تحقق من مجلد الرسائل غير المرغوبة أيضاً.',
+      resetTitle: 'كلمة سر جديدة', newPassword: 'كلمة السر الجديدة (6 أحرف على الأقل)', resetBtn: 'حفظ كلمة السر', resetDone: 'تم تغيير كلمة السر وتسجيل دخولك.', badLink: 'الرابط غير صالح أو منتهي الصلاحية.',
+      verifyTitle: 'تأكيد البريد الإلكتروني', verifying: 'جارٍ التأكيد…', verifyDone: 'تم تأكيد بريدك الإلكتروني، شكراً!', verifyNeeded: 'بريدك غير مؤكد بعد.', resend: 'إعادة إرسال رسالة التأكيد', resent: 'أُرسلت رسالة التأكيد.', backHome: 'العودة إلى المخطط',
     },
     admin: {
       title: 'لوحة التحكم والإشراف', reports: 'البلاغات', stations: 'المحطات', routes: 'الخطوط',
@@ -82,6 +86,7 @@ export const translations = {
     appName: 'Smart Syrian Transit',
     tagline: 'Your smarter guide to getting around Damascus',
     nav: { planner: 'Trip planner', about: 'About', admin: 'Admin console', login: 'Sign in', logout: 'Sign out', offline: 'Offline', lang: 'العربية' },
+    theme: { title: 'Appearance', auto: 'Auto', dark: 'Dark', light: 'Light' },
     about: { title: 'About the project', body: 'A smart navigation system for Syria’s public transport (servis and buses) that suggests the best route between two points at the lowest cost and time.', p1: 'Search by coordinates, a map pin or an area name — no account needed.', p2: 'Crowdsourced rider reports update line status and fares automatically.', p3: 'Works offline on the last saved network.', credit: 'Map data:' },
     offlineBanner: 'No internet connection — showing saved lines; reports will sync when the network is back',
     planner: {
@@ -128,6 +133,9 @@ export const translations = {
       login: 'Sign in', register: 'Register', registerTitle: 'Create an account',
       noAccount: 'No account yet?', createAccount: 'Create one', haveAccount: 'Already have an account?', signIn: 'Sign in',
       adminOnly: 'The dashboard is available to admins only.',
+      forgot: 'Forgot password?', forgotTitle: 'Recover your password', forgotHint: 'Enter your email and we will send a reset link if the account exists.', sendLink: 'Send link', forgotSent: 'If that email is registered you will receive a message within minutes. Check your spam folder too.',
+      resetTitle: 'New password', newPassword: 'New password (at least 6 characters)', resetBtn: 'Save password', resetDone: 'Your password was changed and you are signed in.', badLink: 'This link is invalid or has expired.',
+      verifyTitle: 'Email verification', verifying: 'Verifying…', verifyDone: 'Your email is verified, thank you!', verifyNeeded: 'Your email is not verified yet.', resend: 'Resend verification email', resent: 'Verification email sent.', backHome: 'Back to the planner',
     },
     admin: {
       title: 'Admin dashboard', reports: 'Reports', stations: 'Stations', routes: 'Lines',

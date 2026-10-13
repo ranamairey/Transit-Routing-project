@@ -53,6 +53,7 @@ public class UserAdminService {
         user.setEmail(email);
         user.setPassword(passwordEncoder.encode(request.password()));
         user.setRole(request.role() != null ? request.role() : Role.ROLE_USER);
+        user.setEmailVerified(true);
         return toResponse(userRepository.save(user));
     }
 
