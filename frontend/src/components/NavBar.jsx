@@ -34,6 +34,7 @@ export default function NavBar() {
             <ul className="sub" style={{ paddingInlineStart: 18, marginBottom: 14 }}>
               <li>{t('about.p1')}</li><li>{t('about.p2')}</li><li>{t('about.p3')}</li>
             </ul>
+            <p className="sub" style={{ fontSize: 10, marginBottom: 12 }}>{t('about.credit')} <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors</a></p>
             <button className="btn" onClick={() => setAbout(false)}>{t('report.close')}</button>
           </div>
         </div>

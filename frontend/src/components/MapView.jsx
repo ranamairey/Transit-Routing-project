@@ -40,12 +40,10 @@ export default function MapView({
 }) {
   const { t } = useI18n()
   return (
-    <MapContainer center={DAMASCUS_CENTER} zoom={12} scrollWheelZoom zoomControl={!zoomPosition} style={{ height: '100%', width: '100%' }}>
+    <MapContainer center={DAMASCUS_CENTER} zoom={12} scrollWheelZoom zoomControl={!zoomPosition} attributionControl={false} style={{ height: '100%', width: '100%' }}>
       {zoomPosition && <ZoomControl position={zoomPosition} />}
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
+      {/* Attribution is shown in the app chrome instead of on the map (OSM requires a visible credit). */}
+      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <ClickHandler onClick={onClick} />
       <FitBounds points={fit} />
 

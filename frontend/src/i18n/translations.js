@@ -5,7 +5,7 @@ export const translations = {
     appName: 'مواصلات سوريا الذكية',
     tagline: 'دليلك الأذكى للتنقل في دمشق',
     nav: { planner: 'مخطط الرحلات', about: 'عن المشروع', admin: 'لوحة الإدارة', login: 'تسجيل الدخول', logout: 'خروج', offline: 'غير متصل', lang: 'English' },
-    about: { title: 'عن المشروع', body: 'نظام ملاحة ذكي لشبكة النقل العام في سوريا (سرافيس وباصات) يقترح أفضل مسار بين نقطتين بأقل تكلفة ووقت.', p1: 'بحث بالإحداثيات أو دبوس على الخريطة أو اسم المنطقة — بدون حساب.', p2: 'بلاغات تشاركية من الركاب تحدّث حالة الخطوط والتسعيرة تلقائياً.', p3: 'يعمل دون اتصال على الشبكة المحفوظة آخر مرة.' },
+    about: { title: 'عن المشروع', body: 'نظام ملاحة ذكي لشبكة النقل العام في سوريا (سرافيس وباصات) يقترح أفضل مسار بين نقطتين بأقل تكلفة ووقت.', p1: 'بحث بالإحداثيات أو دبوس على الخريطة أو اسم المنطقة — بدون حساب.', p2: 'بلاغات تشاركية من الركاب تحدّث حالة الخطوط والتسعيرة تلقائياً.', p3: 'يعمل دون اتصال على الشبكة المحفوظة آخر مرة.', credit: 'بيانات الخريطة:' },
     offlineBanner: 'لا يوجد اتصال بالإنترنت — تعرض الخطوط المحفوظة، وستُزامن البلاغات عند عودة الشبكة',
     planner: {
       title: 'خطط رحلتك',
@@ -82,7 +82,7 @@ export const translations = {
     appName: 'Smart Syrian Transit',
     tagline: 'Your smarter guide to getting around Damascus',
     nav: { planner: 'Trip planner', about: 'About', admin: 'Admin console', login: 'Sign in', logout: 'Sign out', offline: 'Offline', lang: 'العربية' },
-    about: { title: 'About the project', body: 'A smart navigation system for Syria’s public transport (servis and buses) that suggests the best route between two points at the lowest cost and time.', p1: 'Search by coordinates, a map pin or an area name — no account needed.', p2: 'Crowdsourced rider reports update line status and fares automatically.', p3: 'Works offline on the last saved network.' },
+    about: { title: 'About the project', body: 'A smart navigation system for Syria’s public transport (servis and buses) that suggests the best route between two points at the lowest cost and time.', p1: 'Search by coordinates, a map pin or an area name — no account needed.', p2: 'Crowdsourced rider reports update line status and fares automatically.', p3: 'Works offline on the last saved network.', credit: 'Map data:' },
     offlineBanner: 'No internet connection — showing saved lines; reports will sync when the network is back',
     planner: {
       title: 'Plan your trip',
