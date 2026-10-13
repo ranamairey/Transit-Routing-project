@@ -143,7 +143,12 @@ a { color: var(--green); text-decoration: none; }
 @media (max-width: 800px) {
   .topbar { padding: 12px; } .brand b { font-size: 15px; } .nav button, .nav a { font-size: 11px; padding: 7px; }
   .workspace { display: flex; flex-direction: column; padding: 10px; } .sidebar { max-height: none; }
-  .mapcard { height: 55vh; min-height: 370px; order: -1; } .panel { padding: 16px; } .map-heading { top: 12px; inset-inline-start: 12px; }
+  .mapcard { height: 55vh; min-height: 370px; order: -1; } .panel { padding: 16px; } .map-heading { top: 12px; inset-inline-start: 12px; padding: 9px 12px; }
+  .map-tools { bottom: 12px; inset-inline-start: 12px; inset-inline-end: 64px; flex-wrap: wrap; gap: 6px; }
+  .map-tools button { padding: 8px 10px; font-size: 11px; }
+  .map-badge { top: 12px; bottom: auto; inset-inline-end: 12px; padding: 7px 10px; font-size: 10px; }
+  .map-pick { top: 52px; inset-inline-end: 12px; font-size: 11px; padding: 8px 11px; }
+  .leaflet-bottom.leaflet-right { margin-bottom: 0; }
 }
 
 /* ---------- themed dropdown (Select component) ---------- */
