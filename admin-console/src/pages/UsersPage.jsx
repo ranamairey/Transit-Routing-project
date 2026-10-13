@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Api } from '../api/client.js'
+import Select from '../components/Select.jsx'
 import { Initials, Modal, PageHead, Panel, SearchBox, Stat, TableFooter, toneFor, useConfirm, useToast } from '../components/ui.jsx'
 import { useAuth } from '../context/AuthContext.jsx'
 import { useI18n } from '../i18n/I18nContext.jsx'
@@ -64,9 +65,8 @@ export default function UsersPage() {
       <Panel title={t('users.all')} count={counts.total} subtitle={t('users.allDesc')}
         tools={<>
           <SearchBox value={q} onChange={(v) => { setQ(v); setPage(0) }} placeholder={t('users.searchPlaceholder')} />
-          <select className="filter" value={role} onChange={(e) => { setRole(e.target.value); setPage(0) }}>
-            <option value="">{t('users.allRoles')}</option><option value="ROLE_ADMIN">{t('users.ROLE_ADMIN')}</option><option value="ROLE_USER">{t('users.ROLE_USER')}</option>
-          </select>
+          <Select value={role} onChange={(v) => { setRole(v); setPage(0) }} style={{ width: 160 }} ariaLabel={t('users.role')}
+            options={[{ value: '', label: t('users.allRoles') }, { value: 'ROLE_ADMIN', label: t('users.ROLE_ADMIN') }, { value: 'ROLE_USER', label: t('users.ROLE_USER') }]} />
         </>}
         footer={<TableFooter page={page} size={SIZE} total={data.total} onPage={setPage} />}>
         {error && !modal && <p className="error" style={{ padding: '0 25px' }}>{error}</p>}
@@ -81,9 +81,8 @@ export default function UsersPage() {
                     <td><div className="user-cell"><Initials name={u.fullName} tone={toneFor(u.id)} /><div><div className="user-name">{u.fullName}{own && <span className="tag-you">{t('users.you')}</span>}</div></div></div></td>
                     <td dir="ltr" style={{ textAlign: 'start' }}>{u.email}</td>
                     <td>{own ? <span className="badge-role">{t('users.ROLE_ADMIN')}</span> : (
-                      <select className="filter select-inline" value={u.role} onChange={(e) => changeRole(u, e.target.value)}>
-                        <option value="ROLE_USER">{t('users.ROLE_USER')}</option><option value="ROLE_ADMIN">{t('users.ROLE_ADMIN')}</option>
-                      </select>)}</td>
+                      <Select small value={u.role} onChange={(v) => changeRole(u, v)} style={{ width: 130 }} ariaLabel={t('users.role')}
+                        options={[{ value: 'ROLE_USER', label: t('users.ROLE_USER') }, { value: 'ROLE_ADMIN', label: t('users.ROLE_ADMIN') }]} />)}</td>
                     <td><span className="status-chip">{t('common.active')}</span></td>
                     <td><div className="actions">
                       <button className="action" onClick={() => open({ mode: 'reset', user: u })}>{t('users.resetPassword')}</button>
@@ -112,7 +111,8 @@ export default function UsersPage() {
             <input className="field" id="u-pass" type="password" minLength={8} required autoFocus={modal.mode === 'reset'} placeholder={t('users.passwordPlaceholder')} value={form.password} onChange={set('password')} autoComplete="new-password" />
             {modal.mode === 'add' && (<>
               <label className="field-label" htmlFor="u-role">{t('users.role')}</label>
-              <select className="field" id="u-role" value={form.role} onChange={set('role')}><option value="ROLE_USER">{t('users.ROLE_USER')}</option><option value="ROLE_ADMIN">{t('users.ROLE_ADMIN')}</option></select>
+              <div style={{ marginBottom: 18 }}><Select value={form.role} onChange={(v) => setForm((f) => ({ ...f, role: v }))} ariaLabel={t('users.role')}
+                options={[{ value: 'ROLE_USER', label: t('users.ROLE_USER') }, { value: 'ROLE_ADMIN', label: t('users.ROLE_ADMIN') }]} /></div>
             </>)}
             {error && <p className="error" style={{ marginTop: -8 }}>{error}</p>}
             <div className="modal-buttons">

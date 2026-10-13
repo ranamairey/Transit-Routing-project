@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Api } from '../api/client.js'
 import MapView from '../components/MapView.jsx'
+import Select from '../components/Select.jsx'
 import { PageHead, Panel, Stat, TableFooter, useConfirm, useToast } from '../components/ui.jsx'
 import { useNetwork } from '../hooks.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
@@ -31,7 +32,7 @@ export default function ReportsPage() {
   useEffect(() => { load() }, [load])
 
   const act = async (fn, msg) => { try { await fn(); notify(msg); await load(); await refresh() } catch (err) { notify(err.message, 'error') } }
-  const set = (k) => (e) => { setFilters((f) => ({ ...f, [k]: e.target.value })); setPage(0) }
+  const set = (k) => (v) => { setFilters((f) => ({ ...f, [k]: v })); setPage(0) }
   const pins = pageData.items.filter((r) => r.location).map((r) => ({ id: r.id, name: `${t(`reportTypes.${r.reportType}`)} — ${r.routeName}`, location: r.location, stationKind: 'HUB' }))
   const statusBadge = (r) => r.dismissed ? <span className="badge-role rejected">{t('reports.dismissed')}</span>
     : r.applied ? <span className="badge-role applied">{r.reviewedBy === 'auto' ? t('reports.autoApproved') : t('reports.applied')}</span>
@@ -70,11 +71,11 @@ export default function ReportsPage() {
 
       <Panel title={t('reports.allTitle')} count={pageData.total} subtitle={t('reports.allDesc')}
         tools={<>
-          <select className="filter" value={filters.routeId} onChange={set('routeId')}><option value="">{t('reports.allRoutes')}</option>{routes.map((r) => <option key={r.id} value={r.id}>{r.name}</option>)}</select>
-          <select className="filter" value={filters.type} onChange={set('type')}><option value="">{t('reports.allTypes')}</option>{REPORT_TYPE_KEYS.map((k) => <option key={k} value={k}>{t(`reportTypes.${k}`)}</option>)}</select>
-          <select className="filter" value={filters.applied} onChange={set('applied')}><option value="">{t('reports.appliedAny')}</option><option value="true">{t('reports.applied')}</option><option value="false">{t('reports.notApplied')}</option></select>
-          <select className="filter" value={filters.dismissed} onChange={set('dismissed')}><option value="false">{t('reports.notDismissed')}</option><option value="true">{t('reports.dismissed')}</option><option value="">{t('reports.all')}</option></select>
-          <select className="filter" value={filters.hours} onChange={set('hours')}><option value="3">{t('reports.h3')}</option><option value="24">{t('reports.h24')}</option><option value="168">{t('reports.h168')}</option><option value="720">{t('reports.h720')}</option></select>
+          <Select value={filters.routeId} onChange={set('routeId')} style={{ width: 220 }} ariaLabel={t('reports.route')} options={[{ value: '', label: t('reports.allRoutes') }, ...routes.map((r) => ({ value: r.id, label: r.name }))]} />
+          <Select value={filters.type} onChange={set('type')} style={{ width: 170 }} ariaLabel={t('reports.type')} options={[{ value: '', label: t('reports.allTypes') }, ...REPORT_TYPE_KEYS.map((k) => ({ value: k, label: t(`reportTypes.${k}`) }))]} />
+          <Select value={filters.applied} onChange={set('applied')} style={{ width: 150 }} ariaLabel={t('reports.applied')} options={[{ value: '', label: t('reports.appliedAny') }, { value: 'true', label: t('reports.applied') }, { value: 'false', label: t('reports.notApplied') }]} />
+          <Select value={filters.dismissed} onChange={set('dismissed')} style={{ width: 150 }} ariaLabel={t('reports.dismissed')} options={[{ value: 'false', label: t('reports.notDismissed') }, { value: 'true', label: t('reports.dismissed') }, { value: '', label: t('reports.all') }]} />
+          <Select value={filters.hours} onChange={set('hours')} style={{ width: 150 }} ariaLabel={t('reports.time')} options={[{ value: '3', label: t('reports.h3') }, { value: '24', label: t('reports.h24') }, { value: '168', label: t('reports.h168') }, { value: '720', label: t('reports.h720') }]} />
         </>}
         footer={<TableFooter page={page} size={SIZE} total={pageData.total} onPage={setPage} />}>
         <div className="table-wrap">

@@ -201,3 +201,36 @@ textarea.field.code { font-family: ui-monospace, SFMono-Regular, Menlo, monospac
   .form-grid { grid-template-columns: 1fr; }
   th, td { padding: 14px 16px; }
 }
+
+/* ---------- themed dropdown (Select component) ---------- */
+.sel { --sel-accent: var(--primary, var(--green, #087f69)); --sel-soft: var(--primary-light, var(--green-soft, #e6f5f0)); --sel-line: var(--line, #e7edf1); --sel-text: var(--text, var(--ink, #172b38));
+  position: relative; display: inline-block; min-width: 130px; width: 100%; }
+.sel-btn { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px; border: 1px solid var(--sel-line); border-radius: 9px; background: #fff; color: var(--sel-text);
+  padding: 11px 12px; padding-inline-end: 38px; text-align: start; font: inherit; cursor: pointer; position: relative; transition: border-color .15s, box-shadow .15s; }
+.sel-small .sel-btn { padding: 8px 10px; padding-inline-end: 34px; font-size: 12px; border-radius: 8px; }
+.sel-btn:hover { border-color: #c5cfd9; }
+.sel.open .sel-btn, .sel-btn:focus-visible { border-color: var(--sel-accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--sel-accent) 14%, transparent); outline: none; }
+.sel.disabled .sel-btn { opacity: .6; cursor: not-allowed; }
+.sel-value { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sel-value.placeholder { color: #8893a5; }
+.sel-arrow { position: absolute; inset-inline-end: 12px; top: 50%; transform: translateY(-50%); color: #8893a5; display: grid; place-items: center; transition: transform .2s, color .2s; }
+.sel.open .sel-arrow { transform: translateY(-50%) rotate(180deg); color: var(--sel-accent); }
+.sel-menu { position: absolute; inset-inline: 0; top: calc(100% + 6px); z-index: 1500; margin: 0; padding: 6px; list-style: none; background: #fff; border: 1px solid var(--sel-line); border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(27, 47, 65, .14); max-height: 260px; overflow: auto; min-width: 100%; }
+.sel-menu.up { top: auto; bottom: calc(100% + 6px); }
+.sel-opt { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 9px 11px; border-radius: 8px; cursor: pointer; color: var(--sel-text); font-weight: 600; font-size: 13px; }
+.sel-small .sel-opt { padding: 8px 10px; font-size: 12px; }
+.sel-opt.active { background: #f3f5f9; }
+.sel-opt.selected { background: var(--sel-soft); color: var(--sel-accent); font-weight: 800; }
+.sel-opt.selected.active { background: color-mix(in srgb, var(--sel-soft) 70%, #dfe3f3); }
+.sel-opt.empty { color: #8893a5; cursor: default; }
+.sel-check { font-size: 12px; }
+.sel-backdrop { display: none; }
+@media (max-width: 640px) {
+  .sel-backdrop { display: block; position: fixed; inset: 0; background: rgba(16, 26, 48, .35); z-index: 1490; }
+  .sel-menu, .sel-menu.up { position: fixed; inset-inline: 0; top: auto; bottom: 0; border-radius: 16px 16px 0 0; max-height: 60vh; padding: 10px 10px calc(10px + env(safe-area-inset-bottom)); box-shadow: 0 -12px 32px rgba(27, 47, 65, .2); }
+  .sel-opt { padding: 13px 14px; font-size: 14px; }
+}
+/* Any remaining native select: give the arrow room and a themed chevron */
+select { appearance: none; -webkit-appearance: none; padding-inline-end: 38px !important; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 8l5 5 5-5' stroke='%238893a5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-size: 14px; }
+[dir="rtl"] select { background-position: left 12px center; }

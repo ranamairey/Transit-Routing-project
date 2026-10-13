@@ -4,6 +4,7 @@ import AlertsBar from '../components/AlertsBar.jsx'
 import EndpointPicker from '../components/EndpointPicker.jsx'
 import MapView, { legPath } from '../components/MapView.jsx'
 import ReportDialog from '../components/ReportDialog.jsx'
+import Select from '../components/Select.jsx'
 import { useToast } from '../components/Toast.jsx'
 import TripOptions from '../components/TripOptions.jsx'
 import { useI18n } from '../i18n/I18nContext.jsx'
@@ -135,11 +136,8 @@ export default function PlannerPage({ net }) {
           </div>
           <div className="travel-options">
             <label htmlFor="peak">{t('planner.departure')}</label>
-            <select id="peak" value={peak} onChange={(e) => setPeak(e.target.value)}>
-              <option value="auto">{t('planner.peakAuto')}</option>
-              <option value="yes">{t('planner.yes')}</option>
-              <option value="no">{t('planner.no')}</option>
-            </select>
+            <Select ariaLabel={t('planner.departure')} value={peak} onChange={setPeak} style={{ maxWidth: 235 }}
+              options={[{ value: 'auto', label: t('planner.peakAuto') }, { value: 'yes', label: t('planner.yes') }, { value: 'no', label: t('planner.no') }]} />
           </div>
           <button className="primary" onClick={search} disabled={!origin || !dest || busy}>{busy ? t('planner.searching') : t('planner.search')}</button>
           {error ? <p className="error" style={{ textAlign: 'center', marginBottom: 0 }}>{error}</p> : <p className="hint">{t('planner.hintSearch')}</p>}

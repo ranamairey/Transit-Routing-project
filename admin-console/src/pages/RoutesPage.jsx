@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Api } from '../api/client.js'
 import MapView from '../components/MapView.jsx'
+import Select from '../components/Select.jsx'
 import { Modal, PageHead, Panel, Stat, useConfirm, useToast } from '../components/ui.jsx'
 import { useNetwork } from '../hooks.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
@@ -82,7 +83,7 @@ export default function RoutesPage() {
                 <div><label className="field-label">{t('routes.name')}</label><input className="field" required autoFocus value={form.name} onChange={set('name')} placeholder={t('routes.namePlaceholder')} /></div>
                 <div><label className="field-label">{t('common.nameEn')}</label><input className="field" value={form.nameEn} onChange={set('nameEn')} dir="ltr" /></div>
                 <div><label className="field-label">{t('routes.code')}</label><input className="field" value={form.code} onChange={set('code')} placeholder="R-MEZ-02" dir="ltr" /></div>
-                <div><label className="field-label">{t('common.kind')}</label><select className="field" value={form.vehicleType} onChange={set('vehicleType')}>{VEHICLE_KEYS.map((k) => <option key={k} value={k}>{t(`vehicle.${k}`)}</option>)}</select></div>
+                <div><label className="field-label">{t('common.kind')}</label><div style={{ marginBottom: 18 }}><Select value={form.vehicleType} onChange={(v) => setForm((f) => ({ ...f, vehicleType: v }))} ariaLabel={t('common.kind')} options={VEHICLE_KEYS.map((k) => ({ value: k, label: t(`vehicle.${k}`) }))} /></div></div>
                 <div><label className="field-label">{t('common.governorate')}</label><input className="field" value={form.governorate} onChange={set('governorate')} dir="ltr" /></div>
                 <div><label className="field-label">{t('routes.fare')}</label><input className="field" type="number" min="0" step="50" required value={form.currentFare} onChange={set('currentFare')} dir="ltr" /></div>
               </div>
@@ -95,10 +96,8 @@ export default function RoutesPage() {
                     <button type="button" className="icon-btn delete" onClick={() => setForm((f) => ({ ...f, stationIds: f.stationIds.filter((x) => x !== id) }))}>✕</button></li>
                 ))}
               </ul>
-              <select className="field" value="" onChange={(e) => pushStation(e.target.value)}>
-                <option value="">{t('routes.addStop')}</option>
-                {stations.filter((s) => !form.stationIds.includes(s.id)).map((s) => <option key={s.id} value={s.id}>{s.name}</option>)}
-              </select>
+              <div style={{ marginBottom: 18 }}><Select value="" onChange={pushStation} placeholder={t('routes.addStop')} ariaLabel={t('routes.addStop')}
+                options={stations.filter((s) => !form.stationIds.includes(s.id)).map((s) => ({ value: s.id, label: s.name }))} /></div>
               {error && <p className="error">{error}</p>}
               <div className="form-actions">
                 <button type="submit" className="button" disabled={busy || form.stationIds.length < 2}>{editing ? t('common.save') : t('routes.add')}</button>
@@ -118,7 +117,7 @@ export default function RoutesPage() {
                     <td><div className="user-name">{r.name}</div><div className="sub">{[r.nameEn, r.code].filter(Boolean).join(' · ')} · {r.stops?.map((s) => s.name).join(arrow)}</div></td>
                     <td><span className={`badge-role ${r.vehicleType === 'BUS' ? 'rider' : ''}`}>{t(`vehicle.${r.vehicleType}`)}</span></td>
                     <td><span className="user-name">{formatFare(r.currentFare)}</span> <button className="action" onClick={() => { setFareModal(r); setFareValue(r.currentFare) }}>✎</button></td>
-                    <td><select className={`filter select-inline`} value={r.status} onChange={(e) => setStatus(r, e.target.value)}>{ROUTE_STATUS_KEYS.map((k) => <option key={k} value={k}>{t(`routeStatus.${k}`)}</option>)}</select></td>
+                    <td><Select small value={r.status} onChange={(v) => setStatus(r, v)} style={{ width: 150 }} ariaLabel={t('common.status')} options={ROUTE_STATUS_KEYS.map((k) => ({ value: k, label: t(`routeStatus.${k}`) }))} /></td>
                     <td><div className="actions"><button className="action" onClick={() => openEdit(r)}>{t('common.edit')}</button><button className="action delete" onClick={() => remove(r)}>{t('common.delete')}</button></div></td>
                   </tr>
                 ))}

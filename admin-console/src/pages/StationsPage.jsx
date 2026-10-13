@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { Api } from '../api/client.js'
 import MapView from '../components/MapView.jsx'
+import Select from '../components/Select.jsx'
 import { Modal, PageHead, Panel, SearchBox, Stat, useConfirm, useToast } from '../components/ui.jsx'
 import { useNetwork } from '../hooks.js'
 import { useI18n } from '../i18n/I18nContext.jsx'
@@ -85,7 +86,7 @@ export default function StationsPage() {
               <div><label className="field-label">{t('common.name')}</label><input className="field" required autoFocus value={form.name} onChange={set('name')} /></div>
               <div><label className="field-label">{t('common.nameEn')}</label><input className="field" value={form.nameEn} onChange={set('nameEn')} dir="ltr" /></div>
               <div className="full"><label className="field-label">{t('common.aliases')}</label><input className="field" value={form.aliases} onChange={set('aliases')} /></div>
-              <div><label className="field-label">{t('common.kind')}</label><select className="field" value={form.stationKind} onChange={set('stationKind')}>{STATION_KIND_KEYS.map((k) => <option key={k} value={k}>{t(`stationKinds.${k}`)}</option>)}</select></div>
+              <div><label className="field-label">{t('common.kind')}</label><div style={{ marginBottom: 18 }}><Select value={form.stationKind} onChange={(v) => setForm((f) => ({ ...f, stationKind: v }))} ariaLabel={t('common.kind')} options={STATION_KIND_KEYS.map((k) => ({ value: k, label: t(`stationKinds.${k}`) }))} /></div></div>
               <div><label className="field-label">{t('common.governorate')}</label><input className="field" value={form.governorate} onChange={set('governorate')} dir="ltr" /></div>
               <div><label className="field-label">Latitude</label><input className="field" type="number" step="any" required value={form.lat} onChange={set('lat')} dir="ltr" /></div>
               <div><label className="field-label">Longitude</label><input className="field" type="number" step="any" required value={form.lng} onChange={set('lng')} dir="ltr" /></div>

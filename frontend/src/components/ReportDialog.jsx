@@ -4,6 +4,7 @@ import { Api } from '../api/client.js'
 import { useAuth } from '../context/AuthContext.jsx'
 import { useI18n } from '../i18n/I18nContext.jsx'
 import { REPORT_TYPE_KEYS } from '../utils/text.js'
+import Select from './Select.jsx'
 
 /** FR-2.1: one-tap report about a line; login required (anti-spam, NFR-3.1). */
 export default function ReportDialog({ leg, stations, onClose }) {
@@ -74,10 +75,8 @@ export default function ReportDialog({ leg, stations, onClose }) {
             )}
             <div className="fieldbox">
               <label>{t('report.station')}</label>
-              <select value={stationId} onChange={(e) => setStationId(e.target.value)}>
-                <option value="">—</option>
-                {stations.map((s) => <option key={s.id} value={s.id}>{s.name}</option>)}
-              </select>
+              <Select value={stationId} onChange={setStationId} placeholder="—" ariaLabel={t('report.station')}
+                options={[{ value: '', label: '—' }, ...stations.map((s) => ({ value: s.id, label: s.name }))]} />
             </div>
             <div className="fieldbox">
               <label>{t('report.details')}</label>
