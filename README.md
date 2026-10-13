@@ -25,7 +25,11 @@ cp .env.example .env        # ثم عبّئ MONGO_URI و JWT_SECRET و SEED_ADMI
 ./run.sh                    # يقرأ .env ويشغّل spring-boot:run على المنفذ 8080
 ```
 
-عند أول تشغيل على قاعدة فارغة يُزرع تلقائياً (`DataSeeder`) حساب المشرف (`SEED_ADMIN_EMAIL` / `SEED_ADMIN_PASSWORD`) وشبكة تجريبية لدمشق وريفها (12 محطة، 7 خطوط). تُنشأ حسابات ركاب تجريبية فقط إذا عُرّف `SEED_USER_PASSWORD`. عطّل الزرع بـ `SEED_ENABLED=false`.
+عند أول تشغيل على قاعدة فارغة يُزرع تلقائياً (`DataSeeder`) حساب المشرف (`SEED_ADMIN_EMAIL` / `SEED_ADMIN_PASSWORD`) و**شبكة دمشق وريفها الحقيقية** المجمّعة من مصادر عامة (`docs/data/damascus-network.json`: 135 محطة و83 خطاً، انظر `docs/data/README.md` و`docs/research/`). اضبط `SEED_DATASET=demo` للشبكة التجريبية الصغيرة. تُنشأ حسابات ركاب تجريبية فقط إذا عُرّف `SEED_USER_PASSWORD`. عطّل الزرع بـ `SEED_ENABLED=false`.
+
+### بيانات الشبكة الحقيقية
+
+`docs/data/damascus-network.json` يضم خطوط السرافيس والباصات في دمشق (البرامكة/الفحامة، جسر الرئيس/الحرية، المهاجرين، شارع الثورة/العباسيين، الكراجات) وخطوط ريف دمشق إلى كراجات العباسيين والسومرية وجسر الوزان وكراج الست وشارع الثلاثين، مع إحداثيات من OpenStreetMap وتسعيرات أيلول 2026 بالليرة الجديدة. كل محطة وخط يحمل `source` و`confidence`؛ 7 خطوط لها مسار حقيقي من OSM والباقي خطوط مستقيمة بين المحطات حتى تُرسم من لوحة الإدارة. التقرير البحثي الكامل والفجوات في `docs/research/Damascus transit real data.md`. بيانات OSM مرخّصة ODbL (© OpenStreetMap contributors).
 
 ### 2) تطبيق الركاب (Rider app, PWA)
 
@@ -213,6 +217,7 @@ POST /api/v1/routing/search
 | `app.transit.max-ride-legs` / `alternative-paths` | 3 / 3 | حد الخطوط في الرحلة / عدد البدائل |
 | `app.transit.peak-windows` | `07:00-09:30,13:00-16:00` | نوافذ الذروة بتوقيت دمشق |
 | `app.transit.auto-apply-threshold` | 3 | عدد المبلّغين المختلفين للاعتماد الآلي |
+| `SEED_DATASET` | `damascus` | `damascus` = الشبكة الحقيقية المضمّنة، `demo` = شبكة تجريبية صغيرة |
 | `app.transit.alert-window-hours` / `status-ttl-hours` | 3 / 6 | نافذة التنبيهات / مدة بقاء الحالة الآلية |
 | `app.limits.login-attempts` / `login-window-minutes` | 10 / 15 | حد محاولات الدخول لكل بريد |
 | `app.limits.report-cooldown-minutes` / `reports-per-hour` | 10 / 20 | حدود البلاغات لكل مستخدم |

@@ -15,6 +15,12 @@ import com.example.demo.transit.repository.CrowdsourceReportRepository;
 import com.example.demo.transit.repository.RouteRepository;
 import com.example.demo.transit.repository.StationRepository;
 import com.example.demo.transit.repository.UserRepository;
+import com.example.demo.transit.dto.NetworkImportRequest;
+import com.example.demo.transit.dto.NetworkImportResult;
+import com.example.demo.transit.service.NetworkImportService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.core.io.ClassPathResource;
+import java.io.InputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,6 +48,9 @@ public class DataSeeder implements CommandLineRunner {
     private final CrowdsourceReportRepository reportRepository;
     private final PasswordEncoder passwordEncoder;
     private final TransitGraphInvalidator invalidator;
+    private final NetworkImportService importService;
+    private final ObjectMapper objectMapper;
+    private final String dataset;
     private final boolean enabled;
     private final String adminEmail;
     private final String adminPassword;
@@ -53,6 +62,9 @@ public class DataSeeder implements CommandLineRunner {
                       CrowdsourceReportRepository reportRepository,
                       PasswordEncoder passwordEncoder,
                       TransitGraphInvalidator invalidator,
+                      NetworkImportService importService,
+                      ObjectMapper objectMapper,
+                      @Value("${app.seed.dataset:damascus}") String dataset,
                       @Value("${app.seed.enabled:true}") boolean enabled,
                       @Value("${app.seed.admin-email:admin@demo.com}") String adminEmail,
                       @Value("${app.seed.admin-password:}") String adminPassword,
@@ -63,6 +75,9 @@ public class DataSeeder implements CommandLineRunner {
         this.reportRepository = reportRepository;
         this.passwordEncoder = passwordEncoder;
         this.invalidator = invalidator;
+        this.importService = importService;
+        this.objectMapper = objectMapper;
+        this.dataset = dataset;
         this.enabled = enabled;
         this.adminEmail = adminEmail;
         this.adminPassword = adminPassword;
@@ -83,6 +98,11 @@ public class DataSeeder implements CommandLineRunner {
             log.info("Seeded admin account {}", adminEmail);
         }
         if (stationRepository.count() > 0) {
+            invalidator.warmUp();
+            return;
+        }
+        if ("damascus".equalsIgnoreCase(dataset)) {
+            seedDamascusDataset();
             return;
         }
         log.info("Empty database: seeding demo network");
@@ -127,6 +147,20 @@ public class DataSeeder implements CommandLineRunner {
         }
 
         invalidator.invalidate();
+    }
+
+    /** Real Damascus / Rif Dimashq network compiled from public sources (see docs/data/README.md). */
+    private void seedDamascusDataset() {
+        try (InputStream in = new ClassPathResource("data/damascus-network.json").getInputStream()) {
+            NetworkImportRequest request = objectMapper.readValue(in, NetworkImportRequest.class);
+            NetworkImportResult result = importService.importNetwork(request);
+            log.info("Empty database: imported Damascus dataset ({} stations, {} routes, {} warnings)",
+                    result.stationsCreated(), result.routesCreated(), result.warnings().size());
+            result.warnings().forEach(w -> log.warn("Dataset warning: {}", w));
+            invalidator.warmUp();
+        } catch (java.io.IOException e) {
+            throw new IllegalStateException("Could not read bundled Damascus dataset", e);
+        }
     }
 
     private User createUser(String name, String email, String password, Role role) {

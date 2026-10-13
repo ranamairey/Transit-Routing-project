@@ -16,4 +16,10 @@ public class TransitGraphInvalidator {
     public void invalidate() {
         graphFactory.invalidate();
     }
+
+    /** Builds the cached graph now so the first routing request does not pay for it. */
+    public void warmUp() {
+        graphFactory.invalidate();
+        graphFactory.snapshot();
+    }
 }

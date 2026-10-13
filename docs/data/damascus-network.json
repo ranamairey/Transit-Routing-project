@@ -1,0 +1,4627 @@
+{
+ "stations": [
+  {
+   "name": "جسر الرئيس",
+   "nameEn": "Jisr al-Rais (Freedom Bridge hub)",
+   "aliases": "جسر الحرية، جسر السيد الرئيس، موقف جسر الحرية، تحت الجسر",
+   "stationKind": "TRANSFER_HUB",
+   "governorate": "DAMASCUS",
+   "lat": 33.51371,
+   "lng": 36.28884,
+   "source": "https://www.openstreetmap.org/node/13526055306 (موقف جسر الحرية / Freedom Bridge Bus Stop)",
+   "confidence": "high"
+  },
+  {
+   "name": "البرامكة",
+   "nameEn": "Baramkeh servis centre (SANA)",
+   "aliases": "مركز انطلاق البرامكة، سانا، مجمع البرامكة، برامكة",
+   "stationKind": "HUB",
+   "governorate": "DAMASCUS",
+   "lat": 33.50967,
+   "lng": 36.28871,
+   "source": "https://www.openstreetmap.org/relation/20148903 (from = البرامكة (سانا), member node 13510000602)",
+   "confidence": "high"
+  },
+  {
+   "name": "الفحامة",
+   "nameEn": "Fahhama square (servis start centre)",
+   "aliases": "ساحة الفحامة، فحامة، موقف ميكروباص فحامة",
+   "stationKind": "HUB",
+   "governorate": "DAMASCUS",
+   "lat": 33.50331,
+   "lng": 36.29217,
+   "source": "https://www.openstreetmap.org/node/14219860489 (موقف ميكروباص فحامة - داريا)",
+   "confidence": "high"
+  },
+  {
+   "name": "ساحة الأمويين",
+   "nameEn": "Umayyad Square",
+   "aliases": "الأمويين، ساحة الامويين",
+   "stationKind": "TRANSFER_HUB",
+   "governorate": "DAMASCUS",
+   "lat": 33.5138,
+   "lng": 36.27658,
+   "source": "https://www.openstreetmap.org/way/30121196 (place=square)",
+   "confidence": "high"
+  },
+  {
+   "name": "شارع الثورة",
+   "nameEn": "Thawra Street stop",
+   "aliases": "موقف شارع الثورة، جسر الثورة، الثورة",
+   "stationKind": "TRANSFER_HUB",
+   "governorate": "DAMASCUS",
+   "lat": 33.51461,
+   "lng": 36.29959,
+   "source": "https://www.openstreetmap.org/node/9959902833 (stop_position موقف شارع الثورة)",
+   "confidence": "high"
+  },
+  {
+   "name": "ساحة العباسيين",
+   "nameEn": "Abbasiyeen Square",
+   "aliases": "العباسيين، عباسيين",
+   "stationKind": "TRANSFER_HUB",
+   "governorate": "DAMASCUS",
+   "lat": 33.52419,
+   "lng": 36.31854,
+   "source": "https://www.openstreetmap.org/way/708301579 (place=square)",
+   "confidence": "high"
+  },
+  {
+   "name": "كراج العباسيين",
+   "nameEn": "Abbasiyeen garage (North departure centre)",
+   "aliases": "كراجات العباسيين، مركز انطلاق الشمال، الكراجات، كراجات",
+   "stationKind": "GARAGE",
+   "governorate": "DAMASCUS",
+   "lat": 33.52982,
+   "lng": 36.32504,
+   "source": "https://www.openstreetmap.org/way/154746562 (amenity=bus_station)",
+   "confidence": "high"
+  },
+  {
+   "name": "كراجات البولمان",
+   "nameEn": "Pullman (intercity) garage, Qaboun",
+   "aliases": "كراج البولمان، كراج القابون، البولمان، الكراجات",
+   "stationKind": "GARAGE",
+   "governorate": "DAMASCUS",
+   "lat": 33.53893,
+   "lng": 36.33839,
+   "source": "https://www.openstreetmap.org/node/14096063801 (amenity=bus_station)",
+   "confidence": "high"
+  },
+  {
+   "name": "كراج السومرية",
+   "nameEn": "Sumariyah garage (West departure centre)",
+   "aliases": "السومرية، سومرية، مركز انطلاق السومرية، موقف السومرية",
+   "stationKind": "GARAGE",
+   "governorate": "DAMASCUS",
+   "lat": 33.48007,
+   "lng": 36.21003,
+   "source": "https://www.openstreetmap.org/way/1432760291 (amenity=bus_station)",
+   "confidence": "high"
+  },
+  {
+   "name": "كراج جسر الوزان",
+   "nameEn": "Jisr al-Wazzan garage (end of Rabweh road)",
+   "aliases": "جسر الوزان، الوزان، موقف الوزان",
+   "stationKind": "GARAGE",
+   "governorate": "DAMASCUS",
+   "lat": 33.53104,
+   "lng": 36.2402,
+   "source": "PROXY: https://www.openstreetmap.org/node/10020518184 (مسجد الوزان, طريق بيروت, دمر الغربية); garage itself not mapped in OSM; location per Enab Baladi 2025-06-01 'نهاية طريق الربوة'",
+   "confidence": "low"
+  },
+  {
+   "name": "كراجات الست",
+   "nameEn": "Karaj al-Sitt (Sayyida Zaynab garage)",
+   "aliases": "كراج الست، كراج السيدة زينب، كراج السيدة، الست",
+   "stationKind": "GARAGE",
+   "governorate": "DAMASCUS",
+   "lat": 33.50198,
+   "lng": 36.30886,
+   "source": "https://www.openstreetmap.org/node/321805018 (amenity=bus_station)",
+   "confidence": "high"
+  },
+  {
+   "name": "كراج السيدة عائشة",
+   "nameEn": "Sayyida Aisha garage (Kiswah lines)",
+   "aliases": "السيدة عائشة",
+   "stationKind": "GARAGE",
+   "governorate": "DAMASCUS",
+   "lat": 33.48547,
+   "lng": 36.2877,
+   "source": "PROXY: https://www.openstreetmap.org/relation/14043001 (حي السيدة عائشة boundary centroid); garage not mapped in OSM",
+   "confidence": "low"
+  },
+  {
+   "name": "كراج نهر عيشة",
+   "nameEn": "Nahr Aisha garage",
+   "aliases": "نهر عيشة",
+   "stationKind": "GARAGE",
+   "governorate": "DAMASCUS",
+   "lat": 33.48469,
+   "lng": 36.2891,
+   "source": "PROXY: https://www.openstreetmap.org/node/10026555424 (مركز نهر عيشة (named POI in Nahr Aisha)); garage not mapped in OSM",
+   "confidence": "low"
+  },
+  {
+   "name": "باب مصلى",
+   "nameEn": "Bab Musalla square",
+   "aliases": "ساحة باب مصلى",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.49891,
+   "lng": 36.30049,
+   "source": "https://www.openstreetmap.org/way/30807444 (place=square)",
+   "confidence": "high"
+  },
+  {
+   "name": "دوار البطيخة",
+   "nameEn": "Dawwar al-Battikha (Midan)",
+   "aliases": "البطيخة",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.48124,
+   "lng": 36.29912,
+   "source": "Nominatim 'دوار البطيخة دمشق' (rif_dimashq_lines_garages.md); matches OSM relation 4110558 terminus",
+   "confidence": "medium"
+  },
+  {
+   "name": "ساحة الأشمر",
+   "nameEn": "Sahat al-Ashmar (Midan)",
+   "aliases": "الأشمر، الاشمر",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.48761,
+   "lng": 36.30238,
+   "source": "PROXY: https://www.openstreetmap.org/node/667349997 (جامع الأشمر)",
+   "confidence": "medium"
+  },
+  {
+   "name": "سوق الحميدية",
+   "nameEn": "Souq al-Hamidiyya (bus terminus, west gate)",
+   "aliases": "الحميدية، باب الجابية",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.51012,
+   "lng": 36.29841,
+   "source": "https://www.openstreetmap.org/relation/4110558 (route terminus 'Souq al-Hamidiyya')",
+   "confidence": "medium"
+  },
+  {
+   "name": "باب توما",
+   "nameEn": "Bab Touma",
+   "aliases": "ساحة باب توما، موقف جرمانا باب توما",
+   "stationKind": "TRANSFER_HUB",
+   "governorate": "DAMASCUS",
+   "lat": 33.51355,
+   "lng": 36.31521,
+   "source": "https://www.openstreetmap.org/way/1000620510 (place=square; servis stop node 10723232789 at 33.51386,36.31585)",
+   "confidence": "high"
+  },
+  {
+   "name": "ساحة النجمة",
+   "nameEn": "Nijmeh Square",
+   "aliases": "موقف ساحة النجمة",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.51587,
+   "lng": 36.2893,
+   "source": "https://www.openstreetmap.org/way/893076856 (place=square)",
+   "confidence": "high"
+  },
+  {
+   "name": "ساحة عرنوس",
+   "nameEn": "Arnous Square",
+   "aliases": "عرنوس، ساحة ٨ آذار",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.52139,
+   "lng": 36.2903,
+   "source": "https://www.openstreetmap.org/node/10008609090",
+   "confidence": "high"
+  },
+  {
+   "name": "ساحة الشهبندر",
+   "nameEn": "Shahbandar Square",
+   "aliases": "الشهبندر",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.52355,
+   "lng": 36.29335,
+   "source": "https://www.openstreetmap.org/way/1009712438 (place=square)",
+   "confidence": "high"
+  },
+  {
+   "name": "الجسر الأبيض",
+   "nameEn": "Jisr al-Abyad",
+   "aliases": "ساحة الجسر الابيض",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.52455,
+   "lng": 36.2879,
+   "source": "https://www.openstreetmap.org/node/10008887858",
+   "confidence": "high"
+  },
+  {
+   "name": "العفيف",
+   "nameEn": "Afif",
+   "aliases": "جادة العفيف",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.52638,
+   "lng": 36.28523,
+   "source": "PROXY: https://www.openstreetmap.org/node/5898780585 (جامع العفيف)",
+   "confidence": "medium"
+  },
+  {
+   "name": "شورى",
+   "nameEn": "Shoura",
+   "aliases": "حي شورى",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.52728,
+   "lng": 36.27889,
+   "source": "https://www.openstreetmap.org/relation/13289445 (حي شورى centroid)",
+   "confidence": "medium"
+  },
+  {
+   "name": "المصطبة",
+   "nameEn": "Mastaba",
+   "aliases": "حي المصطبة",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.52583,
+   "lng": 36.27558,
+   "source": "https://www.openstreetmap.org/relation/13289444 (حي المصطبة centroid)",
+   "confidence": "medium"
+  },
+  {
+   "name": "الشطا",
+   "nameEn": "Shatta",
+   "aliases": "شارع الشطا",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.52406,
+   "lng": 36.2752,
+   "source": "https://www.openstreetmap.org/way/34135974 (street 'الشطا' centroid)",
+   "confidence": "low"
+  },
+  {
+   "name": "المرابط",
+   "nameEn": "Marabit",
+   "aliases": "حي المرابط",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.52526,
+   "lng": 36.26617,
+   "source": "https://www.openstreetmap.org/relation/13288840 (حي المرابط centroid)",
+   "confidence": "medium"
+  },
+  {
+   "name": "ساحة آخر الخط",
+   "nameEn": "Akher al-Khat square (Muhajireen line end)",
+   "aliases": "آخر الخط، المهاجرين، مهاجرين",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.52188,
+   "lng": 36.2679,
+   "source": "https://www.openstreetmap.org/node/10026581356 (place=square)",
+   "confidence": "high"
+  },
+  {
+   "name": "ساحة الروضة",
+   "nameEn": "Rawda Square",
+   "aliases": "الروضة",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.5211,
+   "lng": 36.28284,
+   "source": "https://www.openstreetmap.org/way/30763416 (place=square)",
+   "confidence": "high"
+  },
+  {
+   "name": "إشارة المدفع",
+   "nameEn": "Madfa' junction",
+   "aliases": "حديقة المدفع، المدفع",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.51806,
+   "lng": 36.28628,
+   "source": "PROXY: https://www.openstreetmap.org/way/43162987 (حديقة المدفع)",
+   "confidence": "medium"
+  },
+  {
+   "name": "جامعة دمشق",
+   "nameEn": "Damascus University (Baramkeh campus)",
+   "aliases": "الجامعة، جامعة",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.51135,
+   "lng": 36.29086,
+   "source": "https://www.openstreetmap.org/way/30805597 (Damascus University head office)",
+   "confidence": "high"
+  },
+  {
+   "name": "المجتهد",
+   "nameEn": "Mujtahid",
+   "aliases": "تقاطع المجتهد، مشفى المجتهد",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.5,
+   "lng": 36.29836,
+   "source": "https://www.openstreetmap.org/relation/13384306 (حي المجتهد centroid)",
+   "confidence": "medium"
+  },
+  {
+   "name": "مجمع الهمك",
+   "nameEn": "Hamak (Faculty of Mechanical & Electrical Engineering, airport road)",
+   "aliases": "الهندسة، الصناعة، صناعة، كلية الهمك، الهمك، كلية الهندسة الميكانيكية والكهربائية",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.49401,
+   "lng": 36.31904,
+   "source": "https://www.openstreetmap.org/way/193041419 (جامعة دمشق - مجمع الهمك)",
+   "confidence": "high"
+  },
+  {
+   "name": "جادات",
+   "nameEn": "Jadat (Salmiyeh)",
+   "aliases": "موقف السلمية، جادات سلمية، سلمية",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.52622,
+   "lng": 36.27462,
+   "source": "https://www.openstreetmap.org/node/10032945038 (موقف السلمية bus stop)",
+   "confidence": "high"
+  },
+  {
+   "name": "الكناني",
+   "nameEn": "Kanani",
+   "aliases": "جامع الكناني",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.52476,
+   "lng": 36.27271,
+   "source": "PROXY: https://www.openstreetmap.org/node/333766527 (جامع الكناني)",
+   "confidence": "medium"
+  },
+  {
+   "name": "ساحة المحافظة",
+   "nameEn": "Governorate square (Thawra Street)",
+   "aliases": "المحافظة، محافظة دمشق",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.51574,
+   "lng": 36.2957,
+   "source": "https://www.openstreetmap.org/relation/130945 (محافظة دمشق building)",
+   "confidence": "medium"
+  },
+  {
+   "name": "مجلس الشعب",
+   "nameEn": "People's Assembly",
+   "aliases": "البرلمان",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.51812,
+   "lng": 36.29317,
+   "source": "https://www.openstreetmap.org/way/302750920",
+   "confidence": "high"
+  },
+  {
+   "name": "شارع الحمرا",
+   "nameEn": "Hamra Street (Salihiyeh)",
+   "aliases": "الحمرا، الصالحية",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.51893,
+   "lng": 36.29135,
+   "source": "https://www.openstreetmap.org/way/46786634 (street centroid)",
+   "confidence": "high"
+  },
+  {
+   "name": "السبع بحرات",
+   "nameEn": "Sabaa Bahrat square",
+   "aliases": "ساحة السبع بحرات",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.52058,
+   "lng": 36.29607,
+   "source": "https://www.openstreetmap.org/way/219102506 (place=square)",
+   "confidence": "high"
+  },
+  {
+   "name": "ساحة الميسات",
+   "nameEn": "Maysat square",
+   "aliases": "الميسات",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.52699,
+   "lng": 36.29364,
+   "source": "https://www.openstreetmap.org/way/967956885 (place=square)",
+   "confidence": "high"
+  },
+  {
+   "name": "ساحة شمدين",
+   "nameEn": "Shamdin square",
+   "aliases": "ساحات شمدين، شمدين",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.53464,
+   "lng": 36.29455,
+   "source": "https://www.openstreetmap.org/node/10023963022 (place=square)",
+   "confidence": "high"
+  },
+  {
+   "name": "مشفى ابن النفيس",
+   "nameEn": "Ibn al-Nafis hospital",
+   "aliases": "ابن النفيس",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.54706,
+   "lng": 36.30677,
+   "source": "https://www.openstreetmap.org/way/106775196 (amenity=hospital)",
+   "confidence": "high"
+  },
+  {
+   "name": "مساكن برزة",
+   "nameEn": "Masakin Barzeh",
+   "aliases": "حي مساكن برزة",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.54438,
+   "lng": 36.31636,
+   "source": "https://www.openstreetmap.org/relation/13329939 (حي مساكن برزة centroid)",
+   "confidence": "medium"
+  },
+  {
+   "name": "مساكن برزة مسبق الصنع",
+   "nameEn": "Masakin Barzeh prefab (line end, al-Manara stop)",
+   "aliases": "مسبق الصنع، موقف حي المنارة، المنارة",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.55096,
+   "lng": 36.30864,
+   "source": "https://www.openstreetmap.org/relation/14469961 (route start node 9942012448; موقف حي المنارة node 7776082739 adjacent)",
+   "confidence": "high"
+  },
+  {
+   "name": "برزة البلد",
+   "nameEn": "Barzeh al-Balad",
+   "aliases": "برزة",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.55788,
+   "lng": 36.31987,
+   "source": "https://www.openstreetmap.org/relation/13329938 (حي برزة البلد centroid; place node 12506635867 at 33.55712,36.32266)",
+   "confidence": "medium"
+  },
+  {
+   "name": "عش الورور",
+   "nameEn": "Ish al-Warwar",
+   "aliases": "حي عش الورور",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.56692,
+   "lng": 36.32201,
+   "source": "https://www.openstreetmap.org/relation/13298994 (حي عش الورور centroid)",
+   "confidence": "medium"
+  },
+  {
+   "name": "موقف حاميش",
+   "nameEn": "Hamish stop",
+   "aliases": "حاميش",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.55035,
+   "lng": 36.31797,
+   "source": "https://www.openstreetmap.org/node/4417778089 (bus stop)",
+   "confidence": "high"
+  },
+  {
+   "name": "القابون",
+   "nameEn": "Qaboun",
+   "aliases": "قابون",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.54386,
+   "lng": 36.33427,
+   "source": "https://www.openstreetmap.org/node/12506635869 (place=town)",
+   "confidence": "medium"
+  },
+  {
+   "name": "جوبر",
+   "nameEn": "Jobar",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.52783,
+   "lng": 36.3342,
+   "source": "https://www.openstreetmap.org/node/12506635860 (place=village)",
+   "confidence": "medium"
+  },
+  {
+   "name": "الدويلعة",
+   "nameEn": "Duwayla'a",
+   "aliases": "دويلعة",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.50157,
+   "lng": 36.32742,
+   "source": "https://www.openstreetmap.org/node/12506635870 (place=town)",
+   "confidence": "medium"
+  },
+  {
+   "name": "حي التضامن",
+   "nameEn": "Tadamon",
+   "aliases": "التضامن، تضامن",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.47691,
+   "lng": 36.31108,
+   "source": "https://www.openstreetmap.org/relation/13433884 (حي التضامن centroid)",
+   "confidence": "medium"
+  },
+  {
+   "name": "التضامن مسبق الصنع",
+   "nameEn": "Tadamon prefab",
+   "aliases": "مسبق الصنع",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.47915,
+   "lng": 36.31087,
+   "source": "https://www.openstreetmap.org/way/949416093 (landuse 'مسبق الصنع')",
+   "confidence": "medium"
+  },
+  {
+   "name": "دف الشوك",
+   "nameEn": "Daf al-Shawk",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.4832,
+   "lng": 36.31025,
+   "source": "PROXY: https://www.openstreetmap.org/node/10032902622 (صيدلية دف الشوك المركزية)",
+   "confidence": "low"
+  },
+  {
+   "name": "الزاهرة",
+   "nameEn": "Zahira (old)",
+   "aliases": "زاهرة قديمة، الزاهرة القديمة، أوتستراد الزاهرة",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.4909,
+   "lng": 36.30267,
+   "source": "https://www.openstreetmap.org/relation/14041957 (حي الزاهرة centroid)",
+   "confidence": "medium"
+  },
+  {
+   "name": "الفرن الآلي",
+   "nameEn": "Furn al-Ali (Zahira Jadida / Yarmouk edge)",
+   "aliases": "الزاهرة الجديدة",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.47448,
+   "lng": 36.30933,
+   "source": "https://www.openstreetmap.org/node/10032909511 (الفرن الآلي)",
+   "confidence": "low"
+  },
+  {
+   "name": "مخيم اليرموك",
+   "nameEn": "Yarmouk camp",
+   "aliases": "اليرموك، مخيم",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.47248,
+   "lng": 36.3048,
+   "source": "https://www.openstreetmap.org/node/567045696 (place=city)",
+   "confidence": "high"
+  },
+  {
+   "name": "الميدان",
+   "nameEn": "Midan",
+   "aliases": "ميدان",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.49329,
+   "lng": 36.29691,
+   "source": "https://www.openstreetmap.org/node/12506635863 (place=town)",
+   "confidence": "medium"
+  },
+  {
+   "name": "القدم",
+   "nameEn": "Qadam",
+   "aliases": "حي القدم",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.47456,
+   "lng": 36.28426,
+   "source": "https://www.openstreetmap.org/relation/14043060 (حي القدم centroid)",
+   "confidence": "medium"
+  },
+  {
+   "name": "العسالي",
+   "nameEn": "Asali (Qadam)",
+   "aliases": "قدم عسالي، حي العسالي",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.46479,
+   "lng": 36.28636,
+   "source": "https://www.openstreetmap.org/relation/14043005 (حي العسالي centroid)",
+   "confidence": "medium"
+  },
+  {
+   "name": "كفر سوسة",
+   "nameEn": "Kafr Sousa",
+   "aliases": "كفرسوسة، كفر سوسة البلد",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.49921,
+   "lng": 36.27976,
+   "source": "https://www.openstreetmap.org/relation/14041924 (حي كفر سوسة البلد centroid)",
+   "confidence": "medium"
+  },
+  {
+   "name": "اللوان",
+   "nameEn": "Lawan",
+   "aliases": "حي اللوان، كفرسوسة اللوان",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.47991,
+   "lng": 36.26293,
+   "source": "https://www.openstreetmap.org/relation/14041921 (حي اللوان centroid)",
+   "confidence": "medium"
+  },
+  {
+   "name": "ساحة الجمارك",
+   "nameEn": "Jamarek (Customs) square",
+   "aliases": "الجمارك، دوار الجمارك",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.51046,
+   "lng": 36.27829,
+   "source": "https://www.openstreetmap.org/way/846035897 (place=square; relation 20148903 member node 317139707)",
+   "confidence": "high"
+  },
+  {
+   "name": "كلية الآداب",
+   "nameEn": "Faculty of Arts (Mezzeh autostrad)",
+   "aliases": "الآداب، آداب",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.50946,
+   "lng": 36.27065,
+   "source": "https://www.openstreetmap.org/relation/11602827 (كلية الآداب والعلوم الإنسانية)",
+   "confidence": "high"
+  },
+  {
+   "name": "كلية الطب",
+   "nameEn": "Faculty of Medicine (Mezzeh autostrad)",
+   "aliases": "الطب، طب",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.50809,
+   "lng": 36.26709,
+   "source": "https://www.openstreetmap.org/node/14180099701 (كلية الطب; relation 20148903 member node 13508679472 at 33.50876,36.26749)",
+   "confidence": "high"
+  },
+  {
+   "name": "الشيخ سعد",
+   "nameEn": "Sheikh Saad stop (Mezzeh autostrad, Binayat 14)",
+   "aliases": "موقف بنايات 14، موقف الحفار، شيخ سعد",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.49971,
+   "lng": 36.25305,
+   "source": "https://www.openstreetmap.org/node/13509904745 (unnamed autostrad stop, member of relations 20148903/4113584, below الشيخ سعد (cemetery way 29227482 at 33.50646,36.25769))",
+   "confidence": "medium"
+  },
+  {
+   "name": "موقف مزة الشرقية",
+   "nameEn": "Mezzeh Sharqiya stop (autostrad)",
+   "aliases": "مزة فيلات شرقية، فيلات شرقية، مزة الشرقية",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.49609,
+   "lng": 36.24669,
+   "source": "https://www.openstreetmap.org/node/13508679470 (bus stop; relation 20148903 member)",
+   "confidence": "high"
+  },
+  {
+   "name": "مزة فيلات غربية",
+   "nameEn": "Mezzeh Villat Gharbiya",
+   "aliases": "فيلات غربية، مزة فيلات",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.49658,
+   "lng": 36.23476,
+   "source": "https://www.openstreetmap.org/relation/13359357 (حي فيلات غربية centroid)",
+   "confidence": "medium"
+  },
+  {
+   "name": "المزة 86",
+   "nameEn": "Mezzeh 86",
+   "aliases": "مزة 86، مزة ٨٦، مزة 86 خزان، مزة 86 مدرسة، الخزان",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.50884,
+   "lng": 36.24231,
+   "source": "https://www.openstreetmap.org/relation/13360458 (حي مزة ٨٦ centroid; the Khazzan and Madrasa branch termini are not mapped)",
+   "confidence": "low"
+  },
+  {
+   "name": "مزة جبل",
+   "nameEn": "Mezzeh Jabal",
+   "aliases": "موقف مزة جبل، المزة جبل",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.49934,
+   "lng": 36.24209,
+   "source": "https://www.openstreetmap.org/node/3127939361 (stop_position 'Mezzeh Jabal', relation 4108338 member)",
+   "confidence": "high"
+  },
+  {
+   "name": "المزة",
+   "nameEn": "Mezzeh (town centre)",
+   "aliases": "المزة القديمة، مزة",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.50216,
+   "lng": 36.24569,
+   "source": "https://www.openstreetmap.org/node/12506635862 (place=town)",
+   "confidence": "medium"
+  },
+  {
+   "name": "حي العرين",
+   "nameEn": "Al-Areen quarter (Dummar)",
+   "aliases": "العرين",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.5299,
+   "lng": 36.21143,
+   "source": "https://www.openstreetmap.org/relation/13360834 (حي العرين centroid)",
+   "confidence": "medium"
+  },
+  {
+   "name": "مشروع دمر",
+   "nameEn": "Mashrou' Dummar (Expansion square)",
+   "aliases": "ساحة التوسع، مشروع دمر ساحة التوسع",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.52745,
+   "lng": 36.21184,
+   "source": "https://www.openstreetmap.org/node/4601176591 (ساحة التوسع مشروع دمر)",
+   "confidence": "high"
+  },
+  {
+   "name": "حي الورود",
+   "nameEn": "Al-Woroud quarter (Masakin al-Haras, Dummar)",
+   "aliases": "مساكن الحرس، الورود",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.54008,
+   "lng": 36.22485,
+   "source": "https://www.openstreetmap.org/relation/13361542 (حي الورود centroid; line end per Enab Baladi 2020 (407281))",
+   "confidence": "medium"
+  },
+  {
+   "name": "دمر البلد",
+   "nameEn": "Dummar al-Balad",
+   "aliases": "دمر",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.53877,
+   "lng": 36.23711,
+   "source": "https://www.openstreetmap.org/node/12506635868 (place=town)",
+   "confidence": "medium"
+  },
+  {
+   "name": "الربوة",
+   "nameEn": "Rabweh",
+   "aliases": "طريق الربوة",
+   "stationKind": "STOP",
+   "governorate": "DAMASCUS",
+   "lat": 33.51712,
+   "lng": 36.26012,
+   "source": "https://www.openstreetmap.org/node/10200833683 (محطة قطار الربوة)",
+   "confidence": "medium"
+  },
+  {
+   "name": "ركن الدين - الشيخ خالد",
+   "nameEn": "Rukn al-Din (Sheikh Khaled)",
+   "aliases": "ركن الدين، الشيخ خالد، شيخ خالد",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.54032,
+   "lng": 36.2977,
+   "source": "PROXY: https://www.openstreetmap.org/way/30480852 (مقبرة الشيخ خالد النقشبندي; ركن الدين place node 12506635866 at 33.54001,36.29880)",
+   "confidence": "medium"
+  },
+  {
+   "name": "مشفى المواساة",
+   "nameEn": "Mouasat University Hospital",
+   "aliases": "المواساة، مستشفى المواساة، ساحة المواساة",
+   "stationKind": "TERMINAL",
+   "governorate": "DAMASCUS",
+   "lat": 33.51263,
+   "lng": 36.26314,
+   "source": "https://www.openstreetmap.org/way/374883934 (amenity=hospital; relation 4110300 start)",
+   "confidence": "high"
+  },
+  {
+   "name": "مشفى البيروني",
+   "nameEn": "Al-Bayrouni University Hospital (Harasta)",
+   "aliases": "البيروني، مستشفى البيروني",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.57415,
+   "lng": 36.37045,
+   "source": "https://www.openstreetmap.org/way/227121414 (amenity=hospital)",
+   "confidence": "high"
+  },
+  {
+   "name": "جرمانا",
+   "nameEn": "Jaramana",
+   "aliases": "جرمانا البلد",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.48639,
+   "lng": 36.34828,
+   "source": "https://www.openstreetmap.org/node/573517691 (place=city)",
+   "confidence": "high"
+  },
+  {
+   "name": "ساحة السيوف",
+   "nameEn": "Sahat al-Suyouf (Jaramana)",
+   "aliases": "السيوف",
+   "stationKind": "STOP",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.48522,
+   "lng": 36.34969,
+   "source": "https://www.openstreetmap.org/node/10026930288 (place=square)",
+   "confidence": "high"
+  },
+  {
+   "name": "مطار دمشق الدولي",
+   "nameEn": "Damascus International Airport",
+   "aliases": "المطار",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.41173,
+   "lng": 36.51189,
+   "source": "https://www.openstreetmap.org/node/5986735811 (airport bus platform)",
+   "confidence": "high"
+  },
+  {
+   "name": "كفر بطنا",
+   "nameEn": "Kafr Batna",
+   "aliases": "كفربطنا",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.5126,
+   "lng": 36.37358,
+   "source": "https://www.openstreetmap.org/node/567043653 (place=village)",
+   "confidence": "high"
+  },
+  {
+   "name": "سقبا",
+   "nameEn": "Saqba",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.51848,
+   "lng": 36.37992,
+   "source": "https://www.openstreetmap.org/node/567043644 (place=village)",
+   "confidence": "high"
+  },
+  {
+   "name": "حمورية",
+   "nameEn": "Hammouriyah",
+   "aliases": "حمورة",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.52804,
+   "lng": 36.38572,
+   "source": "https://www.openstreetmap.org/node/567043643 (place=village 'حمورة')",
+   "confidence": "high"
+  },
+  {
+   "name": "مديرا",
+   "nameEn": "Mudeira",
+   "aliases": "",
+   "stationKind": "STOP",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.54498,
+   "lng": 36.38569,
+   "source": "https://www.openstreetmap.org/node/567044226 (place=village)",
+   "confidence": "high"
+  },
+  {
+   "name": "مسرابا",
+   "nameEn": "Misraba",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.55046,
+   "lng": 36.39741,
+   "source": "https://www.openstreetmap.org/node/567044223 (place=village)",
+   "confidence": "high"
+  },
+  {
+   "name": "دوما",
+   "nameEn": "Douma",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.56966,
+   "lng": 36.40129,
+   "source": "https://www.openstreetmap.org/node/567044303 (place=city)",
+   "confidence": "high"
+  },
+  {
+   "name": "حرستا",
+   "nameEn": "Harasta",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.55774,
+   "lng": 36.36682,
+   "source": "https://www.openstreetmap.org/node/573518113 (place=city)",
+   "confidence": "high"
+  },
+  {
+   "name": "عربين",
+   "nameEn": "Arbin",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.53801,
+   "lng": 36.36661,
+   "source": "https://www.openstreetmap.org/node/567043659 (place=town)",
+   "confidence": "high"
+  },
+  {
+   "name": "التل",
+   "nameEn": "Al-Tall",
+   "aliases": "جامع الدعوة",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.60862,
+   "lng": 36.312,
+   "source": "https://www.openstreetmap.org/node/270711970 (place=town; bus departure جامع الدعوة node 5045469722 at 33.61491,36.30919)",
+   "confidence": "high"
+  },
+  {
+   "name": "معربا",
+   "nameEn": "Ma'raba",
+   "aliases": "",
+   "stationKind": "STOP",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.57595,
+   "lng": 36.29763,
+   "source": "https://www.openstreetmap.org/node/573519273 (place=town)",
+   "confidence": "high"
+  },
+  {
+   "name": "قدسيا",
+   "nameEn": "Qudsaya",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.54746,
+   "lng": 36.21572,
+   "source": "https://www.openstreetmap.org/node/567030702 (place=town)",
+   "confidence": "high"
+  },
+  {
+   "name": "ضاحية قدسيا",
+   "nameEn": "Dahiyat Qudsaya",
+   "aliases": "ضاحية قدسيا السكنية",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.53864,
+   "lng": 36.19198,
+   "source": "https://www.openstreetmap.org/node/12346363185 (place=town)",
+   "confidence": "high"
+  },
+  {
+   "name": "الهامة",
+   "nameEn": "Al-Hameh",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.55777,
+   "lng": 36.2237,
+   "source": "https://www.openstreetmap.org/node/567038363 (place=town)",
+   "confidence": "high"
+  },
+  {
+   "name": "جديدة الشيباني",
+   "nameEn": "Jdeidat al-Shaybani",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.57211,
+   "lng": 36.19257,
+   "source": "PROXY: https://www.openstreetmap.org/node/5216709922 (مخبز جديدة الشيباني; rail station node 10200882287 at 33.5695,36.19495)",
+   "confidence": "medium"
+  },
+  {
+   "name": "عين الفيجة",
+   "nameEn": "Ain al-Fijeh",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.61562,
+   "lng": 36.18345,
+   "source": "https://www.openstreetmap.org/node/573519033 (place=village)",
+   "confidence": "high"
+  },
+  {
+   "name": "أشرفية الوادي",
+   "nameEn": "Ashrafiyat al-Wadi",
+   "aliases": "اشرفية الوادي",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.5897,
+   "lng": 36.19641,
+   "source": "https://www.openstreetmap.org/node/573518333 (place=village)",
+   "confidence": "high"
+  },
+  {
+   "name": "جديدة الوادي",
+   "nameEn": "Jdeidat al-Wadi",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.57235,
+   "lng": 36.19054,
+   "source": "https://www.openstreetmap.org/node/567039315 (place=town)",
+   "confidence": "high"
+  },
+  {
+   "name": "قرى الشام",
+   "nameEn": "Qura al-Sham",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.55772,
+   "lng": 36.13339,
+   "source": "https://www.openstreetmap.org/node/325656586 (place=village)",
+   "confidence": "high"
+  },
+  {
+   "name": "عين الخضرة",
+   "nameEn": "Ain al-Khadra",
+   "aliases": "عين الخضراء",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.61152,
+   "lng": 36.1915,
+   "source": "https://www.openstreetmap.org/node/573519055 (place=village)",
+   "confidence": "high"
+  },
+  {
+   "name": "بسيمة",
+   "nameEn": "Bsimeh",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.60398,
+   "lng": 36.19924,
+   "source": "https://www.openstreetmap.org/node/12244227851 (place=village)",
+   "confidence": "high"
+  },
+  {
+   "name": "ضاحية الفردوس",
+   "nameEn": "Dahiyat al-Firdous",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.56765,
+   "lng": 36.23751,
+   "source": "PROXY: https://www.openstreetmap.org/way/1529042259 (مسجد ضاحية الفردوس)",
+   "confidence": "medium"
+  },
+  {
+   "name": "مساكن الديماس",
+   "nameEn": "Masakin al-Dimas",
+   "aliases": "دوار المساكن",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.5582,
+   "lng": 36.14265,
+   "source": "https://www.openstreetmap.org/node/4410384590 (دوار المساكن place=square; الفرن الآلي بمساكن الديماس node 10026228141 adjacent)",
+   "confidence": "medium"
+  },
+  {
+   "name": "الصبورة",
+   "nameEn": "Sabboura",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.51525,
+   "lng": 36.1253,
+   "source": "https://www.openstreetmap.org/node/567052233 (place=town)",
+   "confidence": "high"
+  },
+  {
+   "name": "الديماس",
+   "nameEn": "Dimas (al-Balad)",
+   "aliases": "ديماس البلد",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.58777,
+   "lng": 36.09211,
+   "source": "https://www.openstreetmap.org/node/573517417 (place=town)",
+   "confidence": "high"
+  },
+  {
+   "name": "جديدة عرطوز",
+   "nameEn": "Jdeidat Artouz",
+   "aliases": "جديدة البلد، جديدة عرطوز البلد، الجديدة",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.43846,
+   "lng": 36.16298,
+   "source": "https://www.openstreetmap.org/node/12290359493 (place=town; line-end stops ساحة بيسان 13508679474 / ساحة العمال 13508679475 (relation 20148903))",
+   "confidence": "high"
+  },
+  {
+   "name": "موقف مفرق جديدة عرطوز",
+   "nameEn": "Jdeidat Artouz junction stop",
+   "aliases": "مفرق جديدة عرطوز",
+   "stationKind": "STOP",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.44301,
+   "lng": 36.16482,
+   "source": "https://www.openstreetmap.org/node/13508679477 (bus stop, relation 20148903 member)",
+   "confidence": "high"
+  },
+  {
+   "name": "مفرق داريا",
+   "nameEn": "Darayya junction (Sumariyah road)",
+   "aliases": "",
+   "stationKind": "STOP",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.46753,
+   "lng": 36.193,
+   "source": "https://www.openstreetmap.org/node/13509241240 (bus stop, relation 20148903 member)",
+   "confidence": "high"
+  },
+  {
+   "name": "جديدة الفضل",
+   "nameEn": "Jdeidat al-Fadl",
+   "aliases": "مساكن الحرس (جديدة الفضل)",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.44292,
+   "lng": 36.16038,
+   "source": "PROXY: https://www.openstreetmap.org/node/1820875354 (جامع جديدة الفضل)",
+   "confidence": "medium"
+  },
+  {
+   "name": "عرطوز",
+   "nameEn": "Artouz",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.42099,
+   "lng": 36.14775,
+   "source": "https://www.openstreetmap.org/node/12348880046 (place=town)",
+   "confidence": "high"
+  },
+  {
+   "name": "قطنا",
+   "nameEn": "Qatana",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.4365,
+   "lng": 36.07902,
+   "source": "https://www.openstreetmap.org/node/567052242 (place=town)",
+   "confidence": "high"
+  },
+  {
+   "name": "معضمية الشام",
+   "nameEn": "Mu'adamiyat al-Sham",
+   "aliases": "المعضمية، معضمية",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.46159,
+   "lng": 36.19831,
+   "source": "https://www.openstreetmap.org/node/567045908 (place=city)",
+   "confidence": "high"
+  },
+  {
+   "name": "داريا",
+   "nameEn": "Darayya",
+   "aliases": "موقف ركب داريا",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.46123,
+   "lng": 36.23401,
+   "source": "https://www.openstreetmap.org/node/14219808951 (موقف ركب داريا-صحنايا / موقف ركب داريا-فحامة node 14219808960)",
+   "confidence": "high"
+  },
+  {
+   "name": "صحنايا",
+   "nameEn": "Sahnaya",
+   "aliases": "موقف ركب صحنايا",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.43153,
+   "lng": 36.22389,
+   "source": "https://www.openstreetmap.org/node/14219775780 (موقف ركب داريا-صحنايا)",
+   "confidence": "high"
+  },
+  {
+   "name": "السيدة زينب",
+   "nameEn": "Sayyida Zaynab",
+   "aliases": "الست",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.44649,
+   "lng": 36.33625,
+   "source": "https://www.openstreetmap.org/node/3887032461 (place=city)",
+   "confidence": "high"
+  },
+  {
+   "name": "مخيم الحسينية",
+   "nameEn": "Husseiniyah camp",
+   "aliases": "الحسينية",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.42514,
+   "lng": 36.35206,
+   "source": "PROXY: https://www.openstreetmap.org/way/1518591747 (حديقة بلدة الحسينية)",
+   "confidence": "medium"
+  },
+  {
+   "name": "البحدلية",
+   "nameEn": "Bahdaliya",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.42263,
+   "lng": 36.34941,
+   "source": "https://www.openstreetmap.org/node/567121569 (place=town)",
+   "confidence": "high"
+  },
+  {
+   "name": "المطلة",
+   "nameEn": "Matla",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.33313,
+   "lng": 36.38266,
+   "source": "https://www.openstreetmap.org/node/2606940721 (place=village)",
+   "confidence": "high"
+  },
+  {
+   "name": "خربة الشياب",
+   "nameEn": "Khirbet al-Shiyab",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.30794,
+   "lng": 36.37715,
+   "source": "https://www.openstreetmap.org/node/2607733312 (place=village)",
+   "confidence": "high"
+  },
+  {
+   "name": "نجها",
+   "nameEn": "Najha",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.3853,
+   "lng": 36.37319,
+   "source": "https://www.openstreetmap.org/node/567121220 (place=village)",
+   "confidence": "high"
+  },
+  {
+   "name": "خربة الورد",
+   "nameEn": "Khirbet al-Ward",
+   "aliases": "",
+   "stationKind": "STOP",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.3993,
+   "lng": 36.37004,
+   "source": "https://www.openstreetmap.org/node/12304222176 (place=town)",
+   "confidence": "high"
+  },
+  {
+   "name": "مساكن نجها",
+   "nameEn": "Masakin Najha",
+   "aliases": "",
+   "stationKind": "STOP",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.40922,
+   "lng": 36.35455,
+   "source": "https://www.openstreetmap.org/node/7698439485",
+   "confidence": "medium"
+  },
+  {
+   "name": "ببيلا",
+   "nameEn": "Babbila",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.46842,
+   "lng": 36.33105,
+   "source": "https://www.openstreetmap.org/node/3887032462 (place=town)",
+   "confidence": "high"
+  },
+  {
+   "name": "يلدا",
+   "nameEn": "Yalda",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.46526,
+   "lng": 36.32166,
+   "source": "https://www.openstreetmap.org/node/567125800 (place=town)",
+   "confidence": "high"
+  },
+  {
+   "name": "السبينة",
+   "nameEn": "Sbeineh",
+   "aliases": "سبينة",
+   "stationKind": "STOP",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.44014,
+   "lng": 36.28053,
+   "source": "https://www.openstreetmap.org/node/4035515321 (place=city)",
+   "confidence": "high"
+  },
+  {
+   "name": "حجيرة",
+   "nameEn": "Hujaira",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.44123,
+   "lng": 36.32543,
+   "source": "https://www.openstreetmap.org/node/12292150371 (place=village)",
+   "confidence": "high"
+  },
+  {
+   "name": "الكسوة",
+   "nameEn": "Kiswah (servis stand)",
+   "aliases": "موقف سيرفيس الشام",
+   "stationKind": "STOP",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.36075,
+   "lng": 36.2484,
+   "source": "https://www.openstreetmap.org/node/1800533449 (موقف سيرفيس الشام bus_station; town node 567046783 at 33.35842,36.24111)",
+   "confidence": "high"
+  },
+  {
+   "name": "دير علي",
+   "nameEn": "Deir Ali",
+   "aliases": "",
+   "stationKind": "STOP",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.28033,
+   "lng": 36.30368,
+   "source": "https://www.openstreetmap.org/node/567052747 (place=village)",
+   "confidence": "high"
+  },
+  {
+   "name": "جب الصفا",
+   "nameEn": "Jubb al-Safa",
+   "aliases": "",
+   "stationKind": "STOP",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.23356,
+   "lng": 36.31635,
+   "source": "https://www.openstreetmap.org/node/12284942118 (place=village)",
+   "confidence": "high"
+  },
+  {
+   "name": "مرجانة",
+   "nameEn": "Marjana",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.23402,
+   "lng": 36.37094,
+   "source": "https://www.openstreetmap.org/node/567052755 (place=village)",
+   "confidence": "high"
+  },
+  {
+   "name": "حرجلة",
+   "nameEn": "Harjalleh",
+   "aliases": "الحرجلة",
+   "stationKind": "STOP",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.37142,
+   "lng": 36.31307,
+   "source": "https://www.openstreetmap.org/node/567046952 (place=village)",
+   "confidence": "high"
+  },
+  {
+   "name": "العادلية",
+   "nameEn": "Adliyah",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.3748,
+   "lng": 36.34833,
+   "source": "https://www.openstreetmap.org/node/567047305 (place=village)",
+   "confidence": "high"
+  },
+  {
+   "name": "خان دنون",
+   "nameEn": "Khan Dannoun",
+   "aliases": "",
+   "stationKind": "STOP",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.33133,
+   "lng": 36.23004,
+   "source": "https://www.openstreetmap.org/node/567046784 (place=town)",
+   "confidence": "high"
+  },
+  {
+   "name": "خيارة دنون",
+   "nameEn": "Khiyarat Dannoun",
+   "aliases": "دنون",
+   "stationKind": "STOP",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.32513,
+   "lng": 36.24302,
+   "source": "https://www.openstreetmap.org/node/567097250 (place=village)",
+   "confidence": "high"
+  },
+  {
+   "name": "زاكية",
+   "nameEn": "Zakiyah",
+   "aliases": "",
+   "stationKind": "TERMINAL",
+   "governorate": "RIF_DIMASHQ",
+   "lat": 33.33445,
+   "lng": 36.15993,
+   "source": "https://www.openstreetmap.org/node/567046657 (place=village)",
+   "confidence": "high"
+  }
+ ],
+ "routes": [
+  {
+   "name": "مزة فيلات غربية - برامكة",
+   "nameEn": "Mezzeh Villat Gharbiya – Baramkeh",
+   "code": "DAM-MEZ-01",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 45,
+   "stations": [
+    "مزة فيلات غربية",
+    "موقف مزة الشرقية",
+    "الشيخ سعد",
+    "كلية الطب",
+    "كلية الآداب",
+    "ساحة الجمارك",
+    "البرامكة"
+   ],
+   "source": "https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision); https://archive.sana.sy/تفعيل-ميزة-بداية-الخط-ونهايته-لـ-17-خط-سي (SANA 2023-06-06, 17 GPS lines); corridor via الشيخ سعد/autostrad per https://www.syriasteps.com/index.php?d=127&id=179714 (Syria Steps 2020-02-15, Mezzeh lines cut short at Sheikh Saad); fare: Sept 2026 committee band 40–70 new SYP by line (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP)); 45 = short city line default",
+   "confidence": "medium"
+  },
+  {
+   "name": "مزة 86 خزان / مدرسة - برامكة",
+   "nameEn": "Mezzeh 86 (Khazzan / Madrasa branches) – Baramkeh",
+   "code": "DAM-MEZ-02",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 50,
+   "stations": [
+    "المزة 86",
+    "الشيخ سعد",
+    "كلية الطب",
+    "كلية الآداب",
+    "ساحة الجمارك",
+    "البرامكة"
+   ],
+   "source": "https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision) (lines 'مزة 86 خزان برامكة' and 'مزة 86 مدرسة برامكة'); https://nabd.com/s/119971407-18c9f3/ (Al-Watan via Nabd 2023-05-23, 14 GPS lines); classed 'long line' pre-2024; branch termini not geolocated, merged into one route; fare: Sept 2026 committee band 40–70 new SYP (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP)); long city line estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "مزة جبل - كراجات",
+   "nameEn": "Mezzeh Jabal – Karajat (Pullman garages)",
+   "code": "DAM-MEZ-03",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 50,
+   "stations": [
+    "مزة جبل",
+    "المزة",
+    "كلية الآداب",
+    "ساحة الجمارك",
+    "البرامكة",
+    "جسر الرئيس",
+    "شارع الثورة",
+    "كراج العباسيين",
+    "كراجات البولمان"
+   ],
+   "polyline": [
+    {
+     "lat": 33.499495,
+     "lng": 36.242143
+    },
+    {
+     "lat": 33.499339,
+     "lng": 36.242094
+    },
+    {
+     "lat": 33.499174,
+     "lng": 36.242164
+    },
+    {
+     "lat": 33.499236,
+     "lng": 36.243837
+    },
+    {
+     "lat": 33.499419,
+     "lng": 36.244073
+    },
+    {
+     "lat": 33.50039,
+     "lng": 36.246191
+    },
+    {
+     "lat": 33.501361,
+     "lng": 36.247869
+    },
+    {
+     "lat": 33.503981,
+     "lng": 36.250961
+    },
+    {
+     "lat": 33.507242,
+     "lng": 36.255931
+    },
+    {
+     "lat": 33.507694,
+     "lng": 36.256762
+    },
+    {
+     "lat": 33.507623,
+     "lng": 36.257047
+    },
+    {
+     "lat": 33.507443,
+     "lng": 36.257282
+    },
+    {
+     "lat": 33.509949,
+     "lng": 36.25965
+    },
+    {
+     "lat": 33.510091,
+     "lng": 36.25986
+    },
+    {
+     "lat": 33.511037,
+     "lng": 36.262516
+    },
+    {
+     "lat": 33.511381,
+     "lng": 36.263918
+    },
+    {
+     "lat": 33.511531,
+     "lng": 36.265872
+    },
+    {
+     "lat": 33.511821,
+     "lng": 36.267794
+    },
+    {
+     "lat": 33.511852,
+     "lng": 36.268679
+    },
+    {
+     "lat": 33.511749,
+     "lng": 36.269902
+    },
+    {
+     "lat": 33.511146,
+     "lng": 36.27264
+    },
+    {
+     "lat": 33.510463,
+     "lng": 36.277465
+    },
+    {
+     "lat": 33.510274,
+     "lng": 36.278325
+    },
+    {
+     "lat": 33.510336,
+     "lng": 36.279216
+    },
+    {
+     "lat": 33.509952,
+     "lng": 36.281831
+    },
+    {
+     "lat": 33.509743,
+     "lng": 36.289005
+    },
+    {
+     "lat": 33.509719,
+     "lng": 36.289146
+    },
+    {
+     "lat": 33.509415,
+     "lng": 36.289249
+    },
+    {
+     "lat": 33.508248,
+     "lng": 36.289261
+    },
+    {
+     "lat": 33.507966,
+     "lng": 36.289397
+    },
+    {
+     "lat": 33.507905,
+     "lng": 36.289637
+    },
+    {
+     "lat": 33.507903,
+     "lng": 36.291943
+    },
+    {
+     "lat": 33.508093,
+     "lng": 36.292158
+    },
+    {
+     "lat": 33.50834,
+     "lng": 36.292256
+    },
+    {
+     "lat": 33.509657,
+     "lng": 36.291346
+    },
+    {
+     "lat": 33.509678,
+     "lng": 36.28951
+    },
+    {
+     "lat": 33.509819,
+     "lng": 36.289235
+    },
+    {
+     "lat": 33.511486,
+     "lng": 36.289139
+    },
+    {
+     "lat": 33.511638,
+     "lng": 36.289331
+    },
+    {
+     "lat": 33.511741,
+     "lng": 36.290696
+    },
+    {
+     "lat": 33.51187,
+     "lng": 36.290855
+    },
+    {
+     "lat": 33.511862,
+     "lng": 36.289383
+    },
+    {
+     "lat": 33.51191,
+     "lng": 36.28927
+    },
+    {
+     "lat": 33.512961,
+     "lng": 36.289186
+    },
+    {
+     "lat": 33.51341,
+     "lng": 36.289347
+    },
+    {
+     "lat": 33.513492,
+     "lng": 36.289409
+    },
+    {
+     "lat": 33.513585,
+     "lng": 36.29287
+    },
+    {
+     "lat": 33.513725,
+     "lng": 36.295174
+    },
+    {
+     "lat": 33.514537,
+     "lng": 36.300092
+    },
+    {
+     "lat": 33.514724,
+     "lng": 36.300521
+    },
+    {
+     "lat": 33.515381,
+     "lng": 36.300581
+    },
+    {
+     "lat": 33.516288,
+     "lng": 36.300473
+    },
+    {
+     "lat": 33.517928,
+     "lng": 36.300461
+    },
+    {
+     "lat": 33.518161,
+     "lng": 36.300561
+    },
+    {
+     "lat": 33.52023,
+     "lng": 36.300848
+    },
+    {
+     "lat": 33.522738,
+     "lng": 36.301383
+    },
+    {
+     "lat": 33.523409,
+     "lng": 36.301381
+    },
+    {
+     "lat": 33.524333,
+     "lng": 36.301581
+    },
+    {
+     "lat": 33.524692,
+     "lng": 36.301768
+    },
+    {
+     "lat": 33.525445,
+     "lng": 36.301918
+    },
+    {
+     "lat": 33.52571,
+     "lng": 36.302194
+    },
+    {
+     "lat": 33.525895,
+     "lng": 36.302911
+    },
+    {
+     "lat": 33.526299,
+     "lng": 36.305737
+    },
+    {
+     "lat": 33.526491,
+     "lng": 36.306485
+    },
+    {
+     "lat": 33.526973,
+     "lng": 36.307756
+    },
+    {
+     "lat": 33.533185,
+     "lng": 36.320017
+    },
+    {
+     "lat": 33.535238,
+     "lng": 36.323573
+    },
+    {
+     "lat": 33.535423,
+     "lng": 36.324208
+    },
+    {
+     "lat": 33.535532,
+     "lng": 36.324981
+    },
+    {
+     "lat": 33.535467,
+     "lng": 36.327659
+    },
+    {
+     "lat": 33.535685,
+     "lng": 36.328773
+    },
+    {
+     "lat": 33.536955,
+     "lng": 36.331827
+    },
+    {
+     "lat": 33.537124,
+     "lng": 36.332721
+    },
+    {
+     "lat": 33.53834,
+     "lng": 36.335485
+    },
+    {
+     "lat": 33.53819,
+     "lng": 36.335476
+    },
+    {
+     "lat": 33.537334,
+     "lng": 36.336037
+    },
+    {
+     "lat": 33.537249,
+     "lng": 36.336392
+    },
+    {
+     "lat": 33.536227,
+     "lng": 36.336895
+    },
+    {
+     "lat": 33.53703,
+     "lng": 36.339016
+    },
+    {
+     "lat": 33.538013,
+     "lng": 36.340637
+    },
+    {
+     "lat": 33.538263,
+     "lng": 36.340354
+    },
+    {
+     "lat": 33.538701,
+     "lng": 36.340043
+    },
+    {
+     "lat": 33.538719,
+     "lng": 36.339828
+    },
+    {
+     "lat": 33.538234,
+     "lng": 36.338657
+    }
+   ],
+   "source": "https://www.openstreetmap.org/relation/4108101 (مزة جبل - كراجات; reverse 4108338; relation runs via old Mezzeh street (not the autostrad) and passes the Abbasiyeen garage edge, not the square); https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision); https://qamishly.com/2025/11/24/ (Qamishly 2025-11-24, Mezzeh Jabal fares); fare: 45–50 new SYP driver-reported Sept 2026 (https://www.enabbaladi.net/824978/ (Enab Baladi 2026-09-14, driver-reported fares Sept 2026))",
+   "confidence": "high"
+  },
+  {
+   "name": "سومرية - برامكة - كراجات",
+   "nameEn": "Sumariyah – Baramkeh – Karajat (Abbasiyeen)",
+   "code": "DAM-SUM-01",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 55,
+   "stations": [
+    "كراج السومرية",
+    "موقف مزة الشرقية",
+    "الشيخ سعد",
+    "كلية الطب",
+    "كلية الآداب",
+    "ساحة الجمارك",
+    "البرامكة",
+    "جسر الرئيس",
+    "شارع الثورة",
+    "ساحة العباسيين",
+    "كراج العباسيين"
+   ],
+   "polyline": [
+    {
+     "lat": 33.479644,
+     "lng": 36.210963
+    },
+    {
+     "lat": 33.478759,
+     "lng": 36.20911
+    },
+    {
+     "lat": 33.477616,
+     "lng": 36.207523
+    },
+    {
+     "lat": 33.477402,
+     "lng": 36.207502
+    },
+    {
+     "lat": 33.477137,
+     "lng": 36.207698
+    },
+    {
+     "lat": 33.477226,
+     "lng": 36.208104
+    },
+    {
+     "lat": 33.477531,
+     "lng": 36.208521
+    },
+    {
+     "lat": 33.478097,
+     "lng": 36.208869
+    },
+    {
+     "lat": 33.478548,
+     "lng": 36.209266
+    },
+    {
+     "lat": 33.479127,
+     "lng": 36.210102
+    },
+    {
+     "lat": 33.485767,
+     "lng": 36.224328
+    },
+    {
+     "lat": 33.488086,
+     "lng": 36.230668
+    },
+    {
+     "lat": 33.488205,
+     "lng": 36.231376
+    },
+    {
+     "lat": 33.488162,
+     "lng": 36.232084
+    },
+    {
+     "lat": 33.488358,
+     "lng": 36.233295
+    },
+    {
+     "lat": 33.490136,
+     "lng": 36.236506
+    },
+    {
+     "lat": 33.491926,
+     "lng": 36.239443
+    },
+    {
+     "lat": 33.492698,
+     "lng": 36.240915
+    },
+    {
+     "lat": 33.511923,
+     "lng": 36.273568
+    },
+    {
+     "lat": 33.51312,
+     "lng": 36.275674
+    },
+    {
+     "lat": 33.513279,
+     "lng": 36.276069
+    },
+    {
+     "lat": 33.513337,
+     "lng": 36.276221
+    },
+    {
+     "lat": 33.513258,
+     "lng": 36.276725
+    },
+    {
+     "lat": 33.513517,
+     "lng": 36.277164
+    },
+    {
+     "lat": 33.513254,
+     "lng": 36.278591
+    },
+    {
+     "lat": 33.51313,
+     "lng": 36.280514
+    },
+    {
+     "lat": 33.513652,
+     "lng": 36.29436
+    },
+    {
+     "lat": 33.513725,
+     "lng": 36.295174
+    },
+    {
+     "lat": 33.514537,
+     "lng": 36.300092
+    },
+    {
+     "lat": 33.51465,
+     "lng": 36.300356
+    },
+    {
+     "lat": 33.514747,
+     "lng": 36.300345
+    },
+    {
+     "lat": 33.514816,
+     "lng": 36.300199
+    },
+    {
+     "lat": 33.514609,
+     "lng": 36.29959
+    },
+    {
+     "lat": 33.514124,
+     "lng": 36.297056
+    },
+    {
+     "lat": 33.52419,
+     "lng": 36.31854
+    },
+    {
+     "lat": 33.52982,
+     "lng": 36.32504
+    }
+   ],
+   "source": "https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision); https://sana.sy/locals/2425353/ (SANA 2026-03-13, three e-bus trunk lines) (e-bus trunk 'سومرية – كراجات'); geometry https://www.openstreetmap.org/relation/4113584 (Somaria - Thaura, Sumariyah→Thawra St) + straight-line extension Thawra St→Abbasiyeen; fare: Baramkeh–Sumariyah 2,500 old SYP Nov 2025 + Sept 2026 rise, long-line estimate",
+   "confidence": "medium"
+  },
+  {
+   "name": "دويلعة - برامكة",
+   "nameEn": "Duwayla'a – Baramkeh",
+   "code": "DAM-DWL-01",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 45,
+   "stations": [
+    "الدويلعة",
+    "الفحامة",
+    "البرامكة"
+   ],
+   "source": "https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision); https://archive.sana.sy/تفعيل-ميزة-بداية-الخط-ونهايته-لـ-17-خط-سي (SANA 2023-06-06, 17 GPS lines); 'دويلعة- فحامة' variant https://www.enabbaladi.net/785500/; fare: 40–50 new SYP driver-reported Sept 2026 (https://www.enabbaladi.net/824978/ (Enab Baladi 2026-09-14, driver-reported fares Sept 2026))",
+   "confidence": "low"
+  },
+  {
+   "name": "دويلعة - كراجات",
+   "nameEn": "Duwayla'a – Karajat (Abbasiyeen)",
+   "code": "DAM-DWL-02",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 45,
+   "stations": [
+    "الدويلعة",
+    "ساحة العباسيين",
+    "كراج العباسيين"
+   ],
+   "source": "https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision); https://nabd.com/s/119971407-18c9f3/ (Al-Watan via Nabd 2023-05-23, 14 GPS lines); intermediate inferred; fare: Sept 2026 committee band 40–70 new SYP by line (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP)); 45 = short city line default",
+   "confidence": "low"
+  },
+  {
+   "name": "كفرسوسة - برامكة",
+   "nameEn": "Kafr Sousa – Baramkeh",
+   "code": "DAM-KFS-01",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 45,
+   "stations": [
+    "كفر سوسة",
+    "الفحامة",
+    "البرامكة"
+   ],
+   "source": "https://www.enabbaladi.net/824978/ (Enab Baladi 2026-09-14, driver-reported fares Sept 2026) ('كفرسوسة- البرامكة', 40–50 new SYP Sept 2026); https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP); intermediate الفحامة inferred from 2022 variants",
+   "confidence": "low"
+  },
+  {
+   "name": "كفرسوسة اللوان - الفحامة",
+   "nameEn": "Kafr Sousa al-Lawan – Fahhama",
+   "code": "DAM-KFS-02",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 45,
+   "stations": [
+    "اللوان",
+    "كفر سوسة",
+    "الفحامة"
+   ],
+   "source": "https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision) ('كفرسوسة اللوان الفحامة'); fare: Sept 2026 committee band 40–70 new SYP by line (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP)); 45 = short city line default",
+   "confidence": "low"
+  },
+  {
+   "name": "تضامن مسبق الصنع - الفحامة",
+   "nameEn": "Tadamon Musbaq al-Sun' – Fahhama / Baramkeh",
+   "code": "DAM-TDM-01",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 45,
+   "stations": [
+    "التضامن مسبق الصنع",
+    "حي التضامن",
+    "الفحامة",
+    "البرامكة"
+   ],
+   "source": "https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision); https://archive.sana.sy/تفعيل-ميزة-بداية-الخط-ونهايته-لـ-17-خط-سي (SANA 2023-06-06, 17 GPS lines); https://www.enabbaladi.net/663947/ (Enab Baladi 2023-10-03, 10 GPS lines) ('التضامن مسبق الصنع- البرامكة'); fare: Sept 2026 committee band 40–70 new SYP by line (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP)); 45 = short city line default",
+   "confidence": "low"
+  },
+  {
+   "name": "دف الشوك - الفحامة",
+   "nameEn": "Daf al-Shawk – Fahhama",
+   "code": "DAM-DFS-01",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 45,
+   "stations": [
+    "دف الشوك",
+    "الفحامة"
+   ],
+   "source": "https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision); fare: Sept 2026 committee band 40–70 new SYP by line (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP)); 45 = short city line default",
+   "confidence": "low"
+  },
+  {
+   "name": "دف الشوك - كراجات البولمان",
+   "nameEn": "Daf al-Shawk – Pullman garages",
+   "code": "DAM-DFS-02",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 55,
+   "stations": [
+    "دف الشوك",
+    "كراج العباسيين",
+    "كراجات البولمان"
+   ],
+   "source": "https://t.me/damascusgovrnorat/27053 (Damascus Governorate Telegram, 2024-08-21, Daf al-Shawk–Pullman line); intermediate inferred; fare: Sept 2026 committee band 40–70 new SYP (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP)); long city line estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "زاهرة قديمة - كراجات",
+   "nameEn": "Zahira Qadima – Karajat (Abbasiyeen)",
+   "code": "DAM-ZHR-01",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 50,
+   "stations": [
+    "الزاهرة",
+    "ساحة العباسيين",
+    "كراج العباسيين"
+   ],
+   "source": "https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision); https://www.enabbaladi.net/663947/ (Enab Baladi 2023-10-03, 10 GPS lines); intermediate inferred; fare: Sept 2026 committee band 40–70 new SYP (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP)); long city line estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "قدم عسالي - كراجات",
+   "nameEn": "Qadam Asali – Karajat (Abbasiyeen)",
+   "code": "DAM-QDM-01",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 55,
+   "stations": [
+    "العسالي",
+    "القدم",
+    "ساحة العباسيين",
+    "كراج العباسيين"
+   ],
+   "source": "https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision); intermediates inferred; fare: Sept 2026 committee band 40–70 new SYP (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP)); long city line estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "مهاجرين - صناعة",
+   "nameEn": "Muhajireen – Sina'a (Hamak)",
+   "code": "DAM-MHJ-01",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 45,
+   "stations": [
+    "ساحة آخر الخط",
+    "المرابط",
+    "الشطا",
+    "المصطبة",
+    "شورى",
+    "العفيف",
+    "الجسر الأبيض",
+    "ساحة الروضة",
+    "إشارة المدفع",
+    "ساحة النجمة",
+    "جسر الرئيس",
+    "جامعة دمشق",
+    "البرامكة",
+    "الفحامة",
+    "المجتهد",
+    "باب مصلى",
+    "كراجات الست",
+    "مجمع الهمك"
+   ],
+   "source": "https://wikiroutes.info/en/damascus?routes=76515 (Wikiroutes, 25-stop sequence, 2021) (stop order; minor stops without coordinates omitted); https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision); https://sana.sy/locals/2425353/ (SANA 2026-03-13, three e-bus trunk lines) (e-bus trunk, 70 buses); fare: 40–50 new SYP driver-reported Sept 2026 (https://www.enabbaladi.net/824978/ (Enab Baladi 2026-09-14, driver-reported fares Sept 2026))",
+   "confidence": "high"
+  },
+  {
+   "name": "مهاجرين - باب توما",
+   "nameEn": "Muhajireen – Bab Touma",
+   "code": "DAM-MHJ-02",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 45,
+   "stations": [
+    "ساحة آخر الخط",
+    "باب توما"
+   ],
+   "source": "https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision); https://nabd.com/s/119971407-18c9f3/ (Al-Watan via Nabd 2023-05-23, 14 GPS lines); endpoints only; fare: Sept 2026 committee band 40–70 new SYP by line (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP)); 45 = short city line default",
+   "confidence": "low"
+  },
+  {
+   "name": "مهاجرين جادات سلمية - شارع الثورة",
+   "nameEn": "Muhajireen Jadat Salmiyeh – Thawra Street (official: مهاجرين سلمية – جسر الرئيس)",
+   "code": "DAM-MHJ-03",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 50,
+   "stations": [
+    "شارع الثورة",
+    "ساحة المحافظة",
+    "مجلس الشعب",
+    "شارع الحمرا",
+    "ساحة عرنوس",
+    "ساحة الشهبندر",
+    "الجسر الأبيض",
+    "العفيف",
+    "شورى",
+    "جادات",
+    "الكناني"
+   ],
+   "source": "https://wikiroutes.info/en/damascus?routes=76516 (Wikiroutes, 17-stop sequence, 2021) (stop order; البحصة, نبيل نفيسة, الجبة, زين العابدين omitted – no reliable coordinates); https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision); classed 'long line' pre-2024; fare: Sept 2026 committee band 40–70 new SYP (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP)); long city line estimate",
+   "confidence": "medium"
+  },
+  {
+   "name": "ركن الدين الشيخ خالد - جسر الرئيس",
+   "nameEn": "Rukn al-Din Sheikh Khaled – Jisr al-Rais",
+   "code": "DAM-RKN-01",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 50,
+   "stations": [
+    "ركن الدين - الشيخ خالد",
+    "جسر الرئيس"
+   ],
+   "source": "https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision); https://nabd.com/s/119971407-18c9f3/ (Al-Watan via Nabd 2023-05-23, 14 GPS lines); endpoints only; classed 'long line' pre-2024; fare: Sept 2026 committee band 40–70 new SYP (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP)); long city line estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "حي العرين - جسر الرئيس",
+   "nameEn": "Al-Areen – Umayyad Square – Jisr al-Rais",
+   "code": "DAM-ARN-01",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 50,
+   "stations": [
+    "حي العرين",
+    "كلية الطب",
+    "كلية الآداب",
+    "ساحة الأمويين",
+    "جسر الرئيس"
+   ],
+   "source": "https://t.me/damascusgovrnorat/26670 (Damascus Governorate Telegram, 2024-06-02, al-Areen line) (route: حي العرين – دوار الكنيسة – طريق القصر – عقدة 17 نيسان – أوتستراد المزة – كلية الطب – آداب – ساحة الأمويين – جسر الرئيس); fare: Sept 2026 committee band 40–70 new SYP (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP)); long city line estimate",
+   "confidence": "medium"
+  },
+  {
+   "name": "مشروع دمر - جسر الرئيس",
+   "nameEn": "Mashrou' Dummar – Jisr al-Rais",
+   "code": "DAM-DMR-01",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 50,
+   "stations": [
+    "مشروع دمر",
+    "كراج جسر الوزان",
+    "الربوة",
+    "جسر الرئيس"
+   ],
+   "source": "https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision); https://archive.sana.sy/تفعيل-ميزة-بداية-الخط-ونهايته-لـ-17-خط-سي (SANA 2023-06-06, 17 GPS lines); https://www.enabbaladi.net/663947/ (Enab Baladi 2023-10-03, 10 GPS lines); corridor جسر الرئيس–الوزان per Enab Baladi 2020 (407281) fare segments; fare: Sept 2026 committee band 40–70 new SYP (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP)); long city line estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "مشروع دمر - مساكن الحرس - جسر الرئيس",
+   "nameEn": "Mashrou' Dummar – Masakin al-Haras – Jisr al-Rais",
+   "code": "DAM-DMR-02",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 55,
+   "stations": [
+    "حي الورود",
+    "مشروع دمر",
+    "كراج جسر الوزان",
+    "الربوة",
+    "جسر الرئيس"
+   ],
+   "source": "https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision); https://nabd.com/s/119971407-18c9f3/ (Al-Watan via Nabd 2023-05-23, 14 GPS lines); https://www.enabbaladi.net/663947/ (Enab Baladi 2023-10-03, 10 GPS lines); segments جسر الرئيس→جسر الوزان→مدخل مساكن الحرس→حي الورود per Enab Baladi 2020 (407281); fare: Sept 2026 committee band 40–70 new SYP (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP)); long city line estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "دمر البلد - جسر الرئيس",
+   "nameEn": "Dummar al-Balad – Jisr al-Rais",
+   "code": "DAM-DMR-03",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 50,
+   "stations": [
+    "دمر البلد",
+    "كراج جسر الوزان",
+    "الربوة",
+    "جسر الرئيس"
+   ],
+   "source": "https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision); https://www.syria.tv/أزمة-تنتقل-بلا-حل (Syria TV 2025-05-17, relocation from Jisr al-Hurriya) (Dummar lines still leave from جسر الحرية, May 2025); intermediates inferred; fare: Sept 2026 committee band 40–70 new SYP (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP)); long city line estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "مساكن برزة مسبق الصنع - شارع الثورة",
+   "nameEn": "Masakin Barzeh Musbaq al-Sun' – Thawra Street",
+   "code": "DAM-BRZ-01",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 45,
+   "stations": [
+    "مساكن برزة مسبق الصنع",
+    "موقف حاميش",
+    "مشفى ابن النفيس",
+    "شارع الثورة"
+   ],
+   "polyline": [
+    {
+     "lat": 33.550964,
+     "lng": 36.308636
+    },
+    {
+     "lat": 33.551013,
+     "lng": 36.309046
+    },
+    {
+     "lat": 33.550658,
+     "lng": 36.309641
+    },
+    {
+     "lat": 33.550661,
+     "lng": 36.310019
+    },
+    {
+     "lat": 33.550982,
+     "lng": 36.310501
+    },
+    {
+     "lat": 33.551387,
+     "lng": 36.31078
+    },
+    {
+     "lat": 33.551402,
+     "lng": 36.310966
+    },
+    {
+     "lat": 33.551223,
+     "lng": 36.311155
+    },
+    {
+     "lat": 33.551315,
+     "lng": 36.311873
+    },
+    {
+     "lat": 33.552079,
+     "lng": 36.313679
+    },
+    {
+     "lat": 33.552911,
+     "lng": 36.315914
+    },
+    {
+     "lat": 33.552982,
+     "lng": 36.316302
+    },
+    {
+     "lat": 33.55285,
+     "lng": 36.316517
+    },
+    {
+     "lat": 33.551985,
+     "lng": 36.316742
+    },
+    {
+     "lat": 33.551853,
+     "lng": 36.316702
+    },
+    {
+     "lat": 33.551749,
+     "lng": 36.317882
+    },
+    {
+     "lat": 33.550558,
+     "lng": 36.318634
+    },
+    {
+     "lat": 33.545671,
+     "lng": 36.307065
+    },
+    {
+     "lat": 33.545517,
+     "lng": 36.306843
+    },
+    {
+     "lat": 33.536481,
+     "lng": 36.305862
+    },
+    {
+     "lat": 33.53581,
+     "lng": 36.30548
+    },
+    {
+     "lat": 33.5341,
+     "lng": 36.303474
+    },
+    {
+     "lat": 33.53332,
+     "lng": 36.303071
+    },
+    {
+     "lat": 33.518879,
+     "lng": 36.30042
+    },
+    {
+     "lat": 33.51634,
+     "lng": 36.300374
+    },
+    {
+     "lat": 33.516157,
+     "lng": 36.300277
+    },
+    {
+     "lat": 33.515074,
+     "lng": 36.300266
+    },
+    {
+     "lat": 33.514779,
+     "lng": 36.300081
+    },
+    {
+     "lat": 33.514609,
+     "lng": 36.29959
+    }
+   ],
+   "source": "https://www.openstreetmap.org/relation/14469961 (سيرفيس مساكن برزة مسبق الصنع - شارع الثورة; reverse 14995426 route=minibus); https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision); https://www.enabbaladi.net/663947/ (Enab Baladi 2023-10-03, 10 GPS lines); fare: Sept 2026 committee band 40–70 new SYP by line (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP)); 45 = short city line default",
+   "confidence": "high"
+  },
+  {
+   "name": "برزة البلد - شارع الثورة",
+   "nameEn": "Barzeh al-Balad – Thawra Street",
+   "code": "DAM-BRZ-02",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 45,
+   "stations": [
+    "برزة البلد",
+    "مساكن برزة",
+    "شارع الثورة"
+   ],
+   "source": "https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision); https://archive.sana.sy/تفعيل-ميزة-بداية-الخط-ونهايته-لـ-17-خط-سي (SANA 2023-06-06, 17 GPS lines); https://www.enabbaladi.net/663947/ (Enab Baladi 2023-10-03, 10 GPS lines); intermediate inferred (same Barzeh road); fare: Sept 2026 committee band 40–70 new SYP by line (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP)); 45 = short city line default",
+   "confidence": "low"
+  },
+  {
+   "name": "القابون - شارع الثورة",
+   "nameEn": "Qaboun – Thawra Street",
+   "code": "DAM-QBN-01",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 45,
+   "stations": [
+    "القابون",
+    "شارع الثورة"
+   ],
+   "source": "https://www.enabbaladi.net/663947/ (Enab Baladi 2023-10-03, 10 GPS lines); https://archive.sana.sy/تفعيل-ميزة-بداية-الخط-ونهايته-لـ-17-خط-سي (SANA 2023-06-06, 17 GPS lines); from 1 Jul 2026 stop moves to under جسر الحرية (https://www.enabbaladi.net/813784/); endpoints only; fare: Sept 2026 committee band 40–70 new SYP by line (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP)); 45 = short city line default",
+   "confidence": "low"
+  },
+  {
+   "name": "جوبر - عباسيين - ابن النفيس - كلية الهمك",
+   "nameEn": "Jobar – Abbasiyeen – Ibn al-Nafis – Hamak",
+   "code": "DAM-JBR-01",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 50,
+   "stations": [
+    "جوبر",
+    "ساحة العباسيين",
+    "مشفى ابن النفيس",
+    "مجمع الهمك"
+   ],
+   "source": "https://www.enabbaladi.net/663947/ (Enab Baladi 2023-10-03, 10 GPS lines) (name order used as stop order); fare: Sept 2026 committee band 40–70 new SYP (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP)); long city line estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "ميدان - برزة",
+   "nameEn": "Midan – Barzeh",
+   "code": "DAM-MDN-01",
+   "vehicleType": "SERVIS",
+   "governorate": "DAMASCUS",
+   "currentFare": 60,
+   "stations": [
+    "ساحة الأشمر",
+    "برزة البلد"
+   ],
+   "source": "https://t.me/s/damascusgovrnorat?q=سرافيس (Damascus Governorate Telegram post 24989, Midan–Barzeh fare segments) (segments برزة→دوار التربية→ساحة الأشمر; دوار التربية not geolocated); fare: 55–65 new SYP driver-reported Sept 2026 (https://www.enabbaladi.net/824978/ (Enab Baladi 2026-09-14, driver-reported fares Sept 2026))",
+   "confidence": "low"
+  },
+  {
+   "name": "العباسيين - البرامكة (سانا)",
+   "nameEn": "Abbasiyeen – Baramkeh (SANA) private bus (ex servis برامكة–كراجات)",
+   "code": "DAM-BUS-01",
+   "vehicleType": "BUS",
+   "governorate": "DAMASCUS",
+   "currentFare": 40,
+   "stations": [
+    "كراج العباسيين",
+    "ساحة العباسيين",
+    "شارع الثورة",
+    "جسر الرئيس",
+    "البرامكة"
+   ],
+   "source": "https://athrpress.com/دمشق-سائقو-سرافيس-برامكة-ـ-كراجات-يحت (Athr Press 2024-09-21, Baramkeh–Karajat → private bus); corridor via شارع الثورة/جسر الرئيس per https://athrpress.com/دمشق-يمر-بـ-5-مناطق-تفعيل-خط-نقل-جديد (Athr Press 2023-11-02, new bus line); fare: city bus 40 new SYP, Sept 2026 (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP); https://kassioun.org/syria/item/86774 (Kassioun 2026-09-20, Rif lines up to 180 new SYP))",
+   "confidence": "low"
+  },
+  {
+   "name": "باب توما - جسر الحرية",
+   "nameEn": "Bab Touma – Jisr al-Hurriya (Zajel bus; e-bus trunk)",
+   "code": "DAM-BUS-02",
+   "vehicleType": "BUS",
+   "governorate": "DAMASCUS",
+   "currentFare": 40,
+   "stations": [
+    "باب توما",
+    "جسر الرئيس"
+   ],
+   "source": "https://www.enabbaladi.net/758398/ (Enab Baladi 2025-06-08, reactivated bus lines); https://sana.sy/locals/2425353/ (SANA 2026-03-13, three e-bus trunk lines) (30 e-buses planned); endpoints only; fare: city bus 40 new SYP, Sept 2026 (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP); https://kassioun.org/syria/item/86774 (Kassioun 2026-09-20, Rif lines up to 180 new SYP))",
+   "confidence": "medium"
+  },
+  {
+   "name": "مساكن برزة - شارع الثورة - ساحة العباسيين",
+   "nameEn": "Masakin Barzeh – Thawra Street – Abbasiyeen Square (bus)",
+   "code": "DAM-BUS-03",
+   "vehicleType": "BUS",
+   "governorate": "DAMASCUS",
+   "currentFare": 40,
+   "stations": [
+    "مساكن برزة",
+    "شارع الثورة",
+    "ساحة العباسيين"
+   ],
+   "source": "https://www.enabbaladi.net/758398/ (Enab Baladi 2025-06-08, reactivated bus lines); https://sana.sy/locals/2228387/ (SANA 2025-06-04, bus lines named); fare: city bus 40 new SYP, Sept 2026 (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP); https://kassioun.org/syria/item/86774 (Kassioun 2026-09-20, Rif lines up to 180 new SYP))",
+   "confidence": "medium"
+  },
+  {
+   "name": "مخيم اليرموك - الحميدية",
+   "nameEn": "Yarmouk camp – Hamidiyya (bus)",
+   "code": "DAM-BUS-04",
+   "vehicleType": "BUS",
+   "governorate": "DAMASCUS",
+   "currentFare": 40,
+   "stations": [
+    "مخيم اليرموك",
+    "الميدان",
+    "سوق الحميدية"
+   ],
+   "source": "https://www.enabbaladi.net/758398/ (Enab Baladi 2025-06-08, reactivated bus lines); https://sana.sy/locals/2228387/ (SANA 2025-06-04, bus lines named); https://sana.sy/governorates/damascus/2472323/ (SANA 2026-05-10, fare 3,000 old SYP); intermediate الميدان inferred from OSM relation 4110558 corridor; fare: city bus 40 new SYP, Sept 2026 (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP); https://kassioun.org/syria/item/86774 (Kassioun 2026-09-20, Rif lines up to 180 new SYP))",
+   "confidence": "low"
+  },
+  {
+   "name": "الحميدية - الميدان",
+   "nameEn": "Souq al-Hamidiyya – Midan (bus)",
+   "code": "DAM-BUS-05",
+   "vehicleType": "BUS",
+   "governorate": "DAMASCUS",
+   "currentFare": 40,
+   "stations": [
+    "سوق الحميدية",
+    "باب مصلى",
+    "دوار البطيخة"
+   ],
+   "polyline": [
+    {
+     "lat": 33.510119,
+     "lng": 36.298413
+    },
+    {
+     "lat": 33.510062,
+     "lng": 36.299197
+    },
+    {
+     "lat": 33.509959,
+     "lng": 36.300529
+    },
+    {
+     "lat": 33.509786,
+     "lng": 36.30055
+    },
+    {
+     "lat": 33.509657,
+     "lng": 36.300583
+    },
+    {
+     "lat": 33.509478,
+     "lng": 36.30064
+    },
+    {
+     "lat": 33.50938,
+     "lng": 36.300684
+    },
+    {
+     "lat": 33.509265,
+     "lng": 36.30076
+    },
+    {
+     "lat": 33.509144,
+     "lng": 36.30086
+    },
+    {
+     "lat": 33.509057,
+     "lng": 36.300935
+    },
+    {
+     "lat": 33.508906,
+     "lng": 36.301036
+    },
+    {
+     "lat": 33.508375,
+     "lng": 36.301309
+    },
+    {
+     "lat": 33.508099,
+     "lng": 36.301435
+    },
+    {
+     "lat": 33.507976,
+     "lng": 36.3015
+    },
+    {
+     "lat": 33.507861,
+     "lng": 36.301579
+    },
+    {
+     "lat": 33.507774,
+     "lng": 36.301697
+    },
+    {
+     "lat": 33.507573,
+     "lng": 36.301982
+    },
+    {
+     "lat": 33.507497,
+     "lng": 36.30209
+    },
+    {
+     "lat": 33.507475,
+     "lng": 36.302121
+    },
+    {
+     "lat": 33.507313,
+     "lng": 36.302262
+    },
+    {
+     "lat": 33.506867,
+     "lng": 36.30249
+    },
+    {
+     "lat": 33.506692,
+     "lng": 36.302579
+    },
+    {
+     "lat": 33.50655,
+     "lng": 36.302614
+    },
+    {
+     "lat": 33.506303,
+     "lng": 36.302674
+    },
+    {
+     "lat": 33.505712,
+     "lng": 36.30274
+    },
+    {
+     "lat": 33.5053,
+     "lng": 36.302683
+    },
+    {
+     "lat": 33.504184,
+     "lng": 36.302452
+    },
+    {
+     "lat": 33.503938,
+     "lng": 36.302428
+    },
+    {
+     "lat": 33.503267,
+     "lng": 36.302357
+    },
+    {
+     "lat": 33.502596,
+     "lng": 36.302287
+    },
+    {
+     "lat": 33.50205,
+     "lng": 36.302243
+    },
+    {
+     "lat": 33.501255,
+     "lng": 36.302183
+    },
+    {
+     "lat": 33.500805,
+     "lng": 36.302147
+    },
+    {
+     "lat": 33.50074,
+     "lng": 36.302142
+    },
+    {
+     "lat": 33.500704,
+     "lng": 36.302139
+    },
+    {
+     "lat": 33.500553,
+     "lng": 36.302126
+    },
+    {
+     "lat": 33.499876,
+     "lng": 36.30207
+    },
+    {
+     "lat": 33.499569,
+     "lng": 36.302021
+    },
+    {
+     "lat": 33.49919,
+     "lng": 36.301223
+    },
+    {
+     "lat": 33.499115,
+     "lng": 36.300964
+    },
+    {
+     "lat": 33.499107,
+     "lng": 36.300907
+    },
+    {
+     "lat": 33.49917,
+     "lng": 36.300671
+    },
+    {
+     "lat": 33.49909,
+     "lng": 36.300767
+    },
+    {
+     "lat": 33.499007,
+     "lng": 36.30081
+    },
+    {
+     "lat": 33.498904,
+     "lng": 36.300808
+    },
+    {
+     "lat": 33.498828,
+     "lng": 36.300799
+    },
+    {
+     "lat": 33.498717,
+     "lng": 36.30074
+    },
+    {
+     "lat": 33.498644,
+     "lng": 36.300653
+    },
+    {
+     "lat": 33.498596,
+     "lng": 36.300515
+    },
+    {
+     "lat": 33.498575,
+     "lng": 36.300654
+    },
+    {
+     "lat": 33.498557,
+     "lng": 36.30071
+    },
+    {
+     "lat": 33.498535,
+     "lng": 36.300762
+    },
+    {
+     "lat": 33.498509,
+     "lng": 36.300812
+    },
+    {
+     "lat": 33.498479,
+     "lng": 36.300859
+    },
+    {
+     "lat": 33.498322,
+     "lng": 36.301116
+    },
+    {
+     "lat": 33.498087,
+     "lng": 36.301389
+    },
+    {
+     "lat": 33.49791,
+     "lng": 36.301579
+    },
+    {
+     "lat": 33.497841,
+     "lng": 36.301638
+    },
+    {
+     "lat": 33.497775,
+     "lng": 36.301686
+    },
+    {
+     "lat": 33.497682,
+     "lng": 36.301736
+    },
+    {
+     "lat": 33.497543,
+     "lng": 36.301857
+    },
+    {
+     "lat": 33.497466,
+     "lng": 36.301936
+    },
+    {
+     "lat": 33.497409,
+     "lng": 36.302028
+    },
+    {
+     "lat": 33.497367,
+     "lng": 36.302158
+    },
+    {
+     "lat": 33.497309,
+     "lng": 36.302769
+    },
+    {
+     "lat": 33.497305,
+     "lng": 36.302838
+    },
+    {
+     "lat": 33.497299,
+     "lng": 36.302972
+    },
+    {
+     "lat": 33.4973,
+     "lng": 36.303148
+    },
+    {
+     "lat": 33.497348,
+     "lng": 36.303362
+    },
+    {
+     "lat": 33.497412,
+     "lng": 36.303578
+    },
+    {
+     "lat": 33.497444,
+     "lng": 36.303648
+    },
+    {
+     "lat": 33.497676,
+     "lng": 36.304169
+    },
+    {
+     "lat": 33.497837,
+     "lng": 36.304573
+    },
+    {
+     "lat": 33.497922,
+     "lng": 36.304784
+    },
+    {
+     "lat": 33.498015,
+     "lng": 36.305017
+    },
+    {
+     "lat": 33.498062,
+     "lng": 36.305198
+    },
+    {
+     "lat": 33.498079,
+     "lng": 36.305264
+    },
+    {
+     "lat": 33.498136,
+     "lng": 36.305415
+    },
+    {
+     "lat": 33.4983,
+     "lng": 36.305837
+    },
+    {
+     "lat": 33.49816,
+     "lng": 36.305953
+    },
+    {
+     "lat": 33.498018,
+     "lng": 36.306049
+    },
+    {
+     "lat": 33.497735,
+     "lng": 36.306185
+    },
+    {
+     "lat": 33.497508,
+     "lng": 36.306244
+    },
+    {
+     "lat": 33.497048,
+     "lng": 36.306267
+    },
+    {
+     "lat": 33.496677,
+     "lng": 36.306245
+    },
+    {
+     "lat": 33.495767,
+     "lng": 36.306139
+    },
+    {
+     "lat": 33.494976,
+     "lng": 36.306062
+    },
+    {
+     "lat": 33.493603,
+     "lng": 36.305944
+    },
+    {
+     "lat": 33.493141,
+     "lng": 36.305903
+    },
+    {
+     "lat": 33.492507,
+     "lng": 36.305868
+    },
+    {
+     "lat": 33.491463,
+     "lng": 36.305792
+    },
+    {
+     "lat": 33.491074,
+     "lng": 36.305764
+    },
+    {
+     "lat": 33.490722,
+     "lng": 36.305739
+    },
+    {
+     "lat": 33.490368,
+     "lng": 36.305698
+    },
+    {
+     "lat": 33.489054,
+     "lng": 36.305543
+    },
+    {
+     "lat": 33.487444,
+     "lng": 36.305376
+    },
+    {
+     "lat": 33.487182,
+     "lng": 36.305349
+    },
+    {
+     "lat": 33.486892,
+     "lng": 36.305318
+    },
+    {
+     "lat": 33.485591,
+     "lng": 36.305182
+    },
+    {
+     "lat": 33.484524,
+     "lng": 36.305071
+    },
+    {
+     "lat": 33.484063,
+     "lng": 36.305033
+    },
+    {
+     "lat": 33.483864,
+     "lng": 36.304982
+    },
+    {
+     "lat": 33.483741,
+     "lng": 36.304871
+    },
+    {
+     "lat": 33.483699,
+     "lng": 36.304786
+    },
+    {
+     "lat": 33.483664,
+     "lng": 36.304692
+    },
+    {
+     "lat": 33.483617,
+     "lng": 36.304443
+    },
+    {
+     "lat": 33.48357,
+     "lng": 36.302975
+    },
+    {
+     "lat": 33.483562,
+     "lng": 36.302733
+    },
+    {
+     "lat": 33.483528,
+     "lng": 36.301748
+    },
+    {
+     "lat": 33.483513,
+     "lng": 36.301024
+    },
+    {
+     "lat": 33.48351,
+     "lng": 36.300934
+    },
+    {
+     "lat": 33.483506,
+     "lng": 36.300843
+    },
+    {
+     "lat": 33.483498,
+     "lng": 36.300753
+    },
+    {
+     "lat": 33.483481,
+     "lng": 36.300636
+    },
+    {
+     "lat": 33.483434,
+     "lng": 36.300303
+    },
+    {
+     "lat": 33.483385,
+     "lng": 36.300266
+    },
+    {
+     "lat": 33.482818,
+     "lng": 36.299822
+    },
+    {
+     "lat": 33.482514,
+     "lng": 36.299574
+    },
+    {
+     "lat": 33.482246,
+     "lng": 36.299357
+    },
+    {
+     "lat": 33.481815,
+     "lng": 36.299006
+    },
+    {
+     "lat": 33.481327,
+     "lng": 36.298638
+    }
+   ],
+   "source": "https://www.openstreetmap.org/relation/4110558 (Souq al-Hamidiyya - Midan; reverse 4110592) (OSM route, 2014 mapping; current status unverified); fare: city bus 40 new SYP, Sept 2026 (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP); https://kassioun.org/syria/item/86774 (Kassioun 2026-09-20, Rif lines up to 180 new SYP))",
+   "confidence": "medium"
+  },
+  {
+   "name": "حاميش - مساكن برزة - برامكة - كلية الآداب - المزة",
+   "nameEn": "Hamish – Masakin Barzeh – Baramkeh – Faculty of Arts – Mezzeh (bus)",
+   "code": "DAM-BUS-06",
+   "vehicleType": "BUS",
+   "governorate": "DAMASCUS",
+   "currentFare": 40,
+   "stations": [
+    "موقف حاميش",
+    "مساكن برزة",
+    "البرامكة",
+    "كلية الآداب",
+    "المزة"
+   ],
+   "source": "https://www.enabbaladi.net/758398/ (Enab Baladi 2025-06-08, reactivated bus lines); https://sana.sy/locals/2228387/ (SANA 2025-06-04, bus lines named) ('مزة – مساكن برزة مروراً بالبرامكة'); fare: city bus 40 new SYP, Sept 2026 (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP); https://kassioun.org/syria/item/86774 (Kassioun 2026-09-20, Rif lines up to 180 new SYP))",
+   "confidence": "medium"
+  },
+  {
+   "name": "مشفى المواساة - جسر الرئيس - شارع الثورة - كراجات العباسيين - مشفى البيروني",
+   "nameEn": "Mouasat Hospital – Jisr al-Rais – Thawra St – Abbasiyeen garages – Bayrouni Hospital (bus)",
+   "code": "DAM-BUS-07",
+   "vehicleType": "BUS",
+   "governorate": "DAMASCUS",
+   "currentFare": 40,
+   "stations": [
+    "مشفى المواساة",
+    "جسر الرئيس",
+    "شارع الثورة",
+    "كراج العباسيين",
+    "مشفى البيروني"
+   ],
+   "source": "https://athrpress.com/دمشق-يمر-بـ-5-مناطق-تفعيل-خط-نقل-جديد (Athr Press 2023-11-02, new bus line); fare: city bus 40 new SYP, Sept 2026 (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP); https://kassioun.org/syria/item/86774 (Kassioun 2026-09-20, Rif lines up to 180 new SYP))",
+   "confidence": "medium"
+  },
+  {
+   "name": "مشفى المواساة - باب توما",
+   "nameEn": "Mouasat Hospital – Bab Touma (bus)",
+   "code": "DAM-BUS-08",
+   "vehicleType": "BUS",
+   "governorate": "DAMASCUS",
+   "currentFare": 40,
+   "stations": [
+    "مشفى المواساة",
+    "المجتهد",
+    "باب مصلى",
+    "كراجات الست",
+    "باب توما"
+   ],
+   "polyline": [
+    {
+     "lat": 33.511381,
+     "lng": 36.263918
+    },
+    {
+     "lat": 33.511531,
+     "lng": 36.265872
+    },
+    {
+     "lat": 33.511821,
+     "lng": 36.267794
+    },
+    {
+     "lat": 33.511852,
+     "lng": 36.268679
+    },
+    {
+     "lat": 33.511784,
+     "lng": 36.269687
+    },
+    {
+     "lat": 33.511617,
+     "lng": 36.270699
+    },
+    {
+     "lat": 33.511359,
+     "lng": 36.270899
+    },
+    {
+     "lat": 33.511207,
+     "lng": 36.270933
+    },
+    {
+     "lat": 33.511042,
+     "lng": 36.270852
+    },
+    {
+     "lat": 33.509906,
+     "lng": 36.269721
+    },
+    {
+     "lat": 33.506794,
+     "lng": 36.264425
+    },
+    {
+     "lat": 33.506841,
+     "lng": 36.26392
+    },
+    {
+     "lat": 33.506926,
+     "lng": 36.26376
+    },
+    {
+     "lat": 33.508132,
+     "lng": 36.263388
+    },
+    {
+     "lat": 33.50834,
+     "lng": 36.263448
+    },
+    {
+     "lat": 33.50842,
+     "lng": 36.263706
+    },
+    {
+     "lat": 33.508233,
+     "lng": 36.263932
+    },
+    {
+     "lat": 33.507036,
+     "lng": 36.264429
+    },
+    {
+     "lat": 33.505939,
+     "lng": 36.265334
+    },
+    {
+     "lat": 33.505459,
+     "lng": 36.265977
+    },
+    {
+     "lat": 33.504926,
+     "lng": 36.266951
+    },
+    {
+     "lat": 33.504698,
+     "lng": 36.267589
+    },
+    {
+     "lat": 33.504489,
+     "lng": 36.268923
+    },
+    {
+     "lat": 33.503717,
+     "lng": 36.27959
+    },
+    {
+     "lat": 33.503152,
+     "lng": 36.286017
+    },
+    {
+     "lat": 33.503025,
+     "lng": 36.286442
+    },
+    {
+     "lat": 33.502681,
+     "lng": 36.287057
+    },
+    {
+     "lat": 33.501661,
+     "lng": 36.288212
+    },
+    {
+     "lat": 33.501358,
+     "lng": 36.2888
+    },
+    {
+     "lat": 33.500513,
+     "lng": 36.289806
+    },
+    {
+     "lat": 33.500291,
+     "lng": 36.290254
+    },
+    {
+     "lat": 33.499631,
+     "lng": 36.294588
+    },
+    {
+     "lat": 33.498914,
+     "lng": 36.300064
+    },
+    {
+     "lat": 33.498635,
+     "lng": 36.300244
+    },
+    {
+     "lat": 33.498557,
+     "lng": 36.30071
+    },
+    {
+     "lat": 33.498322,
+     "lng": 36.301116
+    },
+    {
+     "lat": 33.497409,
+     "lng": 36.302028
+    },
+    {
+     "lat": 33.4973,
+     "lng": 36.303148
+    },
+    {
+     "lat": 33.497412,
+     "lng": 36.303578
+    },
+    {
+     "lat": 33.498366,
+     "lng": 36.305739
+    },
+    {
+     "lat": 33.498696,
+     "lng": 36.305682
+    },
+    {
+     "lat": 33.500321,
+     "lng": 36.304692
+    },
+    {
+     "lat": 33.500426,
+     "lng": 36.30414
+    },
+    {
+     "lat": 33.502169,
+     "lng": 36.308631
+    },
+    {
+     "lat": 33.503757,
+     "lng": 36.312317
+    },
+    {
+     "lat": 33.504081,
+     "lng": 36.312942
+    },
+    {
+     "lat": 33.504886,
+     "lng": 36.314146
+    },
+    {
+     "lat": 33.505205,
+     "lng": 36.314859
+    },
+    {
+     "lat": 33.505611,
+     "lng": 36.315317
+    },
+    {
+     "lat": 33.506269,
+     "lng": 36.315805
+    },
+    {
+     "lat": 33.508858,
+     "lng": 36.318232
+    },
+    {
+     "lat": 33.509348,
+     "lng": 36.318384
+    },
+    {
+     "lat": 33.511019,
+     "lng": 36.318463
+    },
+    {
+     "lat": 33.512359,
+     "lng": 36.31899
+    },
+    {
+     "lat": 33.5147,
+     "lng": 36.319213
+    },
+    {
+     "lat": 33.516003,
+     "lng": 36.319996
+    },
+    {
+     "lat": 33.517013,
+     "lng": 36.320351
+    },
+    {
+     "lat": 33.51753,
+     "lng": 36.320318
+    },
+    {
+     "lat": 33.520556,
+     "lng": 36.31949
+    }
+   ],
+   "source": "https://www.openstreetmap.org/relation/4110300 (مستشفى - باب توما) (OSM route, 2014 mapping; loops south of the old city – intermediate stops are those the relation geometry passes within ~250 m); fare: city bus 40 new SYP, Sept 2026 (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP); https://kassioun.org/syria/item/86774 (Kassioun 2026-09-20, Rif lines up to 180 new SYP))",
+   "confidence": "medium"
+  },
+  {
+   "name": "الزاهرة الجديدة - عش الورور",
+   "nameEn": "Zahira Jadida – Ish al-Warwar (bus, 2019 stop list)",
+   "code": "DAM-BUS-09",
+   "vehicleType": "BUS",
+   "governorate": "DAMASCUS",
+   "currentFare": 40,
+   "stations": [
+    "عش الورور",
+    "مساكن برزة",
+    "مشفى ابن النفيس",
+    "ساحة شمدين",
+    "ساحة الميسات",
+    "ساحة الشهبندر",
+    "السبع بحرات",
+    "جسر الرئيس",
+    "المجتهد",
+    "باب مصلى",
+    "الزاهرة",
+    "الفرن الآلي"
+   ],
+   "source": "https://athrpress.com/محافظة-دمشق-تعلن-عن-خطوط-جديدة-للنقل (Athr Press 2019-06-30, Zahira–Ish al-Warwar stop list) (outbound stop list; شارع العابد omitted); current status unverified; fare: city bus 40 new SYP, Sept 2026 (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP); https://kassioun.org/syria/item/86774 (Kassioun 2026-09-20, Rif lines up to 180 new SYP))",
+   "confidence": "low"
+  },
+  {
+   "name": "جرمانا - كراج العباسيين",
+   "nameEn": "Jaramana – Abbasiyeen garage",
+   "code": "RIF-JRM-01",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 40,
+   "stations": [
+    "جرمانا",
+    "كراج العباسيين"
+   ],
+   "source": "https://www.syria.tv/لليوم-الثاني-إضراب-السرافيس-يشلّ-حركة-النقل-في-جرمانا (Syria TV 2025-12-22, Jaramana lines); https://npasyria.com/229398/ (North Press 2025-12-23, Jaramana–Karajat–Abbasiyeen 23 km) (23 km); https://nabd.com/s/119971407-18c9f3/ (Al-Watan via Nabd 2023-05-23, 14 GPS lines) ('جرمانا كراجات'); fare: cut to 2,000–3,000 old SYP Dec 2025, +30–40% Sept 2026 → ~40 new SYP estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "جرمانا - باب توما",
+   "nameEn": "Jaramana – Bab Touma",
+   "code": "RIF-JRM-02",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 40,
+   "stations": [
+    "جرمانا",
+    "باب توما"
+   ],
+   "source": "https://www.syria.tv/لليوم-الثاني-إضراب-السرافيس-يشلّ-حركة-النقل-في-جرمانا (Syria TV 2025-12-22, Jaramana lines); https://nabd.com/s/119971407-18c9f3/ (Al-Watan via Nabd 2023-05-23, 14 GPS lines); city-side stop https://www.openstreetmap.org/node/10723232789 (موقف جرمانا باب توما); fare: 2,000 old SYP Dec 2025 + Sept 2026 rise → ~40 new SYP estimate",
+   "confidence": "medium"
+  },
+  {
+   "name": "جرمانا - كراج الست",
+   "nameEn": "Jaramana – Karaj al-Sitt",
+   "code": "RIF-JRM-03",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 40,
+   "stations": [
+    "جرمانا",
+    "كراجات الست"
+   ],
+   "source": "https://www.syria.tv/لليوم-الثاني-إضراب-السرافيس-يشلّ-حركة-النقل-في-جرمانا (Syria TV 2025-12-22, Jaramana lines); https://nabd.com/s/119971407-18c9f3/ (Al-Watan via Nabd 2023-05-23, 14 GPS lines); fare estimate as RIF-JRM-01",
+   "confidence": "low"
+  },
+  {
+   "name": "جرمانا - ساحة السيوف - طريق المطار - جسر الرئيس",
+   "nameEn": "Jaramana – Suyouf Square – Airport road – Jisr al-Rais (bus)",
+   "code": "RIF-JRM-04",
+   "vehicleType": "BUS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 40,
+   "stations": [
+    "جرمانا",
+    "ساحة السيوف",
+    "مجمع الهمك",
+    "جسر الرئيس"
+   ],
+   "source": "https://athrpress.com/دمشق-يمر-بـ-5-مناطق-تفعيل-خط-نقل-جديد (Athr Press 2023-11-02, new bus line) (new Jaramana bus route); الهمك inferred as the airport-road stop; fare: city bus 40 new SYP, Sept 2026 (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP); https://kassioun.org/syria/item/86774 (Kassioun 2026-09-20, Rif lines up to 180 new SYP))",
+   "confidence": "low"
+  },
+  {
+   "name": "كفر بطنا - كراج العباسيين",
+   "nameEn": "Kafr Batna – Abbasiyeen garage",
+   "code": "RIF-GHT-01",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 45,
+   "stations": [
+    "كفر بطنا",
+    "كراج العباسيين"
+   ],
+   "source": "https://alwatan.sy/سرافيس-ممنوع-وصولها-إلى-شارع-الثورة-وم (Al-Watan 2024-08-01, Ghouta lines end at Abbasiyeen); https://athrpress.com/من-بينها-نقل-كراج-باب-مصلى-محافظة-دمشق (Athr Press 2024-09-01, interchange centres); https://archive.sana.sy/?p=930129 (SANA 2018, Douma/Misraba/Harasta/Arbin at Abbasiyeen; snippet only); endpoints only; fare: Rif inner/mid-ring estimate in new SYP (Rif lines 40–180, https://kassioun.org/syria/item/86774 (Kassioun 2026-09-20, Rif lines up to 180 new SYP))",
+   "confidence": "low"
+  },
+  {
+   "name": "سقبا - كراج العباسيين",
+   "nameEn": "Saqba – Abbasiyeen garage",
+   "code": "RIF-GHT-02",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 45,
+   "stations": [
+    "سقبا",
+    "كراج العباسيين"
+   ],
+   "source": "https://alwatan.sy/سرافيس-ممنوع-وصولها-إلى-شارع-الثورة-وم (Al-Watan 2024-08-01, Ghouta lines end at Abbasiyeen); https://athrpress.com/من-بينها-نقل-كراج-باب-مصلى-محافظة-دمشق (Athr Press 2024-09-01, interchange centres); https://archive.sana.sy/?p=930129 (SANA 2018, Douma/Misraba/Harasta/Arbin at Abbasiyeen; snippet only); endpoints only; fare: Rif inner/mid-ring estimate in new SYP (Rif lines 40–180, https://kassioun.org/syria/item/86774 (Kassioun 2026-09-20, Rif lines up to 180 new SYP))",
+   "confidence": "low"
+  },
+  {
+   "name": "حمورية - كراج العباسيين",
+   "nameEn": "Hammouriyah – Abbasiyeen garage",
+   "code": "RIF-GHT-03",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 50,
+   "stations": [
+    "حمورية",
+    "كراج العباسيين"
+   ],
+   "source": "https://alwatan.sy/سرافيس-ممنوع-وصولها-إلى-شارع-الثورة-وم (Al-Watan 2024-08-01, Ghouta lines end at Abbasiyeen); https://athrpress.com/من-بينها-نقل-كراج-باب-مصلى-محافظة-دمشق (Athr Press 2024-09-01, interchange centres); https://archive.sana.sy/?p=930129 (SANA 2018, Douma/Misraba/Harasta/Arbin at Abbasiyeen; snippet only); endpoints only; fare: Rif inner/mid-ring estimate in new SYP (Rif lines 40–180, https://kassioun.org/syria/item/86774 (Kassioun 2026-09-20, Rif lines up to 180 new SYP))",
+   "confidence": "low"
+  },
+  {
+   "name": "عربين - كراج العباسيين",
+   "nameEn": "Arbin – Abbasiyeen garage",
+   "code": "RIF-GHT-04",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 45,
+   "stations": [
+    "عربين",
+    "كراج العباسيين"
+   ],
+   "source": "https://alwatan.sy/سرافيس-ممنوع-وصولها-إلى-شارع-الثورة-وم (Al-Watan 2024-08-01, Ghouta lines end at Abbasiyeen); https://athrpress.com/من-بينها-نقل-كراج-باب-مصلى-محافظة-دمشق (Athr Press 2024-09-01, interchange centres); https://archive.sana.sy/?p=930129 (SANA 2018, Douma/Misraba/Harasta/Arbin at Abbasiyeen; snippet only); endpoints only; fare: Rif inner/mid-ring estimate in new SYP (Rif lines 40–180, https://kassioun.org/syria/item/86774 (Kassioun 2026-09-20, Rif lines up to 180 new SYP))",
+   "confidence": "low"
+  },
+  {
+   "name": "مسرابا - كراج العباسيين",
+   "nameEn": "Misraba – Abbasiyeen garage",
+   "code": "RIF-GHT-05",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 50,
+   "stations": [
+    "مسرابا",
+    "كراج العباسيين"
+   ],
+   "source": "https://alwatan.sy/سرافيس-ممنوع-وصولها-إلى-شارع-الثورة-وم (Al-Watan 2024-08-01, Ghouta lines end at Abbasiyeen); https://athrpress.com/من-بينها-نقل-كراج-باب-مصلى-محافظة-دمشق (Athr Press 2024-09-01, interchange centres); https://archive.sana.sy/?p=930129 (SANA 2018, Douma/Misraba/Harasta/Arbin at Abbasiyeen; snippet only); endpoints only; fare: Rif inner/mid-ring estimate in new SYP (Rif lines 40–180, https://kassioun.org/syria/item/86774 (Kassioun 2026-09-20, Rif lines up to 180 new SYP))",
+   "confidence": "low"
+  },
+  {
+   "name": "حرستا - كراج العباسيين",
+   "nameEn": "Harasta – Abbasiyeen garage",
+   "code": "RIF-GHT-06",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 45,
+   "stations": [
+    "حرستا",
+    "كراج العباسيين"
+   ],
+   "source": "https://alwatan.sy/سرافيس-ممنوع-وصولها-إلى-شارع-الثورة-وم (Al-Watan 2024-08-01, Ghouta lines end at Abbasiyeen); https://athrpress.com/من-بينها-نقل-كراج-باب-مصلى-محافظة-دمشق (Athr Press 2024-09-01, interchange centres); https://archive.sana.sy/?p=930129 (SANA 2018, Douma/Misraba/Harasta/Arbin at Abbasiyeen; snippet only); endpoints only; fare: Rif inner/mid-ring estimate in new SYP (Rif lines 40–180, https://kassioun.org/syria/item/86774 (Kassioun 2026-09-20, Rif lines up to 180 new SYP))",
+   "confidence": "low"
+  },
+  {
+   "name": "دوما - كراج العباسيين",
+   "nameEn": "Douma – Abbasiyeen garage",
+   "code": "RIF-GHT-07",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 55,
+   "stations": [
+    "دوما",
+    "كراج العباسيين"
+   ],
+   "source": "https://alwatan.sy/سرافيس-ممنوع-وصولها-إلى-شارع-الثورة-وم (Al-Watan 2024-08-01, Ghouta lines end at Abbasiyeen); https://athrpress.com/من-بينها-نقل-كراج-باب-مصلى-محافظة-دمشق (Athr Press 2024-09-01, interchange centres); https://archive.sana.sy/?p=930129 (SANA 2018, Douma/Misraba/Harasta/Arbin at Abbasiyeen; snippet only); endpoints only; fare: Rif inner/mid-ring estimate in new SYP (Rif lines 40–180, https://kassioun.org/syria/item/86774 (Kassioun 2026-09-20, Rif lines up to 180 new SYP))",
+   "confidence": "low"
+  },
+  {
+   "name": "دمشق - دوما عبر حمورية",
+   "nameEn": "Damascus (Abbasiyeen) – Douma via Hammouriyah",
+   "code": "RIF-GHT-08",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 55,
+   "stations": [
+    "كراج العباسيين",
+    "حمورية",
+    "دوما"
+   ],
+   "source": "https://www.enabbaladi.net/785030/ (Enab Baladi 2025-11-23, new Rif Dimashq Ghouta lines) (Rif Dimashq, Dec 2025); Damascus terminus = Abbasiyeen per https://alwatan.sy/سرافيس-ممنوع-وصولها-إلى-شارع-الثورة-وم (Al-Watan 2024-08-01, Ghouta lines end at Abbasiyeen); fare estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "كفربطنا - سقبا - حمورية - مديرا - مسرابا - دوما",
+   "nameEn": "Kafr Batna – Saqba – Hammouriyah – Mudeira – Misraba – Douma (Ghouta local line)",
+   "code": "RIF-GHT-09",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 40,
+   "stations": [
+    "كفر بطنا",
+    "سقبا",
+    "حمورية",
+    "مديرا",
+    "مسرابا",
+    "دوما"
+   ],
+   "source": "https://www.enabbaladi.net/785030/ (Enab Baladi 2025-11-23, new Rif Dimashq Ghouta lines) (Rif Dimashq, Dec 2025); fare estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "التل - كراجات العباسيين - ساحة العباسيين",
+   "nameEn": "Al-Tall – Ma'raba – Barzeh – Abbasiyeen garages – Abbasiyeen Square (Rif bus)",
+   "code": "RIF-TAL-01",
+   "vehicleType": "BUS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 40,
+   "stations": [
+    "التل",
+    "معربا",
+    "برزة البلد",
+    "كراج العباسيين",
+    "ساحة العباسيين"
+   ],
+   "source": "https://archive.sana.sy/?p=1211158 (SANA 2020-09-01, Tall and Bada Rif buses) (2020 route جامع الدعوة → معربا → برزة → كراجات العباسيين → ساحة العباسيين); https://alwatan.sy/سرافيس-زعلانة-في-ريف-دمشق-اعتراضاً-عل (Al-Watan 2026-02-27, Damascus–Tall fare 5,000→3,500 old SYP) (2–3 large buses on the route, Feb 2026); fare: city bus 40 new SYP, Sept 2026 (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP); https://kassioun.org/syria/item/86774 (Kassioun 2026-09-20, Rif lines up to 180 new SYP))",
+   "confidence": "medium"
+  },
+  {
+   "name": "التل - دمشق",
+   "nameEn": "Al-Tall – Damascus (Abbasiyeen) servis",
+   "code": "RIF-TAL-03",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 45,
+   "stations": [
+    "التل",
+    "كراج العباسيين"
+   ],
+   "source": "https://alwatan.sy/سرافيس-زعلانة-في-ريف-دمشق-اعتراضاً-عل (Al-Watan 2026-02-27, Damascus–Tall fare 5,000→3,500 old SYP) (fare 5,000→3,500 old SYP by decision, Feb 2026); Damascus terminus not stated – Abbasiyeen assumed per https://athrpress.com/من-بينها-نقل-كراج-باب-مصلى-محافظة-دمشق (Athr Press 2024-09-01, interchange centres); fare: 35 new SYP (Feb 2026) +30% Sept 2026 ≈ 45",
+   "confidence": "low"
+  },
+  {
+   "name": "ضاحية قدسيا - جسر الرئيس",
+   "nameEn": "Dahiyat Qudsaya – Jisr al-Rais",
+   "code": "RIF-QUD-01",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 45,
+   "stations": [
+    "ضاحية قدسيا",
+    "جسر الرئيس"
+   ],
+   "source": "https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision); https://archive.sana.sy/تفعيل-ميزة-بداية-الخط-ونهايته-لـ-17-خط-سي (SANA 2023-06-06, 17 GPS lines); https://www.syria.tv/أزمة-تنتقل-بلا-حل (Syria TV 2025-05-17, relocation from Jisr al-Hurriya); endpoints only; fare: Qudsaya–Damascus ~4,000–5,000 old SYP 2025 → 45 new SYP estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "قدسيا - جسر الحرية",
+   "nameEn": "Qudsaya – Jisr al-Hurriya ('الأقصى' internal bus)",
+   "code": "RIF-QUD-02",
+   "vehicleType": "BUS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 40,
+   "stations": [
+    "قدسيا",
+    "جسر الرئيس"
+   ],
+   "source": "https://www.syria.tv/أزمة-تنتقل-بلا-حل (Syria TV 2025-05-17, relocation from Jisr al-Hurriya) (Qudsaya 'الأقصى' bus, 4,000 old SYP May 2025); fare: city bus 40 new SYP, Sept 2026 (https://economist-sy.com/2026/09/10/ (Economist-sy 2026-09-10, Sept 2026 fare committee 40/40–70 new SYP); https://kassioun.org/syria/item/86774 (Kassioun 2026-09-20, Rif lines up to 180 new SYP))",
+   "confidence": "low"
+  },
+  {
+   "name": "الهامة - جسر الحرية",
+   "nameEn": "Al-Hameh – Jisr al-Hurriya",
+   "code": "RIF-HAM-01",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 45,
+   "stations": [
+    "الهامة",
+    "جسر الرئيس"
+   ],
+   "source": "https://www.syria.tv/أزمة-تنتقل-بلا-حل (Syria TV 2025-05-17, relocation from Jisr al-Hurriya) (دمر، قدسيا، الهامة still depart from جسر الحرية, May 2025); endpoints only; fare estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "جديدة الشيباني - كراج جسر الوزان",
+   "nameEn": "Jdeidat al-Shaybani – Jisr al-Wazzan garage",
+   "code": "RIF-WZN-01",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 60,
+   "stations": [
+    "جديدة الشيباني",
+    "كراج جسر الوزان"
+   ],
+   "source": "https://www.enabbaladi.net/757082/ (Enab Baladi 2025-06-01, stops moved to Wazzan/Sumariyah); https://www.syria.tv/أزمة-تنتقل-بلا-حل (Syria TV 2025-05-17, relocation from Jisr al-Hurriya) (moved from جسر الحرية to كراج جسر الوزان on 16 May 2025); endpoints only; fare: 5,000 old SYP official May 2025 (= 50 new) +30% Sept 2026 estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "عين الفيجة - كراج جسر الوزان",
+   "nameEn": "Ain al-Fijeh – Jisr al-Wazzan garage",
+   "code": "RIF-WZN-02",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 70,
+   "stations": [
+    "عين الفيجة",
+    "كراج جسر الوزان"
+   ],
+   "source": "https://www.enabbaladi.net/757082/ (Enab Baladi 2025-06-01, stops moved to Wazzan/Sumariyah); https://www.syria.tv/أزمة-تنتقل-بلا-حل (Syria TV 2025-05-17, relocation from Jisr al-Hurriya) (moved from جسر الحرية to كراج جسر الوزان on 16 May 2025); endpoints only; fare: 5,000 old SYP official May 2025 (= 50 new) +30% Sept 2026 estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "أشرفية الوادي - كراج جسر الوزان",
+   "nameEn": "Ashrafiyat al-Wadi – Jisr al-Wazzan garage",
+   "code": "RIF-WZN-03",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 65,
+   "stations": [
+    "أشرفية الوادي",
+    "كراج جسر الوزان"
+   ],
+   "source": "https://www.enabbaladi.net/757082/ (Enab Baladi 2025-06-01, stops moved to Wazzan/Sumariyah); https://www.syria.tv/أزمة-تنتقل-بلا-حل (Syria TV 2025-05-17, relocation from Jisr al-Hurriya) (moved from جسر الحرية to كراج جسر الوزان on 16 May 2025); endpoints only; fare: 5,000 old SYP official May 2025 (= 50 new) +30% Sept 2026 estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "جديدة الوادي - كراج جسر الوزان",
+   "nameEn": "Jdeidat al-Wadi – Jisr al-Wazzan garage",
+   "code": "RIF-WZN-04",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 60,
+   "stations": [
+    "جديدة الوادي",
+    "كراج جسر الوزان"
+   ],
+   "source": "https://www.enabbaladi.net/757082/ (Enab Baladi 2025-06-01, stops moved to Wazzan/Sumariyah); https://www.syria.tv/أزمة-تنتقل-بلا-حل (Syria TV 2025-05-17, relocation from Jisr al-Hurriya) (moved from جسر الحرية to كراج جسر الوزان on 16 May 2025); endpoints only; fare: 5,000 old SYP official May 2025 (= 50 new) +30% Sept 2026 estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "قرى الشام - كراج جسر الوزان",
+   "nameEn": "Qura al-Sham – Jisr al-Wazzan garage",
+   "code": "RIF-WZN-05",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 70,
+   "stations": [
+    "قرى الشام",
+    "كراج جسر الوزان"
+   ],
+   "source": "https://www.enabbaladi.net/757082/ (Enab Baladi 2025-06-01, stops moved to Wazzan/Sumariyah); https://www.syria.tv/أزمة-تنتقل-بلا-حل (Syria TV 2025-05-17, relocation from Jisr al-Hurriya) (moved from جسر الحرية to كراج جسر الوزان on 16 May 2025); endpoints only; fare: 5,000 old SYP official May 2025 (= 50 new) +30% Sept 2026 estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "عين الخضرة - كراج جسر الوزان",
+   "nameEn": "Ain al-Khadra – Jisr al-Wazzan garage",
+   "code": "RIF-WZN-06",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 70,
+   "stations": [
+    "عين الخضرة",
+    "كراج جسر الوزان"
+   ],
+   "source": "https://www.enabbaladi.net/757082/ (Enab Baladi 2025-06-01, stops moved to Wazzan/Sumariyah); https://www.syria.tv/أزمة-تنتقل-بلا-حل (Syria TV 2025-05-17, relocation from Jisr al-Hurriya) (moved from جسر الحرية to كراج جسر الوزان on 16 May 2025); endpoints only; fare: 5,000 old SYP official May 2025 (= 50 new) +30% Sept 2026 estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "بسيمة - كراج جسر الوزان",
+   "nameEn": "Bsimeh – Jisr al-Wazzan garage",
+   "code": "RIF-WZN-07",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 65,
+   "stations": [
+    "بسيمة",
+    "كراج جسر الوزان"
+   ],
+   "source": "https://www.enabbaladi.net/757082/ (Enab Baladi 2025-06-01, stops moved to Wazzan/Sumariyah); https://www.syria.tv/أزمة-تنتقل-بلا-حل (Syria TV 2025-05-17, relocation from Jisr al-Hurriya) (moved from جسر الحرية to كراج جسر الوزان on 16 May 2025); endpoints only; fare: 5,000 old SYP official May 2025 (= 50 new) +30% Sept 2026 estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "ضاحية الفردوس - كراج جسر الوزان",
+   "nameEn": "Dahiyat al-Firdous – Jisr al-Wazzan garage",
+   "code": "RIF-WZN-08",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 50,
+   "stations": [
+    "ضاحية الفردوس",
+    "كراج جسر الوزان"
+   ],
+   "source": "https://www.enabbaladi.net/757082/ (Enab Baladi 2025-06-01, stops moved to Wazzan/Sumariyah); https://www.syria.tv/أزمة-تنتقل-بلا-حل (Syria TV 2025-05-17, relocation from Jisr al-Hurriya) (moved from جسر الحرية to كراج جسر الوزان on 16 May 2025); endpoints only; fare: 5,000 old SYP official May 2025 (= 50 new) +30% Sept 2026 estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "مساكن الديماس - كراج جسر الوزان",
+   "nameEn": "Masakin al-Dimas – Jisr al-Wazzan garage",
+   "code": "RIF-WZN-09",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 70,
+   "stations": [
+    "مساكن الديماس",
+    "كراج جسر الوزان"
+   ],
+   "source": "https://www.enabbaladi.net/757082/ (Enab Baladi 2025-06-01, stops moved to Wazzan/Sumariyah); https://www.syria.tv/أزمة-تنتقل-بلا-حل (Syria TV 2025-05-17, relocation from Jisr al-Hurriya) (moved from جسر الحرية to كراج جسر الوزان on 16 May 2025); endpoints only; fare: 5,000 old SYP official May 2025 (= 50 new) +30% Sept 2026 estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "الصبورة - كراج السومرية",
+   "nameEn": "Sabboura – Sumariyah garage",
+   "code": "RIF-SUM-01",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 60,
+   "stations": [
+    "الصبورة",
+    "كراج السومرية"
+   ],
+   "source": "https://www.syria.tv/أزمة-تنتقل-بلا-حل (Syria TV 2025-05-17, relocation from Jisr al-Hurriya) (moved from جسر الحرية to السومرية, May 2025); endpoints only; fare estimate (Rif lines 40–180 new SYP)",
+   "confidence": "low"
+  },
+  {
+   "name": "ديماس البلد - كراج السومرية",
+   "nameEn": "Dimas al-Balad – Sumariyah garage",
+   "code": "RIF-SUM-02",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 80,
+   "stations": [
+    "الديماس",
+    "كراج السومرية"
+   ],
+   "source": "https://www.syria.tv/أزمة-تنتقل-بلا-حل (Syria TV 2025-05-17, relocation from Jisr al-Hurriya); endpoints only; fare estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "جديدة عرطوز - برامكة",
+   "nameEn": "Jdeidat Artouz – Baramkeh",
+   "code": "RIF-ART-01",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 60,
+   "stations": [
+    "جديدة عرطوز",
+    "موقف مفرق جديدة عرطوز",
+    "مفرق داريا",
+    "كراج السومرية",
+    "موقف مزة الشرقية",
+    "الشيخ سعد",
+    "كلية الطب",
+    "كلية الآداب",
+    "ساحة الجمارك",
+    "البرامكة"
+   ],
+   "polyline": [
+    {
+     "lat": 33.435847,
+     "lng": 36.16934
+    },
+    {
+     "lat": 33.437209,
+     "lng": 36.169114
+    },
+    {
+     "lat": 33.438054,
+     "lng": 36.168714
+    },
+    {
+     "lat": 33.438721,
+     "lng": 36.168237
+    },
+    {
+     "lat": 33.439799,
+     "lng": 36.167147
+    },
+    {
+     "lat": 33.442612,
+     "lng": 36.164657
+    },
+    {
+     "lat": 33.44288,
+     "lng": 36.16472
+    },
+    {
+     "lat": 33.445026,
+     "lng": 36.166081
+    },
+    {
+     "lat": 33.444953,
+     "lng": 36.16702
+    },
+    {
+     "lat": 33.445058,
+     "lng": 36.165954
+    },
+    {
+     "lat": 33.448229,
+     "lng": 36.167328
+    },
+    {
+     "lat": 33.449332,
+     "lng": 36.167972
+    },
+    {
+     "lat": 33.452396,
+     "lng": 36.171155
+    },
+    {
+     "lat": 33.453666,
+     "lng": 36.172686
+    },
+    {
+     "lat": 33.467943,
+     "lng": 36.193371
+    },
+    {
+     "lat": 33.47647,
+     "lng": 36.206022
+    },
+    {
+     "lat": 33.478591,
+     "lng": 36.208833
+    },
+    {
+     "lat": 33.48085,
+     "lng": 36.213404
+    },
+    {
+     "lat": 33.481206,
+     "lng": 36.214301
+    },
+    {
+     "lat": 33.485406,
+     "lng": 36.223183
+    },
+    {
+     "lat": 33.48586,
+     "lng": 36.224278
+    },
+    {
+     "lat": 33.488217,
+     "lng": 36.23062
+    },
+    {
+     "lat": 33.488325,
+     "lng": 36.231392
+    },
+    {
+     "lat": 33.488314,
+     "lng": 36.232478
+    },
+    {
+     "lat": 33.488461,
+     "lng": 36.233221
+    },
+    {
+     "lat": 33.491398,
+     "lng": 36.23832
+    },
+    {
+     "lat": 33.507057,
+     "lng": 36.264853
+    },
+    {
+     "lat": 33.511377,
+     "lng": 36.272361
+    },
+    {
+     "lat": 33.511685,
+     "lng": 36.272489
+    },
+    {
+     "lat": 33.511834,
+     "lng": 36.27245
+    },
+    {
+     "lat": 33.511924,
+     "lng": 36.272303
+    },
+    {
+     "lat": 33.51203,
+     "lng": 36.271628
+    },
+    {
+     "lat": 33.511859,
+     "lng": 36.271431
+    },
+    {
+     "lat": 33.51163,
+     "lng": 36.271499
+    },
+    {
+     "lat": 33.511465,
+     "lng": 36.271791
+    },
+    {
+     "lat": 33.511236,
+     "lng": 36.272658
+    },
+    {
+     "lat": 33.510574,
+     "lng": 36.277579
+    },
+    {
+     "lat": 33.510605,
+     "lng": 36.278301
+    },
+    {
+     "lat": 33.51057,
+     "lng": 36.278459
+    },
+    {
+     "lat": 33.510299,
+     "lng": 36.278587
+    },
+    {
+     "lat": 33.510336,
+     "lng": 36.279216
+    },
+    {
+     "lat": 33.509952,
+     "lng": 36.281831
+    },
+    {
+     "lat": 33.509753,
+     "lng": 36.288861
+    }
+   ],
+   "source": "https://www.openstreetmap.org/relation/20148903 (برامكة جديدة عرطوز, with member stop nodes); https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision); https://www.enabbaladi.net/748369/ (Enab Baladi 2025-04-13, MoT Decision 108 fares) (Decision 108: 6,000 old SYP = 60 new SYP, Mar 2025); https://alwatan.sy/تعرفة-جديدة-للنقل-في-جديدة-عرطوز-البلد (Al-Watan 2025-02-08, Jdeidat Artouz / Artouz municipal fares)",
+   "confidence": "high"
+  },
+  {
+   "name": "جديدة الفضل - برامكة",
+   "nameEn": "Jdeidat al-Fadl (Masakin al-Haras) – Baramkeh",
+   "code": "RIF-ART-02",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 60,
+   "stations": [
+    "جديدة الفضل",
+    "مفرق داريا",
+    "كراج السومرية",
+    "موقف مزة الشرقية",
+    "الشيخ سعد",
+    "كلية الطب",
+    "كلية الآداب",
+    "ساحة الجمارك",
+    "البرامكة"
+   ],
+   "source": "https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision) ('جديدة الفضل مساكن الحرس برامكة'); https://www.enabbaladi.net/748369/ (Enab Baladi 2025-04-13, MoT Decision 108 fares) (6,000 old SYP = 60 new SYP, Mar 2025); corridor as RIF-ART-01",
+   "confidence": "low"
+  },
+  {
+   "name": "جديدة عرطوز - السومرية",
+   "nameEn": "Jdeidat Artouz – Sumariyah centre",
+   "code": "RIF-ART-03",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 35,
+   "stations": [
+    "جديدة عرطوز",
+    "موقف مفرق جديدة عرطوز",
+    "مفرق داريا",
+    "كراج السومرية"
+   ],
+   "source": "https://alwatan.sy/تعرفة-جديدة-للنقل-في-جديدة-عرطوز-البلد (Al-Watan 2025-02-08, Jdeidat Artouz / Artouz municipal fares) (municipal fare 2,500 old SYP Feb 2025 → ~35 new SYP with 2026 rises); geometry as RIF-ART-01",
+   "confidence": "low"
+  },
+  {
+   "name": "عرطوز - السومرية",
+   "nameEn": "Artouz – Sumariyah centre",
+   "code": "RIF-ART-04",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 40,
+   "stations": [
+    "عرطوز",
+    "جديدة عرطوز",
+    "مفرق داريا",
+    "كراج السومرية"
+   ],
+   "source": "https://alwatan.sy/تعرفة-جديدة-للنقل-في-جديدة-عرطوز-البلد (Al-Watan 2025-02-08, Jdeidat Artouz / Artouz municipal fares) (municipal fare 3,000 old SYP Feb 2025 → ~40 new SYP estimate); corridor per https://alwatan.sy/رحلة-في-سرافيس-الريف (Al-Watan 2015-06-20, Sumariyah–Jdeidat Artouz–Artouz–Qatana corridor)",
+   "confidence": "low"
+  },
+  {
+   "name": "قطنا - السومرية",
+   "nameEn": "Qatana – Artouz – Jdeidat Artouz – Sumariyah",
+   "code": "RIF-ART-05",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 60,
+   "stations": [
+    "قطنا",
+    "عرطوز",
+    "جديدة عرطوز",
+    "كراج السومرية"
+   ],
+   "source": "https://alwatan.sy/رحلة-في-سرافيس-الريف (Al-Watan 2015-06-20, Sumariyah–Jdeidat Artouz–Artouz–Qatana corridor) (2015 corridor description, Sumariyah – Jdeidat Artouz – Artouz – Qatana); https://athrpress.com/من-بينها-نقل-كراج-باب-مصلى-محافظة-دمشق (Athr Press 2024-09-01, interchange centres) (Sumariyah = south-west exchange centre); fare estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "معضمية الشام - برامكة",
+   "nameEn": "Mu'adamiyat al-Sham – Baramkeh",
+   "code": "RIF-MDM-01",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 45,
+   "stations": [
+    "معضمية الشام",
+    "موقف مزة الشرقية",
+    "الشيخ سعد",
+    "كلية الطب",
+    "كلية الآداب",
+    "ساحة الجمارك",
+    "البرامكة"
+   ],
+   "source": "https://archive.sana.sy/تزويد-وسائط-النقل-العامة-السرافيس-بال (SANA 2022-11-03, 30-line fuel decision); https://archive.sana.sy/تفعيل-ميزة-بداية-الخط-ونهايته-لـ-17-خط-سي (SANA 2023-06-06, 17 GPS lines); https://www.enabbaladi.net/748369/ (Enab Baladi 2025-04-13, MoT Decision 108 fares) (Decision 108: 4,500 old SYP = 45 new SYP, Mar 2025; autostrad corridor past the faculties)",
+   "confidence": "medium"
+  },
+  {
+   "name": "داريا - الفحامة",
+   "nameEn": "Darayya – Fahhama",
+   "code": "RIF-DRY-01",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 45,
+   "stations": [
+    "داريا",
+    "الفحامة"
+   ],
+   "source": "https://www.almodon.com/economy/2026/01/31/ (Al-Modon 2026-01-31, Darayya–Fahhama line; Rif fares 40–180 new SYP) ('داريا – دمشق (الفحامة)'); OSM stops https://www.openstreetmap.org/node/14219808960 (موقف ركب داريا-فحامة) and https://www.openstreetmap.org/node/14219860489 (موقف ميكروباص فحامة - داريا); fare estimate",
+   "confidence": "medium"
+  },
+  {
+   "name": "صحنايا - الفحامة",
+   "nameEn": "Sahnaya – Darayya – Fahhama",
+   "code": "RIF-DRY-02",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 50,
+   "stations": [
+    "صحنايا",
+    "داريا",
+    "الفحامة"
+   ],
+   "source": "OSM stop https://www.openstreetmap.org/node/14219860494 (موقف ركب فحامة-صحنايا); https://alwatan.sy/رحلة-في-سرافيس-الريف (Al-Watan 2015-06-20, Sumariyah–Jdeidat Artouz–Artouz–Qatana corridor) (صحنايا named on the south-west corridor); داريا intermediate inferred; fare estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "السيدة زينب - كراج الست (عبر الحسينية)",
+   "nameEn": "Sayyida Zaynab – Karaj al-Sitt via Husseiniyah",
+   "code": "RIF-SZ-01",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 45,
+   "stations": [
+    "مخيم الحسينية",
+    "السيدة زينب",
+    "كراجات الست"
+   ],
+   "source": "https://archive.sana.sy/تفعيل-ميزة-بداية-الخط-ونهايته-لـ-17-خط-سي (SANA 2023-06-06, 17 GPS lines) (lines ending at كراج السيدة زينب, GPS list 2023); garage move to شارع الثلاثين from 29 Mar 2026 unconfirmed (https://syriandays.com/index.php?id=79449&page=show_det); fare estimate; الذيابية omitted (no coordinates)",
+   "confidence": "low"
+  },
+  {
+   "name": "السيدة زينب البحدلية - كراج الست",
+   "nameEn": "Sayyida Zaynab Bahdaliya – Karaj al-Sitt",
+   "code": "RIF-SZ-02",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 50,
+   "stations": [
+    "البحدلية",
+    "السيدة زينب",
+    "كراجات الست"
+   ],
+   "source": "https://archive.sana.sy/تفعيل-ميزة-بداية-الخط-ونهايته-لـ-17-خط-سي (SANA 2023-06-06, 17 GPS lines) (lines ending at كراج السيدة زينب, GPS list 2023); garage move to شارع الثلاثين from 29 Mar 2026 unconfirmed (https://syriandays.com/index.php?id=79449&page=show_det); fare estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "المطلة - كراج الست (عبر خربة الشياب)",
+   "nameEn": "Matla – Karaj al-Sitt via Khirbet al-Shiyab",
+   "code": "RIF-SZ-03",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 60,
+   "stations": [
+    "خربة الشياب",
+    "المطلة",
+    "كراجات الست"
+   ],
+   "source": "https://archive.sana.sy/تفعيل-ميزة-بداية-الخط-ونهايته-لـ-17-خط-سي (SANA 2023-06-06, 17 GPS lines) (lines ending at كراج السيدة زينب, GPS list 2023); garage move to شارع الثلاثين from 29 Mar 2026 unconfirmed (https://syriandays.com/index.php?id=79449&page=show_det); fare estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "نجها - كراج الست (عبر مساكن نجها وخربة الورد)",
+   "nameEn": "Najha – Karaj al-Sitt via Masakin Najha and Khirbet al-Ward",
+   "code": "RIF-SZ-04",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 60,
+   "stations": [
+    "نجها",
+    "خربة الورد",
+    "مساكن نجها",
+    "كراجات الست"
+   ],
+   "source": "https://archive.sana.sy/تفعيل-ميزة-بداية-الخط-ونهايته-لـ-17-خط-سي (SANA 2023-06-06, 17 GPS lines) (lines ending at كراج السيدة زينب, GPS list 2023); garage move to شارع الثلاثين from 29 Mar 2026 unconfirmed (https://syriandays.com/index.php?id=79449&page=show_det); fare estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "ببيلا - كراج الست",
+   "nameEn": "Babbila – Karaj al-Sitt",
+   "code": "RIF-SZ-05",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 40,
+   "stations": [
+    "ببيلا",
+    "كراجات الست"
+   ],
+   "source": "https://www.esyria.sy/2014/11/كراج-الست-فانوس-العاصمة-السحري (eSyria 2014-11, Karaj al-Sitt lines to Babbila/Yalda) (2014 description); endpoints only; fare estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "يلدا - كراج الست",
+   "nameEn": "Yalda – Karaj al-Sitt",
+   "code": "RIF-SZ-06",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 40,
+   "stations": [
+    "يلدا",
+    "كراجات الست"
+   ],
+   "source": "https://www.esyria.sy/2014/11/كراج-الست-فانوس-العاصمة-السحري (eSyria 2014-11, Karaj al-Sitt lines to Babbila/Yalda) (2014 description); endpoints only; fare estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "الكسوة - كراج السيدة عائشة (عبر دير علي، جب الصفا، مرجانة)",
+   "nameEn": "Kiswah – Sayyida Aisha garage via Deir Ali, Jubb al-Safa, Marjana",
+   "code": "RIF-KSW-01",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 60,
+   "stations": [
+    "مرجانة",
+    "جب الصفا",
+    "دير علي",
+    "الكسوة",
+    "كراج السيدة عائشة"
+   ],
+   "source": "https://archive.sana.sy/تفعيل-ميزة-بداية-الخط-ونهايته-لـ-17-خط-سي (SANA 2023-06-06, 17 GPS lines) (three الكسوة – كراج السيدة عائشة variants, GPS list 2023); Kiswah stand https://www.openstreetmap.org/node/1800533449 (موقف سيرفيس الشام); garage coordinate is a proxy; fare estimate (Rif mid-ring)",
+   "confidence": "low"
+  },
+  {
+   "name": "الكسوة - كراج السيدة عائشة (عبر حرجلة، العادلية)",
+   "nameEn": "Kiswah – Sayyida Aisha garage via Harjalleh, Adliyah",
+   "code": "RIF-KSW-02",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 60,
+   "stations": [
+    "العادلية",
+    "حرجلة",
+    "الكسوة",
+    "كراج السيدة عائشة"
+   ],
+   "source": "https://archive.sana.sy/تفعيل-ميزة-بداية-الخط-ونهايته-لـ-17-خط-سي (SANA 2023-06-06, 17 GPS lines) (three الكسوة – كراج السيدة عائشة variants, GPS list 2023); Kiswah stand https://www.openstreetmap.org/node/1800533449 (موقف سيرفيس الشام); garage coordinate is a proxy; fare estimate (Rif mid-ring)",
+   "confidence": "low"
+  },
+  {
+   "name": "الكسوة - كراج السيدة عائشة (عبر دنون، خان دنون، زاكية)",
+   "nameEn": "Kiswah – Sayyida Aisha garage via Dannoun, Khan Dannoun, Zakiyah",
+   "code": "RIF-KSW-03",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 60,
+   "stations": [
+    "زاكية",
+    "خان دنون",
+    "خيارة دنون",
+    "الكسوة",
+    "كراج السيدة عائشة"
+   ],
+   "source": "https://archive.sana.sy/تفعيل-ميزة-بداية-الخط-ونهايته-لـ-17-خط-سي (SANA 2023-06-06, 17 GPS lines) (three الكسوة – كراج السيدة عائشة variants, GPS list 2023); Kiswah stand https://www.openstreetmap.org/node/1800533449 (موقف سيرفيس الشام); garage coordinate is a proxy; fare estimate (Rif mid-ring)",
+   "confidence": "low"
+  },
+  {
+   "name": "سبينة - حجيرة - كراج نهر عيشة",
+   "nameEn": "Sbeineh – Hujaira – Nahr Aisha garage",
+   "code": "RIF-SBN-01",
+   "vehicleType": "SERVIS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 40,
+   "stations": [
+    "حجيرة",
+    "السبينة",
+    "كراج نهر عيشة"
+   ],
+   "source": "https://www.enabbaladi.net/775716/ (Enab Baladi 2025-09-28, Sbeineh–Hujaira line at Nahr Aisha garage) (line officially assigned to كراج نهر عيشة, Sept 2025); garage coordinate is a proxy; fare estimate",
+   "confidence": "low"
+  },
+  {
+   "name": "البرامكة - مطار دمشق الدولي",
+   "nameEn": "Baramkeh garages – Damascus International Airport (bus)",
+   "code": "RIF-AIR-01",
+   "vehicleType": "BUS",
+   "governorate": "RIF_DIMASHQ",
+   "currentFare": 40,
+   "stations": [
+    "البرامكة",
+    "مجمع الهمك",
+    "مطار دمشق الدولي"
+   ],
+   "polyline": [
+    {
+     "lat": 33.508618,
+     "lng": 36.289244
+    },
+    {
+     "lat": 33.50809,
+     "lng": 36.289288
+    },
+    {
+     "lat": 33.507913,
+     "lng": 36.289551
+    },
+    {
+     "lat": 33.507903,
+     "lng": 36.291943
+    },
+    {
+     "lat": 33.507814,
+     "lng": 36.292235
+    },
+    {
+     "lat": 33.507448,
+     "lng": 36.292742
+    },
+    {
+     "lat": 33.50727,
+     "lng": 36.292789
+    },
+    {
+     "lat": 33.505173,
+     "lng": 36.292539
+    },
+    {
+     "lat": 33.496397,
+     "lng": 36.291353
+    },
+    {
+     "lat": 33.495146,
+     "lng": 36.29109
+    },
+    {
+     "lat": 33.49369,
+     "lng": 36.290285
+    },
+    {
+     "lat": 33.491056,
+     "lng": 36.288358
+    },
+    {
+     "lat": 33.490525,
+     "lng": 36.287699
+    },
+    {
+     "lat": 33.490509,
+     "lng": 36.28732
+    },
+    {
+     "lat": 33.490677,
+     "lng": 36.286979
+    },
+    {
+     "lat": 33.490966,
+     "lng": 36.286786
+    },
+    {
+     "lat": 33.491449,
+     "lng": 36.286874
+    },
+    {
+     "lat": 33.491677,
+     "lng": 36.28716
+    },
+    {
+     "lat": 33.491856,
+     "lng": 36.287963
+    },
+    {
+     "lat": 33.492032,
+     "lng": 36.293976
+    },
+    {
+     "lat": 33.492056,
+     "lng": 36.300035
+    },
+    {
+     "lat": 33.491685,
+     "lng": 36.306368
+    },
+    {
+     "lat": 33.490541,
+     "lng": 36.317992
+    },
+    {
+     "lat": 33.490448,
+     "lng": 36.319493
+    },
+    {
+     "lat": 33.489838,
+     "lng": 36.322179
+    },
+    {
+     "lat": 33.489896,
+     "lng": 36.325173
+    },
+    {
+     "lat": 33.489613,
+     "lng": 36.325867
+    },
+    {
+     "lat": 33.488475,
+     "lng": 36.32732
+    },
+    {
+     "lat": 33.487912,
+     "lng": 36.328282
+    },
+    {
+     "lat": 33.4859,
+     "lng": 36.333676
+    },
+    {
+     "lat": 33.484619,
+     "lng": 36.336706
+    },
+    {
+     "lat": 33.482729,
+     "lng": 36.3406
+    },
+    {
+     "lat": 33.474955,
+     "lng": 36.353793
+    },
+    {
+     "lat": 33.473022,
+     "lng": 36.356609
+    },
+    {
+     "lat": 33.471741,
+     "lng": 36.35832
+    },
+    {
+     "lat": 33.470264,
+     "lng": 36.360073
+    },
+    {
+     "lat": 33.468615,
+     "lng": 36.361871
+    },
+    {
+     "lat": 33.465576,
+     "lng": 36.364722
+    },
+    {
+     "lat": 33.46324,
+     "lng": 36.36661
+    },
+    {
+     "lat": 33.461359,
+     "lng": 36.367953
+    },
+    {
+     "lat": 33.457763,
+     "lng": 36.370309
+    },
+    {
+     "lat": 33.455357,
+     "lng": 36.372034
+    },
+    {
+     "lat": 33.453036,
+     "lng": 36.374085
+    },
+    {
+     "lat": 33.452062,
+     "lng": 36.375043
+    },
+    {
+     "lat": 33.450562,
+     "lng": 36.376699
+    },
+    {
+     "lat": 33.440258,
+     "lng": 36.38959
+    },
+    {
+     "lat": 33.438136,
+     "lng": 36.392589
+    },
+    {
+     "lat": 33.436672,
+     "lng": 36.394848
+    },
+    {
+     "lat": 33.433728,
+     "lng": 36.399792
+    },
+    {
+     "lat": 33.431128,
+     "lng": 36.404856
+    },
+    {
+     "lat": 33.428659,
+     "lng": 36.409988
+    },
+    {
+     "lat": 33.425476,
+     "lng": 36.417524
+    },
+    {
+     "lat": 33.414208,
+     "lng": 36.446863
+    },
+    {
+     "lat": 33.41242,
+     "lng": 36.451327
+    },
+    {
+     "lat": 33.410055,
+     "lng": 36.456747
+    },
+    {
+     "lat": 33.405848,
+     "lng": 36.465794
+    },
+    {
+     "lat": 33.404186,
+     "lng": 36.469872
+    },
+    {
+     "lat": 33.403374,
+     "lng": 36.472024
+    },
+    {
+     "lat": 33.401554,
+     "lng": 36.477523
+    },
+    {
+     "lat": 33.400458,
+     "lng": 36.481244
+    },
+    {
+     "lat": 33.399715,
+     "lng": 36.484458
+    },
+    {
+     "lat": 33.399479,
+     "lng": 36.486248
+    },
+    {
+     "lat": 33.399386,
+     "lng": 36.4876
+    },
+    {
+     "lat": 33.399382,
+     "lng": 36.489597
+    },
+    {
+     "lat": 33.399556,
+     "lng": 36.491804
+    },
+    {
+     "lat": 33.399824,
+     "lng": 36.493532
+    },
+    {
+     "lat": 33.400176,
+     "lng": 36.495114
+    },
+    {
+     "lat": 33.400808,
+     "lng": 36.49717
+    },
+    {
+     "lat": 33.401457,
+     "lng": 36.49878
+    },
+    {
+     "lat": 33.402675,
+     "lng": 36.501156
+    },
+    {
+     "lat": 33.403531,
+     "lng": 36.502539
+    },
+    {
+     "lat": 33.408903,
+     "lng": 36.509815
+    },
+    {
+     "lat": 33.409069,
+     "lng": 36.510252
+    },
+    {
+     "lat": 33.409126,
+     "lng": 36.510641
+    },
+    {
+     "lat": 33.408957,
+     "lng": 36.511989
+    },
+    {
+     "lat": 33.409316,
+     "lng": 36.512618
+    },
+    {
+     "lat": 33.409781,
+     "lng": 36.513145
+    },
+    {
+     "lat": 33.410261,
+     "lng": 36.513266
+    },
+    {
+     "lat": 33.410424,
+     "lng": 36.513182
+    },
+    {
+     "lat": 33.411693,
+     "lng": 36.511859
+    }
+   ],
+   "source": "https://sana.sy/locals/2602722/ (SANA 2026-10-10, Baramkeh–airport bus, 14 departures/day) (14 departures/day from 11 Oct 2026); geometry https://www.openstreetmap.org/relation/4111623 (حافلة المطار, البرامكة → المطار; reverse 4111655); fare not published – bus default",
+   "confidence": "medium"
+  }
+ ]
+}
