@@ -108,7 +108,7 @@ export default function UsersPage() {
               <input className="field" id="u-email" type="email" required placeholder={t('users.emailPlaceholder')} value={form.email} onChange={set('email')} dir="ltr" />
             </>)}
             <label className="field-label" htmlFor="u-pass">{t('users.password')}</label>
-            <input className="field" id="u-pass" type="password" minLength={8} required autoFocus={modal.mode === 'reset'} placeholder={t('users.passwordPlaceholder')} value={form.password} onChange={set('password')} autoComplete="new-password" />
+            <input className="field" id="u-pass" type="password" minLength={6} required autoFocus={modal.mode === 'reset'} placeholder={t('users.passwordPlaceholder')} value={form.password} onChange={set('password')} autoComplete="new-password" />
             {modal.mode === 'add' && (<>
               <label className="field-label" htmlFor="u-role">{t('users.role')}</label>
               <div style={{ marginBottom: 18 }}><Select value={form.role} onChange={(v) => setForm((f) => ({ ...f, role: v }))} ariaLabel={t('users.role')}

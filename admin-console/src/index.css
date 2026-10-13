@@ -164,7 +164,7 @@ textarea.field.code { font-family: ui-monospace, SFMono-Regular, Menlo, monospac
 .chip.on { background: var(--primary-light); border-color: #c9cffc; color: var(--primary); }
 
 /* ---------- modal / toast ---------- */
-.modal-overlay { position: fixed; inset: 0; background: #121a2a8c; display: flex; align-items: center; justify-content: center; z-index: 10; padding: 16px; backdrop-filter: blur(2px); }
+.modal-overlay { position: fixed; inset: 0; background: #121a2a8c; display: flex; align-items: center; justify-content: center; z-index: 3000; padding: 16px; backdrop-filter: blur(2px); }
 .modal { background: #fff; width: 100%; max-width: 495px; border-radius: 17px; padding: 29px; box-shadow: 0 20px 100px #0a133644; max-height: 92vh; overflow: auto; }
 .modal.wide { max-width: 760px; }
 .modal-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 21px; gap: 12px; }
@@ -172,7 +172,7 @@ textarea.field.code { font-family: ui-monospace, SFMono-Regular, Menlo, monospac
 .modal p { font-size: 12px; color: #8d96a6; margin: 0; }
 .close { border: 0; background: #f4f6fa; border-radius: 8px; color: #67738c; font-size: 19px; width: 31px; height: 31px; flex-shrink: 0; }
 .modal-buttons { display: flex; justify-content: flex-end; gap: 10px; margin-top: 4px; }
-.toast { position: fixed; bottom: 28px; inset-inline-end: 28px; background: #1a2540; color: #fff; border-radius: 10px; padding: 13px 19px; box-shadow: 0 10px 25px #1a254044; font-size: 12px; opacity: 0; pointer-events: none; transform: translateY(10px); transition: .25s; z-index: 20; max-width: 420px; }
+.toast { position: fixed; bottom: 28px; inset-inline-end: 28px; background: #1a2540; color: #fff; border-radius: 10px; padding: 13px 19px; box-shadow: 0 10px 25px #1a254044; font-size: 12px; opacity: 0; pointer-events: none; transform: translateY(10px); transition: .25s; z-index: 4000; max-width: 420px; }
 .toast.show { opacity: 1; transform: translateY(0); }
 .toast.error { background: #a63b40; }
 
@@ -234,3 +234,8 @@ textarea.field.code { font-family: ui-monospace, SFMono-Regular, Menlo, monospac
 /* Any remaining native select: give the arrow room and a themed chevron */
 select { appearance: none; -webkit-appearance: none; padding-inline-end: 38px !important; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 8l5 5 5-5' stroke='%238893a5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-size: 14px; }
 [dir="rtl"] select { background-position: left 12px center; }
+
+/* map pick banner (admin) */
+.map-box { position: relative; }
+.map-pick-banner { position: absolute; z-index: 1100; top: 12px; inset-inline: 12px; background: var(--navy); color: #fff; border-radius: 10px; padding: 10px 14px; font-weight: 700; font-size: 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px; box-shadow: var(--shadow); }
+.map-pick-banner button { background: #ffffff22; border: 0; color: #fff; border-radius: 7px; padding: 6px 10px; font-size: 11px; font-weight: 700; }

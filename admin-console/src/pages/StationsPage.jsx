@@ -18,6 +18,7 @@ export default function StationsPage() {
   const [params] = useSearchParams()
   const [filter, setFilter] = useState(params.get('q') || '')
   const [modal, setModal] = useState(null) // { id } | { id: null }
+  const [picking, setPicking] = useState(false)
   const [form, setForm] = useState(EMPTY)
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
@@ -28,7 +29,11 @@ export default function StationsPage() {
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }))
   const openNew = (point) => { setModal({ id: null }); setForm({ ...EMPTY, lat: point?.lat ?? '', lng: point?.lng ?? '' }); setError('') }
   const openEdit = (s) => { setModal({ id: s.id }); setForm({ name: s.name, nameEn: s.nameEn || '', aliases: s.aliases || '', stationKind: s.stationKind, governorate: s.governorate, lat: s.location.lat, lng: s.location.lng }); setError('') }
-  const close = () => setModal(null)
+  const close = () => { setModal(null); setPicking(false) }
+  const onMapClick = (p) => {
+    if (modal) { setForm((f) => ({ ...f, lat: p.lat, lng: p.lng })); setPicking(false) }
+    else openNew(p)
+  }
 
   const save = async (e) => {
     e.preventDefault(); setBusy(true); setError('')
@@ -55,7 +60,10 @@ export default function StationsPage() {
       </section>
       <div className="two-wide">
         <Panel title={t('stations.mapTitle')} subtitle={t('stations.mapDesc')} body>
-          <div className="map-box"><MapView stations={stations} routes={routes} origin={fit?.[0]} fit={fit} onClick={(p) => (modal ? setForm((f) => ({ ...f, lat: p.lat, lng: p.lng })) : openNew(p))} onStationClick={openEdit} /></div>
+          <div className="map-box">
+            {picking && <div className="map-pick-banner"><span>📍 {t('stations.pickBanner')}</span><button type="button" onClick={() => setPicking(false)}>{t('common.cancel')}</button></div>}
+            <MapView stations={stations} routes={routes} origin={fit?.[0]} fit={fit} onClick={onMapClick} onStationClick={(s) => { if (picking) { setForm((f) => ({ ...f, lat: s.location.lat, lng: s.location.lng })); setPicking(false) } else openEdit(s) }} />
+          </div>
         </Panel>
         <Panel title={t('stations.all')} count={list.length} subtitle={t('stations.allDesc')}
           tools={<SearchBox value={filter} onChange={setFilter} placeholder={t('common.search')} />}>
@@ -79,8 +87,8 @@ export default function StationsPage() {
         </Panel>
       </div>
 
-      {modal && (
-        <Modal title={modal.id ? t('stations.edit') : t('stations.add')} subtitle={t('common.coordsHint')} onClose={close}>
+      {modal && !picking && (
+        <Modal title={modal.id ? t('stations.edit') : t('stations.add')} subtitle={t('stations.pickHint')} onClose={close}>
           <form onSubmit={save}>
             <div className="form-grid">
               <div><label className="field-label">{t('common.name')}</label><input className="field" required autoFocus value={form.name} onChange={set('name')} /></div>
@@ -90,6 +98,7 @@ export default function StationsPage() {
               <div><label className="field-label">{t('common.governorate')}</label><input className="field" value={form.governorate} onChange={set('governorate')} dir="ltr" /></div>
               <div><label className="field-label">Latitude</label><input className="field" type="number" step="any" required value={form.lat} onChange={set('lat')} dir="ltr" /></div>
               <div><label className="field-label">Longitude</label><input className="field" type="number" step="any" required value={form.lng} onChange={set('lng')} dir="ltr" /></div>
+              <div className="full" style={{ marginTop: -8, marginBottom: 16 }}><button type="button" className="button secondary small" onClick={() => setPicking(true)}>📍 {t('stations.pickOnMap')}</button></div>
             </div>
             {error && <p className="error" style={{ marginTop: -8 }}>{error}</p>}
             <div className="modal-buttons">

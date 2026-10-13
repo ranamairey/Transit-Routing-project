@@ -47,7 +47,7 @@ export const translations = {
     },
     auth: {
       loginTitle: 'تسجيل الدخول', loginHint: 'الدخول مطلوب فقط لإرسال البلاغات أو لإدارة الشبكة.',
-      email: 'البريد الإلكتروني', password: 'كلمة السر', passwordHint: 'كلمة السر (8 أحرف على الأقل)', fullName: 'الاسم الكامل',
+      email: 'البريد الإلكتروني', password: 'كلمة السر', passwordHint: 'كلمة السر (6 أحرف على الأقل)', fullName: 'الاسم الكامل',
       login: 'دخول', register: 'تسجيل', registerTitle: 'إنشاء حساب',
       noAccount: 'ليس لديك حساب؟', createAccount: 'أنشئ حساباً', haveAccount: 'لديك حساب؟', signIn: 'سجّل الدخول',
       adminOnly: 'لوحة التحكم متاحة للمشرفين فقط.',
@@ -124,7 +124,7 @@ export const translations = {
     },
     auth: {
       loginTitle: 'Sign in', loginHint: 'Signing in is only needed to send reports or manage the network.',
-      email: 'Email', password: 'Password', passwordHint: 'Password (at least 8 characters)', fullName: 'Full name',
+      email: 'Email', password: 'Password', passwordHint: 'Password (at least 6 characters)', fullName: 'Full name',
       login: 'Sign in', register: 'Register', registerTitle: 'Create an account',
       noAccount: 'No account yet?', createAccount: 'Create one', haveAccount: 'Already have an account?', signIn: 'Sign in',
       adminOnly: 'The dashboard is available to admins only.',

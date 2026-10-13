@@ -19,7 +19,7 @@ export const translations = {
       showing: 'عرض {from}–{to} من {total}', active: 'نشط', saved: 'تم الحفظ', deleted: 'تم الحذف', create: 'إنشاء', close: 'إغلاق',
     },
     stations: { add: 'إضافة محطة', edit: 'تعديل محطة', confirmDelete: 'حذف المحطة «{name}»؟ (لا يمكن حذف محطة مستخدمة في خط)',
-      eyebrow: 'شبكة النقل', desc: 'المحطات والمواقف وكراجات الانطلاق مع إحداثياتها الدقيقة.', all: 'كل المحطات', allDesc: 'ابحث وعدّل أو احذف المحطات.', byKind: 'حسب النوع', hubs: 'عقد تبديل وكراجات', mapTitle: 'الخريطة', mapDesc: 'انقر محطة لتعديلها، أو انقر على الخريطة لتعبئة الإحداثيات.' },
+      eyebrow: 'شبكة النقل', desc: 'المحطات والمواقف وكراجات الانطلاق مع إحداثياتها الدقيقة.', all: 'كل المحطات', allDesc: 'ابحث وعدّل أو احذف المحطات.', byKind: 'حسب النوع', hubs: 'عقد تبديل وكراجات', mapTitle: 'الخريطة', mapDesc: 'انقر محطة لتعديلها، أو انقر على الخريطة لإضافة محطة جديدة عند تلك النقطة.', pickOnMap: 'تحديد الإحداثيات من الخريطة', pickHint: 'أدخل الإحداثيات يدوياً أو اضغط «تحديد الإحداثيات من الخريطة».', pickBanner: 'انقر على الخريطة لتحديد موقع المحطة' },
     routes: {
       add: 'إضافة خط', edit: 'تعديل خط', name: 'اسم الخط', namePlaceholder: 'مزة فيلات - جسر الرئيس', code: 'الرمز', fare: 'التسعيرة (ل.س)',
       stops: 'المحطات بالترتيب ({n})', addStop: '+ أضف محطة (أو انقر محطة على الخريطة)', polyline: 'مسار الخط على الخريطة — {n} نقطة',
@@ -37,9 +37,9 @@ export const translations = {
     },
     users: {
       title: 'المستخدمون', add: 'إضافة مستخدم', fullName: 'الاسم الكامل', email: 'البريد الإلكتروني', password: 'كلمة السر', role: 'الدور', allRoles: 'كل الأدوار',
-      ROLE_USER: 'مستخدم', ROLE_ADMIN: 'مشرف', resetPassword: 'إعادة تعيين كلمة السر', newPassword: 'كلمة سر جديدة (8 أحرف على الأقل)', confirmDelete: 'حذف المستخدم «{email}»؟', you: 'أنت',
+      ROLE_USER: 'مستخدم', ROLE_ADMIN: 'مشرف', resetPassword: 'إعادة تعيين كلمة السر', newPassword: 'كلمة سر جديدة (6 أحرف على الأقل)', confirmDelete: 'حذف المستخدم «{email}»؟', you: 'أنت',
       eyebrow: 'إدارة الحسابات', desc: 'إدارة حسابات المستخدمين والمشرفين والصلاحيات في مكان واحد.', addNew: 'إضافة مستخدم جديد', total: 'إجمالي المستخدمين', registered: 'حسابات مسجلة', admins: 'حسابات المشرفين', adminsDetail: 'صلاحية كاملة', riders: 'حسابات الركاب', ridersDetail: 'دور راكب',
-      all: 'كل المستخدمين', allDesc: 'ابحث، غيّر الأدوار، وأدر الوصول إلى الحسابات.', searchPlaceholder: 'بحث بالاسم أو البريد…', user: 'المستخدم', status: 'الحالة', createSub: 'أنشئ حساباً جديداً وعيّن دوره.', resetSub: 'عيّن كلمة سر جديدة لـ {name}.', createBtn: 'إنشاء المستخدم', updatePassword: 'تحديث كلمة السر', created: 'تم إنشاء المستخدم', roleUpdated: 'تم تحديث دور {name}', passwordUpdated: 'تم تحديث كلمة السر', deletedMsg: 'تم حذف المستخدم', cannotDeleteSelf: 'لا يمكنك حذف حسابك', namePlaceholder: 'مثال: سارة أحمد', emailPlaceholder: 'name@company.com', passwordPlaceholder: '8 أحرف على الأقل', noMatch: 'لا يوجد مستخدمون مطابقون لبحثك.',
+      all: 'كل المستخدمين', allDesc: 'ابحث، غيّر الأدوار، وأدر الوصول إلى الحسابات.', searchPlaceholder: 'بحث بالاسم أو البريد…', user: 'المستخدم', status: 'الحالة', createSub: 'أنشئ حساباً جديداً وعيّن دوره.', resetSub: 'عيّن كلمة سر جديدة لـ {name}.', createBtn: 'إنشاء المستخدم', updatePassword: 'تحديث كلمة السر', created: 'تم إنشاء المستخدم', roleUpdated: 'تم تحديث دور {name}', passwordUpdated: 'تم تحديث كلمة السر', deletedMsg: 'تم حذف المستخدم', cannotDeleteSelf: 'لا يمكنك حذف حسابك', namePlaceholder: 'مثال: سارة أحمد', emailPlaceholder: 'name@company.com', passwordPlaceholder: '6 أحرف على الأقل', noMatch: 'لا يوجد مستخدمون مطابقون لبحثك.',
     },
     data: {
       title: 'استيراد وتصدير بيانات الشبكة', hint: 'استيراد ملف JSON بالمحطات والخطوط (إضافة أو تحديث). تُطابَق المحطات بالاسم والمحافظة، والخطوط بالرمز ثم بالاسم. تشير محطات الخط إلى أسماء المحطات.',
@@ -73,7 +73,7 @@ export const translations = {
       showing: 'Showing {from}–{to} of {total}', active: 'Active', saved: 'Saved', deleted: 'Deleted', create: 'Create', close: 'Close',
     },
     stations: { add: 'Add station', edit: 'Edit station', confirmDelete: 'Delete station “{name}”? (stations used by a line cannot be deleted)',
-      eyebrow: 'Transit network', desc: 'Stops, stations and terminals with precise coordinates.', all: 'All stations', allDesc: 'Search, edit or remove stations.', byKind: 'By kind', hubs: 'Hubs & terminals', mapTitle: 'Map', mapDesc: 'Click a station to edit it, or click the map to fill the coordinates.' },
+      eyebrow: 'Transit network', desc: 'Stops, stations and terminals with precise coordinates.', all: 'All stations', allDesc: 'Search, edit or remove stations.', byKind: 'By kind', hubs: 'Hubs & terminals', mapTitle: 'Map', mapDesc: 'Click a station to edit it, or click the map to add a new station at that point.', pickOnMap: 'Pick coordinates on the map', pickHint: 'Type the coordinates or use “Pick coordinates on the map”.', pickBanner: 'Click the map to set the station location' },
     routes: {
       add: 'Add line', edit: 'Edit line', name: 'Line name', namePlaceholder: 'Mezzeh Villas - President Bridge', code: 'Code', fare: 'Fare (SYP)',
       stops: 'Stops in order ({n})', addStop: '+ Add a stop (or click a station on the map)', polyline: 'Line path on the map — {n} points',
@@ -91,9 +91,9 @@ export const translations = {
     },
     users: {
       title: 'Users', add: 'Add user', fullName: 'Full name', email: 'Email', password: 'Password', role: 'Role', allRoles: 'All roles',
-      ROLE_USER: 'Rider', ROLE_ADMIN: 'Admin', resetPassword: 'Reset password', newPassword: 'New password (at least 8 characters)', confirmDelete: 'Delete user “{email}”?', you: 'YOU',
+      ROLE_USER: 'Rider', ROLE_ADMIN: 'Admin', resetPassword: 'Reset password', newPassword: 'New password (at least 6 characters)', confirmDelete: 'Delete user “{email}”?', you: 'YOU',
       eyebrow: 'Account management', desc: 'Manage team access, user accounts, and permissions in one place.', addNew: 'Add new user', total: 'Total users', registered: 'Registered accounts', admins: 'Admin accounts', adminsDetail: 'Full access', riders: 'Rider accounts', ridersDetail: 'Rider role assigned',
-      all: 'All users', allDesc: 'Search, update roles, and manage account access.', searchPlaceholder: 'Search by name or email...', user: 'User', status: 'Status', createSub: 'Create a new account and assign a role.', resetSub: 'Set a new password for {name}.', createBtn: 'Create user', updatePassword: 'Update password', created: 'User created successfully', roleUpdated: "{name}'s role updated", passwordUpdated: 'Password updated', deletedMsg: 'User removed', cannotDeleteSelf: 'Cannot delete your own account', namePlaceholder: 'e.g. Sarah Ahmed', emailPlaceholder: 'name@company.com', passwordPlaceholder: 'Minimum 8 characters', noMatch: 'No users match your search.',
+      all: 'All users', allDesc: 'Search, update roles, and manage account access.', searchPlaceholder: 'Search by name or email...', user: 'User', status: 'Status', createSub: 'Create a new account and assign a role.', resetSub: 'Set a new password for {name}.', createBtn: 'Create user', updatePassword: 'Update password', created: 'User created successfully', roleUpdated: "{name}'s role updated", passwordUpdated: 'Password updated', deletedMsg: 'User removed', cannotDeleteSelf: 'Cannot delete your own account', namePlaceholder: 'e.g. Sarah Ahmed', emailPlaceholder: 'name@company.com', passwordPlaceholder: 'Minimum 6 characters', noMatch: 'No users match your search.',
     },
     data: {
       title: 'Import and export network data', hint: 'Import a JSON file of stations and lines (upsert). Stations match by name + governorate, lines by code then name. Line stops reference station names.',

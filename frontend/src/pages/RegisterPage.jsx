@@ -33,7 +33,7 @@ export default function RegisterPage() {
         <form onSubmit={submit}>
           <div><label>{t('auth.fullName')}</label><input required value={fullName} onChange={(e) => setFullName(e.target.value)} /></div>
           <div><label>{t('auth.email')}</label><input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} /></div>
-          <div><label>{t('auth.passwordHint')}</label><input type="password" minLength={8} required value={password} onChange={(e) => setPassword(e.target.value)} /></div>
+          <div><label>{t('auth.passwordHint')}</label><input type="password" minLength={6} required value={password} onChange={(e) => setPassword(e.target.value)} /></div>
           {error && <p className="error">{error}</p>}
           <button type="submit" className="primary" disabled={busy}>{busy ? '…' : t('auth.register')}</button>
         </form>
