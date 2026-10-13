@@ -10,19 +10,19 @@ import java.util.List;
 
 public class AuthUser implements UserDetails {
 
-    private final Long id;
+    private final String id;
     private final String email;
     private final String password;
     private final Role role;
 
-    public AuthUser(Long id, String email, String password, Role role) {
+    public AuthUser(String id, String email, String password, Role role) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.role = role;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 

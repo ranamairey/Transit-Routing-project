@@ -10,19 +10,19 @@ import com.example.demo.transit.dto.TripLegDto;
 import com.example.demo.transit.entity.Route;
 import com.example.demo.transit.entity.Station;
 import com.example.demo.transit.geo.GeoMath;
-import com.example.demo.transit.repository.CrowdsourceReportRepository;
-import com.example.demo.transit.repository.StationRepository;
 import com.example.demo.transit.routing.MultiLegRouter;
+import com.example.demo.transit.routing.MultiLegRouter.Edge;
 import com.example.demo.transit.routing.MultiLegRouter.FoundPath;
 import com.example.demo.transit.routing.MultiLegRouter.SearchGraph;
 import com.example.demo.transit.routing.MultiLegRouter.Step;
+import com.example.demo.transit.service.TransitGraphFactory.NetworkSnapshot;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.time.Duration;
+import java.time.Clock;
 import java.time.Instant;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -32,127 +32,129 @@ import java.util.stream.Collectors;
 @Service
 public class RoutingService {
 
+    public static final ZoneId DAMASCUS = ZoneId.of("Asia/Damascus");
+
     private final TransitGraphFactory graphFactory;
-    private final StationRepository stationRepository;
-    private final CrowdsourceReportRepository reportRepository;
+    private final StationSearchService stationSearch;
+    private final ReportService reportService;
     private final TransitProperties properties;
     private final MultiLegRouter router = new MultiLegRouter();
+    private final Clock clock;
 
-    public RoutingService(
-            TransitGraphFactory graphFactory,
-            StationRepository stationRepository,
-            CrowdsourceReportRepository reportRepository,
-            TransitProperties properties
-    ) {
+    public RoutingService(TransitGraphFactory graphFactory,
+                          StationSearchService stationSearch,
+                          ReportService reportService,
+                          TransitProperties properties,
+                          Clock clock) {
         this.graphFactory = graphFactory;
-        this.stationRepository = stationRepository;
-        this.reportRepository = reportRepository;
+        this.stationSearch = stationSearch;
+        this.reportService = reportService;
         this.properties = properties;
+        this.clock = clock;
     }
 
-    @Transactional(readOnly = true)
     public RoutingSearchResponse search(RoutingSearchRequest request) {
         long started = System.nanoTime();
-        // تحميل كامل الشبكة أو دمج المحافظات لضمان التوصيل بين الريف والمدينة
-        TransitGraphFactory.NetworkSnapshot snapshot = graphFactory.load(null);
-        SearchGraph graph = snapshot.graph();
+        Instant now = clock.instant();
 
-        Endpoint origin = resolveEndpoint(request.origin(), request.originStationId(), request.originQuery());
-        Endpoint dest = resolveEndpoint(request.destination(), request.destinationStationId(), request.destinationQuery());
+        NetworkSnapshot snapshot = graphFactory.snapshot();
+        SearchGraph graph = snapshot.graph().copy();
 
-        graphFactory.connectEndpoint(graph, TransitGraphFactory.ORIGIN_NODE, origin.point(), snapshot.stations(), true);
-        graphFactory.connectEndpoint(graph, TransitGraphFactory.DEST_NODE, dest.point(), snapshot.stations(), false);
-        graph.add(TransitGraphFactory.ORIGIN_NODE, MultiLegRouter.Edge.walk(
-                TransitGraphFactory.DEST_NODE,
-                GeoMath.haversineMeters(
-                        origin.point().lat(), origin.point().lng(),
-                        dest.point().lat(), dest.point().lng()),
-                Integer.MAX_VALUE / 4
-        ));
+        Endpoint origin = resolveEndpoint(request.origin(), request.originStationId(), request.originQuery(),
+                request.governorate(), "نقطة الانطلاق");
+        Endpoint dest = resolveEndpoint(request.destination(), request.destinationStationId(), request.destinationQuery(),
+                request.governorate(), "الوجهة");
 
-        if (request.peak()) {
-            graph.scaleRideTimes(properties.getPeakTimeMultiplier());
+        long originNode = origin.station() != null ? snapshot.index(origin.station()) : TransitGraphFactory.ORIGIN_NODE;
+        long destNode = dest.station() != null ? snapshot.index(dest.station()) : TransitGraphFactory.DEST_NODE;
+
+        if (origin.station() == null) {
+            graphFactory.connectEndpoint(graph, originNode, origin.point(), snapshot, true);
+        }
+        if (dest.station() == null) {
+            graphFactory.connectEndpoint(graph, destNode, dest.point(), snapshot, false);
         }
 
-        List<FoundPath> paths = router.findPaths(
-                graph,
-                TransitGraphFactory.ORIGIN_NODE,
-                TransitGraphFactory.DEST_NODE,
-                properties.getMaxRideLegs(),
-                properties.getAlternativePaths()
-        );
+        // Direct walk when the two points are within walking distance of each other.
+        double direct = GeoMath.haversineMeters(origin.point().lat(), origin.point().lng(), dest.point().lat(), dest.point().lng());
+        if (originNode != destNode && direct <= properties.getWalkRadiusMeters()) {
+            graph.add(originNode, Edge.walk(destNode, direct, GeoMath.travelSeconds(direct, properties.getWalkSpeedKmh())));
+        }
 
-        Map<Long, Station> stationsById = snapshot.stations().stream()
-                .collect(Collectors.toMap(Station::getId, s -> s, (a, b) -> a));
-        stationsById.put(TransitGraphFactory.ORIGIN_NODE, virtualStation("نقطة الانطلاق", origin.point()));
-        stationsById.put(TransitGraphFactory.DEST_NODE, virtualStation("الوجهة", dest.point()));
+        // FR-1.3 / FR-2.1: peak hours and live crowding reports slow down affected routes.
+        boolean peak = request.peak() != null
+                ? request.peak()
+                : properties.isPeak(now.atZone(DAMASCUS).toLocalTime());
+        double peakMultiplier = peak ? properties.getPeakTimeMultiplier() : 1.0;
+        graph.scaleRideTimes(routeIdx -> {
+            Route route = snapshot.routeByIndex().get(routeIdx);
+            return peakMultiplier * (route == null ? 1.0 : graphFactory.statusMultiplier(route, now));
+        });
 
-        Map<Long, Route> routesById = snapshot.routes().stream()
-                .collect(Collectors.toMap(Route::getId, r -> r, (a, b) -> a));
+        if (originNode == destNode) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "نقطة الانطلاق والوجهة متطابقتان");
+        }
+
+        List<FoundPath> paths = router.findPaths(graph, originNode, destNode,
+                properties.getMaxRideLegs(), properties.getAlternativePaths());
+
+        Map<Long, Station> stationByIndex = new java.util.HashMap<>(snapshot.stationByIndex());
+        stationByIndex.put(TransitGraphFactory.ORIGIN_NODE, virtualStation("نقطة الانطلاق", origin.point()));
+        stationByIndex.put(TransitGraphFactory.DEST_NODE, virtualStation("الوجهة", dest.point()));
 
         List<RouteOptionDto> options = paths.stream()
-                .filter(p -> p.totalDurationSeconds() < Integer.MAX_VALUE / 8)
-                .map(path -> toOption(path, stationsById, routesById))
+                .map(path -> toOption(path, stationByIndex, snapshot.routeByIndex(), now))
                 .toList();
         if (options.isEmpty()) {
-            throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND,
-                    "لا يوجد مسار تبديلي ضمن نطاق المشي المحدد"
-            );
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "لا يوجد مسار تبديلي ضمن نطاق المشي المحدد");
         }
 
-        List<Long> routeIds = options.stream()
+        List<String> routeIds = options.stream()
                 .flatMap(o -> o.legs().stream())
                 .map(TripLegDto::routeId)
                 .filter(Objects::nonNull)
                 .distinct()
                 .toList();
-
-        Instant since = Instant.now().minus(Duration.ofHours(properties.getAlertWindowHours()));
-        List<AlertDto> alerts = routeIds.isEmpty()
-                ? List.of()
-                : reportRepository.findByRoute_IdInAndSentAtAfterOrderBySentAtDesc(routeIds, since).stream()
-                .limit(20)
-                .map(r -> new AlertDto(
-                        r.getRoute() != null ? r.getRoute().getId() : null,
-                        r.getRoute() != null ? r.getRoute().getName() : null,
-                        r.getReportType(),
-                        r.getDescription(),
-                        r.getSentAt()
-                ))
-                .toList();
+        List<AlertDto> alerts = reportService.alertsForRoutes(routeIds, snapshot.routes());
 
         long millis = (System.nanoTime() - started) / 1_000_000;
-        return new RoutingSearchResponse(options, alerts, millis);
+        return new RoutingSearchResponse(
+                origin.point(), dest.point(), origin.name(), dest.name(), peak, options, alerts, millis);
     }
 
-    private Endpoint resolveEndpoint(GeoPointDto pin, Long stationId, String query) {
-        if (stationId != null) {
-            Station station = stationRepository.findById(stationId)
-                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "المحطة غير موجودة"));
-            return new Endpoint(GeoMath.toDto(station), station);
+    private Endpoint resolveEndpoint(GeoPointDto pin, String stationId, String query, String governorate, String fallbackName) {
+        NetworkSnapshot snapshot = graphFactory.snapshot();
+        if (stationId != null && !stationId.isBlank()) {
+            Station station = snapshot.stationsById().get(stationId);
+            if (station == null) {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "المحطة غير موجودة");
+            }
+            return new Endpoint(GeoMath.toDto(station), station, station.getName());
         }
         if (query != null && !query.isBlank()) {
-            List<Station> matches = stationRepository.searchByNameOrAlias(query.trim());
-            if (matches.isEmpty()) {
+            Station station = stationSearch.best(query, governorate);
+            if (station == null) {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "لم يُعثر على الموقع: " + query);
             }
-            Station station = matches.get(0);
-            return new Endpoint(GeoMath.toDto(station), station);
+            // use the cached instance so the graph index lookup works
+            Station cached = snapshot.stationsById().get(station.getId());
+            return new Endpoint(GeoMath.toDto(cached), cached, cached.getName());
         }
         if (pin != null && pin.lat() != null && pin.lng() != null) {
-            return new Endpoint(pin, null);
+            return new Endpoint(pin, null, fallbackName);
         }
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "حدد نقطة البداية/الوجهة عبر GPS أو دبوس أو بحث نصي");
     }
 
-    private RouteOptionDto toOption(FoundPath path, Map<Long, Station> stations, Map<Long, Route> routes) {
+    private RouteOptionDto toOption(FoundPath path, Map<Long, Station> stations, Map<Long, Route> routes, Instant now) {
         List<TripLegDto> legs = new ArrayList<>();
-        List<Step> merged = mergeSteps(path.steps());
-        for (Step step : merged) {
+        for (Step step : mergeSteps(path.steps())) {
+            boolean walk = step.routeId() == MultiLegRouter.WALK_ROUTE_ID;
+            if (walk && step.distanceMeters() < 1.0) {
+                continue; // zero-length walk (endpoint is the station itself)
+            }
             Station from = stations.get(step.fromStationId());
             Station to = stations.get(step.toStationId());
-            boolean walk = step.routeId() == MultiLegRouter.WALK_ROUTE_ID;
             Route route = walk ? null : routes.get(step.routeId());
             legs.add(new TripLegDto(
                     walk ? "WALK" : "RIDE",
@@ -160,15 +162,17 @@ public class RoutingService {
                     to != null ? to.getName() : null,
                     GeoMath.toDto(from),
                     GeoMath.toDto(to),
-                    walk ? null : step.routeId(),
+                    route != null ? route.getId() : null,
                     route != null ? route.getName() : null,
                     route != null ? route.getVehicleType() : null,
-                    walk || route == null ? null : route.getCurrentFare(),
+                    route != null ? graphFactory.effectiveStatus(route, now) : null,
+                    route != null ? route.getCurrentFare() : null,
                     step.timeSeconds(),
                     step.distanceMeters()
             ));
         }
-        return new RouteOptionDto(path.totalFare(), path.totalDurationSeconds(), path.walkingMeters(), legs);
+        int transfers = Math.max(0, path.rideLegs() - 1);
+        return new RouteOptionDto(path.totalFare(), path.totalDurationSeconds(), path.walkingMeters(), transfers, legs);
     }
 
     private List<Step> mergeSteps(List<Step> steps) {
@@ -181,12 +185,9 @@ public class RoutingService {
             Step last = merged.get(merged.size() - 1);
             if (last.routeId() == step.routeId() && last.routeId() != MultiLegRouter.WALK_ROUTE_ID) {
                 merged.set(merged.size() - 1, new Step(
-                        last.fromStationId(),
-                        step.toStationId(),
-                        last.routeId(),
+                        last.fromStationId(), step.toStationId(), last.routeId(),
                         last.distanceMeters() + step.distanceMeters(),
-                        last.timeSeconds() + step.timeSeconds()
-                ));
+                        last.timeSeconds() + step.timeSeconds()));
             } else {
                 merged.add(step);
             }
@@ -202,6 +203,6 @@ public class RoutingService {
         return station;
     }
 
-    private record Endpoint(GeoPointDto point, Station station) {
+    private record Endpoint(GeoPointDto point, Station station, String name) {
     }
 }

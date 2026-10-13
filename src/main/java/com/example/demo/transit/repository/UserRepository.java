@@ -1,13 +1,13 @@
 package com.example.demo.transit.repository;
 
 import com.example.demo.transit.entity.User;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends MongoRepository<User, String> {
 
-    Optional<User> findByEmailIgnoreCase(String email);
+    Optional<User> findByEmail(String email);
 
-    boolean existsByEmailIgnoreCase(String email);
+    boolean existsByEmail(String email);
 }

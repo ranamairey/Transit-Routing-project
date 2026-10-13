@@ -6,13 +6,20 @@ import java.math.BigDecimal;
 import java.time.Instant;
 
 public record ReportResponse(
-        Long id,
+        String id,
         ReportType reportType,
         Instant sentAt,
-        Long routeId,
-        Long stationId,
+        String routeId,
+        String routeName,
+        String stationId,
+        String stationName,
         BigDecimal newFare,
         String description,
-        boolean autoApplied
+        GeoPointDto location,
+        boolean autoApplied,
+        boolean applied,
+        boolean dismissed,
+        String reviewedBy,
+        Instant reviewedAt
 ) {
 }

@@ -3,9 +3,6 @@ package com.example.demo.transit.geo;
 import com.example.demo.transit.dto.GeoPointDto;
 import com.example.demo.transit.entity.Station;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public final class GeoMath {
 
     private GeoMath() {
@@ -22,7 +19,7 @@ public final class GeoMath {
     }
 
     public static int travelSeconds(double meters, double speedKmh) {
-        if (speedKmh <= 0) {
+        if (speedKmh <= 0 || meters < 1.0) {
             return 0;
         }
         return (int) Math.max(1, Math.round((meters / 1000.0) / speedKmh * 3600.0));
@@ -33,11 +30,5 @@ public final class GeoMath {
             return null;
         }
         return new GeoPointDto(station.getLatitude(), station.getLongitude());
-    }
-
-    public static String toPolyline(List<GeoPointDto> points) {
-        return points.stream()
-                .map(p -> p.lat() + "," + p.lng())
-                .collect(Collectors.joining(";"));
     }
 }

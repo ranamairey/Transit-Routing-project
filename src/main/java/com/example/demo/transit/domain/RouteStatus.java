@@ -4,5 +4,6 @@ public enum RouteStatus {
     NORMAL,
     CROWDED,
     DIVERTED,
+    DELAYED,
     FARE_UPDATED
 }

@@ -7,6 +7,7 @@ public record RouteOptionDto(
         BigDecimal totalFare,
         int totalDurationSeconds,
         double walkingMeters,
+        int transfers,
         List<TripLegDto> legs
 ) {
 }

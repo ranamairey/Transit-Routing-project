@@ -1,9 +1,9 @@
 package com.example.demo.transit.dto;
 
+import com.example.demo.transit.domain.RouteStatus;
 import com.example.demo.transit.domain.VehicleType;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 public record TripLegDto(
         String type,
@@ -11,9 +11,10 @@ public record TripLegDto(
         String toName,
         GeoPointDto from,
         GeoPointDto to,
-        Long routeId,
+        String routeId,
         String routeName,
         VehicleType vehicleType,
+        RouteStatus routeStatus,
         BigDecimal fare,
         int durationSeconds,
         double distanceMeters

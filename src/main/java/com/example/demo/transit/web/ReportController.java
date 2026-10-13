@@ -25,14 +25,16 @@ public class ReportController {
         this.reportService = reportService;
     }
 
+    /** FR-2.1: one-tap report; requires a logged-in user (NFR-3.1 anti-spam). */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ReportResponse submit(@Valid @RequestBody ReportRequest request) {
         return reportService.submit(request);
     }
 
+    /** FR-2.2: recent alerts of a route (public). */
     @GetMapping
-    public List<ReportResponse> recent(@RequestParam Long routeId) {
+    public List<ReportResponse> recent(@RequestParam String routeId) {
         return reportService.recent(routeId);
     }
 }

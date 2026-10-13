@@ -1,6 +1,5 @@
 package com.example.demo.transit.dto.auth;
 
-import com.example.demo.transit.domain.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

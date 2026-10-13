@@ -9,16 +9,22 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
 @Service
 public class JwtService {
 
-    @Value("${app.jwt.secret}")
-    private String secretKey;
+    private final SecretKey signingKey;
+    private final long jwtExpiration;
 
-    @Value("${app.jwt.expiration-ms}")
-    private long jwtExpiration;
+    public JwtService(@Value("${app.jwt.secret}") String secret,
+                      @Value("${app.jwt.expiration-ms}") long jwtExpiration) {
+        this.signingKey = deriveKey(secret);
+        this.jwtExpiration = jwtExpiration;
+    }
 
     public String generateToken(String email, String role) {
         return Jwts.builder()
@@ -26,7 +32,7 @@ public class JwtService {
                 .claim("role", role)
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + jwtExpiration))
-                .signWith(getSignInKey())
+                .signWith(signingKey)
                 .compact();
     }
 
@@ -36,7 +42,7 @@ public class JwtService {
 
     public boolean isTokenValid(String token, UserDetails userDetails) {
         final String email = extractEmail(token);
-        return (email.equals(userDetails.getUsername())) && !isTokenExpired(token);
+        return email.equals(userDetails.getUsername()) && !isTokenExpired(token);
     }
 
     private boolean isTokenExpired(String token) {
@@ -45,14 +51,30 @@ public class JwtService {
 
     private Claims extractAllClaims(String token) {
         return Jwts.parser()
-                .verifyWith(getSignInKey())
+                .verifyWith(signingKey)
                 .build()
                 .parseSignedClaims(token)
                 .getPayload();
     }
 
-    private SecretKey getSignInKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
-        return Keys.hmacShaKeyFor(keyBytes);
+    /**
+     * Accepts either a base64 secret or any plain string; the secret is hashed with SHA-256 so the
+     * HMAC key is always 256 bits long (jjwt rejects shorter keys).
+     */
+    private static SecretKey deriveKey(String secret) {
+        byte[] raw;
+        try {
+            raw = Decoders.BASE64.decode(secret);
+        } catch (RuntimeException notBase64) {
+            raw = secret.getBytes(StandardCharsets.UTF_8);
+        }
+        if (raw.length < 32) {
+            try {
+                raw = MessageDigest.getInstance("SHA-256").digest(secret.getBytes(StandardCharsets.UTF_8));
+            } catch (NoSuchAlgorithmException e) {
+                throw new IllegalStateException(e);
+            }
+        }
+        return Keys.hmacShaKeyFor(raw);
     }
 }
