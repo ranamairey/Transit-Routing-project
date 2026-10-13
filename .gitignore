@@ -49,3 +49,6 @@ frontend/android/.idea/
 frontend/android/app/src/main/assets/public/
 admin-console/node_modules/
 admin-console/dist/
+
+### Local tooling ###
+.claude/
