@@ -36,7 +36,7 @@ const LEG_COLORS = { SERVIS: '#1f5fb3', BUS: '#b3521f', WALK: '#4b5a52' }
  * pins and the legs of the selected trip.
  */
 export default function MapView({
-  stations = [], routes = [], origin, destination, legs = [], onClick, fit, onStationClick, highlightRouteId, drawing = [], zoomPosition,
+  stations = [], routes = [], origin, destination, legs = [], onClick, fit, onStationClick, highlightRouteId, drawing = [], zoomPosition, dimRoutes = false,
 }) {
   const { t } = useI18n()
   return (
@@ -55,8 +55,8 @@ export default function MapView({
           positions={(r.polyline || []).map((p) => [p.lat, p.lng])}
           pathOptions={{
             color: r.vehicleType === 'BUS' ? LEG_COLORS.BUS : LEG_COLORS.SERVIS,
-            weight: highlightRouteId === r.id ? 6 : 3,
-            opacity: highlightRouteId && highlightRouteId !== r.id ? 0.25 : 0.7,
+            weight: highlightRouteId === r.id ? 6 : dimRoutes ? 2 : 3,
+            opacity: highlightRouteId && highlightRouteId !== r.id ? 0.25 : dimRoutes ? 0.18 : 0.7,
           }}
         >
           <Tooltip sticky>{r.name}</Tooltip>

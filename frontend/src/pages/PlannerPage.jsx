@@ -10,6 +10,13 @@ import { useI18n } from '../i18n/I18nContext.jsx'
 
 const LAST_KEY = 'sst.lastSearch'
 const EMPTY = []
+const NEAR_METERS = 800
+
+const distMeters = (a, b) => {
+  const dLat = (b.lat - a.lat) * 111320
+  const dLng = (b.lng - a.lng) * 111320 * Math.cos((a.lat * Math.PI) / 180)
+  return Math.sqrt(dLat * dLat + dLng * dLng)
+}
 
 export default function PlannerPage({ net }) {
   const { network, offline, loading } = net
@@ -30,6 +37,7 @@ export default function PlannerPage({ net }) {
   })
   const [selected, setSelected] = useState(0)
   const [showRoute, setShowRoute] = useState(true)
+  const [showAll, setShowAll] = useState(false)
   const [fitKey, setFitKey] = useState(0)
   const [reportLeg, setReportLeg] = useState(null)
 
@@ -85,6 +93,24 @@ export default function PlannerPage({ net }) {
   }
 
   const path = result?.paths?.[selected]
+
+  // Only draw the lines that matter: the chosen trip's lines, else lines serving the picked points, else the whole network faintly.
+  const { visibleRoutes, dimRoutes } = useMemo(() => {
+    if (showAll) return { visibleRoutes: routes, dimRoutes: false }
+    if (path && showRoute) {
+      const ids = new Set(path.legs.map((l) => l.routeId).filter(Boolean))
+      return { visibleRoutes: routes.filter((r) => ids.has(r.id)), dimRoutes: false }
+    }
+    const points = [origin?.point, dest?.point].filter(Boolean)
+    if (points.length === 0) return { visibleRoutes: routes, dimRoutes: true }
+    const nearIds = new Set(stations.filter((s) => points.some((p) => distMeters(p, s.location) <= NEAR_METERS)).map((s) => s.id))
+    return { visibleRoutes: routes.filter((r) => r.stationIds?.some((id) => nearIds.has(id))), dimRoutes: false }
+  }, [showAll, path, showRoute, routes, stations, origin, dest])
+  const visibleStations = useMemo(() => {
+    if (showAll || dimRoutes) return stations
+    const ids = new Set(visibleRoutes.flatMap((r) => r.stationIds || []))
+    return stations.filter((s) => ids.has(s.id))
+  }, [showAll, dimRoutes, visibleRoutes, stations])
   const legs = useMemo(() => (path && showRoute ? path.legs.map((l) => ({ ...l, path: legPath(l, routesById) })) : []), [path, routesById, showRoute])
   const fit = useMemo(() => {
     if (legs.length) return legs.flatMap((l) => l.path)
@@ -131,12 +157,13 @@ export default function PlannerPage({ net }) {
       </aside>
 
       <section className="mapcard" aria-label={t('planner.mapTitle')}>
-        <MapView stations={stations} routes={routes} origin={origin?.point} destination={dest?.point} legs={legs} fit={fit}
+        <MapView stations={visibleStations} routes={visibleRoutes} dimRoutes={dimRoutes} origin={origin?.point} destination={dest?.point} legs={legs} fit={fit}
           onClick={onMapClick} onStationClick={onStationClick} zoomPosition="bottomright" />
         <div className="map-heading"><b>{t('planner.mapTitle')}</b><span>{t('planner.mapSub')}</span></div>
         {pinMode && <div className="map-pick">📍 {t('planner.pickOnMap', { what: t(pinMode === 'origin' ? 'planner.origin' : 'planner.destination') })}</div>}
         <div className="map-tools">
           <button onClick={() => setFitKey((k) => k + 1)}>◎ {t('planner.recenter')}</button>
+          <button onClick={() => setShowAll(!showAll)}>{showAll ? `◫ ${t('planner.hideAllLines')}` : `◫ ${t('planner.showAllLines')}`}</button>
           {path && <button onClick={() => setShowRoute(!showRoute)}>{showRoute ? `× ${t('planner.clearRoute')}` : `↗ ${t('planner.showRoute')}`}</button>}
         </div>
         <div className={`map-badge ${offline ? 'off' : ''}`}><span />{offline ? t('planner.cached') : t('planner.live')}</div>
