@@ -65,6 +65,7 @@ export default function Layout() {
           <div className="status"><span>{t('nav.systemStatus')}</span>
             <strong className={health === false ? 'down' : ''}><i className="dot" /> {health == null ? '…' : health ? t('nav.online') : t('nav.offline')}</strong></div>
           <div className="profile"><div className="avatar"><Initials name={user?.fullName} /></div><div><b>{user?.fullName}</b><small>{user?.email}</small></div></div>
+          <div className="me" style={{ fontSize: 9, color: '#667796', paddingTop: 0 }}>© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer" style={{ color: '#8898b7' }}>OpenStreetMap</a> contributors</div>
           <div className="bottom-actions">
             <button onClick={toggle}>🌐 {t('nav.lang')}</button>
             <button onClick={logout}>↪ {t('nav.logout')}</button>
