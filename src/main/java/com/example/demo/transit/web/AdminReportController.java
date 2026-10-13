@@ -1,6 +1,7 @@
 package com.example.demo.transit.web;
 
 import com.example.demo.transit.domain.ReportType;
+import com.example.demo.transit.dto.PageDto;
 import com.example.demo.transit.dto.ReportResponse;
 import com.example.demo.transit.dto.ReportSummaryDto;
 import com.example.demo.transit.service.ReportService;
@@ -28,12 +29,14 @@ public class AdminReportController {
     }
 
     @GetMapping
-    public List<ReportResponse> list(@RequestParam(required = false) String routeId,
-                                     @RequestParam(required = false) ReportType type,
-                                     @RequestParam(required = false) Boolean applied,
-                                     @RequestParam(required = false) Boolean dismissed,
-                                     @RequestParam(required = false) Integer hours) {
-        return reportService.adminList(routeId, type, applied, dismissed, hours);
+    public PageDto<ReportResponse> list(@RequestParam(required = false) String routeId,
+                                        @RequestParam(required = false) ReportType type,
+                                        @RequestParam(required = false) Boolean applied,
+                                        @RequestParam(required = false) Boolean dismissed,
+                                        @RequestParam(required = false) Integer hours,
+                                        @RequestParam(defaultValue = "0") int page,
+                                        @RequestParam(defaultValue = "50") int size) {
+        return reportService.adminList(routeId, type, applied, dismissed, hours, page, size);
     }
 
     @GetMapping("/summary")

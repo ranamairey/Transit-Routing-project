@@ -3,7 +3,7 @@ export const translations = {
   ar: {
     dir: 'rtl',
     appName: 'مواصلات سوريا الذكية',
-    nav: { planner: 'المخطط', admin: 'لوحة التحكم', login: 'تسجيل الدخول', logout: 'خروج', offline: 'غير متصل', lang: 'English' },
+    nav: { planner: 'المخطط', admin: 'لوحة الإدارة', login: 'تسجيل الدخول', logout: 'خروج', offline: 'غير متصل', lang: 'English' },
     offlineBanner: 'لا يوجد اتصال بالإنترنت — تعرض الخطوط المحفوظة، وستُزامن البلاغات عند عودة الشبكة',
     planner: {
       title: 'خطط رحلتك',
@@ -76,7 +76,7 @@ export const translations = {
   en: {
     dir: 'ltr',
     appName: 'Smart Syrian Transit',
-    nav: { planner: 'Planner', admin: 'Dashboard', login: 'Sign in', logout: 'Sign out', offline: 'Offline', lang: 'العربية' },
+    nav: { planner: 'Planner', admin: 'Admin console', login: 'Sign in', logout: 'Sign out', offline: 'Offline', lang: 'العربية' },
     offlineBanner: 'No internet connection — showing saved lines; reports will sync when the network is back',
     planner: {
       title: 'Plan your trip',

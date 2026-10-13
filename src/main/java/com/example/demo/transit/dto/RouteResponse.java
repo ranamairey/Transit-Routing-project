@@ -10,6 +10,7 @@ import java.util.List;
 public record RouteResponse(
         String id,
         String name,
+        String nameEn,
         String code,
         VehicleType vehicleType,
         String governorate,

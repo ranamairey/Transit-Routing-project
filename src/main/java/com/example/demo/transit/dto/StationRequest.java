@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 
 public record StationRequest(
         @NotBlank String name,
+        String nameEn,
         String aliases,
         StationKind stationKind,
         String governorate,

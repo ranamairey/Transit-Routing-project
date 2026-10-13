@@ -1,6 +1,8 @@
 package com.example.demo.transit.service;
 
+import com.example.demo.transit.config.SecurityLimits;
 import com.example.demo.transit.config.TransitProperties;
+import com.example.demo.transit.security.RateLimiter;
 import com.example.demo.transit.domain.ReportType;
 import com.example.demo.transit.domain.RouteStatus;
 import com.example.demo.transit.dto.AlertDto;
@@ -43,6 +45,8 @@ public class ReportService {
     private final StationRepository stationRepository;
     private final TransitGraphFactory graphFactory;
     private final TransitProperties properties;
+    private final SecurityLimits limits;
+    private final RateLimiter rateLimiter;
     private final Clock clock;
 
     public ReportService(CrowdsourceReportRepository reportRepository,
@@ -50,12 +54,16 @@ public class ReportService {
                          StationRepository stationRepository,
                          TransitGraphFactory graphFactory,
                          TransitProperties properties,
+                         SecurityLimits limits,
+                         RateLimiter rateLimiter,
                          Clock clock) {
         this.reportRepository = reportRepository;
         this.routeRepository = routeRepository;
         this.stationRepository = stationRepository;
         this.graphFactory = graphFactory;
         this.properties = properties;
+        this.limits = limits;
+        this.rateLimiter = rateLimiter;
         this.clock = clock;
     }
 
@@ -68,6 +76,17 @@ public class ReportService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "الخط غير موجود"));
         if (request.reportType() == ReportType.FARE_CHANGE && request.newFare() == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "بلاغ تغيير التسعيرة يتطلب تحديد التسعيرة الجديدة");
+        }
+        // Anti-spam: one report per user per route per cooldown, and a global hourly cap.
+        Duration cooldown = Duration.ofMinutes(limits.getReportCooldownMinutes());
+        String routeKey = "report:" + reporterId + ":" + route.getId();
+        if (!rateLimiter.tryAcquire("reports:" + reporterId, limits.getReportsPerHour(), Duration.ofHours(1))) {
+            throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS, "تجاوزت الحد المسموح من البلاغات لهذه الساعة");
+        }
+        if (!rateLimiter.tryAcquire(routeKey, 1, cooldown)) {
+            long wait = Math.max(1, rateLimiter.secondsUntilFree(routeKey, cooldown) / 60);
+            throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS,
+                    "أرسلت بلاغاً عن هذا الخط قبل قليل، يمكنك الإبلاغ مجدداً بعد " + wait + " دقيقة");
         }
 
         CrowdsourceReport report = new CrowdsourceReport();
@@ -126,17 +145,25 @@ public class ReportService {
 
     // ---------- admin (FR-3.2) ----------
 
-    public List<ReportResponse> adminList(String routeId, ReportType type, Boolean applied, Boolean dismissed, Integer hours) {
+    public com.example.demo.transit.dto.PageDto<ReportResponse> adminList(String routeId, ReportType type, Boolean applied,
+                                                                          Boolean dismissed, Integer hours, int page, int size) {
         Instant since = clock.instant().minus(Duration.ofHours(hours != null && hours > 0 ? hours : 24 * 7));
         Map<String, String> routes = routeNames();
         Map<String, String> stations = stationNames();
-        return reportRepository.findBySentAtAfterOrderBySentAtDesc(since).stream()
+        List<CrowdsourceReport> matching = reportRepository.findBySentAtAfterOrderBySentAtDesc(since).stream()
                 .filter(r -> routeId == null || routeId.isBlank() || routeId.equals(r.getRouteId()))
                 .filter(r -> type == null || type == r.getReportType())
                 .filter(r -> applied == null || applied == r.isApplied())
                 .filter(r -> dismissed == null || dismissed == r.isDismissed())
+                .toList();
+        int safeSize = Math.max(1, Math.min(size, 200));
+        int safePage = Math.max(0, page);
+        List<ReportResponse> items = matching.stream()
+                .skip((long) safePage * safeSize)
+                .limit(safeSize)
                 .map(r -> toResponse(r, false, routes, stations))
                 .toList();
+        return new com.example.demo.transit.dto.PageDto<>(items, safePage, safeSize, matching.size());
     }
 
     /** Reports grouped by route + type inside the alert window, with distinct reporter counts. */

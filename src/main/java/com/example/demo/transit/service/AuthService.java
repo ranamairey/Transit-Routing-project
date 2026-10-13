@@ -6,7 +6,11 @@ import com.example.demo.transit.dto.auth.LoginRequest;
 import com.example.demo.transit.dto.auth.RegisterRequest;
 import com.example.demo.transit.entity.User;
 import com.example.demo.transit.repository.UserRepository;
+import com.example.demo.transit.config.SecurityLimits;
 import com.example.demo.transit.security.JwtService;
+import com.example.demo.transit.security.RateLimiter;
+
+import java.time.Duration;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,15 +25,21 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    private final RateLimiter rateLimiter;
+    private final SecurityLimits limits;
 
     public AuthService(UserRepository userRepository,
                        PasswordEncoder passwordEncoder,
                        JwtService jwtService,
-                       AuthenticationManager authenticationManager) {
+                       AuthenticationManager authenticationManager,
+                       RateLimiter rateLimiter,
+                       SecurityLimits limits) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtService = jwtService;
         this.authenticationManager = authenticationManager;
+        this.rateLimiter = rateLimiter;
+        this.limits = limits;
     }
 
     public AuthResponse register(RegisterRequest request) {
@@ -48,6 +58,11 @@ public class AuthService {
 
     public AuthResponse login(LoginRequest request) {
         String email = request.email().toLowerCase().trim();
+        Duration window = Duration.ofMinutes(limits.getLoginWindowMinutes());
+        if (!rateLimiter.tryAcquire("login:" + email, limits.getLoginAttempts(), window)) {
+            throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS,
+                    "محاولات دخول كثيرة، حاول مجدداً بعد " + rateLimiter.secondsUntilFree("login:" + email, window) / 60 + " دقيقة");
+        }
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, request.password()));
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "بيانات الدخول غير صحيحة"));

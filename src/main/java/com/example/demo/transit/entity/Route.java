@@ -26,6 +26,9 @@ public class Route {
 
     private String name;
 
+    /** Optional English display name. */
+    private String nameEn;
+
     @Indexed(unique = true, sparse = true)
     private String code;
 

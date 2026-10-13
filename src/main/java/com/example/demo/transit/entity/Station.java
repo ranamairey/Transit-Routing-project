@@ -19,6 +19,9 @@ public class Station {
 
     private String name;
 
+    /** Optional English display name. */
+    private String nameEn;
+
     /** Local alternative names for text search: جسر الرئيس، البرامكة، مشروع دمر */
     private String aliases;
 

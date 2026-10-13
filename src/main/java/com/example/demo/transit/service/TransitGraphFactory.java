@@ -191,13 +191,7 @@ public class TransitGraphFactory {
                     ? properties.getBusSpeedKmh()
                     : properties.getServisSpeedKmh();
 
-            double[] prefix = new double[stops.size()];
-            for (int i = 1; i < stops.size(); i++) {
-                Station a = stops.get(i - 1);
-                Station b = stops.get(i);
-                prefix[i] = prefix[i - 1] + GeoMath.haversineMeters(
-                        a.getLatitude(), a.getLongitude(), b.getLatitude(), b.getLongitude());
-            }
+            double[] prefix = GeoMath.alongPolylineDistances(route.getPolyline(), stops);
             for (int i = 0; i < stops.size(); i++) {
                 for (int j = i + 1; j < stops.size(); j++) {
                     double meters = prefix[j] - prefix[i];

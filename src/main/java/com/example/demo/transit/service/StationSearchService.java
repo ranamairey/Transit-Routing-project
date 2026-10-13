@@ -52,6 +52,9 @@ public class StationSearchService {
     private int score(Station station, String q) {
         int best = 0;
         best = Math.max(best, scoreTerm(normalize(station.getName()), q, 100));
+        if (station.getNameEn() != null) {
+            best = Math.max(best, scoreTerm(normalize(station.getNameEn()), q, 100));
+        }
         if (station.getAliases() != null) {
             for (String alias : station.getAliases().split("[،,;/]")) {
                 best = Math.max(best, scoreTerm(normalize(alias), q, 80));

@@ -12,6 +12,7 @@ import java.util.List;
 
 public record RouteRequest(
         @NotBlank String name,
+        String nameEn,
         String code,
         @NotNull VehicleType vehicleType,
         String governorate,

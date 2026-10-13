@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 @SpringBootApplication
-@EnableConfigurationProperties(TransitProperties.class)
+@EnableConfigurationProperties({TransitProperties.class, com.example.demo.transit.config.SecurityLimits.class})
 public class DemoApplication {
 
 	public static void main(String[] args) {

@@ -1,0 +1,50 @@
+# Three containers: API, rider web app, admin console. MongoDB is Atlas (MONGO_URI in .env).
+# HTTPS: enable the "tls" profile (Caddy obtains Let's Encrypt certificates for the domains in deploy/Caddyfile).
+services:
+  backend:
+    build: .
+    env_file: .env
+    environment:
+      MONGO_DB: ${MONGO_DB:-syrian_transit}
+      JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in .env}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:8081,http://localhost:8082}
+      SEED_ADMIN_EMAIL: ${SEED_ADMIN_EMAIL:-admin@demo.com}
+      SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD:-Admin#12345}
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./frontend
+      args:
+        VITE_ADMIN_URL: ${PUBLIC_ADMIN_URL:-http://localhost:8082}
+    depends_on: [backend]
+    ports:
+      - "8081:80"
+    restart: unless-stopped
+
+  admin:
+    build:
+      context: ./admin-console
+    depends_on: [backend]
+    ports:
+      - "8082:80"
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2-alpine
+    profiles: ["tls"]
+    depends_on: [web, admin]
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    restart: unless-stopped
+
+volumes:
+  caddy_data:
+  caddy_config:

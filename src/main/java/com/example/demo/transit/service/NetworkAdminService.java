@@ -95,6 +95,7 @@ public class NetworkAdminService {
 
     private Station apply(Station station, StationRequest request) {
         station.setName(request.name().trim());
+        station.setNameEn(blankToNull(request.nameEn()));
         station.setAliases(request.aliases());
         station.setStationKind(request.stationKind() != null ? request.stationKind() : StationKind.STOP);
         station.setGovernorate(request.governorate() != null && !request.governorate().isBlank()
@@ -155,6 +156,7 @@ public class NetworkAdminService {
 
     private Route apply(Route route, RouteRequest request) {
         route.setName(request.name().trim());
+        route.setNameEn(blankToNull(request.nameEn()));
         route.setCode(request.code() != null && !request.code().isBlank() ? request.code().trim() : null);
         route.setVehicleType(request.vehicleType());
         route.setGovernorate(request.governorate() != null && !request.governorate().isBlank()
@@ -202,6 +204,7 @@ public class NetworkAdminService {
         return new StationResponse(
                 station.getId(),
                 station.getName(),
+                station.getNameEn(),
                 station.getAliases(),
                 station.getStationKind(),
                 station.getGovernorate(),
@@ -224,6 +227,7 @@ public class NetworkAdminService {
         return new RouteResponse(
                 route.getId(),
                 route.getName(),
+                route.getNameEn(),
                 route.getCode(),
                 route.getVehicleType(),
                 route.getGovernorate(),
@@ -234,6 +238,10 @@ public class NetworkAdminService {
                 stops,
                 polyline
         );
+    }
+
+    private static String blankToNull(String s) {
+        return s == null || s.isBlank() ? null : s.trim();
     }
 
     private static String sha1(String text) {

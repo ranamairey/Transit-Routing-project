@@ -1,0 +1,93 @@
+/** Admin console strings (Arabic / English). */
+export const translations = {
+  ar: {
+    dir: 'rtl',
+    appName: 'لوحة إدارة المواصلات',
+    nav: { dashboard: 'الرئيسية', stations: 'المحطات', routes: 'الخطوط', reports: 'البلاغات', users: 'المستخدمون', data: 'استيراد / تصدير', logout: 'خروج', lang: 'English', api: 'الخادم' },
+    login: { title: 'دخول المشرفين', hint: 'هذه اللوحة للمشرفين فقط. حسابات الركاب لا تملك صلاحية الدخول.', email: 'البريد الإلكتروني', password: 'كلمة السر', submit: 'دخول', notAdmin: 'هذا الحساب ليس حساب مشرف.' },
+    dash: {
+      title: 'نظرة عامة', stations: 'المحطات', routes: 'الخطوط', users: 'المستخدمون', reports24: 'بلاغات آخر 24 ساعة', pending: 'بلاغات بانتظار المراجعة', reportsTotal: 'إجمالي البلاغات',
+      byType: 'بلاغات آخر 24 ساعة حسب النوع', byStatus: 'الخطوط حسب الحالة', map: 'خريطة الشبكة والبلاغات الأخيرة', apiUp: 'الخادم وقاعدة البيانات يعملان', apiDown: 'تعذر الوصول إلى الخادم',
+      recent: 'آخر البلاغات', viewAll: 'عرض الكل',
+    },
+    common: {
+      name: 'الاسم', nameEn: 'الاسم بالإنجليزية', aliases: 'أسماء بديلة (مفصولة بفاصلة)', kind: 'النوع', governorate: 'المحافظة', coords: 'الإحداثيات', coordsHint: 'انقر على الخريطة لتعبئة الإحداثيات بدقة.',
+      add: 'إضافة', save: 'حفظ التعديل', cancel: 'إلغاء', edit: 'تعديل', delete: 'حذف', search: 'بحث…', actions: 'إجراء', status: 'الحالة', confirm: 'هل أنت متأكد؟',
+      page: 'صفحة {p} من {n}', prev: 'السابق', next: 'التالي', total: '{n} عنصر', none: 'لا توجد نتائج.', error: 'خطأ', ok: 'تم',
+    },
+    stations: { add: 'إضافة محطة', edit: 'تعديل محطة', confirmDelete: 'حذف المحطة «{name}»؟ (لا يمكن حذف محطة مستخدمة في خط)' },
+    routes: {
+      add: 'إضافة خط', edit: 'تعديل خط', name: 'اسم الخط', namePlaceholder: 'مزة فيلات - جسر الرئيس', code: 'الرمز', fare: 'التسعيرة (ل.س)',
+      stops: 'المحطات بالترتيب ({n})', addStop: '+ أضف محطة (أو انقر محطة على الخريطة)', polyline: 'مسار الخط على الخريطة — {n} نقطة',
+      drawing: '✏️ انقر على الخريطة لإضافة نقاط', draw: '✏️ ارسم المسار', fromStops: 'من المحطات', undo: 'تراجع', clear: 'مسح',
+      route: 'الخط', confirmDelete: 'حذف الخط «{name}»؟', setFare: 'تعديل التسعيرة', newFare: 'التسعيرة الجديدة',
+    },
+    reports: {
+      summary: 'ملخص البلاغات خلال نافذة التنبيه (حسب الخط والنوع)', noRecent: 'لا توجد بلاغات حديثة.', route: 'الخط', type: 'النوع', count: 'العدد', distinct: 'مبلّغون مختلفون',
+      pending: 'بانتظار الاعتماد', routeStatus: 'حالة الخط', latest: 'آخر بلاغ', threshold: 'بلغ حد الأتمتة', filters: 'الفلاتر', allRoutes: 'كل الخطوط', allTypes: 'كل الأنواع',
+      appliedAny: 'معتمد أو لا', applied: 'معتمد', notApplied: 'غير معتمد', notDismissed: 'غير مرفوض', dismissed: 'مرفوض', all: 'الكل',
+      h3: 'آخر 3 ساعات', h24: 'آخر يوم', h168: 'آخر أسبوع', h720: 'آخر شهر', time: 'الوقت', details: 'التفاصيل', at: 'عند', autoApproved: 'معتمد تلقائياً',
+      pendingReview: 'بانتظار المراجعة', approve: 'اعتماد', reject: 'رفض', confirmDelete: 'حذف البلاغ نهائياً؟', showMap: 'إظهار الخريطة', hideMap: 'إخفاء الخريطة', fare: 'تسعيرة',
+    },
+    users: {
+      title: 'المستخدمون', add: 'إضافة مستخدم', fullName: 'الاسم الكامل', email: 'البريد الإلكتروني', password: 'كلمة السر', role: 'الدور', allRoles: 'كل الأدوار',
+      ROLE_USER: 'مستخدم', ROLE_ADMIN: 'مشرف', resetPassword: 'إعادة تعيين كلمة السر', newPassword: 'كلمة سر جديدة (8 أحرف على الأقل)', confirmDelete: 'حذف المستخدم «{email}»؟', you: 'أنت',
+    },
+    data: {
+      title: 'استيراد وتصدير بيانات الشبكة', hint: 'استيراد ملف JSON بالمحطات والخطوط (إضافة أو تحديث). تُطابَق المحطات بالاسم والمحافظة، والخطوط بالرمز ثم بالاسم. تشير محطات الخط إلى أسماء المحطات.',
+      export: '⬇️ تصدير الشبكة الحالية (JSON)', chooseFile: 'اختر ملف JSON', paste: 'أو الصق JSON هنا', importBtn: 'استيراد', importing: 'جارٍ الاستيراد…',
+      result: 'النتيجة: {sc} محطة جديدة، {su} محطة محدثة، {rc} خط جديد، {ru} خط محدث', warnings: 'تحذيرات', example: 'مثال على البنية',
+    },
+    reportTypes: { CROWDING: 'ازدحام شديد', DELAY: 'تأخير', ROUTE_CHANGE: 'تحويلة / تغيير مسار', FARE_CHANGE: 'تغيير التسعيرة', OTHER: 'أخرى' },
+    routeStatus: { NORMAL: 'طبيعي', CROWDED: 'مزدحم', DIVERTED: 'محوّل', DELAYED: 'متأخر', FARE_UPDATED: 'تسعيرة محدثة' },
+    vehicle: { SERVIS: 'سرفيس', BUS: 'باص' },
+    stationKinds: { STOP: 'موقف', POINT: 'نقطة', TERMINAL: 'كراج انطلاق', TRANSFER_HUB: 'عقدة تبديل', HUB: 'مركز', GARAGE: 'كراج' },
+    units: { min: 'د', hour: 'س', km: 'كم', m: 'م', currency: 'ل.س', now: 'الآن', agoMin: 'قبل {n} د', agoHour: 'قبل {n} س', agoDay: 'قبل {n} يوم', walkLabel: 'مشي' },
+    planner: { origin: 'نقطة الانطلاق', destination: 'الوجهة' },
+  },
+  en: {
+    dir: 'ltr',
+    appName: 'Transit Admin Console',
+    nav: { dashboard: 'Dashboard', stations: 'Stations', routes: 'Lines', reports: 'Reports', users: 'Users', data: 'Import / Export', logout: 'Sign out', lang: 'العربية', api: 'API' },
+    login: { title: 'Admin sign in', hint: 'This console is for administrators only. Rider accounts cannot sign in here.', email: 'Email', password: 'Password', submit: 'Sign in', notAdmin: 'This account is not an administrator.' },
+    dash: {
+      title: 'Overview', stations: 'Stations', routes: 'Lines', users: 'Users', reports24: 'Reports in last 24 h', pending: 'Reports pending review', reportsTotal: 'Reports total',
+      byType: 'Last 24 h reports by type', byStatus: 'Lines by status', map: 'Network and recent reports', apiUp: 'API and database are up', apiDown: 'API unreachable',
+      recent: 'Latest reports', viewAll: 'View all',
+    },
+    common: {
+      name: 'Name', nameEn: 'English name', aliases: 'Aliases (comma separated)', kind: 'Kind', governorate: 'Governorate', coords: 'Coordinates', coordsHint: 'Click on the map to fill the coordinates precisely.',
+      add: 'Add', save: 'Save changes', cancel: 'Cancel', edit: 'Edit', delete: 'Delete', search: 'Search…', actions: 'Actions', status: 'Status', confirm: 'Are you sure?',
+      page: 'Page {p} of {n}', prev: 'Previous', next: 'Next', total: '{n} items', none: 'No results.', error: 'Error', ok: 'Done',
+    },
+    stations: { add: 'Add station', edit: 'Edit station', confirmDelete: 'Delete station “{name}”? (stations used by a line cannot be deleted)' },
+    routes: {
+      add: 'Add line', edit: 'Edit line', name: 'Line name', namePlaceholder: 'Mezzeh Villas - President Bridge', code: 'Code', fare: 'Fare (SYP)',
+      stops: 'Stops in order ({n})', addStop: '+ Add a stop (or click a station on the map)', polyline: 'Line path on the map — {n} points',
+      drawing: '✏️ Click on the map to add points', draw: '✏️ Draw path', fromStops: 'From stops', undo: 'Undo', clear: 'Clear',
+      route: 'Line', confirmDelete: 'Delete line “{name}”?', setFare: 'Set fare', newFare: 'New fare',
+    },
+    reports: {
+      summary: 'Reports in the alert window (by line and type)', noRecent: 'No recent reports.', route: 'Line', type: 'Type', count: 'Count', distinct: 'Distinct reporters',
+      pending: 'Pending', routeStatus: 'Line status', latest: 'Latest', threshold: 'auto-apply threshold reached', filters: 'Filters', allRoutes: 'All lines', allTypes: 'All types',
+      appliedAny: 'Applied or not', applied: 'Applied', notApplied: 'Not applied', notDismissed: 'Not rejected', dismissed: 'Rejected', all: 'All',
+      h3: 'Last 3 hours', h24: 'Last day', h168: 'Last week', h720: 'Last month', time: 'Time', details: 'Details', at: 'at', autoApproved: 'auto-applied',
+      pendingReview: 'Pending review', approve: 'Approve', reject: 'Reject', confirmDelete: 'Delete this report permanently?', showMap: 'Show map', hideMap: 'Hide map', fare: 'fare',
+    },
+    users: {
+      title: 'Users', add: 'Add user', fullName: 'Full name', email: 'Email', password: 'Password', role: 'Role', allRoles: 'All roles',
+      ROLE_USER: 'Rider', ROLE_ADMIN: 'Admin', resetPassword: 'Reset password', newPassword: 'New password (at least 8 characters)', confirmDelete: 'Delete user “{email}”?', you: 'you',
+    },
+    data: {
+      title: 'Import and export network data', hint: 'Import a JSON file of stations and lines (upsert). Stations match by name + governorate, lines by code then name. Line stops reference station names.',
+      export: '⬇️ Export current network (JSON)', chooseFile: 'Choose a JSON file', paste: 'or paste JSON here', importBtn: 'Import', importing: 'Importing…',
+      result: 'Result: {sc} stations created, {su} updated, {rc} lines created, {ru} updated', warnings: 'Warnings', example: 'Example structure',
+    },
+    reportTypes: { CROWDING: 'Heavy crowding', DELAY: 'Delay', ROUTE_CHANGE: 'Detour / route change', FARE_CHANGE: 'Fare change', OTHER: 'Other' },
+    routeStatus: { NORMAL: 'Normal', CROWDED: 'Crowded', DIVERTED: 'Diverted', DELAYED: 'Delayed', FARE_UPDATED: 'Fare updated' },
+    vehicle: { SERVIS: 'servis', BUS: 'bus' },
+    stationKinds: { STOP: 'Stop', POINT: 'Point', TERMINAL: 'Terminal', TRANSFER_HUB: 'Transfer hub', HUB: 'Hub', GARAGE: 'Garage' },
+    units: { min: 'min', hour: 'h', km: 'km', m: 'm', currency: 'SYP', now: 'now', agoMin: '{n} min ago', agoHour: '{n} h ago', agoDay: '{n} d ago', walkLabel: 'Walk' },
+    planner: { origin: 'Origin', destination: 'Destination' },
+  },
+}

@@ -204,7 +204,7 @@ class TransitApiIntegrationTest {
                         .header("Authorization", "Bearer " + adminToken))
                 .andExpect(status().isOk())
                 .andReturn();
-        JsonNode fareReports = json.readTree(list.getResponse().getContentAsString());
+        JsonNode fareReports = json.readTree(list.getResponse().getContentAsString()).get("items");
         assertEquals(1, fareReports.size());
         String fareReportId = fareReports.get(0).get("id").asText();
 

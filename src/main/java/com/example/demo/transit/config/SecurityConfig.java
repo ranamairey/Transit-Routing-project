@@ -43,7 +43,7 @@ public class SecurityConfig {
     public SecurityConfig(JwtAuthenticationFilter jwtAuthFilter,
                           CustomUserDetailsService userDetailsService,
                           JsonAuthEntryPoint authEntryPoint,
-                          @Value("${app.cors.allowed-origins:http://localhost:5173}") String allowedOrigins) {
+                          @Value("${app.cors.allowed-origins:http://localhost:5173,http://localhost:5174}") String allowedOrigins) {
         this.jwtAuthFilter = jwtAuthFilter;
         this.userDetailsService = userDetailsService;
         this.authEntryPoint = authEntryPoint;
@@ -62,6 +62,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/stations/**").permitAll()
                         .requestMatchers("/api/v1/routes/**").permitAll()
                         .requestMatchers("/api/v1/network/**").permitAll()
+                        .requestMatchers("/api/v1/health").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/reports/**").permitAll()
                         .requestMatchers("/api/v1/admin/**").hasAuthority("ROLE_ADMIN")
                         .anyRequest().authenticated()
