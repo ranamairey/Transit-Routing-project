@@ -46,47 +46,47 @@ export default function ReportDialog({ leg, stations, onClose }) {
           <>
             <p>{t('report.loginNeeded')}</p>
             <div className="row">
-              <button onClick={() => navigate('/login', { state: { from: '/' } })}>{t('report.login')}</button>
-              <button className="secondary" onClick={onClose}>{t('report.cancel')}</button>
+              <button className="btn" onClick={() => navigate('/login', { state: { from: '/' } })}>{t('report.login')}</button>
+              <button className="btn secondary" onClick={onClose}>{t('report.cancel')}</button>
             </div>
           </>
         ) : done ? (
           <>
             <p className="ok">{t('report.thanks')}</p>
             {done.autoApplied ? <p>{t('report.autoApplied')}</p> : <p className="muted">{t('report.pending')}</p>}
-            <button onClick={onClose}>{t('report.close')}</button>
+            <button className="btn" onClick={onClose}>{t('report.close')}</button>
           </>
         ) : (
           <form onSubmit={submit}>
-            <div className="field">
+            <div className="fieldbox">
               <label>{t('report.type')}</label>
-              <div className="row">
+              <div className="chips">
                 {REPORT_TYPE_KEYS.map((k) => (
-                  <button type="button" key={k} className={`small ${type === k ? '' : 'secondary'}`} onClick={() => setType(k)}>{t(`reportTypes.${k}`)}</button>
+                  <button type="button" key={k} className={type === k ? 'on' : ''} onClick={() => setType(k)}>{t(`reportTypes.${k}`)}</button>
                 ))}
               </div>
             </div>
             {type === 'FARE_CHANGE' && (
-              <div className="field">
+              <div className="fieldbox">
                 <label>{t('report.newFare')}</label>
                 <input type="number" min="0" step="50" required value={newFare} onChange={(e) => setNewFare(e.target.value)} />
               </div>
             )}
-            <div className="field">
+            <div className="fieldbox">
               <label>{t('report.station')}</label>
               <select value={stationId} onChange={(e) => setStationId(e.target.value)}>
                 <option value="">—</option>
                 {stations.map((s) => <option key={s.id} value={s.id}>{s.name}</option>)}
               </select>
             </div>
-            <div className="field">
+            <div className="fieldbox">
               <label>{t('report.details')}</label>
               <textarea rows={2} maxLength={500} value={description} onChange={(e) => setDescription(e.target.value)} />
             </div>
             {error && <p className="error">{error}</p>}
             <div className="row">
-              <button type="submit" disabled={busy}>{busy ? t('report.submitting') : t('report.submit')}</button>
-              <button type="button" className="secondary" onClick={onClose}>{t('report.cancel')}</button>
+              <button type="submit" className="btn" disabled={busy}>{busy ? t('report.submitting') : t('report.submit')}</button>
+              <button type="button" className="btn secondary" onClick={onClose}>{t('report.cancel')}</button>
             </div>
           </form>
         )}

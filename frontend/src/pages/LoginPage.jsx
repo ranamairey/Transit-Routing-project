@@ -28,14 +28,14 @@ export default function LoginPage() {
 
   return (
     <div className="page auth">
-      <div className="card">
+      <div className="panel">
         <h1 style={{ fontSize: '1.3rem' }}>{t('auth.loginTitle')}</h1>
         <p className="muted">{t('auth.loginHint')}</p>
         <form onSubmit={submit}>
-          <div className="field"><label>{t('auth.email')}</label><input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} /></div>
-          <div className="field"><label>{t('auth.password')}</label><input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} /></div>
+          <div><label>{t('auth.email')}</label><input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} /></div>
+          <div><label>{t('auth.password')}</label><input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} /></div>
           {error && <p className="error">{error}</p>}
-          <button type="submit" disabled={busy} style={{ width: '100%' }}>{busy ? '…' : t('auth.login')}</button>
+          <button type="submit" className="primary" disabled={busy}>{busy ? '…' : t('auth.login')}</button>
         </form>
         <p style={{ marginTop: '0.75rem' }}>{t('auth.noAccount')} <Link to="/register">{t('auth.createAccount')}</Link></p>
       </div>

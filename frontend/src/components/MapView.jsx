@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { CircleMarker, MapContainer, Marker, Polyline, Popup, TileLayer, Tooltip, useMap, useMapEvents } from 'react-leaflet'
+import { CircleMarker, MapContainer, Marker, Polyline, Popup, TileLayer, Tooltip, ZoomControl, useMap, useMapEvents } from 'react-leaflet'
 import L from 'leaflet'
 import { useI18n } from '../i18n/I18nContext.jsx'
 
@@ -36,11 +36,12 @@ const LEG_COLORS = { SERVIS: '#1f5fb3', BUS: '#b3521f', WALK: '#4b5a52' }
  * pins and the legs of the selected trip.
  */
 export default function MapView({
-  stations = [], routes = [], origin, destination, legs = [], onClick, fit, onStationClick, highlightRouteId, drawing = [],
+  stations = [], routes = [], origin, destination, legs = [], onClick, fit, onStationClick, highlightRouteId, drawing = [], zoomPosition,
 }) {
   const { t } = useI18n()
   return (
-    <MapContainer center={DAMASCUS_CENTER} zoom={12} scrollWheelZoom style={{ height: '100%', width: '100%' }}>
+    <MapContainer center={DAMASCUS_CENTER} zoom={12} scrollWheelZoom zoomControl={!zoomPosition} style={{ height: '100%', width: '100%' }}>
+      {zoomPosition && <ZoomControl position={zoomPosition} />}
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

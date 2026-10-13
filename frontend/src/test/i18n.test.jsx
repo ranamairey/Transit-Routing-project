@@ -5,20 +5,20 @@ import TripOptions from '../components/TripOptions.jsx'
 
 function Probe() {
   const { t, lang, formatDuration, formatFare } = useI18n()
-  return <div>{lang}|{t('planner.title')}|{t('trips.title', { n: 2 })}|{formatDuration(3600 + 120)}|{formatFare(1500)}</div>
+  return <div>{lang}|{t('planner.title')}|{t('trips.count', { n: 2 })}|{formatDuration(3600 + 120)}|{formatFare(1500)}</div>
 }
 
 describe('i18n', () => {
   it('falls back to Arabic by default and interpolates variables', () => {
     localStorage.setItem('sst.lang', 'ar')
     render(<I18nProvider><Probe /></I18nProvider>)
-    expect(screen.getByText(/ar\|خطط رحلتك\|المسارات المقترحة \(2\)\|1 س 2 د\|/)).toBeInTheDocument()
+    expect(screen.getByText(/ar\|خطط رحلتك\|2 مسار\|1 س 2 د\|/)).toBeInTheDocument()
     expect(document.documentElement.dir).toBe('rtl')
   })
   it('switches to English and LTR', () => {
     localStorage.setItem('sst.lang', 'en')
     render(<I18nProvider><Probe /></I18nProvider>)
-    expect(screen.getByText(/en\|Plan your trip\|Suggested routes \(2\)\|1 h 2 min\|1,500 SYP/)).toBeInTheDocument()
+    expect(screen.getByText(/en\|Plan your trip\|2 route\(s\)\|1 h 2 min\|1,500 SYP/)).toBeInTheDocument()
     expect(document.documentElement.dir).toBe('ltr')
   })
 })

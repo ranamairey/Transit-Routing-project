@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import NavBar from './components/NavBar.jsx'
+import { ToastProvider } from './components/Toast.jsx'
 import { useNetwork } from './hooks/useNetwork.js'
 import { useI18n } from './i18n/I18nContext.jsx'
 import PlannerPage from './pages/PlannerPage.jsx'
@@ -11,8 +12,9 @@ export default function App() {
   const net = useNetwork()
   const { t } = useI18n()
   return (
+    <ToastProvider>
     <div className="app">
-      <NavBar offline={net.offline} />
+      <NavBar />
       {net.offline && <div className="offline">{t('offlineBanner')}</div>}
       <Routes>
         <Route path="/" element={<PlannerPage net={net} />} />
@@ -21,5 +23,6 @@ export default function App() {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
+    </ToastProvider>
   )
 }

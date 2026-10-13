@@ -4,6 +4,7 @@ import AlertsBar from '../components/AlertsBar.jsx'
 import EndpointPicker from '../components/EndpointPicker.jsx'
 import MapView, { legPath } from '../components/MapView.jsx'
 import ReportDialog from '../components/ReportDialog.jsx'
+import { useToast } from '../components/Toast.jsx'
 import TripOptions from '../components/TripOptions.jsx'
 import { useI18n } from '../i18n/I18nContext.jsx'
 
@@ -12,7 +13,8 @@ const EMPTY = []
 
 export default function PlannerPage({ net }) {
   const { network, offline, loading } = net
-  const { t, lang } = useI18n()
+  const { t, formatFare, formatDuration } = useI18n()
+  const notify = useToast()
   const stations = network?.stations || EMPTY
   const routes = network?.routes || EMPTY
   const routesById = useMemo(() => Object.fromEntries(routes.map((r) => [r.id, r])), [routes])
@@ -27,8 +29,14 @@ export default function PlannerPage({ net }) {
     try { return JSON.parse(localStorage.getItem(LAST_KEY) || 'null') } catch { return null }
   })
   const [selected, setSelected] = useState(0)
+  const [showRoute, setShowRoute] = useState(true)
+  const [fitKey, setFitKey] = useState(0)
   const [reportLeg, setReportLeg] = useState(null)
 
+  const setPin = (mode) => {
+    setPinMode(mode)
+    if (mode) notify(t('planner.pickOnMap', { what: t(mode === 'origin' ? 'planner.origin' : 'planner.destination') }))
+  }
   const onMapClick = (point) => {
     if (!pinMode) return
     const value = { mode: 'pin', name: `${t('planner.pin')} (${point.lat.toFixed(4)}, ${point.lng.toFixed(4)})`, point }
@@ -54,7 +62,8 @@ export default function PlannerPage({ net }) {
     }
     try {
       const data = await Api.routing(request)
-      setResult(data); setSelected(0)
+      setResult(data); setSelected(0); setShowRoute(true); setFitKey((k) => k + 1)
+      notify(t('planner.found', { n: data.paths.length }))
       try { localStorage.setItem(LAST_KEY, JSON.stringify(data)) } catch { /* ignore */ }
     } catch (err) {
       setError(offline ? t('planner.offlineSearch') : err.message)
@@ -63,58 +72,77 @@ export default function PlannerPage({ net }) {
     }
   }
 
+  const share = async (p) => {
+    const text = t('planner.shareText', {
+      from: endpointName(result.originName, 'planner.origin'), to: endpointName(result.destinationName, 'planner.destination'),
+      fare: formatFare(p.totalFare), dur: formatDuration(p.totalDurationSeconds),
+    })
+    try {
+      if (navigator.share) await navigator.share({ text })
+      else if (navigator.clipboard) { await navigator.clipboard.writeText(text); notify(t('planner.shared')) }
+      else notify(text)
+    } catch { /* cancelled */ }
+  }
+
   const path = result?.paths?.[selected]
-  const legs = useMemo(() => (path ? path.legs.map((l) => ({ ...l, path: legPath(l, routesById) })) : []), [path, routesById])
+  const legs = useMemo(() => (path && showRoute ? path.legs.map((l) => ({ ...l, path: legPath(l, routesById) })) : []), [path, routesById, showRoute])
   const fit = useMemo(() => {
     if (legs.length) return legs.flatMap((l) => l.path)
     const pts = [origin?.point, dest?.point].filter(Boolean)
     return pts.length ? pts : null
-  }, [legs, origin, dest])
-
-  // The backend labels free points in Arabic; show them in the current language.
+  }, [legs, origin, dest, fitKey]) // eslint-disable-line react-hooks/exhaustive-deps
   const endpointName = (name, key) => (name === 'نقطة الانطلاق' || name === 'الوجهة' ? t(key) : name)
 
   return (
-    <div className="planner">
-      <aside className="side">
-        <h1 style={{ fontSize: '1.3rem' }}>{t('planner.title')}</h1>
-        <p className="muted" style={{ marginTop: 0 }}>{t('planner.subtitle')}</p>
-        {loading && !network && <p>{t('planner.loadingNetwork')}</p>}
-        <EndpointPicker label={t('planner.from')} kind="origin" value={origin} onChange={setOrigin} stations={stations} pinMode={pinMode === 'origin'} onPinMode={setPinMode} />
-        <EndpointPicker label={t('planner.to')} kind="dest" value={dest} onChange={setDest} stations={stations} pinMode={pinMode === 'dest'} onPinMode={setPinMode} />
-        <div className="row between" style={{ marginBottom: '0.75rem' }}>
-          <label style={{ margin: 0 }}>{t('planner.peak')}</label>
-          <select style={{ width: 'auto' }} value={peak} onChange={(e) => setPeak(e.target.value)}>
-            <option value="auto">{t('planner.peakAuto')}</option>
-            <option value="yes">{t('planner.yes')}</option>
-            <option value="no">{t('planner.no')}</option>
-          </select>
-        </div>
-        <button style={{ width: '100%' }} onClick={search} disabled={!origin || !dest || busy}>{busy ? t('planner.searching') : t('planner.search')}</button>
-        {error && <p className="error">{error}</p>}
-        {result && (
-          <div style={{ marginTop: '1rem' }}>
-            <p className="muted" style={{ fontSize: '0.85rem' }}>
-              {endpointName(result.originName, 'planner.origin')} {lang === 'ar' ? '←' : '→'} {endpointName(result.destinationName, 'planner.destination')} · {t('planner.computedIn', { ms: result.processingMillis })}
-            </p>
-            <AlertsBar alerts={result.alerts} />
-            <TripOptions paths={result.paths} selected={selected} onSelect={setSelected} onReport={setReportLeg} peak={result.peak} />
+    <main className="workspace">
+      <aside className="sidebar">
+        <section className="panel">
+          <div className="panel-head">
+            <div><h2>{t('planner.title')} <span className="spark">✦</span></h2><p className="sub">{t('planner.subtitle')}</p></div>
+            <span className="tag">{t('planner.city')}</span>
           </div>
+          <div className="section-title">{t('planner.details')} <span className="step-no">{t('planner.step')}</span></div>
+          {loading && !network && <p className="sub">{t('planner.loadingNetwork')}</p>}
+          <div className="inputs">
+            <EndpointPicker label={t('planner.origin')} kind="origin" value={origin} onChange={setOrigin} stations={stations} pinMode={pinMode === 'origin'} onPinMode={setPin} />
+            <EndpointPicker label={t('planner.destination')} kind="dest" value={dest} onChange={setDest} stations={stations} pinMode={pinMode === 'dest'} onPinMode={setPin} />
+          </div>
+          <div className="travel-options">
+            <label htmlFor="peak">{t('planner.departure')}</label>
+            <select id="peak" value={peak} onChange={(e) => setPeak(e.target.value)}>
+              <option value="auto">{t('planner.peakAuto')}</option>
+              <option value="yes">{t('planner.yes')}</option>
+              <option value="no">{t('planner.no')}</option>
+            </select>
+          </div>
+          <button className="primary" onClick={search} disabled={!origin || !dest || busy}>{busy ? t('planner.searching') : t('planner.search')}</button>
+          {error ? <p className="error" style={{ textAlign: 'center', marginBottom: 0 }}>{error}</p> : <p className="hint">{t('planner.hintSearch')}</p>}
+        </section>
+
+        <AlertsBar alerts={result?.alerts} />
+
+        {result && (
+          <TripOptions paths={result.paths} selected={selected} peak={result.peak}
+            onSelect={(i) => { setSelected(i); setShowRoute(true) }}
+            onReport={setReportLeg}
+            onShow={(i) => { setSelected(i); setShowRoute(true); setFitKey((k) => k + 1); notify(t('planner.routeShown')) }}
+            onShare={share} />
         )}
       </aside>
-      <main className="map">
-        <MapView
-          stations={stations}
-          routes={routes}
-          origin={origin?.point}
-          destination={dest?.point}
-          legs={legs}
-          fit={fit}
-          onClick={onMapClick}
-          onStationClick={onStationClick}
-        />
-      </main>
+
+      <section className="mapcard" aria-label={t('planner.mapTitle')}>
+        <MapView stations={stations} routes={routes} origin={origin?.point} destination={dest?.point} legs={legs} fit={fit}
+          onClick={onMapClick} onStationClick={onStationClick} zoomPosition="bottomright" />
+        <div className="map-heading"><b>{t('planner.mapTitle')}</b><span>{t('planner.mapSub')}</span></div>
+        {pinMode && <div className="map-pick">📍 {t('planner.pickOnMap', { what: t(pinMode === 'origin' ? 'planner.origin' : 'planner.destination') })}</div>}
+        <div className="map-tools">
+          <button onClick={() => setFitKey((k) => k + 1)}>◎ {t('planner.recenter')}</button>
+          {path && <button onClick={() => setShowRoute(!showRoute)}>{showRoute ? `× ${t('planner.clearRoute')}` : `↗ ${t('planner.showRoute')}`}</button>}
+        </div>
+        <div className={`map-badge ${offline ? 'off' : ''}`}><span />{offline ? t('planner.cached') : t('planner.live')}</div>
+      </section>
+
       {reportLeg && <ReportDialog leg={reportLeg} stations={stations.filter((s) => routesById[reportLeg.routeId]?.stationIds?.includes(s.id))} onClose={() => setReportLeg(null)} />}
-    </div>
+    </main>
   )
 }
