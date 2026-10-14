@@ -1,0 +1,11 @@
+frontend
+admin-console
+docs
+tools
+deploy/osrm/data
+target
+.git
+.github
+.env
+.env.*
+!.env.example

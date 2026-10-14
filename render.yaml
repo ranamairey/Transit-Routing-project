@@ -1,0 +1,41 @@
+# Render Blueprint: backend API on the free plan (Docker). Dashboard → New → Blueprint → pick this repo.
+# Values marked sync:false are secrets: Render asks for them once in the dashboard; they never live in git.
+services:
+  - type: web
+    name: syrian-transit-api
+    runtime: docker
+    plan: free
+    region: frankfurt          # closest Render region to Damascus
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/v1/health
+    autoDeploy: true
+    envVars:
+      - key: MONGO_URI
+        sync: false            # mongodb+srv://… from Atlas
+      - key: MONGO_DB
+        value: syrian_transit
+      - key: JWT_SECRET
+        generateValue: true    # Render creates a long random secret
+      - key: SEED_ADMIN_EMAIL
+        sync: false
+      - key: SEED_ADMIN_PASSWORD
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false            # https://<rider>.pages.dev,https://<admin>.pages.dev
+      - key: PUBLIC_URL
+        sync: false            # https://<rider>.pages.dev (used in password-reset / verify links)
+      - key: OSRM_URL
+        value: https://router.project-osrm.org   # demo server, testing only; remove or self-host for production
+      - key: SPRING_MAIL_HOST
+        value: smtp-relay.brevo.com
+      - key: SPRING_MAIL_PORT
+        value: "587"
+      - key: SPRING_MAIL_USERNAME
+        sync: false            # Brevo SMTP login
+      - key: SPRING_MAIL_PASSWORD
+        sync: false            # Brevo SMTP key
+      - key: MAIL_FROM
+        sync: false            # a sender address verified in Brevo
+      - key: JAVA_OPTS
+        value: "-XX:MaxRAMPercentage=65 -XX:+UseSerialGC -Xss512k -XX:MaxMetaspaceSize=160m -XX:ReservedCodeCacheSize=64m -XX:TieredStopAtLevel=1"
