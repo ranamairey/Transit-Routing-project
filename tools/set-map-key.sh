@@ -17,5 +17,5 @@ for app in frontend admin-console; do
   rm -f "$f.tmp"
   echo "wrote $f"
 done
-code=$(curl -s -o /dev/null -w "%{http_code}" "https://api.maptiler.com/maps/streets-v2/256/12/2460/1642.png?key=$KEY")
-echo "MapTiler test tile: HTTP $code (200 = key works)"
+code=$(curl -s -o /dev/null -w "%{http_code}" -e "http://localhost:5173/" "https://api.maptiler.com/maps/streets-v2/256/12/2460/1642.png?key=$KEY")
+echo "MapTiler test tile (as localhost): HTTP $code (200 = key works; 403 = key wrong or localhost not in allowed origins)"
