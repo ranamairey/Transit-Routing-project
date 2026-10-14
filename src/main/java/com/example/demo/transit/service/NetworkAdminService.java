@@ -85,8 +85,11 @@ public class NetworkAdminService {
     }
 
     public StationResponse getStation(String id) {
-        return stationRepository.findById(id).map(this::toStationResponse)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "المحطة غير موجودة"));
+        Station station = graphFactory.snapshot().stationsById().get(id);
+        if (station == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "المحطة غير موجودة");
+        }
+        return toStationResponse(station);
     }
 
     public List<StationResponse> searchStations(String query, String governorate) {
@@ -146,12 +149,15 @@ public class NetworkAdminService {
     }
 
     public RouteResponse getRoute(String id) {
-        return routeRepository.findById(id).map(this::toRouteResponse)
+        TransitGraphFactory.NetworkSnapshot snapshot = graphFactory.snapshot();
+        return snapshot.routes().stream().filter(r -> r.getId().equals(id)).findFirst()
+                .map(r -> toRouteResponse(r, snapshot.stationsById()))
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "الخط غير موجود"));
     }
 
     public List<RouteResponse> listRoutes() {
-        return routeRepository.findAll().stream().map(this::toRouteResponse).toList();
+        TransitGraphFactory.NetworkSnapshot snapshot = graphFactory.snapshot();
+        return snapshot.routes().stream().map(r -> toRouteResponse(r, snapshot.stationsById())).toList();
     }
 
     private Route apply(Route route, RouteRequest request) {
@@ -192,12 +198,22 @@ public class NetworkAdminService {
     // ---------- public read models ----------
 
     /** NFR-1.2: whole network with a content hash the client can cache and revalidate with ETag. */
+    private volatile TransitGraphFactory.NetworkSnapshot memoFor;
+    private volatile NetworkSnapshotDto memo;
+
     public NetworkSnapshotDto networkSnapshot() {
-        List<StationResponse> stations = stationRepository.findAll().stream().map(this::toStationResponse).toList();
-        List<RouteResponse> routes = listRoutes();
+        TransitGraphFactory.NetworkSnapshot snapshot = graphFactory.snapshot();
+        if (snapshot == memoFor && memo != null) {
+            return memo;
+        }
+        List<StationResponse> stations = snapshot.stations().stream().map(this::toStationResponse).toList();
+        List<RouteResponse> routes = snapshot.routes().stream().map(r -> toRouteResponse(r, snapshot.stationsById())).toList();
         String fingerprint = stations.stream().map(Objects::toString).collect(Collectors.joining("|"))
                 + "#" + routes.stream().map(Objects::toString).collect(Collectors.joining("|"));
-        return new NetworkSnapshotDto(sha1(fingerprint), stations, routes);
+        NetworkSnapshotDto dto = new NetworkSnapshotDto(sha1(fingerprint), stations, routes);
+        memo = dto;
+        memoFor = snapshot;
+        return dto;
     }
 
     public StationResponse toStationResponse(Station station) {
@@ -212,10 +228,15 @@ public class NetworkAdminService {
         );
     }
 
+    /** Single route right after a write: one query for its stations. */
     public RouteResponse toRouteResponse(Route route) {
-        List<String> ids = route.stationIds();
-        Map<String, Station> stations = stationRepository.findAllById(ids).stream()
+        Map<String, Station> stations = stationRepository.findAllById(route.stationIds()).stream()
                 .collect(Collectors.toMap(Station::getId, Function.identity(), (a, b) -> a));
+        return toRouteResponse(route, stations);
+    }
+
+    public RouteResponse toRouteResponse(Route route, Map<String, Station> stations) {
+        List<String> ids = route.stationIds();
         List<StationResponse> stops = ids.stream()
                 .map(stations::get)
                 .filter(Objects::nonNull)

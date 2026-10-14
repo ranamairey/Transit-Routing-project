@@ -50,9 +50,10 @@ public class AdminStatsService {
             }
         }
         Map<String, Long> byStatus = new TreeMap<>();
-        routeRepository.findAll().forEach(r -> byStatus.merge(graphFactory.effectiveStatus(r, now).name(), 1L, Long::sum));
+        TransitGraphFactory.NetworkSnapshot snapshot = graphFactory.snapshot();
+        snapshot.routes().forEach(r -> byStatus.merge(graphFactory.effectiveStatus(r, now).name(), 1L, Long::sum));
         return new AdminStatsDto(
-                stationRepository.count(), routeRepository.count(), userRepository.count(),
+                snapshot.stations().size(), snapshot.routes().size(), userRepository.count(),
                 all.size(), last24, pending, byType, byStatus);
     }
 }

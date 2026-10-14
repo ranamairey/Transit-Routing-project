@@ -1,7 +1,7 @@
 package com.example.demo.transit.service;
 
 import com.example.demo.transit.entity.Station;
-import com.example.demo.transit.repository.StationRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.text.Normalizer;
@@ -18,16 +18,17 @@ import java.util.Locale;
 @Service
 public class StationSearchService {
 
-    private final StationRepository stationRepository;
+    private final TransitGraphFactory graphFactory;
 
-    public StationSearchService(StationRepository stationRepository) {
-        this.stationRepository = stationRepository;
+    public StationSearchService(TransitGraphFactory graphFactory) {
+        this.graphFactory = graphFactory;
     }
 
     public List<Station> search(String query, String governorate) {
+        List<Station> stations = graphFactory.snapshot().stations();
         List<Station> all = (governorate == null || governorate.isBlank())
-                ? stationRepository.findAll()
-                : stationRepository.findByGovernorateIgnoreCase(governorate.trim());
+                ? stations
+                : stations.stream().filter(s -> governorate.trim().equalsIgnoreCase(s.getGovernorate())).toList();
         if (query == null || query.isBlank()) {
             return all;
         }

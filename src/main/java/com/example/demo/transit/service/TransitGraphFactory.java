@@ -70,6 +70,14 @@ public class TransitGraphFactory {
 
     public void invalidate() {
         cached = null;
+        // rebuild in the background so the next request finds a warm snapshot
+        java.util.concurrent.CompletableFuture.runAsync(() -> {
+            try {
+                snapshot();
+            } catch (RuntimeException ignored) {
+                // next caller retries synchronously
+            }
+        });
     }
 
     /** Cached snapshot of the whole network (all governorates, so rural ↔ city transfers work). */

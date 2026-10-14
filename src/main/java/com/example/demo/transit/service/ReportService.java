@@ -180,7 +180,7 @@ public class ReportService {
     /** Reports grouped by route + type inside the alert window, with distinct reporter counts. */
     public List<ReportSummaryDto> adminSummary() {
         Instant now = clock.instant();
-        Map<String, Route> routes = routeRepository.findAll().stream()
+        Map<String, Route> routes = graphFactory.snapshot().routes().stream()
                 .collect(Collectors.toMap(Route::getId, Function.identity(), (a, b) -> a));
         Map<String, List<CrowdsourceReport>> groups = new LinkedHashMap<>();
         for (CrowdsourceReport r : reportRepository.findBySentAtAfterOrderBySentAtDesc(windowStart())) {
@@ -315,13 +315,13 @@ public class ReportService {
 
     private Map<String, String> routeNames() {
         Map<String, String> names = new HashMap<>();
-        routeRepository.findAll().forEach(r -> names.put(r.getId(), r.getName()));
+        graphFactory.snapshot().routes().forEach(r -> names.put(r.getId(), r.getName()));
         return names;
     }
 
     private Map<String, String> stationNames() {
         Map<String, String> names = new HashMap<>();
-        stationRepository.findAll().forEach(s -> names.put(s.getId(), s.getName()));
+        graphFactory.snapshot().stations().forEach(s -> names.put(s.getId(), s.getName()));
         return names;
     }
 

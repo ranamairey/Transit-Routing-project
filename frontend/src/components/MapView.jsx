@@ -5,8 +5,33 @@ import { useI18n } from '../i18n/I18nContext.jsx'
 
 export const DAMASCUS_CENTER = [33.5102, 36.2913]
 
+// Fallback when the main tile server is busy (503): OSM France Humanitarian style, free and key-less.
+const FALLBACK_TILES = ['a', 'b', 'c'].map((s) => `https://${s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png`)
+
+/**
+ * A failed tile (e.g. 503 from a busy server) is reloaded from the fallback servers, up to three times.
+ * Patched at Leaflet's tile level so it covers every tile layer in the app.
+ */
+if (!L.TileLayer.prototype._fallbackPatched) {
+  const original = L.TileLayer.prototype._tileOnError
+  L.TileLayer.prototype._tileOnError = function onError(done, tile, e) {
+    const m = /\/(\d+)\/(\d+)\/(\d+)\.png/.exec(tile.src || '')
+    const tries = Number(tile.dataset.tries || 0)
+    if (m && tries < 3) {
+      tile.dataset.tries = String(tries + 1)
+      const [, z, x, y] = m
+      const url = FALLBACK_TILES[(Number(x) + Number(y) + tries) % FALLBACK_TILES.length].replace('{z}', z).replace('{x}', x).replace('{y}', y)
+      setTimeout(() => { tile.src = url }, tries === 0 ? 0 : 1500 * tries)
+      return
+    }
+    original.call(this, done, tile, e)
+  }
+  L.TileLayer.prototype._fallbackPatched = true
+}
+
 // Key-free OpenStreetMap tiles by default; set VITE_TILE_URL (and VITE_TILE_URL_DARK) to use MapTiler/CARTO/Stadia with your own key.
-const OSM = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+// tile.openstreetmap.org without the legacy a/b/c subdomains (those are throttled hardest)
+const OSM = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
 export const BASEMAPS = {
   light: import.meta.env.VITE_TILE_URL || OSM,
   dark: import.meta.env.VITE_TILE_URL_DARK || import.meta.env.VITE_TILE_URL || OSM,
