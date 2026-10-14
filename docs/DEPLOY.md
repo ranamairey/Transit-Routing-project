@@ -1,14 +1,14 @@
 # Free test deployment
 
-| Part | Host | Address after setup |
+| Part | Host | Live address |
 |---|---|---|
-| Backend API (Spring Boot, Docker) | Render free web service | `https://syrian-transit-api.onrender.com` |
-| Rider app (PWA) | Cloudflare Pages | `https://syrian-transit.pages.dev` |
-| Admin console | Cloudflare Pages | `https://syrian-transit-admin.pages.dev` |
-| Database | MongoDB Atlas M0 (existing) | — |
-| E-mails (reset / verification) | Brevo free SMTP (optional) | — |
+| Backend API (Spring Boot, Docker) | Render free web service, Frankfurt | `https://syrian-transit-api.onrender.com` |
+| Rider app (PWA) | Cloudflare Workers static assets | `https://syrian-transit.syria-transit.workers.dev` |
+| Admin console | Cloudflare Workers static assets | `https://syrian-transit-admin.syria-transit.workers.dev` |
+| Database | MongoDB Atlas M0, Azure UAE North (Dubai) | — |
+| E-mails (reset / verification) | Brevo free SMTP (optional, not set up yet) | — |
 
-Names above are the suggested project names; Render/Cloudflare add a suffix if a name is taken. Use your real addresses everywhere below.
+Cloudflare Pages is now part of Cloudflare Workers; each app has a `wrangler.jsonc` that uploads only its built `dist/` folder.
 
 ## 1. MongoDB Atlas — allow Render to connect
 Render's free services have no fixed IP, so Atlas must accept connections from anywhere:
@@ -29,24 +29,23 @@ Render's free services have no fixed IP, so Atlas must accept connections from a
    - `JAVA_OPTS` — copy from `render.yaml`
 5. Deploy. The first build takes ~5–8 minutes. Check `https://<api>/api/v1/health` → `{"status":"UP","database":"UP"}`.
 
-## 3. Cloudflare Pages — the two web apps (direct upload, no Git connection needed)
+## 3. Cloudflare — the two web apps
 ```bash
-npm install -g wrangler   # once
-wrangler login            # opens the browser to authorise
+npx wrangler login        # once; opens the browser to authorise
 ```
 Rider app:
 ```bash
 cd frontend
-VITE_API_BASE=https://<api>.onrender.com VITE_ADMIN_URL=https://<admin>.pages.dev npm run build
-wrangler pages deploy dist --project-name syrian-transit
+VITE_API_BASE=https://syrian-transit-api.onrender.com VITE_ADMIN_URL=https://syrian-transit-admin.syria-transit.workers.dev npm run build
+npx wrangler deploy
 ```
 Admin console:
 ```bash
 cd admin-console
-VITE_API_BASE=https://<api>.onrender.com npm run build
-wrangler pages deploy dist --project-name syrian-transit-admin
+VITE_API_BASE=https://syrian-transit-api.onrender.com npm run build
+npx wrangler deploy
 ```
-The MapTiler key is read from each app's `.env.local` (see `tools/set-map-key.sh`). Cloudflare Pages serves `index.html` for unknown paths automatically, so app links like `/reset?token=…` work.
+The MapTiler key is read from each app's `.env.local` (see `tools/set-map-key.sh`). `not_found_handling: single-page-application` serves `index.html` for unknown paths, so app links like `/reset?token=…` work.
 
 ## 4. Connect the pieces
 - Render → backend → Environment: set `CORS_ORIGINS` and `PUBLIC_URL` to the Pages addresses → **Save, rebuild and deploy**.
@@ -59,4 +58,4 @@ The MapTiler key is read from each app's `.env.local` (see `tools/set-map-key.sh
 
 ## Updating
 - Backend: push to `main` → Render redeploys automatically (Blueprint / connected repo) or click **Manual Deploy**.
-- Web apps: rebuild and run the same `wrangler pages deploy` commands.
+- Web apps: rebuild and run the same `npx wrangler deploy` commands.
