@@ -1,0 +1,9 @@
+// Cloudflare Workers static assets: rider app (PWA). Deploy: npm run build && npx wrangler deploy
+{
+  "name": "syrian-transit",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  }
+}
