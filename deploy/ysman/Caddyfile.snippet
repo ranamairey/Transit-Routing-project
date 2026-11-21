@@ -1,0 +1,14 @@
+	# Smart Syrian Transit: https://ysman.dyndns.info/transit/ and /transit-admin/  (/srv/apps/syrian-transit)
+	# The API keeps its /api path, so only the /transit prefix is stripped for it. The web apps are
+	# built with their prefixes as base paths, so their requests are passed through unchanged.
+	handle /transit/api/* {
+		uri strip_prefix /transit
+		reverse_proxy syrian-transit-api:8080
+	}
+
+	redir /transit /transit/ 308
+	redir /transit-admin /transit-admin/ 308
+	@transit path /transit/* /transit-admin/*
+	handle @transit {
+		reverse_proxy syrian-transit-web:80
+	}

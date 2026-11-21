@@ -59,3 +59,24 @@ The MapTiler key is read from each app's `.env.local` (see `tools/set-map-key.sh
 ## Updating
 - Backend: push to `main` → Render redeploys automatically (Blueprint / connected repo) or click **Manual Deploy**.
 - Web apps: rebuild and run the same `npx wrangler deploy` commands.
+
+## Self-hosted: the ysman server
+The whole stack also runs on our own Debian server behind its existing Caddy proxy, one origin for everything:
+
+| What | Address |
+|---|---|
+| Rider app | https://ysman.dyndns.info/transit/ |
+| Admin console | https://ysman.dyndns.info/transit-admin/ |
+| API | https://ysman.dyndns.info/transit/api/v1/health |
+
+- Server folder `/srv/apps/syrian-transit` (shows in Dockge): `docker-compose.yml`, `nginx.conf`, the API source in `backend/`, the two web builds in `web/`, and `.env` (mode 600, never in git).
+- Containers `syrian-transit-api` (Spring Boot, 1 GB limit) and `syrian-transit-web` (nginx serving both apps) on the shared `web` network.
+- Caddy routes are in `/srv/proxy/Caddyfile` (copy in `deploy/ysman/Caddyfile.snippet`); the pre-change backup is `Caddyfile.bak-transit-*`.
+- The server `.env` holds the same keys as the local `.env` plus `CORS_ORIGINS=https://ysman.dyndns.info,https://localhost,capacitor://localhost` and `PUBLIC_URL=https://ysman.dyndns.info/transit`.
+
+Update after code changes (needs the `shisha` SSH host):
+```bash
+./deploy/ysman/deploy.sh            # MapTiler tiles (add ysman.dyndns.info to the key's allowed origins first)
+TILES=osm ./deploy/ysman/deploy.sh  # free OpenStreetMap tiles
+```
+The web apps take their sub-path from `VITE_BASE` at build time; without it they build for the site root as before.

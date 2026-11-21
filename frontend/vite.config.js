@@ -5,7 +5,11 @@ import { VitePWA } from 'vite-plugin-pwa'
 // Rider app. /api is proxied to the Spring Boot backend in dev; in production either serve both
 // behind one host (see docker-compose.yml) or set VITE_API_BASE to the backend origin
 // (required for the Android build, where there is no proxy).
+// VITE_BASE serves the app under a sub-path (for example /transit/); it defaults to the site root.
+const base = process.env.VITE_BASE || '/'
+
 export default defineConfig({
+  base,
   plugins: [
     react(),
     VitePWA({
@@ -17,7 +21,8 @@ export default defineConfig({
         description: 'Servis and bus trip planner for Damascus and Rif Dimashq',
         lang: 'ar',
         dir: 'rtl',
-        start_url: '/',
+        start_url: base,
+        scope: base,
         display: 'standalone',
         background_color: '#f4f6f3',
         theme_color: '#0b3d2e',
@@ -29,8 +34,8 @@ export default defineConfig({
       },
       workbox: {
         // NFR-1.2 offline-first: app shell precached; map tiles and the network snapshot cached at runtime.
-        navigateFallback: '/index.html',
-        navigateFallbackDenylist: [/^\/api\//],
+        navigateFallback: `${base}index.html`,
+        navigateFallbackDenylist: [/\/api\//],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/(([abc]\.)?tile\.openstreetmap\.(org|fr)|api\.maptiler\.com|[abcd]\.basemaps\.cartocdn\.com|tiles\.stadiamaps\.com)\/.*/i,
