@@ -9,6 +9,8 @@ public interface UserRepository extends MongoRepository<User, String> {
 
     Optional<User> findByEmail(String email);
 
+    java.util.List<User> findByFollowedRouteIdsContaining(String routeId);
+
     boolean existsByEmail(String email);
 
     Optional<User> findByResetToken(String token);

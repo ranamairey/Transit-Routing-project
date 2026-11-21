@@ -7,12 +7,13 @@ import { useToast } from './Toast.jsx'
  * FR-1.1: pick a place by GPS, by dropping a pin on the map, or by smart text search over
  * station names and local aliases (works offline on the cached network).
  */
-export default function EndpointPicker({ label, kind, value, onChange, stations, pinMode, onPinMode }) {
+export default function EndpointPicker({ label, kind, value, onChange, stations, pinMode, onPinMode, onSave }) {
   const { t, lang } = useI18n()
   const notify = useToast()
   const [query, setQuery] = useState('')
   const [open, setOpen] = useState(false)
   const [locating, setLocating] = useState(false)
+  const [saveOpen, setSaveOpen] = useState(false)
 
   const suggestions = useMemo(() => searchStations(stations, query), [stations, query])
 
@@ -34,7 +35,23 @@ export default function EndpointPicker({ label, kind, value, onChange, stations,
     <div className={`field ${pinMode ? 'active' : ''}`}>
       <div className="fieldhead"><span className={`dot ${kind === 'dest' ? 'dest' : ''}`} /> {label}</div>
       {value ? (
-        <div className="picked"><span>{value.name}</span><button onClick={() => { onChange(null); setQuery('') }}>{t('endpoint.change')}</button></div>
+        <>
+          <div className="picked">
+            <span>{value.name}</span>
+            {onSave && <button title={t('stop.save')} aria-expanded={saveOpen} onClick={() => setSaveOpen(!saveOpen)}>☆</button>}
+            <button onClick={() => { onChange(null); setQuery(''); setSaveOpen(false) }}>{t('endpoint.change')}</button>
+          </div>
+          {saveOpen && (
+            <div className="save-as">
+              <span>{t('places.saveAs')}</span>
+              {['HOME', 'WORK', 'OTHER'].map((k) => (
+                <button key={k} onClick={() => { onSave(value, k); setSaveOpen(false) }}>
+                  {k === 'HOME' ? `🏠 ${t('places.home')}` : k === 'WORK' ? `💼 ${t('places.work')}` : `⭐ ${t('places.other')}`}
+                </button>
+              ))}
+            </div>
+          )}
+        </>
       ) : (
         <div className="suggest">
           <input

@@ -26,7 +26,7 @@ function Step({ leg, onReport }) {
 }
 
 /** FR-1.3: every option shows total fare, expected time, walking distance and transfers. */
-export default function TripOptions({ paths, selected, onSelect, onReport, peak, onShow, onShare }) {
+export default function TripOptions({ paths, selected, onSelect, onReport, peak, onShow, onShare, onCopyLink, onWhatsApp, onStart }) {
   const { t, formatDuration, formatMeters, formatFare } = useI18n()
   return (
     <section className="panel">
@@ -51,8 +51,11 @@ export default function TripOptions({ paths, selected, onSelect, onReport, peak,
             <>
               {p.legs.map((leg, j) => <Step key={j} leg={leg} onReport={onReport} />)}
               <div className="route-footer">
+                {onStart && <button className="go" onClick={(e) => { e.stopPropagation(); onStart(i) }}>{t('guide.start')}</button>}
                 <button onClick={(e) => { e.stopPropagation(); onShow?.(i) }}>↗ {t('trips.showOnMap')}</button>
                 <button onClick={(e) => { e.stopPropagation(); onShare?.(p) }}>↗ {t('trips.share')}</button>
+                {onCopyLink && <button onClick={(e) => { e.stopPropagation(); onCopyLink(p) }}>{t('share.link')}</button>}
+                {onWhatsApp && <button onClick={(e) => { e.stopPropagation(); onWhatsApp(p) }}>🟢 {t('share.whatsapp')}</button>}
               </div>
             </>
           )}

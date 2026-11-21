@@ -11,6 +11,7 @@ public record AdminStatsDto(
         long reportsLast24h,
         long reportsPending,
         Map<String, Long> reportsByTypeLast24h,
-        Map<String, Long> routesByStatus
+        Map<String, Long> routesByStatus,
+        long suggestionsPending
 ) {
 }

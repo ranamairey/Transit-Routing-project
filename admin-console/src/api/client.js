@@ -69,6 +69,13 @@ export const Api = {
     update: (id, u) => api(`/admin/users/${id}`, { method: 'PATCH', body: u }),
     remove: (id) => api(`/admin/users/${id}`, { method: 'DELETE' }),
   },
+  suggestions: {
+    list: (status) => api('/admin/suggestions?' + qs({ status })),
+    accept: (id, edits) => api(`/admin/suggestions/${id}/accept`, { method: 'POST', body: edits || {} }),
+    reject: (id) => api(`/admin/suggestions/${id}/reject`, { method: 'POST' }),
+    remove: (id) => api(`/admin/suggestions/${id}`, { method: 'DELETE' }),
+  },
+  usage: (days) => api('/admin/stats/usage?' + qs({ days })),
   importNetwork: (body) => api('/admin/network/import', { method: 'POST', body }),
   exportNetwork: () => api('/admin/network/export'),
 }

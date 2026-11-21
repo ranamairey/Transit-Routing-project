@@ -126,6 +126,8 @@ docker-compose.yml · Dockerfile · .github/workflows/ci.yml
 | `GET` | `/routes` · `/routes/{id}` | الخطوط مع المحطات والـ polyline |
 | `GET` | `/network` | لقطة كاملة للشبكة مع `ETag` للتخزين دون اتصال (NFR-1.2) |
 | `GET` | `/reports?routeId=` | آخر بلاغات خط (FR-2.2) |
+| `GET` | `/reports/live` | الحالة الحية للخطوط: الحالة الحالية وعدد البلاغات الحديثة لكل نوع |
+| `GET` | `/push/key` | مفتاح VAPID العام لإشعارات الخطوط (`enabled:false` إن لم تُضبط المفاتيح) |
 | `GET` | `/health` | حالة الخادم وقاعدة البيانات |
 | `POST` | `/auth/register` · `/auth/login` · `GET /auth/me` | التوثيق (JWT Bearer) |
 
@@ -134,6 +136,10 @@ docker-compose.yml · Dockerfile · .github/workflows/ci.yml
 | الطريقة | المسار | الوصف |
 |---|---|---|
 | `POST` | `/reports` | إرسال بلاغ (FR-2.1): `{reportType, routeId, stationId?, newFare?, description?, location?}` — بلاغ واحد لكل خط كل 10 دقائق و20 بلاغاً في الساعة لكل مستخدم (429 عند التجاوز) |
+| `POST` | `/suggestions` | اقتراح تصحيح للبيانات: `{type: MISSING_PLACE\|WRONG_LOCATION\|WRONG_LINE\|OTHER, name?, nameEn?, location?, stationId?, routeId?, description?}` — 10 اقتراحات في الساعة |
+| `GET/PUT` | `/me/places` | الأماكن المحفوظة (البيت، العمل…) — 20 كحد أقصى |
+| `GET/PUT` | `/me/follows` · `GET /me/alerts` | الخطوط المتابَعة وتنبيهاتها |
+| `POST` | `/push/subscribe` · `/push/unsubscribe` | اشتراك المتصفح في إشعارات الخطوط المتابَعة |
 
 ### المشرف فقط (`ROLE_ADMIN`)
 
@@ -148,6 +154,8 @@ docker-compose.yml · Dockerfile · .github/workflows/ci.yml
 | `GET` | `/admin/reports?routeId&type&applied&dismissed&hours&page&size` | فلترة البلاغات مع صفحات (FR-3.2) |
 | `GET` | `/admin/reports/summary` | تجميع البلاغات حسب الخط والنوع مع عدد المبلّغين المختلفين |
 | `POST` | `/admin/reports/{id}/approve` · `/reject` · `DELETE /admin/reports/{id}` | المراجعة اليدوية |
+| `GET` | `/admin/suggestions?status=` · `POST /{id}/accept` · `/reject` · `DELETE /{id}` | مراجعة اقتراحات الركاب؛ القبول ينشئ المكان الناقص أو ينقل الموقف |
+| `GET` | `/admin/stats/usage?days=` | إحصاءات البحث: أكثر الرحلات طلباً والبحث بلا نتيجة وأكثر الوجهات (90 يوماً، دون هوية المستخدم) |
 
 ### مثال: طلب مسار
 

@@ -8,6 +8,8 @@ import RoutesPage from './pages/RoutesPage.jsx'
 import ReportsPage from './pages/ReportsPage.jsx'
 import UsersPage from './pages/UsersPage.jsx'
 import DataPage from './pages/DataPage.jsx'
+import SuggestionsPage from './pages/SuggestionsPage.jsx'
+import InsightsPage from './pages/InsightsPage.jsx'
 
 function RequireAdmin({ children }) {
   const { user, isAdmin } = useAuth()
@@ -26,6 +28,8 @@ export default function App() {
         <Route path="reports" element={<ReportsPage />} />
         <Route path="users" element={<UsersPage />} />
         <Route path="data" element={<DataPage />} />
+        <Route path="suggestions" element={<SuggestionsPage />} />
+        <Route path="insights" element={<InsightsPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

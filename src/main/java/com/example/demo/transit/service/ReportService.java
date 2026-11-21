@@ -52,6 +52,7 @@ public class ReportService {
     private final Clock clock;
     private final UserRepository userRepository;
     private final boolean requireVerified;
+    private final org.springframework.context.ApplicationEventPublisher events;
 
     public ReportService(CrowdsourceReportRepository reportRepository,
                          RouteRepository routeRepository,
@@ -62,7 +63,9 @@ public class ReportService {
                          RateLimiter rateLimiter,
                          Clock clock,
                          UserRepository userRepository,
+                         org.springframework.context.ApplicationEventPublisher events,
                          @Value("${app.auth.require-verified-for-reports:false}") boolean requireVerified) {
+        this.events = events;
         this.userRepository = userRepository;
         this.requireVerified = requireVerified;
         this.reportRepository = reportRepository;
@@ -138,6 +141,40 @@ public class ReportService {
                 .stream()
                 .map(r -> toResponse(r, false, routes, stations))
                 .toList();
+    }
+
+    /**
+     * Live state of the network: every line whose effective status is not NORMAL or that has rider
+     * reports inside the alert window, with report counts per type. Older reports fade out on their own.
+     */
+    public List<com.example.demo.transit.dto.LiveRouteStatusDto> liveStatuses() {
+        Instant now = clock.instant();
+        Map<String, Map<String, Long>> counts = new HashMap<>();
+        Map<String, Instant> last = new HashMap<>();
+        for (CrowdsourceReport r : reportRepository.findBySentAtAfterOrderBySentAtDesc(windowStart())) {
+            if (r.isDismissed() || r.getRouteId() == null) {
+                continue;
+            }
+            counts.computeIfAbsent(r.getRouteId(), k -> new java.util.TreeMap<>()).merge(r.getReportType().name(), 1L, Long::sum);
+            last.merge(r.getRouteId(), r.getSentAt(), (a, b) -> a.isAfter(b) ? a : b);
+        }
+        List<com.example.demo.transit.dto.LiveRouteStatusDto> out = new ArrayList<>();
+        for (Route route : graphFactory.snapshot().routes()) {
+            RouteStatus status = graphFactory.effectiveStatus(route, now);
+            Map<String, Long> c = counts.get(route.getId());
+            if (status == RouteStatus.NORMAL && c == null) {
+                continue;
+            }
+            out.add(new com.example.demo.transit.dto.LiveRouteStatusDto(route.getId(), status,
+                    status == RouteStatus.NORMAL ? null : route.getStatusUpdatedAt(),
+                    c == null ? Map.of() : c, last.get(route.getId())));
+        }
+        return out;
+    }
+
+    /** Recent alerts (inside the alert window) on the given lines, newest first. */
+    public List<AlertDto> alertsForRouteIds(Collection<String> routeIds) {
+        return alertsForRoutes(routeIds, graphFactory.snapshot().routes());
     }
 
     /** FR-2.2: alerts for the routes of a search result. */
@@ -310,6 +347,7 @@ public class ReportService {
         route.setStatusUpdatedAt(clock.instant());
         routeRepository.save(route);
         graphFactory.invalidate();
+        events.publishEvent(new RouteStatusChangedEvent(route.getId(), route.getName(), route.getStatus(), route.getCurrentFare()));
         return true;
     }
 

@@ -36,4 +36,8 @@ public class User {
     private String resetToken;
 
     private Instant resetTokenExpiresAt;
+    /** Saved places ("Home", "Work", ...) for one-tap trips. */
+    private java.util.List<SavedPlace> savedPlaces = new java.util.ArrayList<>();
+    /** Lines the rider follows for status alerts. */
+    private java.util.Set<String> followedRouteIds = new java.util.LinkedHashSet<>();
 }

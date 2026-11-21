@@ -51,6 +51,20 @@ export const Api = {
   routing: (request) => api('/routing/search', { method: 'POST', body: request }),
   recentReports: (routeId) => api(`/reports?routeId=${encodeURIComponent(routeId)}`),
   submitReport: (report) => api('/reports', { method: 'POST', body: report }),
+  liveStatus: () => api('/reports/live'),
+  suggest: (suggestion) => api('/suggestions', { method: 'POST', body: suggestion }),
+  account: {
+    places: () => api('/me/places'),
+    savePlaces: (places) => api('/me/places', { method: 'PUT', body: places }),
+    follows: () => api('/me/follows'),
+    saveFollows: (ids) => api('/me/follows', { method: 'PUT', body: ids }),
+    alerts: () => api('/me/alerts'),
+  },
+  push: {
+    key: () => api('/push/key'),
+    subscribe: (sub) => api('/push/subscribe', { method: 'POST', body: sub }),
+    unsubscribe: (endpoint) => api('/push/unsubscribe', { method: 'POST', body: { endpoint } }),
+  },
   admin: {
     createStation: (s) => api('/admin/stations', { method: 'POST', body: s }),
     updateStation: (id, s) => api(`/admin/stations/${id}`, { method: 'PUT', body: s }),

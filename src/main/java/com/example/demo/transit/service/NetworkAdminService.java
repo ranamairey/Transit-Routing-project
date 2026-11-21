@@ -42,11 +42,15 @@ public class NetworkAdminService {
     private final TransitGraphFactory graphFactory;
     private final Clock clock;
 
+    private final org.springframework.context.ApplicationEventPublisher events;
+
     public NetworkAdminService(StationRepository stationRepository,
                                RouteRepository routeRepository,
                                StationSearchService stationSearch,
                                TransitGraphFactory graphFactory,
-                               Clock clock) {
+                               Clock clock,
+                               org.springframework.context.ApplicationEventPublisher events) {
+        this.events = events;
         this.stationRepository = stationRepository;
         this.routeRepository = routeRepository;
         this.stationSearch = stationSearch;
@@ -137,6 +141,9 @@ public class NetworkAdminService {
         }
         Route saved = routeRepository.save(route);
         graphFactory.invalidate();
+        if (request.status() != null || request.currentFare() != null) {
+            events.publishEvent(new RouteStatusChangedEvent(saved.getId(), saved.getName(), saved.getStatus(), saved.getCurrentFare()));
+        }
         return toRouteResponse(saved);
     }
 

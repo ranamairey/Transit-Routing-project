@@ -42,12 +42,16 @@ public class RoutingService {
     private final Clock clock;
     private final WalkingRouter walkingRouter;
 
+    private final UsageStatsService usageStats;
+
     public RoutingService(TransitGraphFactory graphFactory,
                           StationSearchService stationSearch,
                           ReportService reportService,
                           TransitProperties properties,
                           Clock clock,
-                          WalkingRouter walkingRouter) {
+                          WalkingRouter walkingRouter,
+                          UsageStatsService usageStats) {
+        this.usageStats = usageStats;
         this.walkingRouter = walkingRouter;
         this.router = new MultiLegRouter(properties.getMaxWalkMeters());
         this.graphFactory = graphFactory;
@@ -57,7 +61,22 @@ public class RoutingService {
         this.clock = clock;
     }
 
+    /** Runs the search and records it (anonymously) for the admin usage statistics, including searches with no route. */
     public RoutingSearchResponse search(RoutingSearchRequest request) {
+        UsageStatsService.SearchTrace[] trace = new UsageStatsService.SearchTrace[1];
+        try {
+            RoutingSearchResponse response = search(request, trace);
+            usageStats.record(trace[0], response.paths().size());
+            return response;
+        } catch (ResponseStatusException e) {
+            if (e.getStatusCode().value() == HttpStatus.NOT_FOUND.value() && trace[0] != null) {
+                usageStats.record(trace[0], 0);
+            }
+            throw e;
+        }
+    }
+
+    private RoutingSearchResponse search(RoutingSearchRequest request, UsageStatsService.SearchTrace[] trace) {
         long started = System.nanoTime();
         Instant now = clock.instant();
 
@@ -68,6 +87,10 @@ public class RoutingService {
                 request.governorate(), "نقطة الانطلاق");
         Endpoint dest = resolveEndpoint(request.destination(), request.destinationStationId(), request.destinationQuery(),
                 request.governorate(), "الوجهة");
+
+        trace[0] = new UsageStatsService.SearchTrace(origin.name(), dest.name(),
+                origin.station() != null ? origin.station().getId() : null, dest.station() != null ? dest.station().getId() : null,
+                origin.point(), dest.point());
 
         long originNode = origin.station() != null ? snapshot.index(origin.station()) : TransitGraphFactory.ORIGIN_NODE;
         long destNode = dest.station() != null ? snapshot.index(dest.station()) : TransitGraphFactory.DEST_NODE;

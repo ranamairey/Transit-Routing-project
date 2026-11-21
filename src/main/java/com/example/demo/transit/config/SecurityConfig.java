@@ -64,6 +64,8 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/network/**").permitAll()
                         .requestMatchers("/api/v1/health").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/reports/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v1/push/key").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/push/unsubscribe").permitAll()
                         .requestMatchers("/api/v1/admin/**").hasAuthority("ROLE_ADMIN")
                         .anyRequest().authenticated()
                 )

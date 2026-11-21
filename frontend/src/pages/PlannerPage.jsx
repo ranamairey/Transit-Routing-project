@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { Api } from '../api/client.js'
 import AlertsBar from '../components/AlertsBar.jsx'
 import EndpointPicker from '../components/EndpointPicker.jsx'
@@ -6,8 +7,11 @@ import MapView, { legPath } from '../components/MapView.jsx'
 import ReportDialog from '../components/ReportDialog.jsx'
 import Select from '../components/Select.jsx'
 import { useToast } from '../components/Toast.jsx'
+import TripGuide from '../components/TripGuide.jsx'
 import TripOptions from '../components/TripOptions.jsx'
+import { toEndpoint, useRider } from '../context/RiderContext.jsx'
 import { useI18n } from '../i18n/I18nContext.jsx'
+import { decodeEndpoint, tripLink } from '../utils/endpoints.js'
 
 const LAST_KEY = 'sst.lastSearch'
 const EMPTY = []
@@ -21,11 +25,14 @@ const distMeters = (a, b) => {
 
 export default function PlannerPage({ net }) {
   const { network, offline, loading } = net
-  const { t, formatFare, formatDuration, dark } = useI18n()
+  const { t, formatFare, formatDuration, dark, timeAgo } = useI18n()
   const notify = useToast()
+  const { places, addPlace, removePlace, recent, addRecent, clearRecent, live } = useRider()
+  const [params, setParams] = useSearchParams()
   const stations = network?.stations || EMPTY
   const routes = network?.routes || EMPTY
   const routesById = useMemo(() => Object.fromEntries(routes.map((r) => [r.id, r])), [routes])
+  const stationsById = useMemo(() => Object.fromEntries(stations.map((s) => [s.id, s])), [stations])
   // places with no line (neighbourhoods, landmarks) are searchable but not drawn on the map
   const lineStations = useMemo(() => {
     const ids = new Set(routes.flatMap((r) => r.stationIds || []))
@@ -46,6 +53,9 @@ export default function PlannerPage({ net }) {
   const [showAll, setShowAll] = useState(false)
   const [fitKey, setFitKey] = useState(0)
   const [reportLeg, setReportLeg] = useState(null)
+  const [guiding, setGuiding] = useState(false)
+  const [me, setMe] = useState(null)
+  const pendingSearch = useRef(false)
 
   const setPin = (mode) => {
     setPinMode(mode)
@@ -64,20 +74,21 @@ export default function PlannerPage({ net }) {
     setPinMode(null)
   }
 
-  const search = async () => {
-    if (!origin || !dest) return
-    setBusy(true); setError('')
+  const search = async (from = origin, to = dest) => {
+    if (!from || !to) return
+    setBusy(true); setError(''); setGuiding(false)
     const request = {
-      origin: origin.mode === 'station' ? null : origin.point,
-      destination: dest.mode === 'station' ? null : dest.point,
-      originStationId: origin.mode === 'station' ? origin.stationId : null,
-      destinationStationId: dest.mode === 'station' ? dest.stationId : null,
+      origin: from.mode === 'station' ? null : from.point,
+      destination: to.mode === 'station' ? null : to.point,
+      originStationId: from.mode === 'station' ? from.stationId : null,
+      destinationStationId: to.mode === 'station' ? to.stationId : null,
       peak: peak === 'auto' ? null : peak === 'yes',
     }
     try {
       const data = await Api.routing(request)
       setResult(data); setSelected(0); setShowRoute(true); setFitKey((k) => k + 1)
       notify(t('planner.found', { n: data.paths.length }))
+      addRecent(from, to)
       try { localStorage.setItem(LAST_KEY, JSON.stringify(data)) } catch { /* ignore */ }
     } catch (err) {
       setError(offline ? t('planner.offlineSearch') : err.message)
@@ -86,11 +97,49 @@ export default function PlannerPage({ net }) {
     }
   }
 
+  // Shared trip links and stop-page shortcuts: ?from=…&to=…(&go=1) fill the planner once the network is loaded.
+  useEffect(() => {
+    if (!stations.length || (!params.get('from') && !params.get('to'))) return
+    const from = decodeEndpoint(params.get('from'), stationsById, t('planner.pin'))
+    const to = decodeEndpoint(params.get('to'), stationsById, t('planner.pin'))
+    if (from) setOrigin(from)
+    if (to) setDest(to)
+    if (from && to && params.get('go') === '1') { pendingSearch.current = { from, to }; notify(t('share.opened')) }
+    setParams({}, { replace: true })
+  }, [stations.length, params]) // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    if (!pendingSearch.current) return
+    const { from, to } = pendingSearch.current
+    pendingSearch.current = false
+    search(from, to)
+  }) // eslint-disable-line react-hooks/exhaustive-deps
+
+  const pickPlace = (place) => {
+    const e = toEndpoint(place, stationsById)
+    if (!e) return
+    if (!origin) setOrigin(e)
+    else if (!dest) setDest(e)
+    else setDest(e)
+  }
+  const savePlace = (endpoint, kind) => {
+    const label = kind === 'HOME' ? t('places.home') : kind === 'WORK' ? t('places.work') : endpoint.name
+    addPlace(endpoint, kind, label)
+    notify(t('places.saved'))
+  }
+  const repeat = (trip) => { setOrigin(trip.from); setDest(trip.to); search(trip.from, trip.to) }
+
+  const tripText = (p) => t('planner.shareText', {
+    from: endpointName(result.originName, 'planner.origin'), to: endpointName(result.destinationName, 'planner.destination'),
+    fare: formatFare(p.totalFare), dur: formatDuration(p.totalDurationSeconds),
+  })
+  const link = () => tripLink(origin, dest)
+  const copyLink = async () => {
+    try { await navigator.clipboard.writeText(link()); notify(t('share.copied')) } catch { notify(link()) }
+  }
+  const whatsApp = (p) => window.open(`https://wa.me/?text=${encodeURIComponent(`${tripText(p)}\n${link()}`)}`, '_blank', 'noopener')
+
   const share = async (p) => {
-    const text = t('planner.shareText', {
-      from: endpointName(result.originName, 'planner.origin'), to: endpointName(result.destinationName, 'planner.destination'),
-      fare: formatFare(p.totalFare), dur: formatDuration(p.totalDurationSeconds),
-    })
+    const text = origin && dest ? `${tripText(p)}\n${link()}` : tripText(p)
     try {
       if (navigator.share) await navigator.share({ text })
       else if (navigator.clipboard) { await navigator.clipboard.writeText(text); notify(t('planner.shared')) }
@@ -136,17 +185,38 @@ export default function PlannerPage({ net }) {
           <div className="section-title">{t('planner.details')} <span className="step-no">{t('planner.step')}</span></div>
           {loading && !network && <p className="sub">{t('planner.loadingNetwork')}</p>}
           <div className="inputs">
-            <EndpointPicker label={t('planner.origin')} kind="origin" value={origin} onChange={setOrigin} stations={stations} pinMode={pinMode === 'origin'} onPinMode={setPin} />
-            <EndpointPicker label={t('planner.destination')} kind="dest" value={dest} onChange={setDest} stations={stations} pinMode={pinMode === 'dest'} onPinMode={setPin} />
+            <EndpointPicker label={t('planner.origin')} kind="origin" value={origin} onChange={setOrigin} stations={stations} pinMode={pinMode === 'origin'} onPinMode={setPin} onSave={savePlace} />
+            <EndpointPicker label={t('planner.destination')} kind="dest" value={dest} onChange={setDest} stations={stations} pinMode={pinMode === 'dest'} onPinMode={setPin} onSave={savePlace} />
           </div>
+          {places.length > 0 && (
+            <div className="places-bar" aria-label={t('places.title')}>
+              {[...places].sort((a, b) => ['HOME', 'WORK', 'OTHER'].indexOf(a.kind) - ['HOME', 'WORK', 'OTHER'].indexOf(b.kind)).map((p) => (
+                <span key={p.id} className="place-chip">
+                  <button onClick={() => pickPlace(p)} title={p.name}>{p.kind === 'HOME' ? '🏠' : p.kind === 'WORK' ? '💼' : '⭐'} {p.label || p.name}</button>
+                  <button className="x" aria-label={t('places.remove')} onClick={() => { removePlace(p.id); notify(t('places.removed')) }}>×</button>
+                </span>
+              ))}
+            </div>
+          )}
           <div className="travel-options">
             <label htmlFor="peak">{t('planner.departure')}</label>
             <Select ariaLabel={t('planner.departure')} value={peak} onChange={setPeak} style={{ maxWidth: 235 }}
               options={[{ value: 'auto', label: t('planner.peakAuto') }, { value: 'yes', label: t('planner.yes') }, { value: 'no', label: t('planner.no') }]} />
           </div>
-          <button className="primary" onClick={search} disabled={!origin || !dest || busy}>{busy ? t('planner.searching') : t('planner.search')}</button>
+          <button className="primary" onClick={() => search()} disabled={!origin || !dest || busy}>{busy ? t('planner.searching') : t('planner.search')}</button>
           {error ? <p className="error" style={{ textAlign: 'center', marginBottom: 0 }}>{error}</p> : <p className="hint">{t('planner.hintSearch')}</p>}
         </section>
+
+        {recent.length > 0 && !busy && (
+          <section className="panel recent">
+            <div className="resultsHead"><h3>{t('recent.title')}</h3><button className="link-btn" onClick={clearRecent}>{t('recent.clear')}</button></div>
+            <ul>
+              {recent.slice(0, 5).map((r) => (
+                <li key={`${r.at}`}><button onClick={() => repeat(r)} title={t('recent.again')}><b>{r.from.name}</b> ← <b>{r.to.name}</b><small>{timeAgo(new Date(r.at).toISOString())}</small></button></li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         <AlertsBar alerts={result?.alerts} />
 
@@ -155,13 +225,16 @@ export default function PlannerPage({ net }) {
             onSelect={(i) => { setSelected(i); setShowRoute(true) }}
             onReport={setReportLeg}
             onShow={(i) => { setSelected(i); setShowRoute(true); setFitKey((k) => k + 1); notify(t('planner.routeShown')) }}
-            onShare={share} />
+            onShare={share} onCopyLink={origin && dest ? copyLink : null} onWhatsApp={origin && dest ? whatsApp : null}
+            onStart={(i) => { setSelected(i); setShowRoute(true); setGuiding(true); setFitKey((k) => k + 1) }} />
         )}
       </aside>
 
       <section className="mapcard" aria-label={t('planner.mapTitle')}>
         <MapView dark={dark} stations={visibleStations} routes={visibleRoutes} dimRoutes={dimRoutes} origin={origin?.point} destination={dest?.point} legs={legs} fit={fit}
-          onClick={onMapClick} onStationClick={onStationClick} zoomPosition="bottomright" />
+          onClick={onMapClick} onStationClick={onStationClick} zoomPosition="bottomright" me={me}
+          routeColor={(r) => (live[r.id] && live[r.id].status !== 'NORMAL' ? '#e88451' : null)} />
+        {guiding && path && <TripGuide key={`${selected}-${result?.processingMillis}`} path={path} onPosition={setMe} onClose={() => { setGuiding(false); setMe(null) }} />}
         <div className="map-heading"><b>{t('planner.mapTitle')}</b><span>{t('planner.mapSub')}</span></div>
         {pinMode && <div className="map-pick">📍 {t('planner.pickOnMap', { what: t(pinMode === 'origin' ? 'planner.origin' : 'planner.destination') })}</div>}
         <div className="map-tools">

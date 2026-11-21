@@ -42,6 +42,24 @@ services:
         max-size: "10m"
         max-file: "5"
 
+  # Walking routes (OSRM, foot profile) built from the Syria OpenStreetMap extract in ./osrm
+  # (see deploy/ysman/prepare-osrm.sh). Only reachable from the other containers on the "web" network.
+  syrian-transit-osrm:
+    image: ghcr.io/project-osrm/osrm-backend:v6.0.0
+    container_name: syrian-transit-osrm
+    restart: unless-stopped
+    command: osrm-routed --algorithm mld --max-table-size 1000 /data/syria-latest.osrm
+    volumes:
+      - ./osrm:/data:ro
+    mem_limit: 1g
+    networks:
+      - web
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+
 networks:
   web:
     external: true

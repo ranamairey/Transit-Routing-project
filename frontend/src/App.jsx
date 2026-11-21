@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import NavBar from './components/NavBar.jsx'
 import { ToastProvider } from './components/Toast.jsx'
+import { RiderProvider } from './context/RiderContext.jsx'
 import { useNetwork } from './hooks/useNetwork.js'
 import { useI18n } from './i18n/I18nContext.jsx'
 import PlannerPage from './pages/PlannerPage.jsx'
@@ -9,18 +10,25 @@ import RegisterPage from './pages/RegisterPage.jsx'
 import ForgotPasswordPage from './pages/ForgotPasswordPage.jsx'
 import ResetPasswordPage from './pages/ResetPasswordPage.jsx'
 import VerifyEmailPage from './pages/VerifyEmailPage.jsx'
+import LinesPage from './pages/LinesPage.jsx'
+import LinePage from './pages/LinePage.jsx'
+import StopPage from './pages/StopPage.jsx'
 
-/** Rider app: planner, login/register and reporting. Administration lives in the separate admin console. */
+/** Rider app: planner, line and stop pages, saved places, alerts, login/register and reporting. Administration lives in the separate admin console. */
 export default function App() {
   const net = useNetwork()
   const { t } = useI18n()
   return (
     <ToastProvider>
+    <RiderProvider>
     <div className="app">
-      <NavBar />
+      <NavBar net={net} />
       {net.offline && <div className="offline">{t('offlineBanner')}</div>}
       <Routes>
         <Route path="/" element={<PlannerPage net={net} />} />
+        <Route path="/lines" element={<LinesPage net={net} />} />
+        <Route path="/lines/:id" element={<LinePage net={net} />} />
+        <Route path="/stops/:id" element={<StopPage net={net} />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/forgot" element={<ForgotPasswordPage />} />
@@ -29,6 +37,7 @@ export default function App() {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
+    </RiderProvider>
     </ToastProvider>
   )
 }

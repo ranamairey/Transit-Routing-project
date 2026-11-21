@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { CircleMarker, MapContainer, Marker, Polyline, Popup, TileLayer, Tooltip, ZoomControl, useMap, useMapEvents } from 'react-leaflet'
+import { Circle, CircleMarker, MapContainer, Marker, Polyline, Popup, TileLayer, Tooltip, ZoomControl, useMap, useMapEvents } from 'react-leaflet'
 import L from 'leaflet'
 import { useI18n } from '../i18n/I18nContext.jsx'
 
@@ -71,6 +71,7 @@ const LEG_COLORS = { SERVIS: '#1f5fb3', BUS: '#b3521f', WALK: '#4b5a52' }
  */
 export default function MapView({
   stations = [], routes = [], origin, destination, legs = [], onClick, fit, onStationClick, highlightRouteId, drawing = [], zoomPosition, dimRoutes = false, dark = false,
+  me, routeColor,
 }) {
   const { t } = useI18n()
   return (
@@ -86,7 +87,7 @@ export default function MapView({
           key={r.id}
           positions={(r.polyline || []).map((p) => [p.lat, p.lng])}
           pathOptions={{
-            color: r.vehicleType === 'BUS' ? LEG_COLORS.BUS : LEG_COLORS.SERVIS,
+            color: routeColor?.(r) || (r.vehicleType === 'BUS' ? LEG_COLORS.BUS : LEG_COLORS.SERVIS),
             weight: highlightRouteId === r.id ? 6 : dimRoutes ? 2 : 3,
             opacity: highlightRouteId && highlightRouteId !== r.id ? 0.25 : dimRoutes ? 0.18 : 0.7,
           }}
@@ -124,6 +125,12 @@ export default function MapView({
         <CircleMarker key={`d${i}`} center={[p.lat, p.lng]} radius={4} pathOptions={{ color: '#e0a100', fillOpacity: 1 }} />
       ))}
 
+      {me && (
+        <>
+          {me.accuracy > 15 && <Circle center={[me.lat, me.lng]} radius={Math.min(me.accuracy, 500)} pathOptions={{ color: '#1a73e8', weight: 1, fillOpacity: 0.08 }} />}
+          <CircleMarker center={[me.lat, me.lng]} radius={8} pathOptions={{ color: '#fff', weight: 3, fillColor: '#1a73e8', fillOpacity: 1 }} />
+        </>
+      )}
       {origin && <Marker position={[origin.lat, origin.lng]} icon={ORIGIN_ICON}><Popup>{t('planner.origin')}</Popup></Marker>}
       {destination && <Marker position={[destination.lat, destination.lng]} icon={DEST_ICON}><Popup>{t('planner.destination')}</Popup></Marker>}
     </MapContainer>

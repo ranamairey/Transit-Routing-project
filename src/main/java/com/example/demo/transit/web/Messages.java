@@ -38,6 +38,15 @@ public final class Messages {
         EN.put("ليس لديك الصلاحيات الكافية لتنفيذ هذا الإجراء", "You do not have permission to perform this action");
         EN.put("نقطة الانطلاق والوجهة متطابقتان", "Origin and destination are the same");
         EN.put("يجب أن يبقى مشرف واحد على الأقل", "At least one admin must remain");
+        EN.put("اقتراح مكان ناقص يتطلب الاسم وموقعه على الخريطة", "A missing-place suggestion needs a name and a point on the map");
+        EN.put("حدد الموقف والموقع الصحيح على الخريطة", "Choose the stop and its correct position on the map");
+        EN.put("حدد الخط واكتب ما الخطأ فيه", "Choose the line and describe what is wrong");
+        EN.put("اكتب وصفاً للاقتراح", "Describe your suggestion");
+        EN.put("تجاوزت الحد المسموح من الاقتراحات لهذه الساعة", "You have reached the hourly limit of suggestions");
+        EN.put("الاقتراح غير موجود", "Suggestion not found");
+        EN.put("يمكن حفظ 20 مكاناً كحد أقصى", "You can save up to 20 places");
+        EN.put("المكان المحفوظ يحتاج موقفاً أو نقطة على الخريطة", "A saved place needs a stop or a point on the map");
+        EN.put("يمكن متابعة 50 خطاً كحد أقصى", "You can follow up to 50 lines");
         EN.put("رابط غير صالح أو منتهي الصلاحية", "This link is invalid or has expired");
         EN.put("تم تأكيد البريد الإلكتروني مسبقاً", "This email is already verified");
         EN.put("يجب تأكيد البريد الإلكتروني قبل إرسال البلاغات", "Please verify your email before sending reports");

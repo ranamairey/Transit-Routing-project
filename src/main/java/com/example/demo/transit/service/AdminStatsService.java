@@ -24,10 +24,13 @@ public class AdminStatsService {
     private final CrowdsourceReportRepository reportRepository;
     private final TransitGraphFactory graphFactory;
     private final Clock clock;
+    private final com.example.demo.transit.repository.PlaceSuggestionRepository suggestions;
 
     public AdminStatsService(StationRepository stationRepository, RouteRepository routeRepository,
                              UserRepository userRepository, CrowdsourceReportRepository reportRepository,
-                             TransitGraphFactory graphFactory, Clock clock) {
+                             TransitGraphFactory graphFactory, Clock clock,
+                             com.example.demo.transit.repository.PlaceSuggestionRepository suggestions) {
+        this.suggestions = suggestions;
         this.stationRepository = stationRepository;
         this.routeRepository = routeRepository;
         this.userRepository = userRepository;
@@ -54,6 +57,7 @@ public class AdminStatsService {
         snapshot.routes().forEach(r -> byStatus.merge(graphFactory.effectiveStatus(r, now).name(), 1L, Long::sum));
         return new AdminStatsDto(
                 snapshot.stations().size(), snapshot.routes().size(), userRepository.count(),
-                all.size(), last24, pending, byType, byStatus);
+                all.size(), last24, pending, byType, byStatus,
+                suggestions.countByStatus(com.example.demo.transit.domain.SuggestionStatus.PENDING));
     }
 }

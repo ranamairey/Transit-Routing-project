@@ -8,6 +8,8 @@ import { Initials } from './ui.jsx'
 const NAV = [
   { to: '/', key: 'dashboard', ico: '▦', end: true },
   { to: '/reports', key: 'reports', ico: '◫', count: 'pending' },
+  { to: '/suggestions', key: 'suggestions', ico: '✎', count: 'suggestions' },
+  { to: '/insights', key: 'insights', ico: '◔' },
   { to: '/stations', key: 'stations', ico: '♧' },
   { to: '/routes', key: 'routes', ico: '≋' },
   { to: '/users', key: 'users', ico: '♙', count: 'users' },
@@ -27,7 +29,7 @@ export default function Layout() {
     let alive = true
     const check = () => {
       Api.health().then((h) => alive && setHealth(h.status === 'UP')).catch(() => alive && setHealth(false))
-      Api.stats().then((s) => alive && setCounts({ pending: s.reportsPending, users: s.users })).catch(() => {})
+      Api.stats().then((s) => alive && setCounts({ pending: s.reportsPending, users: s.users, suggestions: s.suggestionsPending })).catch(() => {})
     }
     check()
     const id = setInterval(check, 30000)

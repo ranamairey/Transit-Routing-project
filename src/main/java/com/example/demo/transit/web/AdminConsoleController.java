@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdminConsoleController {
 
     private final AdminStatsService statsService;
+    @org.springframework.beans.factory.annotation.Autowired
+    private com.example.demo.transit.service.UsageStatsService usageStats;
     private final NetworkImportService importService;
     private final NetworkAdminService networkAdminService;
 
@@ -33,6 +35,12 @@ public class AdminConsoleController {
     @GetMapping("/stats")
     public AdminStatsDto stats() {
         return statsService.stats();
+    }
+
+    /** Trip-search statistics: busiest trips, top destinations and searches with no route. */
+    @GetMapping("/stats/usage")
+    public com.example.demo.transit.dto.UsageStatsDto usage(@org.springframework.web.bind.annotation.RequestParam(defaultValue = "7") int days) {
+        return usageStats.stats(days);
     }
 
     @PostMapping("/network/import")

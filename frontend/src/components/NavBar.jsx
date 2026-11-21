@@ -2,19 +2,26 @@ import { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext.jsx'
 import { useI18n } from '../i18n/I18nContext.jsx'
+import AlertsBell from './AlertsBell.jsx'
+import SuggestDialog from './SuggestDialog.jsx'
 
 const ADMIN_URL = import.meta.env.VITE_ADMIN_URL || ''
 
-export default function NavBar() {
+export default function NavBar({ net }) {
   const { user, isAdmin, logout } = useAuth()
   const { t, toggle, theme, cycleTheme } = useI18n()
   const [about, setAbout] = useState(false)
+  const [suggest, setSuggest] = useState(false)
+  const routes = net?.network?.routes || []
   return (
     <header className="topbar">
       <Link to="/" className="brand"><div className="logo">🚌</div><div><b>{t('appName')}</b><small>{t('tagline')}</small></div></Link>
       <nav className="nav">
         <NavLink to="/" end>{t('nav.planner')}</NavLink>
+        <NavLink to="/lines">{t('nav2.lines')}</NavLink>
+        <button onClick={() => setSuggest(true)}>{t('nav2.suggest')}</button>
         <button onClick={() => setAbout(true)}>{t('nav.about')}</button>
+        <AlertsBell routes={routes} />
         {isAdmin && ADMIN_URL && <a href={ADMIN_URL} target="_blank" rel="noreferrer">{t('nav.admin')} ↗</a>}
         <button className="lang" onClick={toggle}>🌐 {t('nav.lang')}</button>
         <button className="lang" onClick={cycleTheme} title={t('theme.title')}>{theme === 'dark' ? '🌙' : theme === 'light' ? '☀️' : '🌗'} {t(`theme.${theme}`)}</button>
@@ -27,6 +34,7 @@ export default function NavBar() {
           <NavLink to="/login" className="login">{t('nav.login')} ←</NavLink>
         )}
       </nav>
+      {suggest && <SuggestDialog stations={net?.network?.stations || []} routes={routes} onClose={() => setSuggest(false)} />}
       {about && (
         <div className="modal-backdrop" onClick={() => setAbout(false)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>

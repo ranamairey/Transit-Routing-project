@@ -32,6 +32,12 @@ public class ReportController {
         return reportService.submit(request);
     }
 
+    /** Live line status: lines with a non-normal status or recent rider reports (public). */
+    @GetMapping("/live")
+    public List<com.example.demo.transit.dto.LiveRouteStatusDto> live() {
+        return reportService.liveStatuses();
+    }
+
     /** FR-2.2: recent alerts of a route (public). */
     @GetMapping
     public List<ReportResponse> recent(@RequestParam String routeId) {

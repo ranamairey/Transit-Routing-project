@@ -17,7 +17,7 @@ if [ "${TILES:-maptiler}" = "osm" ]; then export VITE_TILE_URL= VITE_TILE_URL_DA
 trap 'rm -rf "$OUT"' EXIT
 
 echo "==> Building the rider app (/transit/)"
-(cd frontend && VITE_BASE=/transit/ VITE_API_BASE=/transit VITE_ADMIN_URL="$ORIGIN/transit-admin/" \
+(cd frontend && VITE_BASE=/transit/ VITE_API_BASE=/transit VITE_ADMIN_URL="$ORIGIN/transit-admin/" VITE_PUBLIC_URL="$ORIGIN/transit" \
   npx vite build --outDir "$OUT/web/rider" --emptyOutDir --logLevel warn)
 
 echo "==> Building the admin console (/transit-admin/)"

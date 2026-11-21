@@ -2670,7 +2670,8 @@
    "lat": 33.734707,
    "lng": 36.108725,
    "source": "osm:node/610203832",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Ghada Private Hospital"
   },
   {
    "name": "مستشفى الرشيد",
@@ -2689,7 +2690,8 @@
    "lat": 33.436616,
    "lng": 36.286982,
    "source": "osm:node/667345839",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Sbeineh Clinic"
   },
   {
    "name": "مشفى محجوب",
@@ -2728,7 +2730,8 @@
    "lat": 33.432565,
    "lng": 36.235174,
    "source": "osm:node/1127741469",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Naoura stop"
   },
   {
    "name": "موقف الخزان",
@@ -2737,7 +2740,8 @@
    "lat": 33.428679,
    "lng": 36.241429,
    "source": "osm:node/1127741922",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Khazzan stop"
   },
   {
    "name": "موقف الطيارة",
@@ -2746,7 +2750,8 @@
    "lat": 33.432448,
    "lng": 36.242695,
    "source": "osm:node/1127746470",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Tayyara stop"
   },
   {
    "name": "موقف الكازية",
@@ -2755,7 +2760,8 @@
    "lat": 33.431875,
    "lng": 36.232138,
    "source": "osm:node/1127853936",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Kaziyeh (petrol station) stop"
   },
   {
    "name": "مشفى أمية",
@@ -2774,7 +2780,8 @@
    "lat": 33.520616,
    "lng": 36.298741,
    "source": "osm:node/1227980256",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Surgical Medicine Hospital"
   },
   {
    "name": "مشفى التوفيق‎",
@@ -2784,7 +2791,8 @@
    "lat": 33.514981,
    "lng": 36.289373,
    "source": "osm:node/1227985180",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Tawfiq Hospital"
   },
   {
    "name": "المعهد العالي للفنون المسرحية",
@@ -2804,7 +2812,8 @@
    "lat": 33.524272,
    "lng": 36.301146,
    "source": "osm:node/1336761629",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Hayat Hospital"
   },
   {
    "name": "مشفى الكسوة",
@@ -2813,7 +2822,8 @@
    "lat": 33.362026,
    "lng": 36.235793,
    "source": "osm:node/1798984261",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Kisweh Hospital"
   },
   {
    "name": "موقف سيرفيس الحرجلة",
@@ -2822,7 +2832,8 @@
    "lat": 33.362509,
    "lng": 36.246589,
    "source": "osm:node/1800538607",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Harjaleh servis stop"
   },
   {
    "name": "مشفى العين والاذن",
@@ -2831,7 +2842,8 @@
    "lat": 33.520259,
    "lng": 36.300274,
    "source": "osm:node/1816157930",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Eye and Ear Hospital"
   },
   {
    "name": "قمرين",
@@ -2840,7 +2852,8 @@
    "lat": 33.433371,
    "lng": 36.156259,
    "source": "osm:node/1820866564",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Qamarin"
   },
   {
    "name": "مشفى السلام",
@@ -2849,7 +2862,8 @@
    "lat": 33.448297,
    "lng": 36.265448,
    "source": "osm:node/1824754403",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Salam Hospital"
   },
   {
    "name": "ساحة الأمل",
@@ -2868,7 +2882,8 @@
    "lat": 33.55299,
    "lng": 36.195564,
    "source": "osm:node/1825688935",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Dahiyat Qudsaya junction"
   },
   {
    "name": "الزعفران",
@@ -2877,7 +2892,8 @@
    "lat": 33.541049,
    "lng": 36.213212,
    "source": "osm:node/1826776314",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Zaafaran"
   },
   {
    "name": "مستشفى يافا",
@@ -2896,7 +2912,8 @@
    "lat": 33.360712,
    "lng": 36.225268,
    "source": "osm:node/2606817210",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Mansoura"
   },
   {
    "name": "أبو قاووق",
@@ -2916,7 +2933,8 @@
    "lat": 33.352323,
    "lng": 36.196171,
    "source": "osm:node/2606817212",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Maaliyeh"
   },
   {
    "name": "عين البيضة",
@@ -2935,7 +2953,8 @@
    "lat": 33.559103,
    "lng": 36.210411,
    "source": "osm:node/2949411342",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Jabal al-Ward junction"
   },
   {
    "name": "سوق السكرية",
@@ -2944,7 +2963,8 @@
    "lat": 33.508409,
    "lng": 36.303032,
    "source": "osm:node/3245444438",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Souq al-Sukkariyeh"
   },
   {
    "name": "سقبا - ساحة الراية",
@@ -2953,7 +2973,8 @@
    "lat": 33.515688,
    "lng": 36.383328,
    "source": "osm:node/3262147361",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Saqba – al-Raya Square"
   },
   {
    "name": "ساحة الافتريس",
@@ -2962,7 +2983,8 @@
    "lat": 33.509924,
    "lng": 36.392592,
    "source": "osm:node/3262147382",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Iftris Square"
   },
   {
    "name": "ساحة عين ترما",
@@ -2971,7 +2993,8 @@
    "lat": 33.512122,
    "lng": 36.352274,
    "source": "osm:node/3262307396",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Ein Tarma Square"
   },
   {
    "name": "دوار زملكا",
@@ -2980,7 +3003,8 @@
    "lat": 33.528287,
    "lng": 36.353524,
    "source": "osm:node/3262346013",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Zamalka Roundabout"
   },
   {
    "name": "مركز الشفاء الطبي",
@@ -2989,7 +3013,8 @@
    "lat": 33.642362,
    "lng": 36.297026,
    "source": "osm:node/3309398578",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Shifa Medical Centre"
   },
   {
    "name": "منين",
@@ -3098,7 +3123,8 @@
    "lat": 33.588036,
    "lng": 36.195891,
    "source": "osm:node/3859544177",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Ashrafiyat al-Wadi Clinic"
   },
   {
    "name": "مركز الامل الطبي",
@@ -3107,7 +3133,8 @@
    "lat": 33.577268,
    "lng": 36.192819,
    "source": "osm:node/3859579775",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Amal Medical Centre"
   },
   {
    "name": "أشرفية",
@@ -3137,7 +3164,8 @@
    "lat": 33.476897,
    "lng": 36.390786,
    "source": "osm:node/3975771430",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Tabbakh Farms"
   },
   {
    "name": "عيون حاروش",
@@ -3146,7 +3174,8 @@
    "lat": 33.476118,
    "lng": 36.424539,
    "source": "osm:node/3975811603",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Ayoun Harouch"
   },
   {
    "name": "بالا الجديدة",
@@ -3195,7 +3224,8 @@
    "lat": 33.464069,
    "lng": 36.437124,
    "source": "osm:node/4186469734",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Hosh al-Khatib"
   },
   {
    "name": "مركز الكفرين الصحي",
@@ -3204,7 +3234,8 @@
    "lat": 33.431595,
    "lng": 36.548076,
    "source": "osm:node/4269690593",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Kafrein Health Centre"
   },
   {
    "name": "مشفى الكندي",
@@ -3223,7 +3254,8 @@
    "lat": 33.571208,
    "lng": 36.395119,
    "source": "osm:node/4326753193",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Municipality Roundabout"
   },
   {
    "name": "ميدان شيخ محي الدين",
@@ -3232,7 +3264,8 @@
    "lat": 33.529697,
    "lng": 36.28976,
    "source": "osm:node/4328334270",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Maydan Sheikh Muhyiddin"
   },
   {
    "name": "دوار العلم",
@@ -3251,7 +3284,8 @@
    "lat": 33.593529,
    "lng": 36.198795,
    "source": "osm:node/4465257391",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Ashrafiyeh Bridge"
   },
   {
    "name": "حديقة دمر",
@@ -3261,7 +3295,8 @@
    "lat": 33.540857,
    "lng": 36.23958,
    "source": "osm:node/4494495089",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Dummar Park"
   },
   {
    "name": "ساحة التبريد",
@@ -3270,7 +3305,8 @@
    "lat": 33.498053,
    "lng": 36.300951,
    "source": "osm:node/4503068283",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Tabrid Square"
   },
   {
    "name": "ساحة عرنة",
@@ -3279,7 +3315,8 @@
    "lat": 33.434974,
    "lng": 36.080761,
    "source": "osm:node/4504753191",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Arneh Square"
   },
   {
    "name": "ساحة التوسع مشروع دمر",
@@ -3288,7 +3325,8 @@
    "lat": 33.527448,
    "lng": 36.211842,
    "source": "osm:node/4601176591",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Mashrou Dummar Expansion Square"
   },
   {
    "name": "مستوصف جمعية الأعمال الخيرية",
@@ -3297,7 +3335,8 @@
    "lat": 33.530338,
    "lng": 36.283936,
    "source": "osm:node/4674596543",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Charitable Works Society Clinic"
   },
   {
    "name": "ساحة الشهداء",
@@ -3306,7 +3345,8 @@
    "lat": 33.468416,
    "lng": 36.206886,
    "source": "osm:node/4702332411",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Martyrs' Square"
   },
   {
    "name": "الى السويداء",
@@ -3315,7 +3355,8 @@
    "lat": 33.423192,
    "lng": 36.384287,
    "source": "osm:node/4703640640",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "To Sweida"
   },
   {
    "name": "الى السيده زينب+ متحلق جنوبي",
@@ -3324,7 +3365,8 @@
    "lat": 33.419495,
    "lng": 36.361683,
    "source": "osm:node/4703650585",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "To Sayyida Zaynab (southern ring road)"
   },
   {
    "name": "ساحة عربين",
@@ -3333,7 +3375,8 @@
    "lat": 33.538014,
    "lng": 36.36433,
    "source": "osm:node/4715098792",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Arbin Square"
   },
   {
    "name": "دوار الضاحية",
@@ -3342,7 +3385,8 @@
    "lat": 33.580769,
    "lng": 36.366614,
    "source": "osm:node/4813798122",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Dahiya Roundabout"
   },
   {
    "name": "بنك الدم المركزي",
@@ -3371,7 +3415,8 @@
    "lat": 33.409354,
    "lng": 36.514494,
    "source": "osm:node/4993793022",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Civil Aviation stop"
   },
   {
    "name": "مستشفى الروضة الجراحي",
@@ -3390,7 +3435,8 @@
    "lat": 33.431542,
    "lng": 36.228899,
    "source": "osm:node/5167497426",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Sindbad Park"
   },
   {
    "name": "حديقة الطيارة",
@@ -3399,7 +3445,8 @@
    "lat": 33.431979,
    "lng": 36.242513,
    "source": "osm:node/5167930923",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Tayyara Park"
   },
   {
    "name": "ساحة الأزروني",
@@ -3408,7 +3455,8 @@
    "lat": 33.423493,
    "lng": 36.224835,
    "source": "osm:node/5167930924",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Azrouni Square"
   },
   {
    "name": "الفصول الاربعة",
@@ -3417,7 +3465,8 @@
    "lat": 33.43857,
    "lng": 36.201846,
    "source": "osm:node/5169604025",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Four Seasons"
   },
   {
    "name": "سيمو",
@@ -3426,7 +3475,8 @@
    "lat": 33.503693,
    "lng": 36.29959,
    "source": "osm:node/5202608721",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Simo"
   },
   {
    "name": "المطحنة",
@@ -3435,7 +3485,8 @@
    "lat": 33.57266,
    "lng": 36.194728,
    "source": "osm:node/5216709923",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Mathana (the mill)"
   },
   {
    "name": "نادي الفروسية",
@@ -3444,7 +3495,8 @@
    "lat": 33.563799,
    "lng": 36.17136,
    "source": "osm:node/5216762221",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Equestrian Club"
   },
   {
    "name": "زقاق الطالع",
@@ -3453,7 +3505,8 @@
    "lat": 33.493316,
    "lng": 36.294612,
    "source": "osm:node/5222296937",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Zuqaq al-Taleh"
   },
   {
    "name": "مشفى التوليد 29 أيار (الشرق)",
@@ -3472,7 +3525,8 @@
    "lat": 33.572123,
    "lng": 36.195431,
    "source": "osm:node/5232802821",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Old Mill"
   },
   {
    "name": "دير عشاير",
@@ -3522,7 +3576,8 @@
    "lat": 33.556769,
    "lng": 36.132014,
    "source": "osm:node/5493779022",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Hamsho Park"
   },
   {
    "name": "الجمعيات",
@@ -3531,7 +3586,8 @@
    "lat": 33.726723,
    "lng": 36.083319,
    "source": "osm:node/5590250196",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Jamiyat"
   },
   {
    "name": "الزلاح",
@@ -3540,7 +3596,8 @@
    "lat": 33.706369,
    "lng": 36.099973,
    "source": "osm:node/5590250197",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Zallah"
   },
   {
    "name": "بوظة امية",
@@ -3570,7 +3627,8 @@
    "lat": 33.485691,
    "lng": 36.341096,
    "source": "osm:node/5702007422",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Jaramana Surgical Hospital"
   },
   {
    "name": "مستشفى اليمان",
@@ -3599,7 +3657,8 @@
    "lat": 33.541173,
    "lng": 36.216503,
    "source": "osm:node/5771903153",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Masri Wedding Hall"
   },
   {
    "name": "منتزه المير",
@@ -3608,7 +3667,8 @@
    "lat": 33.481086,
    "lng": 36.345267,
    "source": "osm:node/5775691453",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Mir Park"
   },
   {
    "name": "مواصلات دمشق - مؤسسة النقل الداخلي",
@@ -3637,7 +3697,8 @@
    "lat": 33.419124,
    "lng": 36.279161,
    "source": "osm:node/6105665486",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Engineers' Administration"
   },
   {
    "name": "السكن",
@@ -3646,7 +3707,8 @@
    "lat": 33.454718,
    "lng": 36.273984,
    "source": "osm:node/6210484501",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Sakan (housing)"
   },
   {
    "name": "دوار حجيرة",
@@ -3655,7 +3717,8 @@
    "lat": 33.448155,
    "lng": 36.337233,
    "source": "osm:node/6306186885",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Hjeira Roundabout"
   },
   {
    "name": "منتزه المحطة / جديدة شيباني",
@@ -3664,7 +3727,8 @@
    "lat": 33.570227,
    "lng": 36.195399,
    "source": "osm:node/6455543385",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Mahatta Park / Jdeidet al-Shaibani"
   },
   {
    "name": "مزرعة دير العشاير",
@@ -3694,7 +3758,8 @@
    "lat": 33.496415,
    "lng": 36.321713,
    "source": "osm:node/6578931554",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Mid-shift charging point"
   },
   {
    "name": "محطة كلية الهندسة الميكانيكية والكهربائية",
@@ -3703,7 +3768,8 @@
    "lat": 33.496495,
    "lng": 36.321665,
    "source": "osm:node/6578931555",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Faculty of Mechanical and Electrical Engineering stop"
   },
   {
    "name": "موقف للحافلات",
@@ -3712,7 +3778,8 @@
    "lat": 33.490948,
    "lng": 36.316419,
    "source": "osm:node/6578939033",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Bus stop"
   },
   {
    "name": "موقف حافلات",
@@ -3721,7 +3788,8 @@
    "lat": 33.491049,
    "lng": 36.321968,
    "source": "osm:node/6578939034",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Bus stop"
   },
   {
    "name": "موقف حافلات ونقطة شحن متوسطة",
@@ -3730,7 +3798,8 @@
    "lat": 33.496647,
    "lng": 36.321594,
    "source": "osm:node/6578939037",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Bus stop and charging point"
   },
   {
    "name": "مارو",
@@ -3749,7 +3818,8 @@
    "lat": 33.490185,
    "lng": 36.300263,
    "source": "osm:node/7037017791",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Fayhaa Hospital"
   },
   {
    "name": "مستشفى الأندلس",
@@ -3778,7 +3848,8 @@
    "lat": 33.490418,
    "lng": 36.300245,
    "source": "osm:node/7083634485",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Fayhaa Private Hospital"
   },
   {
    "name": "جلسات",
@@ -3787,7 +3858,8 @@
    "lat": 33.625492,
    "lng": 36.303442,
    "source": "osm:node/7251450985",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Jalsat"
   },
   {
    "name": "لابل",
@@ -3796,7 +3868,8 @@
    "lat": 33.538003,
    "lng": 36.229477,
    "source": "osm:node/7342810998",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Label"
   },
   {
    "name": "أبو اسماعيل (مزرعة المليحة)",
@@ -3805,7 +3878,8 @@
    "lat": 33.466099,
    "lng": 36.385197,
    "source": "osm:node/7639991785",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Abu Ismail (Mleiha farm)"
   },
   {
    "name": "بحدلية بيت سيد صالح ذو رياستين",
@@ -3814,7 +3888,8 @@
    "lat": 33.439417,
    "lng": 36.352814,
    "source": "osm:node/8018965489",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Bahdaliyeh – Beit Sayyed Saleh"
   },
   {
    "name": "كفر سوسة أم حيدر ليالي",
@@ -3823,7 +3898,8 @@
    "lat": 33.494056,
    "lng": 36.279252,
    "source": "osm:node/8018999287",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Kafr Sousa – Umm Haidar Layali"
   },
   {
    "name": "سوبر ماركت التفاحة",
@@ -3832,7 +3908,8 @@
    "lat": 33.50656,
    "lng": 36.295356,
    "source": "osm:node/8201109285",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Tuffaha Supermarket"
   },
   {
    "name": "صالة السورية للتجارة فرع نهر عيشة",
@@ -3841,7 +3918,8 @@
    "lat": 33.485412,
    "lng": 36.288674,
    "source": "osm:node/8242617494",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Syrian Trading Hall, Nahr Aisha branch"
   },
   {
    "name": "محل الحبال",
@@ -3850,7 +3928,8 @@
    "lat": 33.506754,
    "lng": 36.295987,
    "source": "osm:node/8244677154",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Hibal shop"
   },
   {
    "name": "سوبر ماركت الحلبي",
@@ -3859,7 +3938,8 @@
    "lat": 33.48615,
    "lng": 36.291962,
    "source": "osm:node/8244739794",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Halabi Supermarket"
   },
   {
    "name": "ساحة ضاحية الفيحاء",
@@ -3868,7 +3948,8 @@
    "lat": 33.525025,
    "lng": 36.148702,
    "source": "osm:node/8286121797",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Dahiyat al-Fayhaa Square"
   },
   {
    "name": "منزل حسن خشمان",
@@ -3877,7 +3958,8 @@
    "lat": 33.426627,
    "lng": 36.22852,
    "source": "osm:node/8358188418",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Hassan Khashman's house"
   },
   {
    "name": "مشفى الحسن",
@@ -3896,7 +3978,8 @@
    "lat": 33.451259,
    "lng": 36.409184,
    "source": "osm:node/8635541821",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Abu Fahd Ziad villa (north)"
   },
   {
    "name": "دوار النخلة",
@@ -3905,7 +3988,8 @@
    "lat": 33.602831,
    "lng": 36.31247,
    "source": "osm:node/8757366517",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Palm Roundabout"
   },
   {
    "name": "دوار البونوراما",
@@ -3914,7 +3998,8 @@
    "lat": 33.601741,
    "lng": 36.310333,
    "source": "osm:node/8764145317",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Panorama Roundabout"
   },
   {
    "name": "مشفى الزهراء",
@@ -3923,7 +4008,8 @@
    "lat": 33.611549,
    "lng": 36.308863,
    "source": "osm:node/8784467517",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Zahraa Hospital"
   },
   {
    "name": "مجمع ضاحية قدسيا الطبي",
@@ -3932,7 +4018,8 @@
    "lat": 33.548116,
    "lng": 36.199817,
    "source": "osm:node/8883318317",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Dahiyat Qudsaya Medical Complex"
   },
   {
    "name": "مفرق مزرعة جديدة عرطوز",
@@ -3941,7 +4028,8 @@
    "lat": 33.425271,
    "lng": 36.190461,
    "source": "osm:node/9041136817",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Mazraat Jdeidet Artouz junction"
   },
   {
    "name": "مزرعة الجديدة",
@@ -3950,7 +4038,8 @@
    "lat": 33.42527,
    "lng": 36.188749,
    "source": "osm:node/9042120019",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Jdeideh Farm"
   },
   {
    "name": "لاميرادا مول",
@@ -3989,7 +4078,8 @@
    "lat": 33.482159,
    "lng": 36.342518,
    "source": "osm:node/9851935321",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Mazraat Bilal (Jaramana)"
   },
   {
    "name": "مزرعة بلال نهاية جرمانة (m&h)",
@@ -3998,7 +4088,8 @@
    "lat": 33.494632,
    "lng": 36.350236,
    "source": "osm:node/9866202917",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Mazraat Bilal, end of Jaramana (M&H)"
   },
   {
    "name": "بيت بلال عقار سوريا",
@@ -4007,7 +4098,8 @@
    "lat": 33.476083,
    "lng": 36.33015,
    "source": "osm:node/9866202918",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Beit Bilal, Syria Real Estate"
   },
   {
    "name": "ساحة الدوامنة",
@@ -4016,7 +4108,8 @@
    "lat": 33.511389,
    "lng": 36.312996,
    "source": "osm:node/9953415384",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Dawamneh Square"
   },
   {
    "name": "جامعة الإتحاد الخاصة في دمشق",
@@ -4025,7 +4118,8 @@
    "lat": 33.505529,
    "lng": 36.256314,
    "source": "osm:node/9971691732",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Ittihad Private University, Damascus"
   },
   {
    "name": "مشفى الشرق",
@@ -4034,7 +4128,8 @@
    "lat": 33.518943,
    "lng": 36.295567,
    "source": "osm:node/9977120333",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Sharq Hospital"
   },
   {
    "name": "مشفى البيروني الجامعي",
@@ -4043,7 +4138,8 @@
    "lat": 33.512713,
    "lng": 36.264161,
    "source": "osm:node/9977121486",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Biruni University Hospital"
   },
   {
    "name": "اي تي مول",
@@ -4052,7 +4148,8 @@
    "lat": 33.518887,
    "lng": 36.292463,
    "source": "osm:node/9977158224",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "IT Mall"
   },
   {
    "name": "مشفى جراحة القلب الجامعي",
@@ -4061,7 +4158,8 @@
    "lat": 33.512921,
    "lng": 36.264664,
    "source": "osm:node/9977160379",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "University Cardiac Surgery Hospital"
   },
   {
    "name": "مشفى حسن شيخ الأرض التخصصي",
@@ -4070,7 +4168,8 @@
    "lat": 33.498787,
    "lng": 36.299484,
    "source": "osm:node/10008403047",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Hassan Sheikh al-Ard Specialist Hospital"
   },
   {
    "name": "ساحة ٨ أذار - عرنوس",
@@ -4089,7 +4188,8 @@
    "lat": 33.518618,
    "lng": 36.290405,
    "source": "osm:node/10008611416",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Souq al-Tanabel"
   },
   {
    "name": "مشفى الشام",
@@ -4098,7 +4198,8 @@
    "lat": 33.520512,
    "lng": 36.286854,
    "source": "osm:node/10008782139",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Sham Hospital"
   },
   {
    "name": "الجامعة الافتراضية السورية",
@@ -4107,7 +4208,8 @@
    "lat": 33.511434,
    "lng": 36.273127,
    "source": "osm:node/10008794654",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Syrian Virtual University"
   },
   {
    "name": "الحامعة الافتراضية السورية",
@@ -4116,7 +4218,8 @@
    "lat": 33.504806,
    "lng": 36.273384,
    "source": "osm:node/10008802333",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Syrian Virtual University"
   },
   {
    "name": "متحف الشهيد يوسف العظمة",
@@ -4125,7 +4228,8 @@
    "lat": 33.524565,
    "lng": 36.279496,
    "source": "osm:node/10008879398",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Martyr Yusuf al-Azmeh Museum"
   },
   {
    "name": "ساحة تشرين التحريرية",
@@ -4134,7 +4238,8 @@
    "lat": 33.519794,
    "lng": 36.278271,
    "source": "osm:node/10008899555",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Tishreen al-Tahririya Square"
   },
   {
    "name": "مركز الروضة للعين والليزر",
@@ -4143,7 +4248,8 @@
    "lat": 33.522022,
    "lng": 36.286411,
    "source": "osm:node/10009033360",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Rawda Eye and Laser Centre"
   },
   {
    "name": "ساحة نوري باشا",
@@ -4152,7 +4258,8 @@
    "lat": 33.523708,
    "lng": 36.286409,
    "source": "osm:node/10015228096",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Nouri Pasha Square"
   },
   {
    "name": "مخبر أمانة للتشريح المرضي",
@@ -4161,7 +4268,8 @@
    "lat": 33.523064,
    "lng": 36.298627,
    "source": "osm:node/10015345590",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Amana Pathology Lab"
   },
   {
    "name": "جامعة الشام الخاصة - كلية الاسنان",
@@ -4180,7 +4288,8 @@
    "lat": 33.520358,
    "lng": 36.296741,
    "source": "osm:node/10015383459",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Diaa Surgical Hospital"
   },
   {
    "name": "مشفى الأماني الحديثة",
@@ -4189,7 +4298,8 @@
    "lat": 33.522623,
    "lng": 36.295153,
    "source": "osm:node/10015470338",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Amani Modern Hospital"
   },
   {
    "name": "دوار الشرقية",
@@ -4198,7 +4308,8 @@
    "lat": 33.494903,
    "lng": 36.247685,
    "source": "osm:node/10015733848",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Sharqiya Roundabout"
   },
   {
    "name": "مكتب الجامعة الدولية الخاصة IUST",
@@ -4207,7 +4318,8 @@
    "lat": 33.499129,
    "lng": 36.252051,
    "source": "osm:node/10015785006",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "IUST University Office"
   },
   {
    "name": "الجامعة السورية الخاصة SPU",
@@ -4216,7 +4328,8 @@
    "lat": 33.494768,
    "lng": 36.248609,
    "source": "osm:node/10015791532",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Syrian Private University (SPU)"
   },
   {
    "name": "كلية الهندسة المدنية جامعة اليرموك الخاصة",
@@ -4225,7 +4338,8 @@
    "lat": 33.493614,
    "lng": 36.246644,
    "source": "osm:node/10017765470",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Yarmouk Private University, Faculty of Civil Engineering"
   },
   {
    "name": "دوار الجوزة",
@@ -4234,7 +4348,8 @@
    "lat": 33.494388,
    "lng": 36.273113,
    "source": "osm:node/10017910466",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Jawza Roundabout"
   },
   {
    "name": "مكتب جامعة الحواش الخاصة",
@@ -4243,7 +4358,8 @@
    "lat": 33.525367,
    "lng": 36.319992,
    "source": "osm:node/10017992243",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Hawash Private University Office"
   },
   {
    "name": "المعهد التقني التجاري الأول",
@@ -4252,7 +4368,8 @@
    "lat": 33.507521,
    "lng": 36.285632,
    "source": "osm:node/10018096837",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "First Technical Institute of Commerce"
   },
   {
    "name": "مشفى حمشو",
@@ -4261,7 +4378,8 @@
    "lat": 33.518915,
    "lng": 36.211787,
    "source": "osm:node/10020212123",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Hamsho Hospital"
   },
   {
    "name": "مركز السابع من نيسان الصحي-مستوصف",
@@ -4270,7 +4388,8 @@
    "lat": 33.530214,
    "lng": 36.316636,
    "source": "osm:node/10020261598",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "7 April Health Centre (clinic)"
   },
   {
    "name": "سيتي مارت",
@@ -4279,7 +4398,8 @@
    "lat": 33.527737,
    "lng": 36.229826,
    "source": "osm:node/10020431872",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "City Mart"
   },
   {
    "name": "ساحة الغزال",
@@ -4288,7 +4408,8 @@
    "lat": 33.525634,
    "lng": 36.311891,
    "source": "osm:node/10020516728",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Ghazal Square"
   },
   {
    "name": "مستشفى العيون الجراحي",
@@ -4297,7 +4418,8 @@
    "lat": 33.547572,
    "lng": 36.307013,
    "source": "osm:node/10020563116",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Eye Surgery Hospital"
   },
   {
    "name": "مركز التدريب السياحي والفندقي",
@@ -4306,7 +4428,8 @@
    "lat": 33.53977,
    "lng": 36.240793,
    "source": "osm:node/10020692246",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Tourism and Hotel Training Centre"
   },
   {
    "name": "دوار العش",
@@ -4315,7 +4438,8 @@
    "lat": 33.562829,
    "lng": 36.319969,
    "source": "osm:node/10020708364",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Esh Roundabout"
   },
   {
    "name": "الكلية السياسية العسكرية",
@@ -4324,7 +4448,8 @@
    "lat": 33.551803,
    "lng": 36.326878,
    "source": "osm:node/10020738388",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Military Political College"
   },
   {
    "name": "مستشفى دمر",
@@ -4333,7 +4458,8 @@
    "lat": 33.539849,
    "lng": 36.243222,
    "source": "osm:node/10020874721",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Dummar Hospital"
   },
   {
    "name": "موقف الكيكية",
@@ -4342,7 +4468,8 @@
    "lat": 33.540406,
    "lng": 36.302715,
    "source": "osm:node/10020968131",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "al-Kikiyeh stop"
   },
   {
    "name": "جامعة بلاد الشام",
@@ -4351,7 +4478,8 @@
    "lat": 33.534036,
    "lng": 36.294898,
    "source": "osm:node/10021159284",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Bilad al-Sham University"
   },
   {
    "name": "الاربعين",
@@ -4360,7 +4488,8 @@
    "lat": 33.535781,
    "lng": 36.289766,
    "source": "osm:node/10021273110",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "al-Arbaeen"
   },
   {
    "name": "مجمع العثمان الطبي الخيري",
@@ -4369,7 +4498,8 @@
    "lat": 33.526881,
    "lng": 36.294259,
    "source": "osm:node/10023380105",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Othman Charitable Medical Complex"
   },
   {
    "name": "مركز الزهراء الطبي",
@@ -4378,7 +4508,8 @@
    "lat": 33.526751,
    "lng": 36.294922,
    "source": "osm:node/10023408536",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Zahraa Medical Centre"
   },
   {
    "name": "ساحة الخزان",
@@ -4387,7 +4518,8 @@
    "lat": 33.567113,
    "lng": 36.319568,
    "source": "osm:node/10023462880",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Khazzan Square"
   },
   {
    "name": "ساحة جول جمال",
@@ -4396,7 +4528,8 @@
    "lat": 33.522672,
    "lng": 36.299878,
    "source": "osm:node/10023539898",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Jul Jammal Square"
   },
   {
    "name": "دوار الطاهي",
@@ -4405,7 +4538,8 @@
    "lat": 33.549066,
    "lng": 36.321742,
    "source": "osm:node/10023548123",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Tahi Roundabout"
   },
   {
    "name": "معهد الشام العالي ، فرع مجمع الفتح الإسلامي",
@@ -4414,7 +4548,8 @@
    "lat": 33.510792,
    "lng": 36.318796,
    "source": "osm:node/10023815738",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Sham Higher Institute, al-Fateh Islamic Complex branch"
   },
   {
    "name": "مشفى هشام سنان",
@@ -4423,7 +4558,8 @@
    "lat": 33.532867,
    "lng": 36.298199,
    "source": "osm:node/10023913514",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Hisham Sinan Hospital"
   },
   {
    "name": "الجامعة العربية الدولية",
@@ -4432,7 +4568,8 @@
    "lat": 33.529877,
    "lng": 36.296969,
    "source": "osm:node/10023920432",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Arab International University"
   },
   {
    "name": "مشفى الغزالي",
@@ -4441,7 +4578,8 @@
    "lat": 33.519397,
    "lng": 36.306567,
    "source": "osm:node/10023943940",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Ghazali Hospital"
   },
   {
    "name": "مشفى الهلال",
@@ -4450,7 +4588,8 @@
    "lat": 33.520354,
    "lng": 36.310198,
    "source": "osm:node/10023957084",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Hilal Hospital"
   },
   {
    "name": "المشفى السوري التخصصي لأمراض جهاز الهضم",
@@ -4459,7 +4598,8 @@
    "lat": 33.520356,
    "lng": 36.309708,
    "source": "osm:node/10023960839",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Syrian Specialist Hospital for Digestive Diseases"
   },
   {
    "name": "جامعة الاتحاد الخاصة",
@@ -4468,7 +4608,8 @@
    "lat": 33.455274,
    "lng": 36.175533,
    "source": "osm:node/10024034779",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Ittihad Private University"
   },
   {
    "name": "بوسطجي",
@@ -4477,7 +4618,8 @@
    "lat": 33.527225,
    "lng": 36.288587,
    "source": "osm:node/10024050671",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Bostaji"
   },
   {
    "name": "ساحة عمر الابرش",
@@ -4486,7 +4628,8 @@
    "lat": 33.526317,
    "lng": 36.290774,
    "source": "osm:node/10024061246",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Omar al-Abrash Square"
   },
   {
    "name": "ساحة دوار العلم",
@@ -4495,7 +4638,8 @@
    "lat": 33.466618,
    "lng": 36.198508,
    "source": "osm:node/10024096884",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Dawwar al-Alam Square"
   },
   {
    "name": "مشفى ضاحية قدسيا",
@@ -4504,7 +4648,8 @@
    "lat": 33.545709,
    "lng": 36.192059,
    "source": "osm:node/10024242259",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Dahiyat Qudsaya Hospital"
   },
   {
    "name": "ساحة تروي",
@@ -4513,7 +4658,8 @@
    "lat": 33.54255,
    "lng": 36.196377,
    "source": "osm:node/10024259139",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Troy Square"
   },
   {
    "name": "مركز أديب اللحام",
@@ -4522,7 +4668,8 @@
    "lat": 33.488985,
    "lng": 36.291654,
    "source": "osm:node/10024269621",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Adib al-Lahham Centre"
   },
   {
    "name": "مشفى المهايني الحديث",
@@ -4531,7 +4678,8 @@
    "lat": 33.488713,
    "lng": 36.294682,
    "source": "osm:node/10024340747",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Mahayni Modern Hospital"
   },
   {
    "name": "مستوصف مي زيادة المدرسي",
@@ -4540,7 +4688,8 @@
    "lat": 33.491566,
    "lng": 36.296688,
    "source": "osm:node/10024353038",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "May Ziadeh School Clinic"
   },
   {
    "name": "مول ياسمين الشام",
@@ -4549,7 +4698,8 @@
    "lat": 33.490094,
    "lng": 36.296241,
    "source": "osm:node/10024440475",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Yasmin al-Sham Mall"
   },
   {
    "name": "مشفى بدر",
@@ -4558,7 +4708,8 @@
    "lat": 33.541621,
    "lng": 36.213177,
    "source": "osm:node/10024452981",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Badr Hospital"
   },
   {
    "name": "مشفى المهايني القديمة",
@@ -4567,7 +4718,8 @@
    "lat": 33.48706,
    "lng": 36.295569,
    "source": "osm:node/10026209223",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Old al-Mahayni Hospital"
   },
   {
    "name": "المعهد الصحي",
@@ -4576,7 +4728,8 @@
    "lat": 33.525096,
    "lng": 36.309683,
    "source": "osm:node/10026316968",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Health Institute"
   },
   {
    "name": "حرنة الشرقية",
@@ -4585,7 +4738,8 @@
    "lat": 33.608835,
    "lng": 36.317395,
    "source": "osm:node/10026326506",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Harna al-Sharqiya"
   },
   {
    "name": "مشفى التل",
@@ -4594,7 +4748,8 @@
    "lat": 33.616268,
    "lng": 36.308493,
    "source": "osm:node/10026338418",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Tall Hospital"
   },
   {
    "name": "جامعة الشام الخاصة - كلية الهندسة المعلوماتية",
@@ -4643,7 +4798,8 @@
    "lat": 33.510506,
    "lng": 36.305415,
    "source": "osm:node/10026479068",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Souq al-Harir (silk market)"
   },
   {
    "name": "تاون سنتر",
@@ -4662,7 +4818,8 @@
    "lat": 33.480401,
    "lng": 36.29122,
    "source": "osm:node/10026519115",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Bawwaba Square"
   },
   {
    "name": "مشفى المجد القدم",
@@ -4681,7 +4838,8 @@
    "lat": 33.50893,
    "lng": 36.295121,
    "source": "osm:node/10026546407",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Jazeera Private University office"
   },
   {
    "name": "كلية العلوم السياسية الجديدة",
@@ -4690,7 +4848,8 @@
    "lat": 33.510039,
    "lng": 36.284017,
    "source": "osm:node/10026571456",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "New Faculty of Political Science"
   },
   {
    "name": "مشفى العباسيين",
@@ -4699,7 +4858,8 @@
    "lat": 33.522015,
    "lng": 36.321726,
    "source": "osm:node/10026579761",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Abbasiyyin Hospital"
   },
   {
    "name": "ساحة عبدالرحمن الداخل",
@@ -4708,7 +4868,8 @@
    "lat": 33.510455,
    "lng": 36.278196,
    "source": "osm:node/10026581549",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Abd al-Rahman al-Dakhil Square"
   },
   {
    "name": "المعهد العالي للتخطيط الاقليمي",
@@ -4717,7 +4878,8 @@
    "lat": 33.511363,
    "lng": 36.27935,
    "source": "osm:node/10026587465",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Higher Institute of Regional Planning"
   },
   {
    "name": "مشفى المليحة",
@@ -4726,7 +4888,8 @@
    "lat": 33.488197,
    "lng": 36.379009,
    "source": "osm:node/10026641951",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Mleiha Hospital"
   },
   {
    "name": "مشفى الصفا",
@@ -4735,7 +4898,8 @@
    "lat": 33.484511,
    "lng": 36.379046,
    "source": "osm:node/10026650055",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Safa Hospital"
   },
   {
    "name": "مشفى الفاتح",
@@ -4744,7 +4908,8 @@
    "lat": 33.510242,
    "lng": 36.370283,
    "source": "osm:node/10026681686",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Fateh Hospital"
   },
   {
    "name": "مشفى الدكتور عبد الرحمن عفان",
@@ -4753,7 +4918,8 @@
    "lat": 33.52195,
    "lng": 36.293202,
    "source": "osm:node/10026742700",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Dr Abd al-Rahman Affan Hospital"
   },
   {
    "name": "مشفى الراضي",
@@ -4762,7 +4928,8 @@
    "lat": 33.484109,
    "lng": 36.352095,
    "source": "osm:node/10026855969",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Radi Hospital"
   },
   {
    "name": "بناء القلعة",
@@ -4771,7 +4938,8 @@
    "lat": 33.49824,
    "lng": 36.336679,
    "source": "osm:node/10026886843",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Qalaa building"
   },
   {
    "name": "ساحة اليوسفي",
@@ -4780,7 +4948,8 @@
    "lat": 33.485216,
    "lng": 36.349685,
    "source": "osm:node/10026896521",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Yousfi Square"
   },
   {
    "name": "مشفى الرعاية الخاصة",
@@ -4789,7 +4958,8 @@
    "lat": 33.491601,
    "lng": 36.342591,
    "source": "osm:node/10026901098",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Riaya Private Hospital"
   },
   {
    "name": "ساحة الرئيس",
@@ -4798,7 +4968,8 @@
    "lat": 33.488775,
    "lng": 36.339761,
    "source": "osm:node/10026913162",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Rais Square"
   },
   {
    "name": "كراج جرمانا السويدا",
@@ -4807,7 +4978,8 @@
    "lat": 33.476987,
    "lng": 36.359527,
    "source": "osm:node/10026947812",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Jaramana–Sweida garage"
   },
   {
    "name": "ساحة النجوم",
@@ -4816,7 +4988,8 @@
    "lat": 33.482985,
    "lng": 36.355322,
    "source": "osm:node/10026956125",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Nujoum Square"
   },
   {
    "name": "مشفى الحريري",
@@ -4825,7 +4998,8 @@
    "lat": 33.465975,
    "lng": 36.321722,
    "source": "osm:node/10027030454",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Hariri Hospital"
   },
   {
    "name": "مستوصف الشهيد كايد سليماني",
@@ -4834,7 +5008,8 @@
    "lat": 33.467764,
    "lng": 36.302289,
    "source": "osm:node/10027060633",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Martyr Kayed Sulaimani Clinic"
   },
   {
    "name": "مول بني المرجه",
@@ -4843,7 +5018,8 @@
    "lat": 33.445391,
    "lng": 36.290948,
    "source": "osm:node/10032914455",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Bani al-Marjeh Mall"
   },
   {
    "name": "مشفى الباسل سابقا",
@@ -4852,7 +5028,8 @@
    "lat": 33.473545,
    "lng": 36.306521,
    "source": "osm:node/10032929392",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Former al-Basel Hospital"
   },
   {
    "name": "مشفى الرضوان",
@@ -4861,7 +5038,8 @@
    "lat": 33.463069,
    "lng": 36.240931,
    "source": "osm:node/10032938299",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Ridwan Hospital"
   },
   {
    "name": "مشفى داريا الوطني",
@@ -4870,7 +5048,8 @@
    "lat": 33.463055,
    "lng": 36.222018,
    "source": "osm:node/10033000511",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Darayya National Hospital"
   },
   {
    "name": "مشفى الحكمة",
@@ -4879,7 +5058,8 @@
    "lat": 33.522055,
    "lng": 36.276798,
    "source": "osm:node/10033072856",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Hikma Hospital"
   },
   {
    "name": "دوار النجمة",
@@ -4888,7 +5068,8 @@
    "lat": 33.734069,
    "lng": 36.596928,
    "source": "osm:node/10156665308",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Najma Roundabout"
   },
   {
    "name": "دوار القطيفة",
@@ -4897,7 +5078,8 @@
    "lat": 33.735905,
    "lng": 36.599264,
    "source": "osm:node/10156676340",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Qteifeh Roundabout"
   },
   {
    "name": "نصب ساحة المرجة",
@@ -4907,7 +5089,8 @@
    "lat": 33.51263,
    "lng": 36.298085,
    "source": "osm:node/10160504977",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Marjeh Square monument"
   },
   {
    "name": "محطة قطار الربوة",
@@ -4916,7 +5099,8 @@
    "lat": 33.51712,
    "lng": 36.260115,
    "source": "osm:node/10200833683",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Rabweh railway station"
   },
   {
    "name": "محطة قطار جديدة الشيباني",
@@ -4925,7 +5109,8 @@
    "lat": 33.569505,
    "lng": 36.194952,
    "source": "osm:node/10200882287",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Jdeidet al-Shaibani railway station"
   },
   {
    "name": "محطة مدينة المعارض",
@@ -4944,7 +5129,8 @@
    "lat": 33.356149,
    "lng": 36.256727,
    "source": "osm:node/10200956570",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Kisweh station"
   },
   {
    "name": "ركن أبو عطاف",
@@ -4953,7 +5139,8 @@
    "lat": 33.50219,
    "lng": 36.324461,
    "source": "osm:node/10254832284",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Rukn Abu Attaf"
   },
   {
    "name": "ساحة الحجاز",
@@ -4972,7 +5159,8 @@
    "lat": 33.505702,
    "lng": 36.291504,
    "source": "osm:node/10285360999",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Zuqaq al-Jinn"
   },
   {
    "name": "مفرق وادي البقر",
@@ -4981,7 +5169,8 @@
    "lat": 33.585355,
    "lng": 36.194889,
    "source": "osm:node/10289879387",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Wadi al-Baqar junction"
   },
   {
    "name": "مشفى ابن رشد للأمراض النفسية",
@@ -5000,7 +5189,8 @@
    "lat": 33.548309,
    "lng": 36.353095,
    "source": "osm:node/10296128073",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Harasta Panorama"
   },
   {
    "name": "سوق الحرمية",
@@ -5019,7 +5209,8 @@
    "lat": 33.509175,
    "lng": 36.317081,
    "source": "osm:node/10723260216",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "RDC Relief and Development Centre"
   },
   {
    "name": "دار المهندسين",
@@ -5028,7 +5219,8 @@
    "lat": 33.516357,
    "lng": 36.293588,
    "source": "osm:node/10948098305",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Engineers' House"
   },
   {
    "name": "ساحة بلال",
@@ -5057,7 +5249,8 @@
    "lat": 33.513647,
    "lng": 36.316772,
    "source": "osm:node/11379763729",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Damascus Lighthouse (Manarat Dimashq)"
   },
   {
    "name": "المعهد العالي لبحوث الليزر وتطبيقاته",
@@ -5076,7 +5269,8 @@
    "lat": 33.641953,
    "lng": 36.2971,
    "source": "osm:node/11453501617",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Bahra Roundabout"
   },
   {
    "name": "قلعة",
@@ -5085,7 +5279,8 @@
    "lat": 33.509592,
    "lng": 36.317722,
    "source": "osm:node/11547307269",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Citadel"
   },
   {
    "name": "كراجات الحياة",
@@ -5094,7 +5289,8 @@
    "lat": 33.523495,
    "lng": 36.301559,
    "source": "osm:node/11547307369",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "al-Hayat garages"
   },
   {
    "name": "كوكب",
@@ -5364,7 +5560,8 @@
    "lat": 33.500009,
    "lng": 36.302064,
    "source": "osm:node/12813598501",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Rashid Specialist Hospital"
   },
   {
    "name": "كوع علاء بركات",
@@ -5373,7 +5570,8 @@
    "lat": 33.524121,
    "lng": 36.223764,
    "source": "osm:node/12855184102",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Alaa Barakat bend"
   },
   {
    "name": "مزرعة علي المظهور جديدة عرطوز",
@@ -5382,7 +5580,8 @@
    "lat": 33.428587,
    "lng": 36.167055,
    "source": "osm:node/12903162001",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Ali al-Mazhour farm, Jdeidet Artouz"
   },
   {
    "name": "مزرعة احمد المظهور جديدة  عرطوز",
@@ -5391,7 +5590,8 @@
    "lat": 33.421229,
    "lng": 36.155426,
    "source": "osm:node/12906402006",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Ahmad al-Mazhour farm, Jdeidet Artouz"
   },
   {
    "name": "ساحة الأمويين Umayyad Square",
@@ -5410,7 +5610,8 @@
    "lat": 33.492629,
    "lng": 36.317975,
    "source": "osm:node/12997269901",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Faculty of Information Engineering, Damascus University"
   },
   {
    "name": "Aroka Center | مركز أروكا الطبي",
@@ -5419,7 +5620,8 @@
    "lat": 33.595031,
    "lng": 36.30837,
    "source": "osm:node/13443420061",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Aroka Medical Centre"
   },
   {
    "name": "موقف ساحة بيسان",
@@ -5428,7 +5630,8 @@
    "lat": 33.434203,
    "lng": 36.16501,
    "source": "osm:node/13508679474",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Bisan Square stop"
   },
   {
    "name": "موقف ساحة العمال",
@@ -5437,7 +5640,8 @@
    "lat": 33.435847,
    "lng": 36.16934,
    "source": "osm:node/13508679475",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "al-Ummal Square stop"
   },
   {
    "name": "بيت عبد الله الاحمد الابراهيم النظيف ابوقصي",
@@ -5446,7 +5650,8 @@
    "lat": 33.547704,
    "lng": 36.319071,
    "source": "osm:node/13710411301",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Abdullah al-Ahmad al-Ibrahim's house"
   },
   {
    "name": "العناية المشددة مشفى المجتهد الاسعافية عناية عزل",
@@ -5455,7 +5660,8 @@
    "lat": 33.499787,
    "lng": 36.295438,
    "source": "osm:node/13713144501",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Mujtahid Hospital intensive care (isolation)"
   },
   {
    "name": "العناية المشددة مشفى المجتهد ( عناية عزل)",
@@ -5464,7 +5670,8 @@
    "lat": 33.500013,
    "lng": 36.29546,
    "source": "osm:node/13713144502",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Mujtahid Hospital intensive care (isolation)"
   },
   {
    "name": "دارة HJY دارة تحكم الاحمال",
@@ -5473,7 +5680,8 @@
    "lat": 33.483554,
    "lng": 36.297704,
    "source": "osm:node/13713208901",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "HJY load-control house"
   },
   {
    "name": "مخبر الجودة للتحاليل الطبية",
@@ -5482,7 +5690,8 @@
    "lat": 33.504446,
    "lng": 36.295337,
    "source": "osm:node/13716263301",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Jawda Medical Lab"
   },
   {
    "name": "دوار الجرة",
@@ -5491,7 +5700,8 @@
    "lat": 33.561214,
    "lng": 36.388519,
    "source": "osm:node/13748584663",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Jarra Roundabout"
   },
   {
    "name": "دوار حجيرة (دوار النخلة) Hajira Roundabout (Palm Roundabout)",
@@ -5500,7 +5710,8 @@
    "lat": 33.44806,
    "lng": 36.337194,
    "source": "osm:node/13762113267",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Hjeira Roundabout (Palm Roundabout)"
   },
   {
    "name": "مشفى النور",
@@ -5509,7 +5720,8 @@
    "lat": 33.563728,
    "lng": 36.390077,
    "source": "osm:node/13786705608",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Nour Hospital"
   },
   {
    "name": "مشفى دوما",
@@ -5518,7 +5730,8 @@
    "lat": 33.571755,
    "lng": 36.39693,
    "source": "osm:node/13791491784",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Douma Hospital"
   },
   {
    "name": "مشفى حمدان",
@@ -5527,7 +5740,8 @@
    "lat": 33.57069,
    "lng": 36.398926,
    "source": "osm:node/13792313283",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Hamdan Hospital"
   },
   {
    "name": "دوار الشيفونية",
@@ -5536,7 +5750,8 @@
    "lat": 33.568334,
    "lng": 36.40725,
    "source": "osm:node/13793800560",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Shifouniyeh Roundabout"
   },
   {
    "name": "دوار امن الدولة",
@@ -5545,7 +5760,8 @@
    "lat": 33.573936,
    "lng": 36.417983,
    "source": "osm:node/13798062415",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "State Security Roundabout"
   },
   {
    "name": "سوق الهال",
@@ -5554,7 +5770,8 @@
    "lat": 33.56844,
    "lng": 36.405873,
    "source": "osm:node/13798573913",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Souq al-Hal (wholesale market)"
   },
   {
    "name": "دوار بدران",
@@ -5563,7 +5780,8 @@
    "lat": 33.575679,
    "lng": 36.395939,
    "source": "osm:node/13801049226",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Badran Roundabout"
   },
   {
    "name": "دوار باب مصلى",
@@ -5572,7 +5790,8 @@
    "lat": 33.49888,
    "lng": 36.300408,
    "source": "osm:node/13825162986",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Bab Musalla Roundabout"
   },
   {
    "name": "قلغة دمشق",
@@ -5581,7 +5800,8 @@
    "lat": 33.511897,
    "lng": 36.302112,
    "source": "osm:node/13825935696",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Damascus Citadel"
   },
   {
    "name": "موقف الشوكية",
@@ -5611,7 +5831,8 @@
    "lat": 33.572335,
    "lng": 36.395647,
    "source": "osm:node/13845625267",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Douma temporary hospital"
   },
   {
    "name": "مشفى الرجاء الجراحي",
@@ -5620,7 +5841,8 @@
    "lat": 33.541203,
    "lng": 36.359689,
    "source": "osm:node/13857240553",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Rajaa Surgical Hospital"
   },
   {
    "name": "عبد الله الرجب الكلكول ابو عبد الرحمن",
@@ -5629,7 +5851,8 @@
    "lat": 33.549988,
    "lng": 36.323242,
    "source": "osm:node/13894532501",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Abdullah al-Rajab al-Kalkoul (Abu Abd al-Rahman)"
   },
   {
    "name": "مستشفى الشهيد فايز حلاوة",
@@ -5648,7 +5871,8 @@
    "lat": 33.724897,
    "lng": 36.585064,
    "source": "osm:node/13929272116",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Qteifeh National Hospital"
   },
   {
    "name": "دكان ابو علي حيدو",
@@ -5657,7 +5881,8 @@
    "lat": 33.535352,
    "lng": 36.29162,
    "source": "osm:node/14078136001",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Abu Ali Haidou's shop"
   },
   {
    "name": "مكتبة الياقوت",
@@ -5666,7 +5891,8 @@
    "lat": 33.612034,
    "lng": 36.316629,
    "source": "osm:node/14084871479",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Yaqout Bookshop"
   },
   {
    "name": "دوار القبة",
@@ -5675,7 +5901,8 @@
    "lat": 33.52844,
    "lng": 36.290131,
    "source": "osm:node/14096063901",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "al-Qubba Roundabout"
   },
   {
    "name": "جسر القطيفة",
@@ -5684,7 +5911,8 @@
    "lat": 33.735472,
    "lng": 36.583105,
    "source": "osm:node/14112385801",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Qteifeh Bridge"
   },
   {
    "name": "موقف ركب داريا-صحنايا",
@@ -5693,7 +5921,8 @@
    "lat": 33.431535,
    "lng": 36.223888,
    "source": "osm:node/14219775780",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Darayya–Sahnaya shared-ride stop"
   },
   {
    "name": "موقف ركب داريا-فحامة",
@@ -5702,7 +5931,8 @@
    "lat": 33.461132,
    "lng": 36.234178,
    "source": "osm:node/14219808960",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Darayya–Fahhameh shared-ride stop"
   },
   {
    "name": "موقف ميكروباص فحامة - داريا",
@@ -5711,7 +5941,8 @@
    "lat": 33.503314,
    "lng": 36.292169,
    "source": "osm:node/14219860489",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Fahhameh–Darayya microbus stop"
   },
   {
    "name": "موقف ركب فحامة-صحنايا",
@@ -5720,7 +5951,8 @@
    "lat": 33.503588,
    "lng": 36.292229,
    "source": "osm:node/14219860494",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Fahhameh–Sahnaya shared-ride stop"
   },
   {
    "name": "بيت الفصول الأربعة",
@@ -5729,7 +5961,8 @@
    "lat": 33.524642,
    "lng": 36.284316,
    "source": "osm:node/14220678211",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Four Seasons house"
   },
   {
    "name": "قصر السيوفي",
@@ -5738,7 +5971,8 @@
    "lat": 33.560278,
    "lng": 36.127815,
    "source": "osm:node/14247665201",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Suyoufi Palace"
   },
   {
    "name": "المساكن",
@@ -5747,7 +5981,8 @@
    "lat": 33.573109,
    "lng": 36.408726,
    "source": "osm:node/14280618088",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Masakin"
   },
   {
    "name": "ساحة القصور",
@@ -5900,7 +6135,8 @@
    "lat": 33.363101,
    "lng": 36.245818,
    "source": "osm:way/31770130",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Kisweh Clinic"
   },
   {
    "name": "مشفى يحيى التخصصي",
@@ -5950,7 +6186,8 @@
    "lat": 33.495275,
    "lng": 36.231772,
    "source": "osm:way/43162985",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Saray Roundabout"
   },
   {
    "name": "مشفى الشامي",
@@ -6000,7 +6237,8 @@
    "lat": 33.725939,
    "lng": 36.101934,
    "source": "osm:way/91737694",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Mahatta Square"
   },
   {
    "name": "قصر العظم",
@@ -6050,7 +6288,8 @@
    "lat": 33.504217,
    "lng": 36.274115,
    "source": "osm:way/105593856",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Carlton Roundabout"
   },
   {
    "name": "المعهد الرياضي للمعلمين",
@@ -6100,7 +6339,8 @@
    "lat": 33.521853,
    "lng": 36.310471,
    "source": "osm:way/108706749",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Khatib Roundabout"
   },
   {
    "name": "ساحة أمين أمين",
@@ -6119,7 +6359,8 @@
    "lat": 33.726124,
    "lng": 36.09542,
    "source": "osm:way/128911673",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Jisr Square"
   },
   {
    "name": "سكاي لاند",
@@ -6128,7 +6369,8 @@
    "lat": 33.437758,
    "lng": 36.405907,
    "source": "osm:way/129244072",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Sky Land"
   },
   {
    "name": "السكن الجامعي لطلاب الدراسات العليا",
@@ -6177,7 +6419,8 @@
    "lat": 33.519138,
    "lng": 36.272012,
    "source": "osm:way/153206530",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Massa Plaza"
   },
   {
    "name": "معهد التجارة",
@@ -6196,7 +6439,8 @@
    "lat": 33.54528,
    "lng": 36.32166,
    "source": "osm:way/166507440",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Masakin vegetable market"
   },
   {
    "name": "قلعة دمشق",
@@ -6215,7 +6459,8 @@
    "lat": 33.516678,
    "lng": 36.300058,
    "source": "osm:way/166614282",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Souq al-Khoja"
   },
   {
    "name": "كراج درعا والسويداء",
@@ -6224,7 +6469,8 @@
    "lat": 33.496793,
    "lng": 36.302448,
    "source": "osm:way/167516589",
-   "confidence": "high"
+   "confidence": "high",
+   "nameEn": "Daraa and Sweida garage"
   },
   {
    "name": "مجمع العابد",
@@ -6233,7 +6479,8 @@
    "lat": 33.380444,
    "lng": 36.25679,
    "source": "osm:way/168858855",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Abed Complex"
   },
   {
    "name": "مشفى المنار الدولي",
@@ -6242,7 +6489,8 @@
    "lat": 33.543654,
    "lng": 36.307046,
    "source": "osm:way/170480381",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Manar International Hospital"
   },
   {
    "name": "المعهد التقاني التجاري الثاني",
@@ -6251,7 +6499,8 @@
    "lat": 33.550779,
    "lng": 36.315642,
    "source": "osm:way/170480698",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Second Technical Institute of Commerce"
   },
   {
    "name": "السوق التجاري",
@@ -6260,7 +6509,8 @@
    "lat": 33.551522,
    "lng": 36.315268,
    "source": "osm:way/170481681",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Commercial market"
   },
   {
    "name": "عبير الشام",
@@ -6269,7 +6519,8 @@
    "lat": 33.552578,
    "lng": 36.319582,
    "source": "osm:way/170482146",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Abeer al-Sham"
   },
   {
    "name": "نيو قاسيون مول",
@@ -6309,7 +6560,8 @@
    "lat": 33.508179,
    "lng": 36.268915,
    "source": "osm:way/186237851",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Languages Square"
   },
   {
    "name": "جامعة دمشق - مجمع الطب والآداب",
@@ -6318,7 +6570,8 @@
    "lat": 33.507449,
    "lng": 36.268965,
    "source": "osm:way/186295784",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Damascus University – Medicine and Arts campus"
   },
   {
    "name": "ساحة كوران",
@@ -6327,7 +6580,8 @@
    "lat": 33.553803,
    "lng": 36.214472,
    "source": "osm:way/192417930",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Kouran Square"
   },
   {
    "name": "جامعة دمشق - مجمع الهمك",
@@ -6336,7 +6590,8 @@
    "lat": 33.494011,
    "lng": 36.319043,
    "source": "osm:way/193041419",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Damascus University – Economics campus (HMK)"
   },
   {
    "name": "مجمع قدسيا الاستهلاكي",
@@ -6355,7 +6610,8 @@
    "lat": 33.512668,
    "lng": 36.377613,
    "source": "osm:way/226968396",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Kafr Batna Square"
   },
   {
    "name": "مستشفى البيروني الجامعي",
@@ -6395,7 +6651,8 @@
    "lat": 33.507948,
    "lng": 36.316909,
    "source": "osm:way/318157141",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Private Faculty of Theology"
   },
   {
    "name": "ساحة الجمعية",
@@ -6404,7 +6661,8 @@
    "lat": 33.517219,
    "lng": 36.380079,
    "source": "osm:way/319746921",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Jamiya Square"
   },
   {
    "name": "ساحة الراية",
@@ -6413,7 +6671,8 @@
    "lat": 33.515685,
    "lng": 36.383328,
    "source": "osm:way/319747605",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Raya Square"
   },
   {
    "name": "ساحة زملكا",
@@ -6422,7 +6681,8 @@
    "lat": 33.528283,
    "lng": 36.353485,
    "source": "osm:way/319773430",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Zamalka Square"
   },
   {
    "name": "سوق السروجية",
@@ -6462,7 +6722,8 @@
    "lat": 33.555855,
    "lng": 36.36308,
    "source": "osm:way/370150348",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Harasta National Hospital"
   },
   {
    "name": "جامعة دمشق - كلية العلوم السياسية",
@@ -6471,7 +6732,8 @@
    "lat": 33.59938,
    "lng": 36.326307,
    "source": "osm:way/370930246",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Damascus University – Faculty of Political Science"
   },
   {
    "name": "البيمارستان النوري",
@@ -6624,7 +6886,8 @@
    "lat": 33.49721,
    "lng": 36.317168,
    "source": "osm:way/1071919091",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Economics Faculty student housing"
   },
   {
    "name": "ساحة التحرير",
@@ -6673,7 +6936,8 @@
    "lat": 33.737459,
    "lng": 36.599026,
    "source": "osm:way/1110245055",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Qteifeh Clinic"
   },
   {
    "name": "مشفى القطيفة الوطني",
@@ -6682,7 +6946,8 @@
    "lat": 33.724961,
    "lng": 36.586216,
    "source": "osm:way/1110245074",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Qteifeh National Hospital"
   },
   {
    "name": "مشفى الأمراض الجلدية والزهمية",
@@ -6701,7 +6966,8 @@
    "lat": 33.514428,
    "lng": 36.288186,
    "source": "osm:way/1110642055",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Guest Palace"
   },
   {
    "name": "القصر الجمهوري",
@@ -6711,7 +6977,8 @@
    "lat": 33.521744,
    "lng": 36.271602,
    "source": "osm:way/1112172692",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Presidential Palace"
   },
   {
    "name": "مكتب عنبر",
@@ -6730,7 +6997,8 @@
    "lat": 33.50914,
    "lng": 36.227487,
    "source": "osm:way/1137716361",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Second People's Palace"
   },
   {
    "name": "دامسكينو مول",
@@ -6802,7 +7070,8 @@
    "lat": 33.495738,
    "lng": 36.28186,
    "source": "osm:way/1366218324",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Andalus Hospital"
   },
   {
    "name": "مول (قيد الإنشاء)",
@@ -6821,7 +7090,8 @@
    "lat": 33.428569,
    "lng": 36.066656,
    "source": "osm:way/1412999863",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Qatana National Hospital"
   },
   {
    "name": "متحف دمشق التربوي",
@@ -6850,7 +7120,8 @@
    "lat": 33.448542,
    "lng": 36.341009,
    "source": "osm:way/1517728681",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Iraqi Square"
   },
   {
    "name": "سوق النصر Al-Nasr Market",
@@ -6859,7 +7130,8 @@
    "lat": 33.466968,
    "lng": 36.333157,
    "source": "osm:way/1518656428",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Nasr Market"
   },
   {
    "name": "بيم دمشق",
@@ -6868,7 +7140,8 @@
    "lat": 33.497782,
    "lng": 36.301973,
    "source": "osm:way/1526272487",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "BIM Damascus"
   },
   {
    "name": "مشفى اليمان",
@@ -6877,7 +7150,8 @@
    "lat": 33.570925,
    "lng": 36.406032,
    "source": "osm:way/1528306016",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Yaman Hospital"
   },
   {
    "name": "مجمع الهدى الطبي",
@@ -6886,7 +7160,8 @@
    "lat": 33.498527,
    "lng": 36.245486,
    "source": "osm:way/1528535057",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "al-Huda Medical Complex"
   },
   {
    "name": "ساحة شريدي",
@@ -6895,7 +7170,8 @@
    "lat": 33.458277,
    "lng": 36.230275,
    "source": "osm:way/1531977828",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Shreidi Square"
   },
   {
    "name": "كراجات درعا والسويداء الجديدة",
@@ -7705,7 +7981,173 @@
    "lat": 33.512091,
    "lng": 36.254523,
    "source": "osm:relation/18482507",
-   "confidence": "medium"
+   "confidence": "medium",
+   "nameEn": "Mezzeh Military Hospital"
+  },
+  {
+   "name": "الشعلان",
+   "nameEn": "Shaalan",
+   "aliases": "سوق الشعلان، شارع الشعلان، شعلان",
+   "stationKind": "POINT",
+   "governorate": "DAMASCUS",
+   "lat": 33.5186,
+   "lng": 36.2905,
+   "source": "https://www.openstreetmap.org/way/28869015",
+   "confidence": "high"
+  },
+  {
+   "name": "الزبلطاني",
+   "nameEn": "Zablatani",
+   "aliases": "سوق الهال، جسر الزبلطاني، حدائق الزبلطاني، زبلطاني",
+   "stationKind": "POINT",
+   "governorate": "DAMASCUS",
+   "lat": 33.519,
+   "lng": 36.32,
+   "source": "https://www.openstreetmap.org/node/1318910240",
+   "confidence": "high"
+  },
+  {
+   "name": "الطبالة",
+   "nameEn": "Tabbaleh",
+   "aliases": "حي الطبالة، طبالة",
+   "stationKind": "POINT",
+   "governorate": "DAMASCUS",
+   "lat": 33.5016,
+   "lng": 36.3208,
+   "source": "https://www.openstreetmap.org/node/10026868794",
+   "confidence": "high"
+  },
+  {
+   "name": "الجامع الأموي",
+   "nameEn": "Umayyad Mosque",
+   "aliases": "المسجد الأموي، جامع بني أمية الكبير، الأموي",
+   "stationKind": "POINT",
+   "governorate": "DAMASCUS",
+   "lat": 33.51158,
+   "lng": 36.30665,
+   "source": "https://www.openstreetmap.org/way/315255977",
+   "confidence": "high"
+  },
+  {
+   "name": "سوق مدحت باشا",
+   "nameEn": "Souq Midhat Pasha",
+   "aliases": "الشارع المستقيم، سوق الطويل، مدحت باشا",
+   "stationKind": "POINT",
+   "governorate": "DAMASCUS",
+   "lat": 33.50835,
+   "lng": 36.30353,
+   "source": "https://www.openstreetmap.org/way/31674733",
+   "confidence": "high"
+  },
+  {
+   "name": "دار الأوبرا",
+   "nameEn": "Damascus Opera House",
+   "aliases": "دار الأسد للثقافة والفنون، أوبرا دمشق، الأوبرا",
+   "stationKind": "POINT",
+   "governorate": "DAMASCUS",
+   "lat": 33.51238,
+   "lng": 36.27843,
+   "source": "https://www.openstreetmap.org/node/1246877086",
+   "confidence": "high"
+  },
+  {
+   "name": "مكتبة الأسد",
+   "nameEn": "National Library (Assad Library)",
+   "aliases": "المكتبة الوطنية، مكتبة الأسد الوطنية",
+   "stationKind": "POINT",
+   "governorate": "DAMASCUS",
+   "lat": 33.51508,
+   "lng": 36.27764,
+   "source": "https://www.openstreetmap.org/way/29085052",
+   "confidence": "high"
+  },
+  {
+   "name": "محطة الحجاز",
+   "nameEn": "Hejaz Railway Station",
+   "aliases": "محطة قطار الحجاز، الحجاز، ساحة الحجاز",
+   "stationKind": "POINT",
+   "governorate": "DAMASCUS",
+   "lat": 33.51123,
+   "lng": 36.29494,
+   "source": "https://www.openstreetmap.org/way/28843859",
+   "confidence": "high"
+  },
+  {
+   "name": "برج دمشق",
+   "nameEn": "Damascus Tower",
+   "aliases": "برج دمشق التجاري",
+   "stationKind": "POINT",
+   "governorate": "DAMASCUS",
+   "lat": 33.51371,
+   "lng": 36.2965,
+   "source": "https://www.openstreetmap.org/way/318160420",
+   "confidence": "high"
+  },
+  {
+   "name": "فندق الشام",
+   "nameEn": "Cham Palace Hotel",
+   "aliases": "الشام بالاس، موقف فندق الشام",
+   "stationKind": "POINT",
+   "governorate": "DAMASCUS",
+   "lat": 33.51687,
+   "lng": 36.29369,
+   "source": "https://www.openstreetmap.org/way/166338104",
+   "confidence": "high"
+  },
+  {
+   "name": "مدينة الجلاء الرياضية",
+   "nameEn": "al-Jalaa Sports City",
+   "aliases": "ملعب الجلاء، الجلاء الرياضية",
+   "stationKind": "POINT",
+   "governorate": "DAMASCUS",
+   "lat": 33.50146,
+   "lng": 36.25309,
+   "source": "https://www.openstreetmap.org/way/607954540",
+   "confidence": "high"
+  },
+  {
+   "name": "ملعب العباسيين",
+   "nameEn": "Abbasiyyin Stadium",
+   "aliases": "ستاد العباسيين",
+   "stationKind": "POINT",
+   "governorate": "DAMASCUS",
+   "lat": 33.52288,
+   "lng": 36.32002,
+   "source": "https://www.openstreetmap.org/way/564473106",
+   "confidence": "high"
+  },
+  {
+   "name": "جسر فكتوريا",
+   "nameEn": "Victoria Bridge",
+   "aliases": "جسر فيكتوريا، فكتوريا",
+   "stationKind": "POINT",
+   "governorate": "DAMASCUS",
+   "lat": 33.51385,
+   "lng": 36.29517,
+   "source": "https://www.openstreetmap.org/way/31679992",
+   "confidence": "high"
+  },
+  {
+   "name": "برج الروس",
+   "nameEn": "Burj al-Rous",
+   "aliases": "حديقة برج الروس، برج الروس",
+   "stationKind": "POINT",
+   "governorate": "DAMASCUS",
+   "lat": 33.51649,
+   "lng": 36.31619,
+   "source": "https://www.openstreetmap.org/way/108706829",
+   "confidence": "high"
+  },
+  {
+   "name": "شارع بغداد",
+   "nameEn": "Baghdad Street",
+   "aliases": "بغداد",
+   "stationKind": "POINT",
+   "governorate": "DAMASCUS",
+   "lat": 33.519,
+   "lng": 36.306,
+   "source": "https://www.openstreetmap.org/way/28716906",
+   "confidence": "high"
   }
  ],
  "routes": [

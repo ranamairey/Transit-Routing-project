@@ -49,6 +49,7 @@ public class DataSeeder implements CommandLineRunner {
     private final PasswordEncoder passwordEncoder;
     private final TransitGraphInvalidator invalidator;
     private final NetworkImportService importService;
+    private final com.example.demo.transit.repository.AppMetaRepository metaRepository;
     private final ObjectMapper objectMapper;
     private final String dataset;
     private final boolean enabled;
@@ -63,6 +64,7 @@ public class DataSeeder implements CommandLineRunner {
                       PasswordEncoder passwordEncoder,
                       TransitGraphInvalidator invalidator,
                       NetworkImportService importService,
+                      com.example.demo.transit.repository.AppMetaRepository metaRepository,
                       ObjectMapper objectMapper,
                       @Value("${app.seed.dataset:damascus}") String dataset,
                       @Value("${app.seed.enabled:true}") boolean enabled,
@@ -76,6 +78,7 @@ public class DataSeeder implements CommandLineRunner {
         this.passwordEncoder = passwordEncoder;
         this.invalidator = invalidator;
         this.importService = importService;
+        this.metaRepository = metaRepository;
         this.objectMapper = objectMapper;
         this.dataset = dataset;
         this.enabled = enabled;
@@ -98,6 +101,9 @@ public class DataSeeder implements CommandLineRunner {
             log.info("Seeded admin account {}", adminEmail);
         }
         if (stationRepository.count() > 0) {
+            if ("damascus".equalsIgnoreCase(dataset)) {
+                syncDataset();
+            }
             invalidator.warmUp();
             return;
         }
@@ -157,6 +163,7 @@ public class DataSeeder implements CommandLineRunner {
             log.info("Empty database: imported Damascus dataset ({} stations, {} routes, {} warnings)",
                     result.stationsCreated(), result.routesCreated(), result.warnings().size());
             result.warnings().forEach(w -> log.warn("Dataset warning: {}", w));
+            rememberDataset(datasetHash());
             invalidator.warmUp();
         } catch (java.io.IOException e) {
             throw new IllegalStateException("Could not read bundled Damascus dataset", e);
@@ -215,5 +222,85 @@ public class DataSeeder implements CommandLineRunner {
         report.setLatitude(station.getLatitude());
         report.setLongitude(station.getLongitude());
         reportRepository.save(report);
+    }
+
+    private static final String DATASET_META = "dataset-sha256";
+
+    /**
+     * When the bundled dataset changes (new places, English names), brings an existing database up to date
+     * without touching anything an admin may have edited: stations missing from the database are added and
+     * blank English names are filled in. Lines, fares and statuses are never changed here.
+     */
+    void syncDataset() {
+        String hash = datasetHash();
+        if (hash == null || metaRepository.findById(DATASET_META).map(m -> hash.equals(m.getValue())).orElse(false)) {
+            return;
+        }
+        NetworkImportRequest request;
+        try (InputStream in = new ClassPathResource("data/damascus-network.json").getInputStream()) {
+            request = objectMapper.readValue(in, NetworkImportRequest.class);
+        } catch (java.io.IOException e) {
+            log.warn("Dataset sync skipped: {}", e.getMessage());
+            return;
+        }
+        java.util.Map<String, Station> existing = new java.util.HashMap<>();
+        for (Station st : stationRepository.findAll()) {
+            existing.putIfAbsent(syncKey(st.getName(), st.getGovernorate()), st);
+        }
+        java.util.List<Station> changed = new java.util.ArrayList<>();
+        int added = 0, named = 0;
+        for (NetworkImportRequest.StationItem item : request.stations() == null ? java.util.List.<NetworkImportRequest.StationItem>of() : request.stations()) {
+            String gov = item.governorate() == null || item.governorate().isBlank() ? "DAMASCUS" : item.governorate();
+            Station current = existing.get(syncKey(item.name(), gov));
+            if (current == null) {
+                Station st = new Station();
+                st.setName(item.name());
+                st.setNameEn(item.nameEn());
+                st.setAliases(item.aliases());
+                st.setStationKind(item.stationKind() != null ? item.stationKind() : StationKind.POINT);
+                st.setGovernorate(gov);
+                st.setLatitude(item.lat());
+                st.setLongitude(item.lng());
+                changed.add(st);
+                existing.put(syncKey(item.name(), gov), st);
+                added++;
+            } else if ((current.getNameEn() == null || current.getNameEn().isBlank())
+                    && item.nameEn() != null && !item.nameEn().isBlank()) {
+                current.setNameEn(item.nameEn());
+                changed.add(current);
+                named++;
+            }
+        }
+        if (!changed.isEmpty()) {
+            stationRepository.saveAll(changed);
+            invalidator.invalidate();
+        }
+        rememberDataset(hash);
+        log.info("Dataset sync: {} places added, {} English names filled", added, named);
+    }
+
+    private static String syncKey(String name, String governorate) {
+        return com.example.demo.transit.service.StationSearchService.normalize(name) + "|"
+                + (governorate == null ? "DAMASCUS" : governorate.toUpperCase(java.util.Locale.ROOT));
+    }
+
+    private String datasetHash() {
+        try (InputStream in = new ClassPathResource("data/damascus-network.json").getInputStream()) {
+            byte[] digest = java.security.MessageDigest.getInstance("SHA-256").digest(in.readAllBytes());
+            return java.util.HexFormat.of().formatHex(digest);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    private void rememberDataset(String hash) {
+        if (hash == null) {
+            return;
+        }
+        com.example.demo.transit.entity.AppMeta meta = new com.example.demo.transit.entity.AppMeta();
+        meta.setId(DATASET_META);
+        meta.setValue(hash);
+        meta.setUpdatedAt(java.time.Instant.now());
+        metaRepository.save(meta);
     }
 }

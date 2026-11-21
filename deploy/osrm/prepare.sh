@@ -7,7 +7,7 @@ mkdir -p data
 if [ ! -f data/syria-latest.osm.pbf ]; then
   curl -L -o data/syria-latest.osm.pbf https://download.geofabrik.de/asia/syria-latest.osm.pbf
 fi
-IMG=osrm/osrm-backend:latest
+IMG=ghcr.io/project-osrm/osrm-backend:v6.0.0
 docker run --rm -t -v "$PWD/data:/data" $IMG osrm-extract -p /opt/foot.lua /data/syria-latest.osm.pbf
 docker run --rm -t -v "$PWD/data:/data" $IMG osrm-partition /data/syria-latest.osrm
 docker run --rm -t -v "$PWD/data:/data" $IMG osrm-customize /data/syria-latest.osrm

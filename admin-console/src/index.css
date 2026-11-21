@@ -267,3 +267,12 @@ select { appearance: none; -webkit-appearance: none; padding-inline-end: 38px !i
 /* basemap toning: calmer light tiles, inverted tiles for dark mode (no key needed) */
 .leaflet-tile-pane .tiles-light { filter: saturate(.7) contrast(.93) brightness(1.03); }
 .leaflet-tile-pane .tiles-dark { filter: invert(1) hue-rotate(180deg) saturate(.55) brightness(.82) contrast(.9); }
+
+/* usage insights */
+.day-bars { display: flex; gap: 4px; align-items: flex-end; height: 170px; overflow-x: auto; padding-bottom: 4px; }
+.day-bar { flex: 1; min-width: 14px; display: flex; flex-direction: column; align-items: center; gap: 4px; height: 100%; }
+.day-bar .col { flex: 1; width: 100%; display: flex; flex-direction: column-reverse; border-radius: 5px; overflow: hidden; background: #f3f5fa; }
+.day-bar .ok-part { background: var(--primary); }
+.day-bar .bad-part { background: var(--red); }
+.day-bar small { font-size: 9px; color: var(--muted); }
+:root[data-theme="dark"] .day-bar .col { background: #1c2433; }

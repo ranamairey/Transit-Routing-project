@@ -33,6 +33,8 @@ export default defineConfig({
         ],
       },
       workbox: {
+        // Line alerts pushed while the app is closed (public/push-sw.js).
+        importScripts: ['push-sw.js'],
         // NFR-1.2 offline-first: app shell precached; map tiles and the network snapshot cached at runtime.
         navigateFallback: `${base}index.html`,
         navigateFallbackDenylist: [/\/api\//],

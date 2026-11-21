@@ -70,9 +70,14 @@ The whole stack also runs on our own Debian server behind its existing Caddy pro
 | API | https://ysman.dyndns.info/transit/api/v1/health |
 
 - Server folder `/srv/apps/syrian-transit` (shows in Dockge): `docker-compose.yml`, `nginx.conf`, the API source in `backend/`, the two web builds in `web/`, and `.env` (mode 600, never in git).
-- Containers `syrian-transit-api` (Spring Boot, 1 GB limit) and `syrian-transit-web` (nginx serving both apps) on the shared `web` network.
+- Containers `syrian-transit-api` (Spring Boot, 1 GB limit), `syrian-transit-web` (nginx serving both apps) and `syrian-transit-osrm` (walking routes, 1 GB limit) on the shared `web` network.
+- Walking routes come from our own OSRM server built from the Syria OpenStreetMap extract in `osrm/` (about 700 MB on disk, about 400 MB of memory). Refresh the map data every few months with `./deploy/ysman/prepare-osrm.sh`.
+- Line alerts use Web Push. The server `.env` holds `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY` and `VAPID_SUBJECT`; generate a new pair only if the old one leaks, since every rider would have to turn notifications on again.
+- When the bundled dataset changes, the API adds missing places and fills blank English names on start-up, once per dataset version. It never touches lines, fares or anything an admin has edited.
 - Caddy routes are in `/srv/proxy/Caddyfile` (copy in `deploy/ysman/Caddyfile.snippet`); the pre-change backup is `Caddyfile.bak-transit-*`.
-- The server `.env` holds the same keys as the local `.env` plus `CORS_ORIGINS=https://ysman.dyndns.info,https://localhost,capacitor://localhost` and `PUBLIC_URL=https://ysman.dyndns.info/transit`.
+- The server `.env` holds the same keys as the local `.env` plus `CORS_ORIGINS=https://ysman.dyndns.info,https://localhost,capacitor://localhost`, `PUBLIC_URL=https://ysman.dyndns.info/transit`, `OSRM_URL=http://syrian-transit-osrm:5000` and the VAPID keys.
+- **E-mail** (password reset, verification): create a free Brevo account, verify a sender address, create an SMTP key, then add `SPRING_MAIL_HOST=smtp-relay.brevo.com`, `SPRING_MAIL_PORT=587`, `SPRING_MAIL_USERNAME`, `SPRING_MAIL_PASSWORD` and `MAIL_FROM` to the server `.env` and run `docker compose up -d` in the server folder.
+- **Android app**: `frontend/.env.android.local` points it at ysman (`VITE_API_BASE`, `VITE_PUBLIC_URL` for shared trip links); rebuild with `npm run android:apk`.
 
 Update after code changes (needs the `shisha` SSH host):
 ```bash
