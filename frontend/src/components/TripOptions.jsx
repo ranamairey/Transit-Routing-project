@@ -25,9 +25,13 @@ function Step({ leg, onReport }) {
   )
 }
 
+/** Whole trip from start to finish: the server's total, or the sum of the steps for older saved results. */
+export const tripMeters = (p) => p.totalDistanceMeters ?? p.legs.reduce((sum, l) => sum + (l.distanceMeters || 0), 0)
+
 /** FR-1.3: every option shows total fare, expected time, walking distance and transfers. */
 export default function TripOptions({ paths, selected, onSelect, onReport, peak, onShow, onShare, onCopyLink, onWhatsApp, onStart }) {
-  const { t, formatDuration, formatMeters, formatFare } = useI18n()
+  const { t, formatDuration, formatMeters, formatFare, locale } = useI18n()
+  const formatKm = (m) => `${(m / 1000).toLocaleString(locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 })} ${t('units.km')}`
   return (
     <section className="panel">
       <div className="resultsHead">
@@ -40,6 +44,7 @@ export default function TripOptions({ paths, selected, onSelect, onReport, peak,
             <div>
               <div className="price">{formatFare(p.totalFare)} <small>{t('trips.approx')}</small></div>
               <div className="meta">◷ {formatDuration(p.totalDurationSeconds)} &nbsp;·&nbsp; ⇄ {p.transfers === 0 ? t('trips.noTransfer') : t('trips.transfers', { n: p.transfers })} &nbsp;·&nbsp; 🚶 {formatMeters(p.walkingMeters)}</div>
+              <div className="total-km" title={t('trips.totalDistance')}>📏 {t('trips.totalDistance')}: <b>{formatKm(tripMeters(p))}</b></div>
             </div>
             <div className="pills">
               {(p.labels && p.labels.length ? p.labels : ['ALTERNATIVE']).map((l) => (

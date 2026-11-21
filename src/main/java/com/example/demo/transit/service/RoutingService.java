@@ -257,7 +257,9 @@ public class RoutingService {
             ));
         }
         int transfers = Math.max(0, path.rideLegs() - 1);
-        return new RouteOptionDto(path.totalFare(), path.totalDurationSeconds(), path.walkingMeters(), transfers, legs, labels);
+        double totalDistance = legs.stream().mapToDouble(TripLegDto::distanceMeters).sum();
+        return new RouteOptionDto(path.totalFare(), path.totalDurationSeconds(), path.walkingMeters(), transfers, legs, labels,
+                Math.round(totalDistance));
     }
 
     private List<Step> mergeSteps(List<Step> steps) {

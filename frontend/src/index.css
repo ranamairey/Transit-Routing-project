@@ -298,3 +298,5 @@ select { appearance: none; -webkit-appearance: none; padding-inline-end: 38px !i
 .nav .bell-menu .btn { background: var(--green); color: #fff; padding: 9px 12px; border-radius: 10px; }
 :root[data-theme="dark"] .nav .bell-menu .btn { color: #08221b; }
 .bell-backdrop { position: fixed; inset: 0; z-index: 1250; }
+.total-km { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.total-km b { color: var(--ink); }

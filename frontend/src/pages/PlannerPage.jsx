@@ -8,7 +8,7 @@ import ReportDialog from '../components/ReportDialog.jsx'
 import Select from '../components/Select.jsx'
 import { useToast } from '../components/Toast.jsx'
 import TripGuide from '../components/TripGuide.jsx'
-import TripOptions from '../components/TripOptions.jsx'
+import TripOptions, { tripMeters } from '../components/TripOptions.jsx'
 import { toEndpoint, useRider } from '../context/RiderContext.jsx'
 import { useI18n } from '../i18n/I18nContext.jsx'
 import { decodeEndpoint, tripLink } from '../utils/endpoints.js'
@@ -25,7 +25,7 @@ const distMeters = (a, b) => {
 
 export default function PlannerPage({ net }) {
   const { network, offline, loading } = net
-  const { t, formatFare, formatDuration, dark, timeAgo } = useI18n()
+  const { t, formatFare, formatDuration, dark, timeAgo, locale } = useI18n()
   const notify = useToast()
   const { places, addPlace, removePlace, recent, addRecent, clearRecent, live } = useRider()
   const [params, setParams] = useSearchParams()
@@ -131,6 +131,7 @@ export default function PlannerPage({ net }) {
   const tripText = (p) => t('planner.shareText', {
     from: endpointName(result.originName, 'planner.origin'), to: endpointName(result.destinationName, 'planner.destination'),
     fare: formatFare(p.totalFare), dur: formatDuration(p.totalDurationSeconds),
+    km: `${(tripMeters(p) / 1000).toLocaleString(locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 })} ${t('units.km')}`,
   })
   const link = () => tripLink(origin, dest)
   const copyLink = async () => {

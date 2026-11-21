@@ -10,6 +10,8 @@ public record RouteOptionDto(
         int transfers,
         List<TripLegDto> legs,
         /** Why this option is offered: FASTEST, FEWEST_TRANSFERS, CHEAPEST, LEAST_WALKING (may be empty). */
-        List<String> labels
+        List<String> labels,
+        /** Whole trip from start to finish (rides and walks), in metres. */
+        double totalDistanceMeters
 ) {
 }
