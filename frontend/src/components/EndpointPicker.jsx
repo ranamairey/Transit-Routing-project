@@ -8,7 +8,7 @@ import { useToast } from './Toast.jsx'
  * station names and local aliases (works offline on the cached network).
  */
 export default function EndpointPicker({ label, kind, value, onChange, stations, pinMode, onPinMode }) {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
   const notify = useToast()
   const [query, setQuery] = useState('')
   const [open, setOpen] = useState(false)
@@ -48,7 +48,7 @@ export default function EndpointPicker({ label, kind, value, onChange, stations,
             <ul>
               {suggestions.map((s) => (
                 <li key={s.id} onMouseDown={() => { onChange({ mode: 'station', name: s.name, stationId: s.id, point: s.location }); setQuery('') }}>
-                  {s.name}{s.aliases && <small>{s.aliases}</small>}
+                  {s.name}{lang === 'en' && s.nameEn ? <small>{s.nameEn}</small> : s.aliases && <small>{s.aliases}</small>}
                 </li>
               ))}
             </ul>
